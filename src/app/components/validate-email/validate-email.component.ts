@@ -15,7 +15,6 @@ export class ValidateEmailComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => 
       {
-      console.log(params['email']);
       this.email = params['email']
       })
   }
