@@ -1,0 +1,25 @@
+<div class="main">
+  <div class="pictureContainer">
+
+  </div>
+  <div class="container">
+    <span @fade>Welcome</span>
+    <form class="logInForm" [formGroup]="user">
+      <mat-form-field @fade appearance="outline">
+        <mat-label>Username</mat-label>
+        <input [formControl]="username" matInput autocomplete="off">
+        <mat-error *ngIf="username.invalid">{{getUsernameErrorMessages()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field @fade appearance="outline">
+        <mat-label>Password</mat-label>
+        <input [formControl]="password" matInput autocomplete="off" type="password">
+        <mat-error *ngIf="password.invalid">{{getPasswordErrorMessages()}}</mat-error>
+      </mat-form-field>
+      <button @fade [disabled]="user.invalid || isLoading" [class.spinner]="isLoading" (click)="showResult()" mat-raised-button color="primary">Login</button>
+    </form>
+    <button @fade mat-raised-button color="accent" (click)="openForgetPassword()">Forget password</button>
+    <div @fade class="d-flex justify-content-center links">
+      Don't have an account?  <a color="primary" routerLink="/register"> Sign Up</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(14, 13, 13);
+  width: 50%;
+  height: 41.45em;
+  border-style: solid;
+  background-image: url("../../../assets/images/jacob-dyer-R3ut7WOmeto-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner .8s linear infinite;
+}
+
+.logInForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2%;
+}
+
+.links {
+  margin-top: 5%;
+}
+
+.container>button {
+  margin-top: 35%;
+  width: 40%;
+}
+
+.main {
+  display: flex;
+}
+
+
+.pictureContainer {
+  background-image: url("../../../assets/images/Cloud.jpg");
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  transform: scaleX(-1);
+  padding-top: 10em;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.logInForm>mat-form-field {
+  width: 30em;
+}
+
+.logInForm>button {
+  width: 34em;
+  height: 3.5em;
+  color: black;
+}
+
+.container>span {
+  font-size: 100px;
+  font-family: "Sofia", sans-serif;
+  color: rgb(104, 151, 204);
+}
