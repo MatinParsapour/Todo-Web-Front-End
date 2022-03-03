@@ -1,8 +1,12 @@
-import { ActivatedRoute } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification/notification.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { slideToDown } from './../../animations';
 import { FormValidator } from './../register/FormValidator';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ResetPasswordService } from 'src/app/services/reset-password/reset-password.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationType } from 'src/app/enum/notification-type';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,9 +17,15 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 export class ResetPasswordComponent implements OnInit {
   resetPassword: FormGroup
   email: any;
+  isLoading: boolean = false;
 
-  constructor(fb : FormBuilder, private route: ActivatedRoute) {
+  constructor(fb : FormBuilder, 
+    private route: ActivatedRoute,
+    private resetPasswordService: ResetPasswordService,
+    private notifier: NotificationService,
+    private router: Router) {
     this.resetPassword = fb.group({
+      email: new FormControl(),
       password: new FormControl('',[Validators.required, FormValidator.passwordIsWeak]),
       reTypePassword: new FormControl('',[Validators.required])
     }, 
@@ -44,7 +54,17 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   changePassword(){
-    console.log(this.email, this.password.value, this.reTypePassword.value);
-    
+    this.resetPassword.get('email')?.setValue(this.email)
+    this.isLoading = true;
+    this.resetPasswordService.update("change-password", this.resetPassword.value).subscribe(
+      (response:any) => {
+        this.notifier.notify(NotificationType.SUCCESS, "Your password has been changed")
+        this.isLoading = false;
+        this.router.navigateByUrl("/login")
+      }, 
+      (error:HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.message)
+        this.isLoading = false
+      })
   }
 }
