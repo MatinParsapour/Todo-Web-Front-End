@@ -4,33 +4,38 @@
     <form class="form" [formGroup]="user">
       <mat-form-field @fade appearance="fill">
         <mat-label>First name</mat-label>
-        <input autocomplete="off" matInput placeholder="firstName" [formControl]="firstName" required>
+        <input [readonly]="isLoading" autocomplete="off" matInput placeholder="firstName" [formControl]="firstName"
+          required>
         <mat-error *ngIf="firstName.invalid">{{getFirstNameErrorMessages()}}</mat-error>
       </mat-form-field>
       <mat-form-field @fade appearance="fill">
         <mat-label>Last name</mat-label>
-        <input autocomplete="off" matInput placeholder="lastName" [formControl]="lastName" required>
+        <input [readonly]="isLoading" autocomplete="off" matInput placeholder="lastName" [formControl]="lastName"
+          required>
         <mat-error *ngIf="lastName.invalid">{{getLastNameErrorMessages()}}</mat-error>
       </mat-form-field>
       <mat-form-field @fade appearance="fill">
         <mat-label>Email</mat-label>
-        <input autocomplete="off" matInput placeholder="pat@example.com" [formControl]="email" required>
+        <input [readonly]="isLoading" autocomplete="off" matInput placeholder="pat@example.com" [formControl]="email"
+          required>
         <mat-error *ngIf="email.invalid">{{getEmailErrorMessages()}}</mat-error>
       </mat-form-field>
       <mat-form-field @fade appearance="fill">
         <mat-label>Username</mat-label>
-        <input autocomplete="off" matInput placeholder="Username" [formControl]="username" required>
+        <input [readonly]="isLoading" autocomplete="off" matInput placeholder="Username" [formControl]="username"
+          required>
         <mat-error *ngIf="username.invalid">{{getUsernameErrorMessages()}}</mat-error>
       </mat-form-field>
       <div>
         <mat-form-field @fade appearance="fill">
           <mat-label>Password</mat-label>
-          <input autocomplete="off" type="password" matInput placeholder="password" [formControl]="password" required>
+          <input [readonly]="isLoading" autocomplete="off" type="password" matInput placeholder="password"
+            [formControl]="password" required>
           <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
         </mat-form-field>
         <mat-form-field @fade appearance="fill">
           <mat-label>Re enter password</mat-label>
-          <input autocomplete="off" type="password" matInput placeholder="reTypePassword" [formControl]="reTypePassword"
+          <input [readonly]="isLoading" autocomplete="off" type="password" matInput placeholder="reTypePassword" [formControl]="reTypePassword"
             required>
           <mat-error *ngIf="password.invalid"> {{getPasswordErrorMessage()}} </mat-error>
           <mat-error *ngIf="reTypePassword.touched"> Re enter your password </mat-error>
