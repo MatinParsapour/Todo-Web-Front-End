@@ -1,3 +1,4 @@
+import { ForgetPasswordService } from './services/forget-password/forget-password.service';
 import { RegisterService } from './services/register/register.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -79,7 +80,7 @@ const customNotifierOptions: NotifierOptions = {
     NotifierModule.withConfig(customNotifierOptions),
     HttpClientModule
   ],
-  providers: [RegisterService],
+  providers: [RegisterService, ForgetPasswordService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
