@@ -1,3 +1,4 @@
+import { RegisterService } from './services/register/register.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -19,6 +20,7 @@ import { ValidateEmailComponent } from './components/validate-email/validate-ema
 import { CaptchaComponent } from './components/captcha/captcha.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -74,9 +76,10 @@ const customNotifierOptions: NotifierOptions = {
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    NotifierModule.withConfig(customNotifierOptions)
+    NotifierModule.withConfig(customNotifierOptions),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [RegisterService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
