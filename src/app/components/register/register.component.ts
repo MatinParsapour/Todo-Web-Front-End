@@ -1,6 +1,6 @@
+import { UsernameValidator } from './username.validator';
 import { CaptchaComponent } from './../captcha/captcha.component';
 import { MatDialog } from '@angular/material/dialog';
-import { NotificationService } from 'src/app/services/notification/notification.service';
 import { slideToDown } from './../../animations';
 import { FormValidator } from './FormValidator';
 import { Component, OnInit } from '@angular/core';
@@ -10,8 +10,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { NotificationType } from 'src/app/enum/notification-type';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-register',
@@ -25,18 +24,18 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     formBuilder: FormBuilder,
-    private notifier: NotificationService,
-    private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private usernameValidator: UsernameValidator
   ) {
     this.user = formBuilder.group(
       {
         firstName: new FormControl('', [Validators.required]),
         lastName: new FormControl('', [Validators.required]),
-        userName: new FormControl('', [
-          Validators.required,
-          Validators.minLength(5),
-        ]),
+        userName: new FormControl(
+          '',
+          [Validators.required, Validators.minLength(5)],
+          this.usernameValidator.validate
+        ),
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [
           Validators.required,
@@ -100,6 +99,9 @@ export class RegisterComponent implements OnInit {
   getUsernameErrorMessages() {
     if (this.username.hasError('required')) {
       return 'Username is mandatory';
+    }
+    if (this.username.hasError('usernameisDoplicate')) {
+      return this.username.value + " isn't available"
     }
     return 5 - this.username.value.length + ' more charater(s)';
   }
