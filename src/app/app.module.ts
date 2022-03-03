@@ -22,6 +22,7 @@ import { CaptchaComponent } from './components/captcha/captcha.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ResetPasswordService } from './services/reset-password/reset-password.service';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -80,7 +81,7 @@ const customNotifierOptions: NotifierOptions = {
     NotifierModule.withConfig(customNotifierOptions),
     HttpClientModule
   ],
-  providers: [RegisterService, ForgetPasswordService],
+  providers: [RegisterService, ForgetPasswordService, ResetPasswordService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
