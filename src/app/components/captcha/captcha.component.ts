@@ -1,9 +1,11 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { NotificationType } from 'src/app/enum/notification-type';
+import { RegisterService } from 'src/app/services/register/register.service';
 
 @Component({
   selector: 'app-captcha',
@@ -21,15 +23,18 @@ export class CaptchaComponent implements OnInit {
   url: any;
   ok: any = 'The captcha is ok';
   fail: any = 'The captcha is invalid';
+  user: any;
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
     private notifier: NotificationService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private registerService: RegisterService
   ) {
     this.url = data.url;
     this.ok = data.ok;
     this.fail = data.fail;
+    this.user = data.user;
   }
 
   ngOnInit(): void {
@@ -67,9 +72,17 @@ export class CaptchaComponent implements OnInit {
 
   check() {
     if (this.userCaptchaValueEntered.value === this.captcha) {
-      this.notifier.notify(NotificationType.SUCCESS, this.ok);
-      this.router.navigateByUrl(this.url);
-      this.dialog.closeAll();
+      this.notifier.notify(NotificationType.SUCCESS, "Capthca was correct");
+      this.registerService.create('add-user', this.user).subscribe(
+        () => {
+          this.notifier.notify(NotificationType.SUCCESS, this.ok);
+          this.router.navigateByUrl(this.url);
+          this.dialog.closeAll();
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(NotificationType.ERROR, error.message);
+        }
+      );
     } else {
       this.notifier.notify(NotificationType.ERROR, this.fail);
       this.generate();
