@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class RegisterService extends DataService {
   constructor(http: HttpClient) {
-    super('http://localhost:8081/user/', http);
+    super('http://localhost:8080/user/', http);
     this.httpService = http;
   }
 
@@ -15,12 +15,12 @@ export class RegisterService extends DataService {
 
   isUsernameDoplicate(username: any) {
     return this.httpService.get(
-      'http://localhost:8081/user/check-username/' + username
+      'http://localhost:8080/user/check-username/' + username
     );
   }
   isEmailDoplicate(email: any) {
     return this.httpService.get(
-      'http://localhost:8081/user/check-email/' + email
+      'http://localhost:8080/user/check-email/' + email
     );
   }
 }
