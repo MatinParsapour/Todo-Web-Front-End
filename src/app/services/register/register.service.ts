@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class RegisterService extends DataService {
   constructor(http: HttpClient) {
-    super('http://localhost:8080/user/', http);
+    super('http://localhost:8081/user/', http);
     this.httpService = http;
   }
 
