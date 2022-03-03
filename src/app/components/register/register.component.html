@@ -39,7 +39,7 @@
       <mat-error *ngIf="reTypePassword?.valid && user.invalid && user.errors?.['passwordsDoNotMatch']">Passwords don't
         match</mat-error>
       <button @fade type="submit" [class.spinner]="isLoading" mat-raised-button color="primary"
-        [disabled]="isLoading || user.invalid" (click)="setIsLoadingTrue()">Sign up
+        [disabled]="isLoading || user.invalid" (click)="registerUser()">Sign up
       </button>
     </form>
     <div @fade class="d-flex justify-content-center links">

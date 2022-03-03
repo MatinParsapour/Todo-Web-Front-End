@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
     console.log(this.user.value);
   }
 
-  setIsLoadingTrue() {
+  registerUser() {
     this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false;
