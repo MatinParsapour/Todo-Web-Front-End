@@ -1,5 +1,13 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { ForgetPasswordService } from './../../services/forget-password/forget-password.service';
+import { ForgetPasswordEmailValidator } from './forget-password-email-validator';
 import { MatDialog } from '@angular/material/dialog';
-import { FormControl, Validators } from '@angular/forms';
+import {
+  FormControl,
+  Validators,
+  FormBuilder,
+  FormGroup,
+} from '@angular/forms';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { Component, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
@@ -11,10 +19,23 @@ import { NotificationType } from 'src/app/enum/notification-type';
 })
 export class ForgetPasswordComponent implements OnInit {
   isLoading = false;
+  field: FormGroup;
 
-  constructor(private notifier: NotificationService, private dialog: MatDialog) {}
-
-  email = new FormControl('', [Validators.required, Validators.email]);
+  constructor(
+    private notifier: NotificationService,
+    private dialog: MatDialog,
+    private fb: FormBuilder,
+    private forgetPasswordValidator: ForgetPasswordEmailValidator,
+    private forgetPasswordService: ForgetPasswordService
+  ) {
+    this.field = fb.group({
+      email: new FormControl(
+        '',
+        [Validators.required, Validators.email],
+        this.forgetPasswordValidator.validate
+      ),
+    });
+  }
 
   ngOnInit(): void {}
 
@@ -22,22 +43,42 @@ export class ForgetPasswordComponent implements OnInit {
     if (this.email.hasError('required')) {
       return 'Email is mandatory';
     }
+    if (this.email.hasError('emailIsNotAvailable')) {
+      return 'The email has not been defined';
+    }
     return 'Email is invalid';
+  }
+
+  get email(): any {
+    return this.field.get('email');
   }
 
   sendEmail() {
     this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-      this.notifier.notify(
-        NotificationType.SUCCESS,
-        'Email sent to ' + this.email.value
-        );
-        this.closeDialog()
-    }, 5000);
+    this.forgetPasswordService
+      .sendForgetPasswordEmail(this.email.value)
+      .subscribe(
+        (response: any) => {
+          console.log(response);
+          this.isLoading = false;
+          this.notifier.notify(
+            NotificationType.SUCCESS,
+            'Email sent to ' + this.email.value
+          );
+          this.closeDialog();
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error);
+          this.isLoading = false;
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.message
+          );
+        }
+      );
   }
 
-  closeDialog(){
-    this.dialog.closeAll()
+  closeDialog() {
+    this.dialog.closeAll();
   }
 }
