@@ -1,3 +1,4 @@
+import { EmailValidator } from './email.validator';
 import { UsernameValidator } from './username.validator';
 import { CaptchaComponent } from './../captcha/captcha.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -25,7 +26,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     formBuilder: FormBuilder,
     private dialog: MatDialog,
-    private usernameValidator: UsernameValidator
+    private usernameValidator: UsernameValidator,
+    private emailValidator: EmailValidator
   ) {
     this.user = formBuilder.group(
       {
@@ -36,7 +38,7 @@ export class RegisterComponent implements OnInit {
           [Validators.required, Validators.minLength(5)],
           this.usernameValidator.validate
         ),
-        email: new FormControl('', [Validators.required, Validators.email]),
+        email: new FormControl('', [Validators.required, Validators.email], this.emailValidator.validate),
         password: new FormControl('', [
           Validators.required,
           Validators.minLength(10),
@@ -92,6 +94,9 @@ export class RegisterComponent implements OnInit {
   getEmailErrorMessages() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
+    }
+    if (this.email.hasError('emailIsDoplicate')) {
+      return 'The email is taken';
     }
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
