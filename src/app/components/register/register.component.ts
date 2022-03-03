@@ -1,3 +1,4 @@
+import { RegisterService } from './../../services/register/register.service';
 import { EmailValidator } from './email.validator';
 import { UsernameValidator } from './username.validator';
 import { CaptchaComponent } from './../captcha/captcha.component';
@@ -11,7 +12,6 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-
 
 @Component({
   selector: 'app-register',
@@ -38,7 +38,11 @@ export class RegisterComponent implements OnInit {
           [Validators.required, Validators.minLength(5)],
           this.usernameValidator.validate
         ),
-        email: new FormControl('', [Validators.required, Validators.email], this.emailValidator.validate),
+        email: new FormControl(
+          '',
+          [Validators.required, Validators.email],
+          this.emailValidator.validate
+        ),
         password: new FormControl('', [
           Validators.required,
           Validators.minLength(10),
@@ -54,24 +58,19 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  showResult() {
-    console.log(this.user.value);
-  }
-
   registerUser() {
     this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false;
-      this.showResult();
       this.dialog.open(CaptchaComponent, {
         data: {
           url: '/login',
           ok:
+            'Dear ' +
             this.firstName.value +
-            ' ' +
-            this.lastName.value +
-            ' registerd successfully',
+            ' check your inbox for confirmation email',
           fail: 'The captcha is invalid',
+          user: this.user.value,
         },
       });
     }, 5000);
@@ -106,7 +105,7 @@ export class RegisterComponent implements OnInit {
       return 'Username is mandatory';
     }
     if (this.username.hasError('usernameisDoplicate')) {
-      return this.username.value + " isn't available"
+      return this.username.value + " isn't available";
     }
     return 5 - this.username.value.length + ' more charater(s)';
   }
@@ -140,9 +139,19 @@ export class RegisterComponent implements OnInit {
     return this.user.get('userName');
   }
 
-  get isMinimum() {return FormValidator.isMinimum}
-  get hasLowerCase(){return FormValidator.hasLowerCase}
-  get hasUpperCase(){return FormValidator.hasUpperCase}
-  get hasNumber(){return FormValidator.hasNumber}
-  get hasSpecialCharacters(){return FormValidator.hasSpecialCharacters}
+  get isMinimum() {
+    return FormValidator.isMinimum;
+  }
+  get hasLowerCase() {
+    return FormValidator.hasLowerCase;
+  }
+  get hasUpperCase() {
+    return FormValidator.hasUpperCase;
+  }
+  get hasNumber() {
+    return FormValidator.hasNumber;
+  }
+  get hasSpecialCharacters() {
+    return FormValidator.hasSpecialCharacters;
+  }
 }
