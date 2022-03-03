@@ -73,7 +73,7 @@ export class RegisterComponent implements OnInit {
           user: this.user.value,
         },
       });
-    }, 5000);
+    }, 2000);
   }
 
   getFirstNameErrorMessages() {
