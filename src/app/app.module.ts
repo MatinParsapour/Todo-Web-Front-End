@@ -1,3 +1,5 @@
+import { InsertFolderService } from './services/insert-folder/insert-folder.service';
+import { MainService } from './services/main/main.service';
 import { LoginService } from './services/login/login.service';
 import { ForgetPasswordService } from './services/forget-password/forget-password.service';
 import { RegisterService } from './services/register/register.service';
@@ -25,6 +27,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResetPasswordService } from './services/reset-password/reset-password.service';
 import { MainComponent } from './components/main/main.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { InsertFolderComponent } from './components/insert-folder/insert-folder.component'
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -68,7 +72,7 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, ForgetPasswordComponent, ValidateEmailComponent, CaptchaComponent, ResetPasswordComponent, NotFoundComponent, MainComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, ForgetPasswordComponent, ValidateEmailComponent, CaptchaComponent, ResetPasswordComponent, NotFoundComponent, MainComponent, InsertFolderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -81,9 +85,16 @@ const customNotifierOptions: NotifierOptions = {
     MatProgressSpinnerModule,
     MatIconModule,
     NotifierModule.withConfig(customNotifierOptions),
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule
   ],
-  providers: [RegisterService, ForgetPasswordService, ResetPasswordService, LoginService],
+  providers: [RegisterService, 
+    ForgetPasswordService, 
+    ResetPasswordService, 
+    LoginService, 
+    MainService,
+    InsertFolderService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
