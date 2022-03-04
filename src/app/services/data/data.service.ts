@@ -20,7 +20,7 @@ export class DataService {
     return this.http.put(this.url + uri, object)
   }
 
-  delete(id: any){
-    return this.http.delete(this.url + id)
+  delete( uri: string){
+    return this.http.delete(this.url + uri)
   }
 }
