@@ -8,9 +8,9 @@
     <div class="folders" *ngFor="let toDoFolder of toDoFolders">
       <span>
         <div class="folder">
-          <span>{{toDoFolder.name}}</span>
+          <p (click)="makeItEditable(toDoFolder.name)" (keydown.enter)="validateAndChangeFolderName($event.target)"
+            [contentEditable]="isEditable">{{toDoFolder.name}}</p>
           <div class="buttons">
-              <span class="material-icons edit">edit</span>
               <span class="material-icons add">add_circle_outline</span>
               <span class="material-icons delete" (click)="deleteFolder(toDoFolder.name)">delete</span>
           </div>

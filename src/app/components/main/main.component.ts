@@ -14,10 +14,12 @@ import { NotificationType } from 'src/app/enum/notification-type';
 })
 export class MainComponent implements OnInit {
   toDoFolders: any;
+  isEditable: boolean = false;
 
   folderDTO = new FormGroup({
     username: new FormControl(''),
-    folderName: new FormControl(''),
+    oldName: new FormControl(''),
+    newName: new FormControl(''),
   });
 
   constructor(
@@ -26,7 +28,9 @@ export class MainComponent implements OnInit {
     private notifier: NotificationService
   ) {}
 
-  ngOnInit(): void { this.getAllToDos()}
+  ngOnInit(): void {
+    this.getAllToDos();
+  }
 
   getAllToDos() {
     this.mainService
@@ -41,10 +45,38 @@ export class MainComponent implements OnInit {
       );
   }
 
+  makeItEditable(event: any) {
+    this.isEditable = true;
+    this.folderDTO.get('oldName')?.setValue(event);
+  }
+
+  validateAndChangeFolderName(event: any) {
+    this.folderDTO.get('username')?.setValue(localStorage.getItem('username'));
+    this.folderDTO.get('newName')?.setValue(event.innerText);
+
+    this.mainService
+      .update('/folder/change-folder-name', this.folderDTO.value)
+      .subscribe(
+        (response: any) => {
+          this.notifier.notify(NotificationType.SUCCESS, "Name of the folder successfully changed");
+          this.isEditable = false;
+          this.getAllToDos();
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(NotificationType.ERROR, "Something went wrong: most likely name of the folder is doplicate");
+          this.isEditable = false;
+          this.getAllToDos();
+        }
+      );
+  }
+
   openCreateFolderDialog() {
-    this.dialog.open(InsertFolderComponent).afterClosed().subscribe(() => {
-      this.getAllToDos();
-    });
+    this.dialog
+      .open(InsertFolderComponent)
+      .afterClosed()
+      .subscribe(() => {
+        this.getAllToDos();
+      });
   }
 
   deleteFolder(folderName: any) {
@@ -61,7 +93,7 @@ export class MainComponent implements OnInit {
             NotificationType.SUCCESS,
             folderName + ' successfully deleted'
           );
-          this.getAllToDos()
+          this.getAllToDos();
         },
         (error: HttpErrorResponse) => {
           this.notifier.notify(NotificationType.ERROR, error.message);
