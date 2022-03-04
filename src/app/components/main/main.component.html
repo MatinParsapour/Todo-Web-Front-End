@@ -1,12 +1,12 @@
 <mat-sidenav-container class="example-container" fullscreen>
-  <mat-sidenav #sidenav class="example-sidenav">
+  <mat-sidenav #sidenav class="example-sidenav" opened>
     <button (click)="openCreateFolderDialog()" mat-mini-fab color="">
       <mat-icon>add_circle</mat-icon>
     </button>
     <br>
     <br>
     <div class="folders" *ngFor="let toDoFolder of toDoFolders">
-      <button mat-button>
+      <span>
         <div class="folder">
           <span>{{toDoFolder.name}}</span>
           <div class="buttons">
@@ -15,7 +15,7 @@
               <span class="material-icons delete" (click)="deleteFolder(toDoFolder.name)">delete</span>
           </div>
         </div>
-      </button>
+      </span>
     </div>
   </mat-sidenav>
   <div class="example-sidenav-content">
