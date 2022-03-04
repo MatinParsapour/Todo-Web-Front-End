@@ -1,1 +1,26 @@
-<p>main works!</p>
+<mat-sidenav-container class="example-container" fullscreen>
+  <mat-sidenav #sidenav class="example-sidenav">
+    <button (click)="openCreateFolderDialog()" mat-mini-fab color="">
+      <mat-icon>add_circle</mat-icon>
+    </button>
+    <br>
+    <br>
+    <div class="folders" *ngFor="let toDoFolder of toDoFolders">
+      <button mat-button>
+        <div class="folder">
+          <span>{{toDoFolder.name}}</span>
+          <div class="buttons">
+              <span class="material-icons edit">edit</span>
+              <span class="material-icons add">add_circle_outline</span>
+              <span class="material-icons delete" (click)="deleteFolder(toDoFolder.name)">delete</span>
+          </div>
+        </div>
+      </button>
+    </div>
+  </mat-sidenav>
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="sidenav.open()">
+      <mat-icon>list</mat-icon>
+    </button>
+  </div>
+</mat-sidenav-container>
