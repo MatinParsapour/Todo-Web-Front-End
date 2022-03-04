@@ -1,0 +1,13 @@
+<form class="createFolder" [class.spinner]="isLoading">
+  <span>Enter name of your folder</span>
+  <mat-form-field appearance="outline">
+    <mat-label>Folder name</mat-label>
+    <input [formControl]="folderName" [readonly]="isLoading" matInput autocomplete="off">
+    <mat-error *ngIf="folderName.invalid"> {{getFolderNameErrorMessages()}} </mat-error>
+  </mat-form-field>
+  <div>
+    <button [disabled]="isLoading || folderName.invalid" (click)="addFolder()" type="button"
+      mat-raised-button color="primary">Create folder</button>
+    <button type="button" mat-raised-button color="warn" (click)="closeDialog()">Close</button>
+  </div>
+</form>
