@@ -20,6 +20,10 @@
     justify-content: space-between;
 }
 
+.folder > span {
+    user-select: none;
+}
+
 .buttons{
     display: flex;
     justify-content: flex-end;
@@ -27,6 +31,7 @@
 
 .buttons > span{
     margin-top: 10%;
+    cursor: pointer;
 }
 .delete:hover {
     margin-top: 10%;
