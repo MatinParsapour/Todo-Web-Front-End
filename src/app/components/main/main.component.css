@@ -60,3 +60,11 @@ mat-icon:hover {
       height: 32.5em;
       overflow: auto;
 }
+
+.toDoMenu{
+  display: flex;
+}
+
+.date{
+  width: 6em;
+}

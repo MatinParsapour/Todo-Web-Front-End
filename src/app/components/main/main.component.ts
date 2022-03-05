@@ -22,12 +22,14 @@ export class MainComponent implements OnInit {
   private GET_TO_DO_FOLDERS_URI = '/folder/get-todo-folders/' + localStorage.getItem('username');
   private CREATE_TO_DO_URI = '/to-do/add-to-do/' + localStorage.getItem('list') + '/folder/' + localStorage.getItem('folder') + '/for/' + localStorage.getItem('username')
   toDoFolders: any;
+  isMyDayAttr = false;
   toDos: any;
   user = '';
 
   toDo = new FormGroup({
     task: new FormControl(''),
     dateTime: new FormControl(''),
+    isMyDay: new FormControl(this.isMyDayAttr)
   });
 
   constructor(
@@ -56,7 +58,7 @@ export class MainComponent implements OnInit {
         (response: any) => {
           this.notifier.notify(NotificationType.SUCCESS,'Your to do successfully added');
           this.getAllToDos();
-          this.task.setValue('')
+          this.clearToDo()
         },
         (error: HttpErrorResponse) => {
           this.notifier.notify(NotificationType.ERROR, error.message);
@@ -65,9 +67,21 @@ export class MainComponent implements OnInit {
     }
   }
 
-  get task(): any {return this.toDo.get('task');}
+  clearToDo(){
+    this.task.setValue('');
+    this.dateTime.setValue('');
+    this.isMyDayAttr = false;
+    this.isMyDay.setValue(this.isMyDayAttr)
+  }
 
+  get task(): any {return this.toDo.get('task');}
   get dateTime(): any {return this.toDo.get('dateTime');}
+  get isMyDay(): any {return this.toDo.get('isMyDay');}
+
+  toggleIsMyDay(){
+    this.isMyDayAttr = !this.isMyDayAttr;
+    this.toDo.get('isMyDay')?.setValue(this.isMyDayAttr)
+  }
 
   getAllToDos() {
     this.mainService.getToDos(this.GET_TO_DOS_URI).subscribe(

@@ -7,7 +7,7 @@
     <br>
     <div class="folders" *ngFor="let toDoFolder of toDoFolders">
       <span>
-        <app-to-do-folders [toDoFolder]="toDoFolder" (updateData)="getAllToDoFolders()" (getToDos)="getAllToDoFolders()"></app-to-do-folders>
+        <app-to-do-folders [toDoFolder]="toDoFolder" (updateData)="getAllToDoFolders()"(getToDos)="getAllToDoFolders()"></app-to-do-folders>
       </span>
     </div>
     <button (click)="openUserDialog()" class="user" mat-raised-button>
@@ -31,14 +31,19 @@
         <mat-label>ToDo</mat-label>
         <input (keydown.enter)="addAndUpdateToDos()" [formControl]="task" matInput autocomplete="off" type="text">
       </mat-form-field>
-      <div>
+      <div class="toDoMenu">
         <div>
-          <mat-form-field [hidden]="!dateTime.value" appearance="fill">
-            <mat-label>Input disabled</mat-label>
-            <input [formControl]="dateTime" matInput [matDatepicker]="picker">
-            <mat-datepicker #picker disabled="false"></mat-datepicker>
-          </mat-form-field>
-          <mat-icon mat-raised-button (click)="picker.open()">event</mat-icon>
+          <div>
+            <span (click)="toggleIsMyDay()">
+              <mat-icon matTooltip="My day" *ngIf="isMyDayAttr">brightness_7</mat-icon>
+              <mat-icon matTooltip="My day" *ngIf="!isMyDayAttr">brightness_5</mat-icon>
+            </span>
+            <mat-form-field class="date" [hidden]="!dateTime.value" appearance="fill">
+              <input [formControl]="dateTime" matInput [matDatepicker]="picker">
+              <mat-datepicker #picker disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <mat-icon mat-raised-button (click)="picker.open()">event</mat-icon>
+          </div>
         </div>
       </div>
     </mat-card>
