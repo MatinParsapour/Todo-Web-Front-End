@@ -1,3 +1,4 @@
+import { UserService } from './services/user/user.service';
 import { ToDoService } from './services/to-do/to-do.service';
 import { InsertFolderService } from './services/insert-folder/insert-folder.service';
 import { MainService } from './services/main/main.service';
@@ -38,6 +39,8 @@ import {MatTooltipModule} from '@angular/material/tooltip'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { UserComponent } from './components/user/user.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -95,6 +98,7 @@ const customNotifierOptions: NotifierOptions = {
     InsertListComponent,
     ToDoFoldersComponent,
     ToDoComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
@@ -115,6 +119,7 @@ const customNotifierOptions: NotifierOptions = {
     MatDatepickerModule,
     MatNativeDateModule,
     MatMenuModule,
+    MatTableModule
   ],
   providers: [
     RegisterService,
@@ -124,6 +129,7 @@ const customNotifierOptions: NotifierOptions = {
     MainService,
     InsertFolderService,
     ToDoService,
+    UserService
   ],
   bootstrap: [AppComponent],
 })
