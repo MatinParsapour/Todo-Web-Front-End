@@ -28,7 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ResetPasswordService } from './services/reset-password/reset-password.service';
 import { MainComponent } from './components/main/main.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { InsertFolderComponent } from './components/insert-folder/insert-folder.component'
+import { InsertFolderComponent } from './components/insert-folder/insert-folder.component';
+import { InsertListComponent } from './components/insert-list/insert-list.component';
+import { ToDoFoldersComponent } from './components/to-do-folders/to-do-folders.component'
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -72,7 +74,7 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, ForgetPasswordComponent, ValidateEmailComponent, CaptchaComponent, ResetPasswordComponent, NotFoundComponent, MainComponent, InsertFolderComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, ForgetPasswordComponent, ValidateEmailComponent, CaptchaComponent, ResetPasswordComponent, NotFoundComponent, MainComponent, InsertFolderComponent, InsertListComponent, ToDoFoldersComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
