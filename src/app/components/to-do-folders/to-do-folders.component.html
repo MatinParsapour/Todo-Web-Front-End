@@ -1,4 +1,4 @@
-<div class="folder" @fade>
+<div class="folder">
   <div class="name">
     <span class="material-icons arrow" [hidden]="areListsVisible" (click)="toggleListsVisibility()">navigate_next</span>
     <span class="material-icons arrow" [hidden]="!areListsVisible" (click)="toggleListsVisibility()">expand_more</span>
@@ -7,17 +7,20 @@
       {{toDoFolder.name}}</p>
   </div>
   <div class="buttons">
-    <span class="material-icons add" (click)="openAddListDialog(toDoFolder.name)">add_circle_outline</span>
-    <span class="material-icons delete" (click)="deleteFolder(toDoFolder.name)">delete</span>
+    <span class="material-icons add" (click)="openAddListDialog(toDoFolder.name)"
+      matTooltip="Add list">add_circle_outline</span>
+    <span class="material-icons delete" (click)="deleteFolder(toDoFolder.name)" matTooltip="delete folder">delete</span>
   </div>
 </div>
 <div [hidden]="!areListsVisible" *ngFor="let toDoList of toDoFolder.toDoLists">
-  <div class="lists" @fade>
+  <div class="lists">
     <p [contentEditable]="true" (click)="makeListEditable(toDoList.name, toDoFolder.name)"
       (keydown.enter)="validateAndChangeListName($event.target)"> {{toDoList.name}} </p>
-    <div>
-      <span class="material-icons visibility">visibility</span>
-      <span class="material-icons delete" (click)="deleteList(toDoFolder.name, toDoList.name)">delete</span>
+      <div>
+        <span class="material-icons visibility" (click)="showToDo(toDoList.name, toDoFolder.name)"
+          matTooltip="See todos of this list">visibility</span>
+      <span class="material-icons delete" (click)="deleteList(toDoFolder.name, toDoList.name)"
+        matTooltip="delete list">delete</span>
     </div>
   </div>
 </div>
