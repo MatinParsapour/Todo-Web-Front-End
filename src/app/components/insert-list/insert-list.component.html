@@ -1,0 +1,13 @@
+<form class="addList" [class.spinner]="isLoading">
+  <span>Enter name of your list</span>
+  <mat-form-field appearance="outline">
+    <mat-label>List name</mat-label>
+    <input [formControl]="listName" [readonly]="isLoading" matInput autocomplete="off">
+    <mat-error *ngIf="listName.invalid"> {{getListNameErrorMessages()}} </mat-error>
+  </mat-form-field>
+  <div>
+    <button [disabled]="isLoading || listName.invalid" (click)="addList()" type="button" mat-raised-button
+      color="primary">Add list</button>
+    <button type="button" mat-raised-button color="warn" (click)="closeDialog()">Close</button>
+  </div>
+</form>
