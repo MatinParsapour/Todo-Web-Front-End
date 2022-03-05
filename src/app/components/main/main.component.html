@@ -7,7 +7,8 @@
     <br>
     <div class="folders" *ngFor="let toDoFolder of toDoFolders">
       <span>
-        <app-to-do-folders [toDoFolder]="toDoFolder" (updateData)="getAllToDoFolders()"(getToDos)="getAllToDoFolders()"></app-to-do-folders>
+        <app-to-do-folders [toDoFolder]="toDoFolder" (updateData)="getAllToDoFolders()"
+          (getToDos)="getAllToDos()"></app-to-do-folders>
       </span>
     </div>
     <button (click)="openUserDialog()" class="user" mat-raised-button>
@@ -22,6 +23,12 @@
       </div>
     </div>
     <div class="toDos">
+      <div class="noToDoErrorContainer">
+        <div class="noToDoError" *ngIf="toDos.length === 0">
+          <h1>(0_o)</h1>
+          <h5>You have no todo</h5>
+        </div>
+      </div>
       <div *ngFor="let toDo of toDos">
         <app-to-do [toDo]="toDo" (getToDos)="getAllToDos()"></app-to-do>
       </div>

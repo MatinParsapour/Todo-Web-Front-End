@@ -68,3 +68,21 @@ mat-icon:hover {
 .date{
   width: 6em;
 }
+
+.noToDoError{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.noToDoErrorContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.noToDoError > h1 {
+  font-size: 5em;
+}
+.noToDoError > h5 {
+  font-size: 2em;
+}
