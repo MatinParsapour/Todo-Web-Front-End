@@ -26,13 +26,37 @@ mat-card {
   display: flex;
   justify-content: space-between;
   margin-left: 3em;
-  position:fixed;
-  bottom:0px;
-  width:93%;
-  align-items:center
+  position: fixed;
+  bottom: 0px;
+  width: 93%;
+  align-items: center;
 }
 
-.list:hover{
+.list:hover {
   cursor: pointer;
   color: rgb(46, 61, 201);
+}
+
+mat-card>mat-form-field {
+  width: 80%;
+  height: 5em;
+}
+
+mat-icon:hover {
+  cursor: pointer;
+}
+
+.user {
+  left: 0;
+  bottom: 0px;
+  height: 5em;
+  width: 300px;
+  position: fixed;
+  align-items: center;
+  display: flex;
+}
+
+.toDos {
+      height: 32.5em;
+      overflow: auto;
 }
