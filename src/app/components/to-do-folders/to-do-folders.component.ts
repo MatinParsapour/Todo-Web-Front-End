@@ -14,6 +14,7 @@ import { InsertListComponent } from '../insert-list/insert-list.component';
 })
 export class ToDoFoldersComponent implements OnInit {
   areListsVisible: boolean = true;
+  isToDoVisible: boolean = false;
   toDoFolders: any;
   @Input('toDoFolder') toDoFolder: any;
 
@@ -40,6 +41,12 @@ export class ToDoFoldersComponent implements OnInit {
 
   toggleListsVisibility() {
     this.areListsVisible = !this.areListsVisible;
+  }
+
+  showToDo(listName: any, folderName: any){
+    localStorage.setItem("list", listName)
+    localStorage.setItem("folder", folderName)
+    location.reload()
   }
 
   makeFolderEditable(event: any) {
