@@ -1,49 +1,7 @@
-.example-sidenav{
-    padding: 20px;
-    width: 300px;
-    font-size: 20px;
-    border: 1px solid rgba(0,0,0,0.5);
+.example-sidenav {
+  padding: 20px;
+  width: 300px;
+  font-size: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
-
-.addIcon{
-    cursor: pointer;
-}
-
-.folders{
-    display: flex;
-    flex-direction: column;
-}
-
-.folder{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.folder > span {
-    user-select: none;
-}
-
-.buttons{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.buttons > span{
-    margin-top: 10%;
-    cursor: pointer;
-}
-.delete:hover {
-    margin-top: 10%;
-    color: red;
-}
-.add:hover {
-    margin-top: 10%;
-    color: green;
-}
-.edit:hover {
-    margin-top: 10%;
-    color: yellow;
-}
-
 

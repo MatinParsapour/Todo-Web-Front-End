@@ -1,3 +1,5 @@
+import { slideToDown } from './../../animations';
+import { InsertListComponent } from './../insert-list/insert-list.component';
 import { NotificationService } from './../../services/notification/notification.service';
 import { InsertFolderComponent } from './../insert-folder/insert-folder.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,16 +13,12 @@ import { NotificationType } from 'src/app/enum/notification-type';
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
+  animations: [slideToDown]
 })
 export class MainComponent implements OnInit {
   toDoFolders: any;
-  isEditable: boolean = false;
+  
 
-  folderDTO = new FormGroup({
-    username: new FormControl(''),
-    oldName: new FormControl(''),
-    newName: new FormControl(''),
-  });
 
   constructor(
     private mainService: MainService,
@@ -30,7 +28,13 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllToDos();
+    var user = window.localStorage.getItem('user')
+    if (user !== null) {
+      console.log(user);
+    }
   }
+
+
 
   getAllToDos() {
     this.mainService
@@ -45,29 +49,11 @@ export class MainComponent implements OnInit {
       );
   }
 
-  makeItEditable(event: any) {
-    this.isEditable = true;
-    this.folderDTO.get('oldName')?.setValue(event);
-  }
-
-  validateAndChangeFolderName(event: any) {
-    this.folderDTO.get('username')?.setValue(localStorage.getItem('username'));
-    this.folderDTO.get('newName')?.setValue(event.innerText);
-
-    this.mainService
-      .update('/folder/change-folder-name', this.folderDTO.value)
-      .subscribe(
-        (response: any) => {
-          this.notifier.notify(NotificationType.SUCCESS, "Name of the folder successfully changed");
-          this.isEditable = false;
-          this.getAllToDos();
-        },
-        (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, "Something went wrong: most likely name of the folder is doplicate");
-          this.isEditable = false;
-          this.getAllToDos();
-        }
-      );
+  openAddListDialog(folderName: any) {
+    this.dialog
+      .open(InsertListComponent, { data: { folderName: folderName } })
+      .afterClosed()
+      .subscribe(() => this.getAllToDos());
   }
 
   openCreateFolderDialog() {
@@ -77,6 +63,19 @@ export class MainComponent implements OnInit {
       .subscribe(() => {
         this.getAllToDos();
       });
+  }
+
+  deleteList(folderName: any, listName: any){
+    this.mainService.delete("/list/delete-list/" + listName + "/" + folderName + "/" + localStorage.getItem('username')).subscribe(
+      (response: any) => {
+        this.notifier.notify(NotificationType.SUCCESS, "The list successfully deleted")
+        this.getAllToDos()
+      }, 
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.message)
+        this.getAllToDos()        
+      }
+    )
   }
 
   deleteFolder(folderName: any) {
