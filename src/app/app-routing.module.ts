@@ -13,8 +13,8 @@ const routes: Routes = [
   {path: 'validate-email', component: ValidateEmailComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'main', component: MainComponent},
-  {path: '**', component: NotFoundComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({
