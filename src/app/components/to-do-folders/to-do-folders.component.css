@@ -28,18 +28,16 @@
 }
 
 .delete:hover {
-  margin-top: 10%;
   color: red;
   cursor: pointer;
 }
 
 .add:hover {
-  margin-top: 10%;
   color: green;
+  cursor: pointer;
 }
 
 .edit:hover {
-  margin-top: 10%;
   color: yellow;
 }
 
