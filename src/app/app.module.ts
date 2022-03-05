@@ -37,6 +37,7 @@ import {MatCardModule} from '@angular/material/card'
 import {MatTooltipModule} from '@angular/material/tooltip'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatMenuModule } from '@angular/material/menu';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -113,6 +114,7 @@ const customNotifierOptions: NotifierOptions = {
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatMenuModule,
   ],
   providers: [
     RegisterService,
