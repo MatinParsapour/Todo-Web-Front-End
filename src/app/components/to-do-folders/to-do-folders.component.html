@@ -7,20 +7,41 @@
       {{toDoFolder.name}}</p>
   </div>
   <div class="buttons">
-    <span class="material-icons add" (click)="openAddListDialog(toDoFolder.name)"
-      matTooltip="Add list">playlist_add</span>
-    <span class="material-icons delete" (click)="deleteFolder(toDoFolder.name)" matTooltip="delete folder">delete</span>
+    <button mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu class="menu" #normalMenu="matMenu">
+      <button mat-menu-item class="add" (click)="openAddListDialog(toDoFolder.name)" matTooltip="Add list">
+        <mat-icon>playlist_add</mat-icon> Add list
+      </button>
+      <button mat-menu-item class="material-icons delete" (click)="deleteFolder(toDoFolder.name)"
+        matTooltip="delete folder">
+        <mat-icon>delete</mat-icon> Delete Folder
+      </button>
+    </mat-menu>
   </div>
 </div>
 <div [hidden]="!areListsVisible" *ngFor="let toDoList of toDoFolder.toDoLists">
   <div class="lists">
     <p [contentEditable]="true" (click)="makeListEditable(toDoList.name, toDoFolder.name)"
       (keydown.enter)="validateAndChangeListName($event.target)"> {{toDoList.name}} </p>
-      <div>
-        <span class="material-icons visibility" (click)="showToDo(toDoList.name, toDoFolder.name)"
-          matTooltip="See todos of this list">visibility</span>
-      <span class="material-icons delete" (click)="deleteList(toDoFolder.name, toDoList.name)"
-        matTooltip="delete list">delete</span>
+    <div>
+      <button mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu class="menu" #normalMenu="matMenu">
+        <button mat-menu-item class="visibility" (click)="showToDo(toDoList.name, toDoFolder.name)"
+          matTooltip="See todos of this list">
+          <mat-icon>visibility</mat-icon> See to-dos
+        </button>
+        <button mat-menu-item class="material-icons delete" (click)="deleteList(toDoFolder.name, toDoList.name)"
+          matTooltip="delete list">
+          <mat-icon>delete</mat-icon> Delete List
+        </button>
+      </mat-menu>
     </div>
   </div>
+
+
+
 </div>
