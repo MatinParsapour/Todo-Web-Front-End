@@ -5,19 +5,29 @@
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.buttons{
+.buttons {
   display: flex;
   justify-content: space-between;
 }
 
-.add-icon{
+.add-icon {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 3em;
 }
 
-.add-icon > span:hover {
+.add-icon>span:hover {
   color: green;
   cursor: pointer;
+}
+
+mat-card {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 3em;
+  position:fixed;
+  bottom:0px;
+  width:93%;
+  align-items:center
 }

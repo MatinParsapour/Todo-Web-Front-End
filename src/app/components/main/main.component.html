@@ -18,12 +18,14 @@
       <button type="button" mat-button (click)="sidenav.open()" matTooltip="Open sidebar">
         <mat-icon>list</mat-icon>
       </button>
-      <div class="add-icon">
-        <span class="material-icons" matTooltip="Add to do">add_task</span>
-      </div>
     </div>
     <div *ngFor="let toDo of toDos">
       <app-to-do [toDo]="toDo"></app-to-do>
     </div>
+    <mat-card>
+      <span class="toDo" [contentEditable]="true"> </span>
+      <div>
+      </div>
+    </mat-card>
   </div>
 </mat-sidenav-container>
