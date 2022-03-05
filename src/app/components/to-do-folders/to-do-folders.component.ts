@@ -1,7 +1,7 @@
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from './../../services/notification/notification.service';
 import { MainService } from './../../services/main/main.service';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -17,6 +17,7 @@ export class ToDoFoldersComponent implements OnInit {
   isToDoVisible: boolean = false;
   toDoFolders: any;
   @Input('toDoFolder') toDoFolder: any;
+  @Output('updateData') updateData = new EventEmitter()
 
   listDTO = new FormGroup({
     username: new FormControl(''),
@@ -46,7 +47,7 @@ export class ToDoFoldersComponent implements OnInit {
   showToDo(listName: any, folderName: any) {
     localStorage.setItem('list', listName);
     localStorage.setItem('folder', folderName);
-    location.reload();
+    this.updateData.next('');
   }
 
   makeFolderEditable(event: any) {
@@ -68,11 +69,11 @@ export class ToDoFoldersComponent implements OnInit {
             NotificationType.SUCCESS,
             'Name of the list successfully changed'
           );
-          setTimeout(() => location.reload(), 2000);
+          this.updateData.next('')
         },
         (error: HttpErrorResponse) => {
           this.notifier.notify(NotificationType.ERROR, error.message);
-          setTimeout(() => location.reload(), 2000);
+          this.updateData.next('')
         }
       );
   }
@@ -93,14 +94,14 @@ export class ToDoFoldersComponent implements OnInit {
               NotificationType.SUCCESS,
               'Name of the folder successfully changed'
             );
-            setTimeout(() => location.reload(), 2000);
+            this.updateData.next('')
           },
           (error: HttpErrorResponse) => {
             this.notifier.notify(
               NotificationType.ERROR,
               'Something went wrong: most likely name of the folder is doplicate'
             );
-            setTimeout(() => location.reload(), 2000);
+            this.updateData.next('')
           }
         );
     }
@@ -110,7 +111,7 @@ export class ToDoFoldersComponent implements OnInit {
     this.dialog
       .open(InsertListComponent, { data: { folderName: folderName } })
       .afterClosed()
-      .subscribe(() => setTimeout(() => location.reload(), 2000));
+      .subscribe(() => this.updateData.next(''));
   }
 
   deleteList(folderName: any, listName: any) {
@@ -129,11 +130,11 @@ export class ToDoFoldersComponent implements OnInit {
             NotificationType.SUCCESS,
             'The list successfully deleted'
           );
-          setTimeout(() => location.reload(), 2000);
+          this.updateData.next('');
         },
         (error: HttpErrorResponse) => {
           this.notifier.notify(NotificationType.ERROR, error.message);
-          setTimeout(() => location.reload(), 2000);
+          this.updateData.next('');
         }
       );
   }
@@ -152,11 +153,11 @@ export class ToDoFoldersComponent implements OnInit {
             NotificationType.SUCCESS,
             folderName + ' successfully deleted'
           );
-          setTimeout(() => location.reload(), 2000);
+          this.updateData.next('')
         },
         (error: HttpErrorResponse) => {
           this.notifier.notify(NotificationType.ERROR, error.message);
-          setTimeout(() => location.reload(), 2000);
+          this.updateData.next('');
         }
       );
   }
