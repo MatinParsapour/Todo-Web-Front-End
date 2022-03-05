@@ -1,17 +1,19 @@
 <mat-sidenav-container class="example-container" fullscreen>
   <mat-sidenav #sidenav class="example-sidenav">
     <button (click)="openCreateFolderDialog()" mat-mini-fab color="">
-      <mat-icon matTooltip="Add folder"><span class="material-icons">
-          create_new_folder
-        </span></mat-icon>
+      <mat-icon matTooltip="Add folder">create_new_folder</mat-icon>
     </button>
     <br>
     <br>
     <div class="folders" *ngFor="let toDoFolder of toDoFolders">
       <span>
-        <app-to-do-folders [toDoFolder]="toDoFolder"></app-to-do-folders>
+        <app-to-do-folders [toDoFolder]="toDoFolder" (updateData)="getAllToDoFolders()" (getToDos)="getAllToDoFolders()"></app-to-do-folders>
       </span>
     </div>
+    <button (click)="openUserDialog()" class="user" mat-raised-button>
+      <span class="material-icons">person</span>
+      {{user}} </button>
+
   </mat-sidenav>
   <div class="example-sidenav-content">
     <div class="buttons">
@@ -19,12 +21,25 @@
         <mat-icon class="list" (click)="sidenav.open()" matTooltip="Open sidebar">list</mat-icon>
       </div>
     </div>
-    <div *ngFor="let toDo of toDos">
-      <app-to-do [toDo]="toDo"></app-to-do>
+    <div class="toDos">
+      <div *ngFor="let toDo of toDos">
+        <app-to-do [toDo]="toDo" (getToDos)="getAllToDos()"></app-to-do>
+      </div>
     </div>
     <mat-card>
-      <span class="toDo" [contentEditable]="true"> </span>
+      <mat-form-field appearance="outline">
+        <mat-label>ToDo</mat-label>
+        <input (keydown.enter)="addAndUpdateToDos()" [formControl]="task" matInput autocomplete="off" type="text">
+      </mat-form-field>
       <div>
+        <div>
+          <mat-form-field [hidden]="!dateTime.value" appearance="fill">
+            <mat-label>Input disabled</mat-label>
+            <input [formControl]="dateTime" matInput [matDatepicker]="picker">
+            <mat-datepicker #picker disabled="false"></mat-datepicker>
+          </mat-form-field>
+          <mat-icon mat-raised-button (click)="picker.open()">event</mat-icon>
+        </div>
       </div>
     </mat-card>
   </div>
