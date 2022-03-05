@@ -1,0 +1,9 @@
+<div class="userDetails">
+  <span> First name : <span [contentEditable]="true">{{user.firstName}}</span> </span>
+  <span> Last name : <span [contentEditable]="true">{{user.lastName}}</span> </span>
+  <span> Username : <span [contentEditable]="true">{{user.userName}}</span> </span>
+  <span> Email : <span [contentEditable]="true">{{user.email}}</span> </span>
+  <span> Phone number : <span [contentEditable]="user.phoneNumber">{{user.phoneNumber ? user.phoneNumber : "-"}}</span> </span>
+  <span> Birthday: <span [contentEditable]="user.birthDay">{{user.birthDay ? user.birthDay : "-"}}</span> </span>
+  <span> Age : <span [contentEditable]="user.age">{{user.age ? user.age : "-"}}</span> </span>
+</div>
