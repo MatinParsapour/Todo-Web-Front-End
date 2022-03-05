@@ -1,7 +1,7 @@
 <mat-sidenav-container class="example-container" fullscreen>
-  <mat-sidenav #sidenav class="example-sidenav" opened>
+  <mat-sidenav #sidenav class="example-sidenav">
     <button (click)="openCreateFolderDialog()" mat-mini-fab color="">
-      <mat-icon>add_circle</mat-icon>
+      <mat-icon matTooltip="Add folder">add_circle</mat-icon>
     </button>
     <br>
     <br>
@@ -12,8 +12,16 @@
     </div>
   </mat-sidenav>
   <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="sidenav.open()">
-      <mat-icon>list</mat-icon>
-    </button>
+    <div class="buttons">
+      <button type="button" mat-button (click)="sidenav.open()" matTooltip="Open sidebar">
+        <mat-icon>list</mat-icon>
+      </button>
+      <div class="add-icon">
+        <span class="material-icons" matTooltip="Add to do">add_circle_outline</span>
+      </div>
+    </div>
+    <div *ngFor="let toDo of toDos">
+      <app-to-do [toDo]="toDo"></app-to-do>
+    </div>
   </div>
 </mat-sidenav-container>

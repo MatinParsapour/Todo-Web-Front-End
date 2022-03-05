@@ -17,6 +17,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 })
 export class MainComponent implements OnInit {
   toDoFolders: any;
+  toDos: any;
   
 
 
@@ -28,12 +29,21 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllToDos();
-    var user = window.localStorage.getItem('user')
-    if (user !== null) {
-      console.log(user);
-    }
+    this.mainService.getToDos("/user/get-to-dos/" + localStorage.getItem("list") + "/" + localStorage.getItem("folder") + "/" + localStorage.getItem("username")).subscribe(
+      (response: any) => {
+        response.toDoFolders.forEach((folder:any) => {
+          folder.toDoLists.forEach((list:any) => {
+            this.toDos = list.toDos;            
+          });
+        });
+        
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+        
+      }
+    )
   }
-
 
 
   getAllToDos() {
