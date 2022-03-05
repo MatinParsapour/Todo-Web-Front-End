@@ -25,6 +25,7 @@ export class ToDoFoldersComponent implements OnInit {
   toDoFolders: any;
   @Input('toDoFolder') toDoFolder: any;
   @Output('updateData') updateData = new EventEmitter();
+  @Output('getToDos') getToDos = new EventEmitter();
 
   listDTO = new FormGroup({
     username: new FormControl(''),
@@ -54,7 +55,7 @@ export class ToDoFoldersComponent implements OnInit {
   showToDo(listName: any, folderName: any) {
     localStorage.setItem('list', listName);
     localStorage.setItem('folder', folderName);
-    this.updateData.next('');
+    this.getToDos.next('')
   }
 
   makeFolderEditable(event: any) {
