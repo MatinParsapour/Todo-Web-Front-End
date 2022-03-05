@@ -18,9 +18,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
   animations: [slideToDown]
 })
 export class MainComponent implements OnInit {
-  private GET_TO_DOS_URI = '/user/get-to-dos/' + localStorage.getItem('list') + '/' + localStorage.getItem('folder') + '/' + localStorage.getItem('username');
-  private GET_TO_DO_FOLDERS_URI = '/folder/get-todo-folders/' + localStorage.getItem('username');
-  private CREATE_TO_DO_URI = '/to-do/add-to-do/' + localStorage.getItem('list') + '/folder/' + localStorage.getItem('folder') + '/for/' + localStorage.getItem('username')
+
   toDoFolders: any;
   isMyDayAttr = false;
   toDos: any;
@@ -54,7 +52,7 @@ export class MainComponent implements OnInit {
 
   addAndUpdateToDos() {
     if (this.task.value.trim() !== '') {
-      this.mainService.create(this.CREATE_TO_DO_URI, this.toDo.value).subscribe(
+      this.mainService.create('/to-do/add-to-do/' + localStorage.getItem('list') + '/folder/' + localStorage.getItem('folder') + '/for/' + localStorage.getItem('username'), this.toDo.value).subscribe(
         (response: any) => {
           this.notifier.notify(NotificationType.SUCCESS,'Your to do successfully added');
           this.getAllToDos();
@@ -84,7 +82,7 @@ export class MainComponent implements OnInit {
   }
 
   getAllToDos() {
-    this.mainService.getToDos(this.GET_TO_DOS_URI).subscribe(
+    this.mainService.getToDos('/user/get-to-dos/' + localStorage.getItem('list') + '/' + localStorage.getItem('folder') + '/' + localStorage.getItem('username')).subscribe(
       (response: any) => {
         response.toDoFolders.forEach((folder: any) => {
           folder.toDoLists.forEach((list: any) => {
@@ -99,7 +97,7 @@ export class MainComponent implements OnInit {
   }
 
   getAllToDoFolders() {
-    this.mainService.getAll(this.GET_TO_DO_FOLDERS_URI).subscribe(
+    this.mainService.getAll('/folder/get-todo-folders/' + localStorage.getItem('username')).subscribe(
       (response: any) => {
         this.toDoFolders = response;
       },
