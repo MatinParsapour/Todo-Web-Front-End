@@ -15,9 +15,9 @@
   </mat-sidenav>
   <div class="example-sidenav-content">
     <div class="buttons">
-      <button type="button" mat-button (click)="sidenav.open()" matTooltip="Open sidebar">
-        <mat-icon>list</mat-icon>
-      </button>
+      <div>
+        <mat-icon class="list" (click)="sidenav.open()" matTooltip="Open sidebar">list</mat-icon>
+      </div>
     </div>
     <div *ngFor="let toDo of toDos">
       <app-to-do [toDo]="toDo"></app-to-do>

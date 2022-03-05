@@ -31,3 +31,8 @@ mat-card {
   width:93%;
   align-items:center
 }
+
+.list:hover{
+  cursor: pointer;
+  color: rgb(46, 61, 201);
+}
