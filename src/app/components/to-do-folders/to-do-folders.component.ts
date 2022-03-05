@@ -1,7 +1,14 @@
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from './../../services/notification/notification.service';
 import { MainService } from './../../services/main/main.service';
-import { Component, Input, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+  EventEmitter,
+} from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -17,7 +24,7 @@ export class ToDoFoldersComponent implements OnInit {
   isToDoVisible: boolean = false;
   toDoFolders: any;
   @Input('toDoFolder') toDoFolder: any;
-  @Output('updateData') updateData = new EventEmitter()
+  @Output('updateData') updateData = new EventEmitter();
 
   listDTO = new FormGroup({
     username: new FormControl(''),
@@ -69,11 +76,11 @@ export class ToDoFoldersComponent implements OnInit {
             NotificationType.SUCCESS,
             'Name of the list successfully changed'
           );
-          this.updateData.next('')
+          this.updateData.next('');
         },
         (error: HttpErrorResponse) => {
           this.notifier.notify(NotificationType.ERROR, error.message);
-          this.updateData.next('')
+          this.updateData.next('');
         }
       );
   }
@@ -86,25 +93,29 @@ export class ToDoFoldersComponent implements OnInit {
       this.folderDTO.get('newName')?.value
     ) {
     } else {
-      this.mainService
-        .update('/folder/change-folder-name', this.folderDTO.value)
-        .subscribe(
-          (response: any) => {
-            this.notifier.notify(
-              NotificationType.SUCCESS,
-              'Name of the folder successfully changed'
-            );
-            this.updateData.next('')
-          },
-          (error: HttpErrorResponse) => {
-            this.notifier.notify(
-              NotificationType.ERROR,
-              'Something went wrong: most likely name of the folder is doplicate'
-            );
-            this.updateData.next('')
-          }
-        );
+      this.changeFolderName()
     }
+  }
+
+  changeFolderName() {
+    this.mainService
+      .update('/folder/change-folder-name', this.folderDTO.value)
+      .subscribe(
+        (response: any) => {
+          this.notifier.notify(
+            NotificationType.SUCCESS,
+            'Name of the folder successfully changed'
+          );
+          this.updateData.next('');
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            'Something went wrong: most likely name of the folder is doplicate'
+          );
+          this.updateData.next('');
+        }
+      );
   }
 
   openAddListDialog(folderName: any) {
@@ -153,7 +164,7 @@ export class ToDoFoldersComponent implements OnInit {
             NotificationType.SUCCESS,
             folderName + ' successfully deleted'
           );
-          this.updateData.next('')
+          this.updateData.next('');
         },
         (error: HttpErrorResponse) => {
           this.notifier.notify(NotificationType.ERROR, error.message);
