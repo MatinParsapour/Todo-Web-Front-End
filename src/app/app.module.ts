@@ -1,3 +1,4 @@
+import { ToDoService } from './services/to-do/to-do.service';
 import { InsertFolderService } from './services/insert-folder/insert-folder.service';
 import { MainService } from './services/main/main.service';
 import { LoginService } from './services/login/login.service';
@@ -30,7 +31,12 @@ import { MainComponent } from './components/main/main.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { InsertFolderComponent } from './components/insert-folder/insert-folder.component';
 import { InsertListComponent } from './components/insert-list/insert-list.component';
-import { ToDoFoldersComponent } from './components/to-do-folders/to-do-folders.component'
+import { ToDoFoldersComponent } from './components/to-do-folders/to-do-folders.component';
+import { ToDoComponent } from './components/to-do/to-do.component'
+import {MatCardModule} from '@angular/material/card'
+import {MatTooltipModule} from '@angular/material/tooltip'
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -74,7 +80,21 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, ForgetPasswordComponent, ValidateEmailComponent, CaptchaComponent, ResetPasswordComponent, NotFoundComponent, MainComponent, InsertFolderComponent, InsertListComponent, ToDoFoldersComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    ForgetPasswordComponent,
+    ValidateEmailComponent,
+    CaptchaComponent,
+    ResetPasswordComponent,
+    NotFoundComponent,
+    MainComponent,
+    InsertFolderComponent,
+    InsertListComponent,
+    ToDoFoldersComponent,
+    ToDoComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -88,14 +108,20 @@ const customNotifierOptions: NotifierOptions = {
     MatIconModule,
     NotifierModule.withConfig(customNotifierOptions),
     HttpClientModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatCardModule,
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
-  providers: [RegisterService, 
-    ForgetPasswordService, 
-    ResetPasswordService, 
-    LoginService, 
+  providers: [
+    RegisterService,
+    ForgetPasswordService,
+    ResetPasswordService,
+    LoginService,
     MainService,
-    InsertFolderService
+    InsertFolderService,
+    ToDoService,
   ],
   bootstrap: [AppComponent],
 })
