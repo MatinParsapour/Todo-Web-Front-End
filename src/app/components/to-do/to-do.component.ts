@@ -37,6 +37,18 @@ export class ToDoComponent implements OnInit {
     );
   }
 
+  deleteToDo(){
+    this.toDoService.delete("to-do/delete-to-do/" + localStorage.getItem('folder') + "/" + localStorage.getItem("list") + "/" + localStorage.getItem("username") + "/" + this.toDo.id).subscribe(
+      (response: any) => {
+        this.notifier.notify(NotificationType.SUCCESS, "The to do successfully deleted")
+        this.getAllToDos();
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    )
+  }
+
   updateToDoBody(event: any) {
     if (event.innerText !== '') {
       this.toDo.task = event.innerText;
