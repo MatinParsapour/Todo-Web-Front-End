@@ -1,7 +1,7 @@
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from './../../services/notification/notification.service';
 import { MainService } from './../../services/main/main.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -43,10 +43,10 @@ export class ToDoFoldersComponent implements OnInit {
     this.areListsVisible = !this.areListsVisible;
   }
 
-  showToDo(listName: any, folderName: any){
-    localStorage.setItem("list", listName)
-    localStorage.setItem("folder", folderName)
-    location.reload()
+  showToDo(listName: any, folderName: any) {
+    localStorage.setItem('list', listName);
+    localStorage.setItem('folder', folderName);
+    location.reload();
   }
 
   makeFolderEditable(event: any) {
@@ -108,7 +108,9 @@ export class ToDoFoldersComponent implements OnInit {
 
   openAddListDialog(folderName: any) {
     this.dialog
-      .open(InsertListComponent, { data: { folderName: folderName } }).afterClosed().subscribe(() => setTimeout(() => location.reload(), 2000))
+      .open(InsertListComponent, { data: { folderName: folderName } })
+      .afterClosed()
+      .subscribe(() => setTimeout(() => location.reload(), 2000));
   }
 
   deleteList(folderName: any, listName: any) {
