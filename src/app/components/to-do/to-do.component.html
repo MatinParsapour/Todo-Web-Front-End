@@ -1,0 +1,7 @@
+<mat-card>
+  <span class="toDo" [contentEditable]="true" (keydown.enter)="updateToDoBody($event.target)"> {{toDo.task}} </span>
+  <div>
+    <mat-icon *ngIf="toDo.isStarred" (click)="starToDo()">star</mat-icon>
+    <mat-icon *ngIf="!toDo.isStarred" (click)="starToDo()">star_border</mat-icon>
+  </div>
+</mat-card>
