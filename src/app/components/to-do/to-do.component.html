@@ -1,7 +1,23 @@
 <mat-card>
   <span class="toDo" [contentEditable]="true" (keydown.enter)="updateToDoBody($event.target)"> {{toDo.task}} </span>
   <div>
-    <mat-icon *ngIf="toDo.isStarred" (click)="starToDo()">star</mat-icon>
-    <mat-icon *ngIf="!toDo.isStarred" (click)="starToDo()">star_border</mat-icon>
+    <button mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu class="menu" #normalMenu="matMenu">
+    <button (click)="deleteToDo()" mat-menu-item class="material-icons delete"
+    matTooltip="delete list">
+    <mat-icon>delete</mat-icon> Delete todo
+  </button>
+    <button (click)="starToDo()" mat-menu-item class="material-icons delete"
+    matTooltip="delete list">
+      <span  *ngIf="toDo.isStarred">
+        <mat-icon>star</mat-icon> Unstar todo 
+      </span>
+      <span *ngIf="!toDo.isStarred">
+        <mat-icon>star_border</mat-icon> Star todo
+      </span>
+  </button>
+</mat-menu>
   </div>
 </mat-card>
