@@ -42,6 +42,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { UserComponent } from './components/user/user.component';
 import { AggreementComponent } from './components/aggreement/aggreement.component';
+import { EditToDoComponent } from './components/edit-to-do/edit-to-do.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -101,6 +102,7 @@ const customNotifierOptions: NotifierOptions = {
     ToDoComponent,
     UserComponent,
     AggreementComponent,
+    EditToDoComponent,
   ],
   imports: [
     BrowserModule,
