@@ -1,4 +1,30 @@
 .userDetails{
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.userDetails>div>div {
+  display: flex;
+  flex-direction: column;
+}
+
+.secondElement{
+  margin-left: 5em;
+}
+
+.userDetails>div {
+  display: flex;
+}
+
+.age{
+  margin-top: 5%;
+}
+
+.userDetails > button {
+  width: 90%;
+}
+
+mat-form-field {
+  width: 20em;
 }
