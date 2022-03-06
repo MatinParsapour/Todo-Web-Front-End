@@ -7,4 +7,5 @@ export class User{
     phoneNumber: number = 0;
     birthDay: any;
     age: string = "";
+    profileImageUrl: string = "";
 }
