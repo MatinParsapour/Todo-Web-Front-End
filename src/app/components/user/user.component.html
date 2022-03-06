@@ -1,52 +1,35 @@
-<div class="userDetails">
-  <div class="fnln">
+<div class="userDetails" [class.spinner]="isLoading">
+  <div class="header">
     <div>
-      <span> First name :</span>
-      <mat-form-field appearance="fill">
-        <mat-label>Firstname</mat-label>
-        <input autocomplete="off" type="text" matInput placeholder="password" required [(ngModel)]="user.firstName"
-          [value]="user.firstName">
-      </mat-form-field>
+      <img (click)="selectProfile()" [src]="user.profileImageUrl" width="200px" height="200px" rounded>
+      <form style="display:none">
+        <input type="file" (change)="changeProfileImage($event)" id="select-picture" accept="image/*">
+      </form>
     </div>
-    <div class="secondElement">
-      <span> Last name :</span>
-      <mat-form-field appearance="fill">
-        <mat-label>lastName</mat-label>
-        <input autocomplete="off" type="text" matInput placeholder="password" required [(ngModel)]="user.lastName"
-          [value]="user.lastName">
-      </mat-form-field>
+    <div class="fnln">
+      <div class="fnlninner">
+        <div>
+          <p> First name : <span #fName (blur)="user.firstName = fName.innerText" [contentEditable]="true">
+              {{user.firstName}}</span></p>
+          <p> Last name : <span #lName (blur)="user.lastName = lName.innerText" [contentEditable]="true">
+              {{user.lastName}} </span> </p>
+          <p> Username : <span #uName (blur)="user.userName = uName.innerText" [contentEditable]="true">
+              {{user.userName}} </span> </p>
+        </div>
+      </div>
     </div>
   </div>
   <div>
-    <div>
-      <span> Username :</span>
-      <mat-form-field appearance="fill">
-        <mat-label>username</mat-label>
-        <input autocomplete="off" type="text" matInput placeholder="password" required [(ngModel)]="user.userName"
-          [value]="user.userName">
-      </mat-form-field>
-    </div>
-    <div class="secondElement">
-      <span> Email : </span>
-      <mat-form-field appearance="fill">
-        <mat-label>email</mat-label>
-        <input disabled autocomplete="off" type="text" matInput placeholder="password" required [(ngModel)]="user.email"
-          [value]="user.email">
-      </mat-form-field>
-      <button mat-raised-button color="primary">Change email</button>
-    </div>
   </div>
   <div>
-    <div>
-      <span> Phone number : </span>
-      <mat-form-field appearance="fill">
-        <mat-label>phoneNumber</mat-label>
-        <input disabled autocomplete="off" type="text" matInput placeholder="password" required
-          [(ngModel)]="user.phoneNumber" [value]="user.phoneNumber">
-      </mat-form-field>
-      <button mat-raised-button color="primary"> {{user.phoneNumber ? "Change phone number" : "Add phone number"}}
-      </button>
-    </div>
+      <div>
+        <span> Age : </span>
+        <mat-form-field appearance="fill">
+          <mat-label>age</mat-label>
+          <input autocomplete="off" type="text" matInput placeholder="password" required [(ngModel)]="user.age"
+            [value]="user.age">
+        </mat-form-field>
+      </div>
     <div class="secondElement">
       <span> Birthday: </span>
       <mat-form-field appearance="fill" class="example-form-field">
@@ -62,13 +45,26 @@
       </mat-form-field>
     </div>
   </div>
-  <div class="age">
-    <span> Age : </span>
-    <mat-form-field appearance="fill">
-      <mat-label>age</mat-label>
-      <input autocomplete="off" type="text" matInput placeholder="password" required [(ngModel)]="user.age"
-        [value]="user.age">
-    </mat-form-field>
+  <div>
+    <div>
+      <span> Phone number : </span>
+      <mat-form-field appearance="fill">
+        <mat-label>phoneNumber</mat-label>
+        <input disabled autocomplete="off" type="text" matInput placeholder="password" required
+          [(ngModel)]="user.phoneNumber" [value]="user.phoneNumber">
+      </mat-form-field>
+      <button mat-raised-button color="primary"> {{user.phoneNumber ? "Change phone number" : "Add phone number"}}
+      </button>
+    </div>
+    <div class="secondElement">
+      <span> Email : </span>
+      <mat-form-field appearance="fill">
+        <mat-label>email</mat-label>
+        <input disabled autocomplete="off" type="text" matInput placeholder="password" required [(ngModel)]="user.email"
+          [value]="user.email">
+      </mat-form-field>
+      <button mat-raised-button color="primary">Change email</button>
+    </div>
   </div>
-  <button mat-raised-button color="primary" (click)="updateUser()">Update</button>
+  <button mat-raised-button color="primary" [disabled]="isLoading" (click)="updateUser()">Update</button>
 </div>
