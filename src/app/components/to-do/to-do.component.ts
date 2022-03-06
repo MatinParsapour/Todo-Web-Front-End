@@ -28,10 +28,7 @@ export class ToDoComponent implements OnInit {
     private dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.toDo);
-    
-  }
+  ngOnInit(): void {}
 
   starToDo() {
     this.toDo.isStarred = !this.toDo.isStarred;
@@ -80,7 +77,7 @@ export class ToDoComponent implements OnInit {
   }
 
   openEditToDoDialog(){
-    this.dialog.open(EditToDoComponent)
+    this.dialog.open(EditToDoComponent,{data: {todo: this.toDo}})
   }
 
   changeDisplayOfDatePicker() {
