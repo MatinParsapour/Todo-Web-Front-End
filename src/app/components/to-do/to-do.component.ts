@@ -1,8 +1,10 @@
+import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from './../../services/notification/notification.service';
 import { ToDoService } from './../../services/to-do/to-do.service';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
+import { AggreementComponent } from '../aggreement/aggreement.component';
 
 @Component({
   selector: 'app-to-do',
@@ -20,7 +22,8 @@ export class ToDoComponent implements OnInit {
 
   constructor(
     private toDoService: ToDoService,
-    private notifier: NotificationService
+    private notifier: NotificationService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {}
@@ -35,6 +38,13 @@ export class ToDoComponent implements OnInit {
         this.notifier.notify(NotificationType.ERROR, error.message);
       }
     );
+  }
+
+  openAggreementDialog(){
+    this.dialog.open(AggreementComponent, {data: {title: "Are you sure you want to delete this to do"}})
+    .afterClosed().subscribe((result:any) => {if (result === "Yes") {
+      this.deleteToDo()
+    }})
   }
 
   deleteToDo(){
@@ -62,6 +72,10 @@ export class ToDoComponent implements OnInit {
         }
       );
     }
+  }
+
+  editToDo(){
+    console.log("Todo edited")
   }
 
   changeDisplayOfDatePicker() {
