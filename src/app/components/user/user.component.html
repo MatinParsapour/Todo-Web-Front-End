@@ -22,8 +22,8 @@
       <span> Username :</span>
       <mat-form-field appearance="fill">
         <mat-label>username</mat-label>
-        <input autocomplete="off" type="text" matInput placeholder="password" required [(ngModel)]="user.userName"
-          [value]="user.userName">
+        <input autocomplete="off" type="text" matInput placeholder="password" required [(ngModel)]="user.username"
+          [value]="user.username">
       </mat-form-field>
     </div>
     <div class="secondElement">
@@ -70,5 +70,5 @@
         [value]="user.age">
     </mat-form-field>
   </div>
-  <button mat-raised-button color="primary" (click)="updateUser()" [disabled]="user.firstName.invalid">Update</button>
+  <button mat-raised-button color="primary" (click)="updateUser()">Update</button>
 </div>

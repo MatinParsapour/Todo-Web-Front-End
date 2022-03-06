@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { DatePipe } from '@angular/common';
+import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-user',
@@ -11,7 +12,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  user: any;
+  user!: User;
 
   constructor(
     private userService: UserService,
@@ -23,7 +24,7 @@ export class UserComponent implements OnInit {
   getUser() {
     this.userService.getUser(localStorage.getItem('username')).subscribe(
       (response: any) => {
-        this.user = response
+        this.user = response        
       },
       (error: HttpErrorResponse) => {
         console.log(error);
