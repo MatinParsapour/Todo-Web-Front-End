@@ -1,3 +1,4 @@
+import { EditToDoComponent } from './../edit-to-do/edit-to-do.component';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from './../../services/notification/notification.service';
@@ -74,8 +75,8 @@ export class ToDoComponent implements OnInit {
     }
   }
 
-  editToDo(){
-    console.log("Todo edited")
+  openEditToDoDialog(){
+    this.dialog.open(EditToDoComponent)
   }
 
   changeDisplayOfDatePicker() {
