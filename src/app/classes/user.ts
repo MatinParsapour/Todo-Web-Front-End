@@ -2,7 +2,7 @@ export class User{
     id: number = 0;
     firstName: string = "";
     lastName: string = "";
-    username: string = "";
+    userName: string = "";
     email: string = "";
     phoneNumber: number = 0;
     birthDay: any;
