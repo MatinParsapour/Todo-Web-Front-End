@@ -1,0 +1,36 @@
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userDetails>div>div {
+  display: flex;
+  flex-direction: column;
+}
+
+.userDetails>button {
+  width: 90%;
+}
+
+mat-form-field {
+  width: 20em;
+}
+
+mat-icon{
+  cursor: pointer;
+}
+
+.icons{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5%;
+}
+
+.buttons>button {
+  width: 5em;
+}
+
+button[color="warn"]{
+  margin-left: 3em;
+}
