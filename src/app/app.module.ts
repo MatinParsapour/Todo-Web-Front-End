@@ -39,6 +39,7 @@ import {MatTooltipModule} from '@angular/material/tooltip'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { UserComponent } from './components/user/user.component';
 import { AggreementComponent } from './components/aggreement/aggreement.component';
@@ -124,7 +125,8 @@ const customNotifierOptions: NotifierOptions = {
     MatDatepickerModule,
     MatNativeDateModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule,
   ],
   providers: [
     RegisterService,
@@ -134,7 +136,7 @@ const customNotifierOptions: NotifierOptions = {
     MainService,
     InsertFolderService,
     ToDoService,
-    UserService
+    UserService,
   ],
   bootstrap: [AppComponent],
 })
