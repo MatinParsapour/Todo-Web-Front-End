@@ -41,6 +41,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { UserComponent } from './components/user/user.component';
+import { AggreementComponent } from './components/aggreement/aggreement.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -99,6 +100,7 @@ const customNotifierOptions: NotifierOptions = {
     ToDoFoldersComponent,
     ToDoComponent,
     UserComponent,
+    AggreementComponent,
   ],
   imports: [
     BrowserModule,
