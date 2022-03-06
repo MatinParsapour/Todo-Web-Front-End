@@ -1,3 +1,4 @@
+import { ToDo } from './../../classes/todo';
 import { EditToDoComponent } from './../edit-to-do/edit-to-do.component';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -13,7 +14,7 @@ import { AggreementComponent } from '../aggreement/aggreement.component';
   styleUrls: ['./to-do.component.css'],
 })
 export class ToDoComponent implements OnInit {
-  @Input('toDo') toDo: any;
+  @Input('toDo') toDo: ToDo = new ToDo;
   @Output("getToDos") getToDos = new EventEmitter()
   displayDatePicker: boolean = false;
 
@@ -27,7 +28,10 @@ export class ToDoComponent implements OnInit {
     private dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.toDo);
+    
+  }
 
   starToDo() {
     this.toDo.isStarred = !this.toDo.isStarred;
