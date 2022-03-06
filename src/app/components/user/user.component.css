@@ -57,6 +57,11 @@ img{
   border-radius: 5px;
 }
 
+mat-icon{
+  cursor: pointer;
+  border-radius: 50%;
+}
+
 @keyframes spinner {
   to {
     transform: rotate(360deg);

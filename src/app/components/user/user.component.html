@@ -1,7 +1,8 @@
 <div class="userDetails" [class.spinner]="isLoading">
   <div class="header">
     <div>
-      <img (click)="selectProfile()" [src]="user.profileImageUrl" width="200px" height="200px" rounded>
+      <img (click)="selectProfile()" *ngIf="user.profileImageUrl" [src]="user.profileImageUrl" width="200px" height="200px">
+      <mat-icon (click)="selectProfile()" *ngIf="!user.profileImageUrl" width="200px" height="200px">person</mat-icon>
       <form style="display:none">
         <input type="file" (change)="changeProfileImage($event)" id="select-picture" accept="image/*">
       </form>
