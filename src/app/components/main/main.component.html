@@ -11,7 +11,7 @@
           (getToDos)="getAllToDos()"></app-to-do-folders>
       </span>
     </div>
-    <button (click)="openUserDialog()" class="user" mat-raised-button>
+    <button (click)="openUserDialog(); sidenav.close()" class="user" mat-raised-button>
       <span class="material-icons">person</span>
       {{user}} </button>
 
