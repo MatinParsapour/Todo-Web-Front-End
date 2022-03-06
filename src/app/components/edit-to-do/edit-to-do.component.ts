@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToDo } from './../../classes/todo';
+import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-edit-to-do',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditToDoComponent implements OnInit {
 
-  constructor() { }
+  toDo: ToDo = new ToDo
+
+  constructor(@Inject(MAT_DIALOG_DATA) data: any) {
+    this.toDo = data.todo
+  }
 
   ngOnInit(): void {
   }
