@@ -14,7 +14,7 @@
       <button mat-menu-item class="add" (click)="openAddListDialog(toDoFolder.name)" matTooltip="Add list">
         <mat-icon>playlist_add</mat-icon> Add list
       </button>
-      <button mat-menu-item class="material-icons delete" (click)="deleteFolder(toDoFolder.name)"
+      <button mat-menu-item class="material-icons delete" (click)="openAggreeementDialog(toDoFolder.name,'folder')"
         matTooltip="delete folder">
         <mat-icon>delete</mat-icon> Delete Folder
       </button>
@@ -34,7 +34,7 @@
           matTooltip="See todos of this list">
           <mat-icon>visibility</mat-icon> See to-dos
         </button>
-        <button mat-menu-item class="material-icons delete" (click)="deleteList(toDoFolder.name, toDoList.name)"
+        <button mat-menu-item class="material-icons delete" (click)="openAggreeementDialog(toDoFolder.name,'list', toDoList.name)"
           matTooltip="delete list">
           <mat-icon>delete</mat-icon> Delete List
         </button>

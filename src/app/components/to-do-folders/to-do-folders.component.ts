@@ -1,3 +1,4 @@
+import { AggreementComponent } from './../aggreement/aggreement.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from './../../services/notification/notification.service';
 import { MainService } from './../../services/main/main.service';
@@ -66,6 +67,23 @@ export class ToDoFoldersComponent implements OnInit {
     this.listDTO.get('folderName')?.setValue(folderName);
   }
 
+  openAggreeementDialog(folderName: any, type: any, listName?: any) {
+    this.dialog
+      .open(AggreementComponent, {
+        data: { title: 'Are you sure you want to delete this ' + type },
+      })
+      .afterClosed()
+      .subscribe((result: any) => {
+        if (result === 'Yes') {
+          if (type === 'folder') {
+            this.deleteFolder(folderName);
+          } else {
+            this.deleteList(folderName, listName);
+          }
+        }
+      });
+  }
+
   validateAndChangeListName(event: any) {
     this.listDTO.get('newListName')?.setValue(event.innerText);
     this.listDTO.get('username')?.setValue(localStorage.getItem('username'));
@@ -94,7 +112,7 @@ export class ToDoFoldersComponent implements OnInit {
       this.folderDTO.get('newName')?.value
     ) {
     } else {
-      this.changeFolderName()
+      this.changeFolderName();
     }
   }
 
