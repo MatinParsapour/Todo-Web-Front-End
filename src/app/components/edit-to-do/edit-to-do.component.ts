@@ -20,7 +20,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 })
 export class EditToDoComponent implements OnInit {
   toDo: ToDo = new ToDo();
-  minDate = new Date()
+  minDate = new Date();
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
@@ -33,22 +33,23 @@ export class EditToDoComponent implements OnInit {
   ngOnInit(): void {}
 
   updateToDo() {
-    let date = new Date(this.toDo.dateTime);
-    let pipe: DatePipe = new DatePipe('en-US');
-    let dueToDate = pipe.transform(date, 'yyyy-MM-dd');
-    this.toDo.dateTime = dueToDate
-    console.log(this.toDo);
-    
-    this.toDoService.update('to-do/update-to-do',this.toDo).subscribe(
+    if (this.toDo.dateTime) {
+      let date = new Date(this.toDo.dateTime);
+      let pipe: DatePipe = new DatePipe('en-US');
+      let dueToDate = pipe.transform(date, 'yyyy-MM-dd');
+      this.toDo.dateTime = dueToDate;
+    }
+
+    this.toDoService.update('to-do/update-to-do', this.toDo).subscribe(
       (response: any) => {
-        this.notifier.notify(NotificationType.SUCCESS, "Your to do updated")
+        this.notifier.notify(NotificationType.SUCCESS, 'Your to do updated');
       },
       (error: HttpErrorResponse) => {
         console.log(error);
-        
-        this.notifier.notify(NotificationType.ERROR, error.message)
+
+        this.notifier.notify(NotificationType.ERROR, error.message);
       }
-    )
+    );
   }
 
   toggleStar() {
