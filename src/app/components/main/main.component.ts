@@ -1,3 +1,5 @@
+import { GetResetEmailComponent } from './../get-reset-email/get-reset-email.component';
+import { ForgetPasswordComponent } from './../forget-password/forget-password.component';
 import { CodeValidatorComponent } from './../code-validator/code-validator.component';
 import { PhoneNumberComponent } from './../phone-number/phone-number.component';
 import { Router } from '@angular/router';
@@ -17,10 +19,9 @@ import { NotificationType } from 'src/app/enum/notification-type';
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
-  animations: [slideToDown]
+  animations: [slideToDown],
 })
 export class MainComponent implements OnInit {
-
   toDoFolders: any;
   isMyDayAttr = false;
   toDos: any;
@@ -29,7 +30,7 @@ export class MainComponent implements OnInit {
   toDo = new FormGroup({
     task: new FormControl(''),
     dateTime: new FormControl(''),
-    isMyDay: new FormControl(this.isMyDayAttr)
+    isMyDay: new FormControl(this.isMyDayAttr),
   });
 
   constructor(
@@ -49,69 +50,113 @@ export class MainComponent implements OnInit {
   }
 
   openUserDialog() {
-    this.dialog.open(UserComponent).afterClosed().subscribe(result => {if (result === 'open-phone-dialog') {
-      this.dialog.open(PhoneNumberComponent).afterClosed().subscribe(() =>  
-      this.dialog.open(CodeValidatorComponent, { disableClose: true }).afterClosed().subscribe(() => {
-        this.dialog.open(UserComponent)
-      }));
-    }});
+    this.dialog
+      .open(UserComponent)
+      .afterClosed()
+      .subscribe((result) => {
+        if (result === 'open-phone-dialog') {
+          this.dialog
+            .open(PhoneNumberComponent)
+            .afterClosed()
+            .subscribe(() =>
+              this.dialog
+                .open(CodeValidatorComponent, { disableClose: true })
+                .afterClosed()
+                .subscribe(() => {
+                  this.dialog.open(UserComponent);
+                })
+            );
+        } else if (result === 'reset-email') {
+          this.dialog.open(GetResetEmailComponent);
+        }
+      });
   }
 
   addAndUpdateToDos() {
     if (this.task.value.trim() !== '') {
-      this.mainService.create('/to-do/add-to-do/' + localStorage.getItem('list') + '/folder/' + localStorage.getItem('folder') + '/for/' + localStorage.getItem('username'), this.toDo.value).subscribe(
-        (response: any) => {
-          this.notifier.notify(NotificationType.SUCCESS,'Your to do successfully added');
-          this.getAllToDos();
-          this.clearToDo()
-        },
-        (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, error.message);
-        }
-      );
+      this.mainService
+        .create(
+          '/to-do/add-to-do/' +
+            localStorage.getItem('list') +
+            '/folder/' +
+            localStorage.getItem('folder') +
+            '/for/' +
+            localStorage.getItem('username'),
+          this.toDo.value
+        )
+        .subscribe(
+          (response: any) => {
+            this.notifier.notify(
+              NotificationType.SUCCESS,
+              'Your to do successfully added'
+            );
+            this.getAllToDos();
+            this.clearToDo();
+          },
+          (error: HttpErrorResponse) => {
+            this.notifier.notify(NotificationType.ERROR, error.message);
+          }
+        );
     }
   }
 
-  clearToDo(){
+  clearToDo() {
     this.task.setValue('');
     this.dateTime.setValue('');
     this.isMyDayAttr = false;
-    this.isMyDay.setValue(this.isMyDayAttr)
+    this.isMyDay.setValue(this.isMyDayAttr);
   }
 
-  get task(): any {return this.toDo.get('task');}
-  get dateTime(): any {return this.toDo.get('dateTime');}
-  get isMyDay(): any {return this.toDo.get('isMyDay');}
+  get task(): any {
+    return this.toDo.get('task');
+  }
+  get dateTime(): any {
+    return this.toDo.get('dateTime');
+  }
+  get isMyDay(): any {
+    return this.toDo.get('isMyDay');
+  }
 
-  toggleIsMyDay(){
+  toggleIsMyDay() {
     this.isMyDayAttr = !this.isMyDayAttr;
-    this.toDo.get('isMyDay')?.setValue(this.isMyDayAttr)
+    this.toDo.get('isMyDay')?.setValue(this.isMyDayAttr);
   }
 
   getAllToDos() {
-    this.mainService.getToDos('/user/get-to-dos/' + localStorage.getItem('list') + '/' + localStorage.getItem('folder') + '/' + localStorage.getItem('username')).subscribe(
-      (response: any) => {
-        response.toDoFolders.forEach((folder: any) => {
-          folder.toDoLists.forEach((list: any) => {
-            this.toDos = list.toDos;
+    this.mainService
+      .getToDos(
+        '/user/get-to-dos/' +
+          localStorage.getItem('list') +
+          '/' +
+          localStorage.getItem('folder') +
+          '/' +
+          localStorage.getItem('username')
+      )
+      .subscribe(
+        (response: any) => {
+          response.toDoFolders.forEach((folder: any) => {
+            folder.toDoLists.forEach((list: any) => {
+              this.toDos = list.toDos;
+            });
           });
-        });
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error);
-      }
-    );
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error);
+        }
+      );
   }
 
   getAllToDoFolders() {
-    this.mainService.getAll('/folder/get-todo-folders/' + localStorage.getItem('username')).subscribe(
-      (response: any) => {
-        this.toDoFolders = response;
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error);
-      }
-    );
+    this.mainService
+      .getAll('/folder/get-todo-folders/' + localStorage.getItem('username'))
+      .subscribe(
+        (response: any) => {
+          this.toDoFolders = response;
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error);
+        }
+      );
   }
 
   openAddListDialog(folderName: any) {
