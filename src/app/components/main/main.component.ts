@@ -50,26 +50,37 @@ export class MainComponent implements OnInit {
   }
 
   openUserDialog() {
-    this.dialog
-      .open(UserComponent)
-      .afterClosed()
-      .subscribe((result) => {
-        if (result === 'open-phone-dialog') {
-          this.dialog
-            .open(PhoneNumberComponent)
-            .afterClosed()
-            .subscribe(() =>
-              this.dialog
-                .open(CodeValidatorComponent, { disableClose: true })
-                .afterClosed()
-                .subscribe(() => {
-                  this.dialog.open(UserComponent);
-                })
-            );
-        } else if (result === 'reset-email') {
-          this.dialog.open(GetResetEmailComponent);
-        }
-      });
+    this.openUserComponent().subscribe((result) => {
+      if (result === 'open-phone-dialog') {
+        this.openPhoneNumberComponent().subscribe((result) => {
+          if (result === 'send-code') {
+            this.openCodeValidatorComponent().subscribe(() => {
+              this.openUserDialog()
+            });
+          } else {
+            this.openUserDialog()
+          }
+        });
+      } else if (result === 'reset-email') {
+        this.openGetResetEmailComponent()
+      }
+    });
+  }
+
+  openPhoneNumberComponent() {
+    return this.dialog.open(PhoneNumberComponent).afterClosed();
+  }
+
+  openCodeValidatorComponent() {
+    return this.dialog.open(CodeValidatorComponent, { disableClose: true }).afterClosed();
+  }
+
+  openUserComponent() {
+    return this.dialog.open(UserComponent).afterClosed();
+  }
+  
+  openGetResetEmailComponent(){
+    return this.dialog.open(GetResetEmailComponent);
   }
 
   addAndUpdateToDos() {
