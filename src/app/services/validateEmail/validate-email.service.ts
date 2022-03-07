@@ -26,4 +26,8 @@ export class ValidateEmailService extends DataService {
       }
     );
   }
+
+  isEmailValid(url:string){
+    return this.httpService.get(url)
+  }
 }
