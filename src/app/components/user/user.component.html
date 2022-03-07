@@ -54,7 +54,7 @@
         <input disabled autocomplete="off" type="text" matInput placeholder="password" required
           [(ngModel)]="user.phoneNumber" [value]="user.phoneNumber">
       </mat-form-field>
-      <button mat-raised-button color="primary"> {{user.phoneNumber ? "Change phone number" : "Add phone number"}}
+      <button mat-dialog-close="open-phone-dialog" mat-raised-button color="primary"> {{user.phoneNumber ? "Change phone number" : "Add phone number"}}
       </button>
     </div>
     <div class="secondElement">
