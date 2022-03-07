@@ -1,3 +1,5 @@
+import { CodeValidatorComponent } from './../code-validator/code-validator.component';
+import { PhoneNumberComponent } from './../phone-number/phone-number.component';
 import { Router } from '@angular/router';
 import { UserComponent } from './../user/user.component';
 import { slideToDown } from './../../animations';
@@ -47,7 +49,12 @@ export class MainComponent implements OnInit {
   }
 
   openUserDialog() {
-    this.dialog.open(UserComponent);
+    this.dialog.open(UserComponent).afterClosed().subscribe(result => {if (result === 'open-phone-dialog') {
+      this.dialog.open(PhoneNumberComponent).afterClosed().subscribe(() =>  
+      this.dialog.open(CodeValidatorComponent, { disableClose: true }).afterClosed().subscribe(() => {
+        this.dialog.open(UserComponent)
+      }));
+    }});
   }
 
   addAndUpdateToDos() {
