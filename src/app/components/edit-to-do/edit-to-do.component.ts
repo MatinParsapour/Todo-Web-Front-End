@@ -54,11 +54,6 @@ export class EditToDoComponent implements OnInit {
     }
   }
 
-  toggleStar() {
-    this.toDo.isStarred = !this.toDo.isStarred;
-  }
-
-  toggleMyDay() {
-    this.toDo.isMyDay = !this.toDo.isMyDay;
-  }
+  toggleStar() {this.toDo.isStarred = !this.toDo.isStarred;}
+  toggleMyDay() {this.toDo.isMyDay = !this.toDo.isMyDay;}
 }
