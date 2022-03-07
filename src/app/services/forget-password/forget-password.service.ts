@@ -17,4 +17,7 @@ export class ForgetPasswordService extends DataService {
   sendForgetPasswordEmail(email: any){
     return this.httpService.get("http://localhost:8080/email/forget-password/" + email)
   }
+  sendResetEmail(formData: FormData){
+    return this.httpService.put("http://localhost:8080/email/reset-email", formData)
+  }
 }
