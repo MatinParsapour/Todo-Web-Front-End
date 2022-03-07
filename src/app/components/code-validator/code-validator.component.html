@@ -1,0 +1,13 @@
+<div [class.spinner]="isLoading">
+  <mat-form-field appearance="outline">
+    <mat-label>Username</mat-label>
+    <input [readonly]="isLoading" type="number" [formControl]="code" matInput autocomplete="off">
+    <mat-error *ngIf="code.invalid">{{getCodeErrorMessages()}}</mat-error>
+  </mat-form-field>
+  <button mat-raised-button [disabled]="isLoading || code.invalid" color="primary"
+    (click)="validateCode()">Check
+    code</button>
+  <div class="links">
+    Didn't get the code? <a color="primary" (click)="resendCode()">Resend code</a>
+  </div>
+</div>
