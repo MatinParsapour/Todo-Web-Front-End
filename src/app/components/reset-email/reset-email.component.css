@@ -1,0 +1,37 @@
+.displayNone {
+    display: none;
+}
+
+.displayBlock {
+    display: block;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("../../../assets/images/Cloud.jpg");
+  height: 41.45em;
+  width: 100%;
+  max-width: 150%;
+}
+
+.container>h1 {
+  font-size: 7em;
+  margin-bottom: 1em;
+  font-family: 'Amazon',
+    sans-serif;
+  color: rgb(49, 106, 133);
+}
+
+.container>h6>i>b {
+  font-size: 2em;
+  font-family: "Sofia",
+    sans-serif;
+  color: rgb(59, 206, 10);
+}
