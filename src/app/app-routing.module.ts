@@ -1,3 +1,4 @@
+import { ResetEmailComponent } from './components/reset-email/reset-email.component';
 import { MainComponent } from './components/main/main.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'validate-email', component: ValidateEmailComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'main', component: MainComponent},
+  {path: 'reset-email', component: ResetEmailComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: '**', component: NotFoundComponent},
 ];
