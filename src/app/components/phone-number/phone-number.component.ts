@@ -53,7 +53,6 @@ export class PhoneNumberComponent implements OnInit {
       (response: any) => {
         this.notifier.notify(NotificationType.SUCCESS, "Code sent to your phone number")
         this.isLoading = false;
-        this.dialog.closeAll()
       },
       (error: HttpErrorResponse) => {
         console.log(error);
