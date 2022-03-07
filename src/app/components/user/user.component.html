@@ -64,7 +64,7 @@
         <input disabled autocomplete="off" type="text" matInput placeholder="password" required [(ngModel)]="user.email"
           [value]="user.email">
       </mat-form-field>
-      <button mat-raised-button color="primary">Change email</button>
+      <button mat-dialog-close="reset-email" mat-raised-button color="primary">Change email</button>
     </div>
   </div>
   <button mat-raised-button color="primary" [disabled]="isLoading" (click)="updateUser()">Update</button>
