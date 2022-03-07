@@ -22,5 +22,6 @@
       </div>
     </form>
   </mat-card-content>
-  <button (click)="updatePhoneNumber()" [class.spinner]="isLoading" mat-raised-button color="primary" [disabled]="profileForm.invalid || isLoading">Update your phone number</button>
+  <button mat-dialog-close="send-code" (click)="updatePhoneNumber()" [class.spinner]="isLoading" mat-raised-button
+    color="primary" [disabled]="profileForm.invalid || isLoading">Update your phone number</button>
 </mat-card>
