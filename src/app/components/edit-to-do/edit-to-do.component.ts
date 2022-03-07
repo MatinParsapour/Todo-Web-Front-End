@@ -40,16 +40,18 @@ export class EditToDoComponent implements OnInit {
       this.toDo.dateTime = dueToDate;
     }
 
-    this.toDoService.update('to-do/update-to-do', this.toDo).subscribe(
-      (response: any) => {
-        this.notifier.notify(NotificationType.SUCCESS, 'Your to do updated');
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error);
+    if (this.toDo.task !== '') {
+      this.toDoService.update('to-do/update-to-do', this.toDo).subscribe(
+        (response: any) => {
+          this.notifier.notify(NotificationType.SUCCESS, 'Your to do updated');
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error);
 
-        this.notifier.notify(NotificationType.ERROR, error.message);
-      }
-    );
+          this.notifier.notify(NotificationType.ERROR, error.message);
+        }
+      );
+    }
   }
 
   toggleStar() {
