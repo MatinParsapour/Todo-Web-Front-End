@@ -47,6 +47,8 @@ import { AggreementComponent } from './components/aggreement/aggreement.componen
 import { EditToDoComponent } from './components/edit-to-do/edit-to-do.component';
 import { PhoneNumberComponent } from './components/phone-number/phone-number.component';
 import { CodeValidatorComponent } from './components/code-validator/code-validator.component';
+import { ResetEmailComponent } from './components/reset-email/reset-email.component';
+import { GetResetEmailComponent } from './components/get-reset-email/get-reset-email.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -109,6 +111,8 @@ const customNotifierOptions: NotifierOptions = {
     EditToDoComponent,
     PhoneNumberComponent,
     CodeValidatorComponent,
+    ResetEmailComponent,
+    GetResetEmailComponent,
   ],
   imports: [
     BrowserModule,
