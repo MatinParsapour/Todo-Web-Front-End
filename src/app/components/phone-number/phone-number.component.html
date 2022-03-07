@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-content>
+    <form class="profile" [formGroup]="profileForm">
+      <div formGroupName="phone">
+        <mat-form-field appearance="standard" class="phone_country">
+          <mat-label>Country</mat-label>
+          <mat-select [disabled]="isLoading" formControlName="country" (selectionChange)="formatNumber()">
+            <mat-option *ngFor="let countryCode of countyCodes" [value]="countryCode.code">
+              {{countryCode.country}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="standard" class="phone_number">
+          <mat-label>Phone Number</mat-label>
+          <input [readonly]="isLoading" formControlName="number" type="tel" required placeholder="Telephone" (input)="formatNumber()"
+            [errorStateMatcher]="phoneErrorMatcher" matInput>
+          <mat-error *ngIf="!phoneGroup.valid">
+            Valid Phone Number: {{phoneHint}}
+          </mat-error>
+          <mat-hint>{{phoneHint}}</mat-hint>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+  <button (click)="updatePhoneNumber()" [class.spinner]="isLoading" mat-raised-button color="primary" [disabled]="profileForm.invalid || isLoading">Update your phone number</button>
+</mat-card>
