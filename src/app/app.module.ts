@@ -1,3 +1,4 @@
+import { PhoneNumberService } from './services/phone-number/phone-number.service';
 import { UserService } from './services/user/user.service';
 import { ToDoService } from './services/to-do/to-do.service';
 import { InsertFolderService } from './services/insert-folder/insert-folder.service';
@@ -44,6 +45,8 @@ import { MatTableModule } from '@angular/material/table';
 import { UserComponent } from './components/user/user.component';
 import { AggreementComponent } from './components/aggreement/aggreement.component';
 import { EditToDoComponent } from './components/edit-to-do/edit-to-do.component';
+import { PhoneNumberComponent } from './components/phone-number/phone-number.component';
+import { CodeValidatorComponent } from './components/code-validator/code-validator.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -104,6 +107,8 @@ const customNotifierOptions: NotifierOptions = {
     UserComponent,
     AggreementComponent,
     EditToDoComponent,
+    PhoneNumberComponent,
+    CodeValidatorComponent,
   ],
   imports: [
     BrowserModule,
@@ -137,6 +142,7 @@ const customNotifierOptions: NotifierOptions = {
     InsertFolderService,
     ToDoService,
     UserService,
+    PhoneNumberService,
   ],
   bootstrap: [AppComponent],
 })
