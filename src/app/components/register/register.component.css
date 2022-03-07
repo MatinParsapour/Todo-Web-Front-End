@@ -1,94 +1,108 @@
-@keyframes spinner {
-  to {
-    transform: rotate(360deg);
+@media screen and (max-width: 1200px){
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spinner:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    border-top-color: #000000;
+    animation: spinner .8s linear infinite;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url("../../../assets/images/jacob-dyer-R3ut7WOmeto-unsplash.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 41.46em;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    border-radius: 20px;
+  }
+
+  .form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .links {
+    margin-top: 2%;
+  }
+
+  .form>div {
+    display: flex;
+  }
+
+  .form>button {
+    width: 90%;
+    height: 4em;
+    color: black;
+  }
+
+  .form>mat-form-field {
+    width: 90%;
+  }
+
+  .form>div>mat-form-field {
+    width: 47%;
+    margin-left: .5em;
+  }
+
+  .main {
+    display: flex;
+  }
+
+  .pictureContainer {
+    background-image: url("../../../assets/images/Cloud.jpg");
+    width: 200%;
+    max-width: 200%;
+    height: auto;
+    padding-top: 10em;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .container>span {
+    display: flex;
+    align-self: center;
+    font-size: 4em;
+    font-family: "Sofia", sans-serif;
+    color: rgb(106, 16, 190);
+  }
+
+  .wrong {
+    color: red;
+  }
+
+  .ok {
+    color: green;
   }
 }
 
-.spinner:before {
-  content: '';
-  box-sizing: border-box;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  margin-top: -10px;
-  margin-left: -10px;
-  border-radius: 50%;
-  border: 2px solid #ffffff;
-  border-top-color: #000000;
-  animation: spinner .8s linear infinite;
-}
+@media screen and (max-width: 600px){
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-image: url("../../../assets/images/jacob-dyer-R3ut7WOmeto-unsplash.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 41.46em;
-  border-style: solid;
-  border-color: rgb(255, 255, 255);
-  border-radius: 20px;
-}
-
-.form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.links {
-  margin-top: 2%;
-}
-
-.form > div {
-  display: flex;
-}
-
-.form > button {
-  width: 90%;
-  height: 4em;
-  color: black;
-}
-
-.form>mat-form-field {
-  width: 90%;
-}
-
-.form > div > mat-form-field {
-  width: 47%;
-  margin-left: .5em;
-}
-
-.main {
-  display: flex;
-}
-
-.pictureContainer {
-  background-image: url("../../../assets/images/Cloud.jpg");
-  width: 200%;
-  max-width: 200%;
-  height: auto;
-  padding-top: 10em;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.container>span {
-  display: flex;
-  align-self: center;
-  font-size: 4em;
-  font-family: "Sofia", sans-serif;
-  color: rgb(106, 16, 190);
-}
-
-.wrong {
-  color: red;
-}
-
-.ok {
-  color: green;
+    .form>div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .form>div>mat-form-field {
+      width: 40%;
+    }
 }
