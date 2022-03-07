@@ -1,0 +1,14 @@
+<form class="sendEmail" [class.spinner]="isLoading">
+  <span>Enter your email</span>
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input [formControl]="email" [readonly]="isLoading" matInput autocomplete="off">
+    <mat-error *ngIf="email.invalid"> {{getEmailErrorMessages()}} </mat-error>
+  </mat-form-field>
+  <div>
+    <button type="button" [disabled]="isLoading || email.invalid" @fade mat-raised-button color="primary"
+      (click)="sendEmail()">Send
+      email</button>
+    <button type="button" mat-raised-button color="warn" (click)="closeDialog()">Close</button>
+  </div>
+</form>
