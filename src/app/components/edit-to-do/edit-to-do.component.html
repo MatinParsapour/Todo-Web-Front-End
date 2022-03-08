@@ -1,3 +1,5 @@
+<ng-image-slider [class.displayNone]="slideShowImages.length === 0" [infinite]="true" [images]="slideShowImages" [imageSize]="slideShowSize()">
+</ng-image-slider>
 <div class="userDetails">
   <div>
     <div>
@@ -61,8 +63,16 @@
         </span>
       </button>
     </div>
+    <div class="secondElement">
+      <button mat-raised-button (click)="selectPhoto()">
+        <span class="material-icons">
+          add_a_photo
+        </span>
+      </button>
+    </div>
   </div>
   <div class="buttons">
     <button mat-raised-button color="primary" (click)="updateToDo()">Update</button>
     <button mat-raised-button color="warn" mat-dialog-close="delete">Delete</button>
   </div>
+  <input type="file" (change)="addPhoto($event)" id="selectInput" style="display: none;">
