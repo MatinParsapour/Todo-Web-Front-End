@@ -34,3 +34,7 @@ mat-icon{
 button[color="warn"]{
   margin-left: 3em;
 }
+
+.displayNone{
+  display: none;
+}
