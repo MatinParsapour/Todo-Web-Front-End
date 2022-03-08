@@ -49,7 +49,7 @@ import { PhoneNumberComponent } from './components/phone-number/phone-number.com
 import { CodeValidatorComponent } from './components/code-validator/code-validator.component';
 import { ResetEmailComponent } from './components/reset-email/reset-email.component';
 import { GetResetEmailComponent } from './components/get-reset-email/get-reset-email.component';
-
+import { NgImageSliderModule } from 'ng-image-slider';
 const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {
@@ -136,6 +136,7 @@ const customNotifierOptions: NotifierOptions = {
     MatMenuModule,
     MatTableModule,
     MatSelectModule,
+    NgImageSliderModule,
   ],
   providers: [
     RegisterService,
