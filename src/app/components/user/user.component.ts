@@ -26,12 +26,15 @@ export class UserComponent implements OnInit {
   }
 
   getUser() {
+    this.isLoading = true;
     this.userService.getUser(localStorage.getItem('username')).subscribe(
       (response: any) => {        
         this.user = response;
+        this.isLoading = false;
       },
       (error: HttpErrorResponse) => {
         console.log(error);
+        this.isLoading = false;
 
         this.notifier.notify(
           NotificationType.ERROR,
