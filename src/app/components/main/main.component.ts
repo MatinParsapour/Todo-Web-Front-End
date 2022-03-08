@@ -1,3 +1,4 @@
+import { CategoryService } from './../../services/category/category.service';
 import { GetResetEmailComponent } from './../get-reset-email/get-reset-email.component';
 import { ForgetPasswordComponent } from './../forget-password/forget-password.component';
 import { CodeValidatorComponent } from './../code-validator/code-validator.component';
@@ -29,12 +30,13 @@ export class MainComponent implements OnInit {
 
   toDo = new FormGroup({
     task: new FormControl(''),
-    dateTime: new FormControl(''),
+    dateTime: new FormControl(null),
     isMyDay: new FormControl(this.isMyDayAttr),
   });
 
   constructor(
     private mainService: MainService,
+    private categoryService: CategoryService,
     private dialog: MatDialog,
     private notifier: NotificationService,
     private router: Router
@@ -85,6 +87,9 @@ export class MainComponent implements OnInit {
 
   addAndUpdateToDos() {
     if (this.task.value.trim() !== '') {
+      if(this.dateTime.value === ''){
+        this.dateTime.setValue(null)
+      }
       this.mainService
         .create(
           '/to-do/add-to-do/' +
@@ -162,7 +167,7 @@ export class MainComponent implements OnInit {
       .getAll('/folder/get-todo-folders/' + localStorage.getItem('username'))
       .subscribe(
         (response: any) => {
-          this.toDoFolders = response;
+          this.toDoFolders = response
         },
         (error: HttpErrorResponse) => {
           console.log(error);
@@ -209,5 +214,18 @@ export class MainComponent implements OnInit {
           this.getAllToDoFolders();
         }
       );
+  }
+
+  loadCategory(category: string){
+    this.categoryService.getAll("category/get-category-to-dos/" + category + "/" + localStorage.getItem("username")).subscribe(
+      (response: any) => {
+        this.toDos = response
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+        
+      }
+    )
+    
   }
 }
