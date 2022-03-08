@@ -21,6 +21,8 @@ import { NotificationType } from 'src/app/enum/notification-type';
 export class EditToDoComponent implements OnInit {
   toDo: ToDo = new ToDo();
   minDate = new Date();
+  canExecute = false;
+  slideShowImages: Array<Object> = []
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
@@ -30,7 +32,24 @@ export class EditToDoComponent implements OnInit {
     this.toDo = data.todo;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getToDo()
+    this.addToQueue()
+  }
+
+  addToQueue(){
+    this.slideShowImages = []
+    this.toDo.pictures.forEach((element: any) => {
+      this.slideShowImages.push({ image: element, thumbImage: element });
+    });
+    this.canExecute = false
+  }
+
+  slideShowSize(){
+    return {
+      height: '100px'
+    }
+  }
 
   updateToDo() {
     if (this.toDo.dateTime) {
@@ -44,6 +63,7 @@ export class EditToDoComponent implements OnInit {
       this.toDoService.update('to-do/update-to-do', this.toDo).subscribe(
         (response: any) => {
           this.notifier.notify(NotificationType.SUCCESS, 'Your to do updated');
+          this.getToDo()
         },
         (error: HttpErrorResponse) => {
           console.log(error);
@@ -54,6 +74,39 @@ export class EditToDoComponent implements OnInit {
     }
   }
 
+  selectPhoto(){
+    document.getElementById('selectInput')?.click();
+  }
+
+  addPhoto(event:any){
+    const file = event.target.files[0]
+    const formData = new FormData();
+    formData.append("picture",file)
+    formData.append("toDoId",this.toDo.id)
+    this.toDoService.update('to-do/add-photo',formData).subscribe(
+      (response: any) => {
+        this.getToDo()
+        this.notifier.notify(NotificationType.SUCCESS, "The picture added to your to do")
+      },
+      (error:HttpErrorResponse) => {
+        console.log(error);
+        
+      }
+    )
+  }
+
+  getToDo(){ 
+    this.toDoService.getToDo("to-do/get-to-do/" + this.toDo.id).subscribe(
+      (response: any) => {
+        this.toDo = response;
+        this.addToQueue();
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+        
+      }
+    )
+  }
   toggleStar() {this.toDo.isStarred = !this.toDo.isStarred;}
   toggleMyDay() {this.toDo.isMyDay = !this.toDo.isMyDay;}
 }
