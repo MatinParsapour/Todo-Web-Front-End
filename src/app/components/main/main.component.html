@@ -5,10 +5,25 @@
     </button>
     <br>
     <br>
+    <div class="category" (click)="loadCategory('Myday')">
+      <mat-icon>category</mat-icon>
+      <span>MyDay</span>
+    </div>
+    <br>
+    <div class="category" (click)="loadCategory('Planned')">
+      <mat-icon>category</mat-icon>
+      <span>Planned</span>
+    </div>
+    <br>
+    <div class="category" (click)="loadCategory('Tasks')">
+      <mat-icon>category</mat-icon>
+      <span>Tasks</span>
+    </div>
+    <hr class="fancyLine">
     <div class="folders" *ngFor="let toDoFolder of toDoFolders">
       <span>
-        <app-to-do-folders [toDoFolder]="toDoFolder" (updateData)="getAllToDoFolders()"
-          (getToDos)="getAllToDos()"></app-to-do-folders>
+        <app-to-do-folders [toDoFolder]="toDoFolder" (updateData)="getAllToDoFolders()" (getToDos)="getAllToDos()">
+        </app-to-do-folders>
       </span>
     </div>
     <button (click)="openUserDialog(); sidenav.close()" class="user" mat-raised-button>
@@ -29,7 +44,7 @@
           <h5>You have no todo</h5>
         </div>
       </div>
-      <div *ngFor="let toDo of toDos">
+      <div  *ngFor="let toDo of toDos">
         <app-to-do [toDo]="toDo" (getToDos)="getAllToDos()"></app-to-do>
       </div>
     </div>
