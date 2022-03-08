@@ -1,5 +1,5 @@
 export class ToDo {
-  dateTime: any;
+  dateTime: any = null;
   id: number = 0;
   isMyDay: boolean = false;
   isStarred: boolean = false;
