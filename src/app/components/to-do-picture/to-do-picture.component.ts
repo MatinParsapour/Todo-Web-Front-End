@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from './../../services/notification/notification.service';
 import { ToDoService } from './../../services/to-do/to-do.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 
 @Component({
@@ -13,6 +13,7 @@ export class ToDoPictureComponent implements OnInit {
   @Input('picture') picture: string = '';
   @Input('toDoId') toDoId: any;
   pictureName = '';
+  fullScreen = false;
 
   constructor(
     private toDoService: ToDoService,
@@ -36,5 +37,13 @@ export class ToDoPictureComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  openFullScreen(){
+    this.fullScreen = true
+  }
+
+  closeFullScreen(){
+    this.fullScreen = false
   }
 }

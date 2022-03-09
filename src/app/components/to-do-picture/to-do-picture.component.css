@@ -6,9 +6,12 @@ mat-card {
 
 button:hover{
     color: red;
-    cursor: pointer;
 }
 
 img {
     border-radius: 50%;
+}
+
+div{
+    cursor: pointer;
 }
