@@ -1,8 +1,12 @@
+<app-image-viewer [imageUrl]="user.profileImageUrl" [open]="fullScreen" (click)="closeFullScreen()"></app-image-viewer>
 <div class="userDetails" [class.spinner]="isLoading">
   <div class="header">
     <div>
-      <img (click)="selectProfile()" *ngIf="user.profileImageUrl" [src]="user.profileImageUrl" width="200px" height="200px">
-      <mat-icon (click)="selectProfile()" *ngIf="!user.profileImageUrl" width="200px" height="200px">person</mat-icon>
+      <img (click)="openFullScreen()" *ngIf="user.profileImageUrl" [src]="user.profileImageUrl" width="200px"
+        height="200px">
+        <button class="deleteButton" (click)="deleteProfile()">Delete</button>
+      <mat-icon (click)="selectProfile()" class="personIcon" *ngIf="!user.profileImageUrl">person</mat-icon>
+      <button mat-button (click)="selectProfile()" *ngIf="user.profileImageUrl">Change profile</button>
       <form style="display:none">
         <input type="file" (change)="changeProfileImage($event)" id="select-picture" accept="image/*">
       </form>
@@ -23,14 +27,14 @@
   <div>
   </div>
   <div>
-      <div>
-        <span> Age : </span>
-        <mat-form-field appearance="fill">
-          <mat-label>age</mat-label>
-          <input autocomplete="off" type="text" matInput placeholder="password" required [(ngModel)]="user.age"
-            [value]="user.age">
-        </mat-form-field>
-      </div>
+    <div>
+      <span> Age : </span>
+      <mat-form-field appearance="fill">
+        <mat-label>age</mat-label>
+        <input autocomplete="off" type="text" matInput placeholder="password" required [(ngModel)]="user.age"
+          [value]="user.age">
+      </mat-form-field>
+    </div>
     <div class="secondElement">
       <span> Birthday: </span>
       <mat-form-field appearance="fill" class="example-form-field">
@@ -54,7 +58,8 @@
         <input disabled autocomplete="off" type="text" matInput placeholder="password" required
           [(ngModel)]="user.phoneNumber" [value]="user.phoneNumber">
       </mat-form-field>
-      <button mat-dialog-close="open-phone-dialog" mat-raised-button color="primary"> {{user.phoneNumber ? "Change phone number" : "Add phone number"}}
+      <button mat-dialog-close="open-phone-dialog" mat-raised-button color="primary">
+        {{user.phoneNumber ? "Change phone number" : "Add phone number"}}
       </button>
     </div>
     <div class="secondElement">

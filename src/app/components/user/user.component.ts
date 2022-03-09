@@ -15,6 +15,7 @@ export class UserComponent implements OnInit {
   user!: User;
   isLoading: boolean = false;
   public profileImage: any;
+  fullScreen = false
 
   constructor(
     private userService: UserService,
@@ -101,5 +102,26 @@ export class UserComponent implements OnInit {
 
   clickButton(tagId: any){
     document.getElementById(tagId)?.click()
+  }
+
+  deleteProfile(){
+    this.userService.delete("/user/delete-image/" + localStorage.getItem("username")).subscribe(
+      (response: any) => {
+        this.notifier.notify(NotificationType.SUCCESS, "Your profile successfully deleted")
+        this.getUser()
+      }, 
+      (error: HttpErrorResponse) => {
+        console.log(error);
+        
+      }
+    )
+  }
+
+  openFullScreen(){
+    this.fullScreen = true
+  }
+
+  closeFullScreen(){
+    this.fullScreen = false
   }
 }

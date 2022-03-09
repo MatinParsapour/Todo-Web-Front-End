@@ -1,7 +1,7 @@
-.userDetails{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .userDetails>div>div {
@@ -9,7 +9,7 @@
   flex-direction: column;
 }
 
-.secondElement{
+.secondElement {
   margin-left: 5em;
 }
 
@@ -17,13 +17,13 @@
   display: flex;
 }
 
-.age{
+.age {
   display: flex;
   flex-direction: column;
   margin-top: 2%;
 }
 
-.userDetails > button {
+.userDetails>button {
   margin-top: 5%;
   width: 90%;
 }
@@ -32,32 +32,47 @@ mat-form-field {
   width: 20em;
 }
 
-.header{
+.header {
   display: flex;
   justify-content: space-evenly;
   width: 43em;
   border-radius: 5px;
 }
 
-.fnln{
+.fnln {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-img{
+img {
   cursor: pointer;
   border-radius: 50%;
 }
 
-.fnlninner{
+img:hover~.deleteButton {
+  display: block;
+  position: relative;
+  width: 175px;
+  height: 50px;
+  top: -50px;
+  left: 10px;
+  border-radius:0 0 400px 400px;
+  background: transparent;
+  margin-bottom: -50px;
+  transition-property: top;
+  transition-duration: 50s;
+  border-style: none;
+}
+
+.fnlninner {
   margin-left: 10em;
   height: 12em;
   width: 18em;
   border-radius: 5px;
 }
 
-mat-icon{
+mat-icon {
   cursor: pointer;
   border-radius: 50%;
 }
@@ -82,4 +97,50 @@ mat-icon{
   border: 2px solid #ffffff;
   border-top-color: #000000;
   animation: spinner .8s linear infinite;
+}
+
+.deleteButton {
+  margin-bottom: -50px;
+  display: none;
+  top: 0
+}
+
+
+.deleteButton:visited {
+  border-style: none;
+  border-color: none;
+  outline: none;
+  color: black;
+}
+.deleteButton:focus {
+  border-style: none;
+  border-color: none;
+  outline: none;
+  color: black;
+}
+.deleteButton:hover{
+    display: block;
+    position: relative;
+    width: 175px;
+    height: 50px;
+    top: -50px;
+    left: 10px;
+    color: rgb(255, 255, 255);
+    border-radius:0 0 400px 400px;
+    background: transparent;
+    margin-bottom: -50px;
+    transition-property: top;
+    transition-duration: 50s;
+    border-style: none;
+}
+.deleteButton:active {
+  border-style: none;
+  border-color: none;
+  outline: none;
+  color: red;
+}
+
+.personIcon{
+  margin-right: 1em;
+  font-size: 150px;
 }
