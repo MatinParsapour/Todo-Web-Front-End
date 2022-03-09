@@ -1,5 +1,6 @@
 <mat-card>
-  <span class="toDo" [contentEditable]="true" (keydown.enter)="updateToDoBody($event.target)"> {{toDo.task}} </span>
+  <span class="toDo" [contentEditable]="true" [class.lineThrough]="toDo.status === 'done'" (keydown.enter)="updateToDoBody($event.target)">
+    {{toDo.task}} </span>
   <div>
     <button mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
       <mat-icon>more_vert</mat-icon>

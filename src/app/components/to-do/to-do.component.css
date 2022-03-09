@@ -7,3 +7,7 @@ mat-card{
 mat-icon:hover {
     cursor: pointer;
 }
+
+.lineThrough {
+    text-decoration: line-through;
+}
