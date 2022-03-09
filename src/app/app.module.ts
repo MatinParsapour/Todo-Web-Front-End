@@ -53,6 +53,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { ToDoPicturesComponent } from './components/to-do-pictures/to-do-pictures.component';
 import { ToDoPictureComponent } from './components/to-do-picture/to-do-picture.component';
 import { SummaryPipesPipe } from './pipes/summary-pipes.pipe';
+import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
 const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {
@@ -119,6 +120,7 @@ const customNotifierOptions: NotifierOptions = {
     ToDoPicturesComponent,
     ToDoPictureComponent,
     SummaryPipesPipe,
+    ImageViewerComponent,
   ],
   imports: [
     BrowserModule,
