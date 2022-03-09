@@ -11,3 +11,11 @@ mat-icon:hover {
 .lineThrough {
     text-decoration: line-through;
 }
+
+.doneAndTask{
+    display: flex;
+}
+
+.doneAndUndone{
+    cursor: pointer;
+}

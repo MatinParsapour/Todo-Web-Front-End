@@ -1,13 +1,23 @@
 <mat-card>
-  <span class="toDo" [contentEditable]="true" [class.lineThrough]="toDo.status === 'done'" (keydown.enter)="updateToDoBody($event.target)">
-    {{toDo.task}} </span>
+  <div class="doneAndTask">
+    <div class="doneAndUndone" mat-fab color="" (click)="doneToDo()">
+      <span class="material-icons" *ngIf="toDo.status !== 'done'">
+        radio_button_unchecked
+      </span>
+      <span class="material-icons" *ngIf="toDo.status === 'done'">
+        check_circle
+      </span>
+    </div>
+    <span class="toDo" [contentEditable]="true" [class.lineThrough]="toDo.status === 'done'"
+      (keydown.enter)="updateToDoBody($event.target)">
+      {{toDo.task}} </span>
+  </div>
   <div>
     <button mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu class="menu" #normalMenu="matMenu">
-      <button (click)="openEditToDoDialog()" mat-menu-item class="material-icons"
-      matTooltip="delete list">
+      <button (click)="openEditToDoDialog()" mat-menu-item class="material-icons" matTooltip="delete list">
         <mat-icon>edit</mat-icon> Edit todo
       </button>
       <button (click)="openAggreementDialog()" mat-menu-item class="material-icons delete" matTooltip="delete list">

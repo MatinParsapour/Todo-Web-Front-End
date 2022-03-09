@@ -31,11 +31,29 @@ export class ToDoComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  doneToDo() {
+    if (this.toDo.status !== 'done') {
+      this.toDo.status = 'done';
+    } else {
+      this.toDo.status = 'in progress';
+    }
+    this.toDoService.update('to-do/update-to-do', this.toDo).subscribe(
+      (response: any) => {
+        this.notifier.notify(NotificationType.SUCCESS, 'Success');
+        this.getToDo();
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.message);
+      }
+    );
+  }
+
   starToDo() {
     this.toDo.isStarred = !this.toDo.isStarred;
     this.toDoService.update('to-do/update-to-do', this.toDo).subscribe(
       (response: any) => {
         this.notifier.notify(NotificationType.SUCCESS, 'Success');
+        this.getToDo();
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.message);
@@ -102,7 +120,7 @@ export class ToDoComponent implements OnInit {
       .open(EditToDoComponent, { data: { todo: this.toDo } })
       .afterClosed()
       .subscribe((result) => {
-        this.getToDo()
+        this.getToDo();
         if (result === 'delete') {
           this.deleteToDo();
         } else if (result === 'delete-picture') {
@@ -117,7 +135,9 @@ export class ToDoComponent implements OnInit {
         data: { pictures: this.toDo.pictures, toDoId: this.toDo.id },
       })
       .afterClosed()
-      .subscribe((result) => {this.openEditToDoDialog(), this.getToDo()});
+      .subscribe((result) => {
+        this.openEditToDoDialog(), this.getToDo();
+      });
   }
 
   changeDisplayOfDatePicker() {
