@@ -50,6 +50,9 @@ import { CodeValidatorComponent } from './components/code-validator/code-validat
 import { ResetEmailComponent } from './components/reset-email/reset-email.component';
 import { GetResetEmailComponent } from './components/get-reset-email/get-reset-email.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { ToDoPicturesComponent } from './components/to-do-pictures/to-do-pictures.component';
+import { ToDoPictureComponent } from './components/to-do-picture/to-do-picture.component';
+import { SummaryPipesPipe } from './pipes/summary-pipes.pipe';
 const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {
@@ -113,6 +116,9 @@ const customNotifierOptions: NotifierOptions = {
     CodeValidatorComponent,
     ResetEmailComponent,
     GetResetEmailComponent,
+    ToDoPicturesComponent,
+    ToDoPictureComponent,
+    SummaryPipesPipe,
   ],
   imports: [
     BrowserModule,
