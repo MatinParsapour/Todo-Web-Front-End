@@ -14,3 +14,23 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif; 
 
 }
+
+button:visited{
+    outline: none;
+}
+
+button:focus{
+    outline: none;
+}
+
+button:hover{
+    outline: none;
+}
+
+button:active{
+    outline: none;
+}
+
+button{
+    outline: none;
+}
