@@ -72,6 +72,11 @@
         </span>
       </button>
     </div>
+    <div class="secondElement">
+      <button mat-raised-button mat-dialog-close="delete-picture" *ngIf="toDo.pictures.length > 0">
+        <span class="material-icons">no_photography</span>
+      </button>
+    </div>
   </div>
   <div class="buttons">
     <button mat-raised-button color="primary" (click)="updateToDo()">Update</button>
