@@ -23,6 +23,7 @@ export class EditToDoComponent implements OnInit {
   minDate = new Date();
   canExecute = false;
   slideShowImages: Array<Object> = []
+  isLoading = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
@@ -83,13 +84,16 @@ export class EditToDoComponent implements OnInit {
     const formData = new FormData();
     formData.append("picture",file)
     formData.append("toDoId",this.toDo.id)
+    this.isLoading = true;
     this.toDoService.update('to-do/add-photo',formData).subscribe(
       (response: any) => {
         this.getToDo()
         this.notifier.notify(NotificationType.SUCCESS, "The picture added to your to do")
+        this.isLoading = false
       },
       (error:HttpErrorResponse) => {
         console.log(error);
+        this.isLoading = false
         
       }
     )

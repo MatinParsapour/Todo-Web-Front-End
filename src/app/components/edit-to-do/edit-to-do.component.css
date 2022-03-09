@@ -38,3 +38,9 @@ button[color="warn"]{
 .displayNone{
   display: none;
 }
+
+mat-spinner {
+  position: absolute;
+  top: 37%;
+  right: 47%;
+}
