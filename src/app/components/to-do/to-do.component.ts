@@ -1,3 +1,4 @@
+import { ToDoPicturesComponent } from './../to-do-pictures/to-do-pictures.component';
 import { ToDo } from './../../classes/todo';
 import { EditToDoComponent } from './../edit-to-do/edit-to-do.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -101,13 +102,36 @@ export class ToDoComponent implements OnInit {
       .open(EditToDoComponent, { data: { todo: this.toDo } })
       .afterClosed()
       .subscribe((result) => {
+        this.getToDo()
         if (result === 'delete') {
-          this.deleteToDo()
+          this.deleteToDo();
+        } else if (result === 'delete-picture') {
+          this.openToDoPictures();
         }
       });
   }
 
+  openToDoPictures() {
+    this.dialog
+      .open(ToDoPicturesComponent, {
+        data: { pictures: this.toDo.pictures, toDoId: this.toDo.id },
+      })
+      .afterClosed()
+      .subscribe((result) => {this.openEditToDoDialog(), this.getToDo()});
+  }
+
   changeDisplayOfDatePicker() {
     this.displayDatePicker = true;
+  }
+
+  getToDo() {
+    this.toDoService.getToDo('to-do/get-to-do/' + this.toDo.id).subscribe(
+      (response: any) => {
+        this.toDo = response;
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    );
   }
 }
