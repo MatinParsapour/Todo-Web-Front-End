@@ -105,7 +105,7 @@ export class UserComponent implements OnInit {
   }
 
   deleteProfile(){
-    this.userService.delete("/user/delete-image/" + localStorage.getItem("username")).subscribe(
+    this.userService.delete("/user/delete-profile-image/" + localStorage.getItem("username")).subscribe(
       (response: any) => {
         this.notifier.notify(NotificationType.SUCCESS, "Your profile successfully deleted")
         this.getUser()
