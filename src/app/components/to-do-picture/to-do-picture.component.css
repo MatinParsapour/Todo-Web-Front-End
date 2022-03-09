@@ -1,0 +1,14 @@
+mat-card {
+    display: flex;
+    justify-content: space-between;
+    width: 30em;
+}
+
+button:hover{
+    color: red;
+    cursor: pointer;
+}
+
+img {
+    border-radius: 50%;
+}

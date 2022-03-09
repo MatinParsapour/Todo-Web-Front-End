@@ -1,0 +1,7 @@
+<mat-card>
+    <img [src]="picture" width="60" height="60">
+    <p> {{pictureName | summaryPipes}} </p>
+    <button mat-raised-button (click)="removePicture()">
+        <mat-icon>delete</mat-icon>
+    </button>
+</mat-card>
