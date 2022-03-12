@@ -8,7 +8,10 @@ export class MarkerPipe implements PipeTransform {
     if (args[0] === '') return value;
     for (const text of args) {
       var reText = new RegExp(text, 'gi');
-      value = value.replace(reText, '<mark>' + text + '</mark>');
+      value = value.replace(
+        reText,
+        `<b><i>` + text + `</b></i>`
+      );
       // value = value.replace(reText,"<span class='highlightText'>" + text + '</span>');
     }
     return value;
