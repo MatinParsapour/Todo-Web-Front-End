@@ -54,6 +54,7 @@ import { ToDoPicturesComponent } from './components/to-do-pictures/to-do-picture
 import { ToDoPictureComponent } from './components/to-do-picture/to-do-picture.component';
 import { SummaryPipesPipe } from './pipes/summary-pipes.pipe';
 import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
+import { CategoryComponent } from './components/category/category.component';
 const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {
@@ -121,6 +122,7 @@ const customNotifierOptions: NotifierOptions = {
     ToDoPictureComponent,
     SummaryPipesPipe,
     ImageViewerComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,
