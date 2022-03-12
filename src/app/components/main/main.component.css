@@ -96,15 +96,4 @@ mat-icon:hover {
   margin-right: auto;
 }
 
-.category {
-  display: flex;
-}
 
-.category:hover{
-  color: green;
-  cursor: pointer;
-}
-
-.category > mat-icon {
-  margin-right: 5%;
-}
