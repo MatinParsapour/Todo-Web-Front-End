@@ -19,7 +19,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css','./main.component.scss'],
+  styleUrls: ['./main.component.css', './main.component.scss'],
   animations: [slideToDown],
 })
 export class MainComponent implements OnInit {
@@ -27,6 +27,18 @@ export class MainComponent implements OnInit {
   isMyDayAttr = false;
   toDos: any;
   user = '';
+
+  categories = [
+    {
+      name: 'MyDay',
+    },
+    {
+      name: 'Planned',
+    },
+    {
+      name: 'Tasks',
+    },
+  ];
 
   toDo = new FormGroup({
     task: new FormControl(''),
@@ -57,30 +69,31 @@ export class MainComponent implements OnInit {
         this.openPhoneNumberComponent().subscribe((result) => {
           if (result === 'send-code') {
             this.openCodeValidatorComponent().subscribe(() => {
-              this.openUserDialog()
+              this.openUserDialog();
             });
           } else {
-            this.openUserDialog()
+            this.openUserDialog();
           }
         });
       } else if (result === 'reset-email') {
-        this.openGetResetEmailComponent()
+        this.openGetResetEmailComponent();
       }
     });
   }
 
-  search(searchInputValue:any){
-    const result = []
-    for(const toDo of this.toDos){
-      if (toDo.task.toLowerCase().indexOf(searchInputValue.toLowerCase()) !== -1) {
+  search(searchInputValue: any) {
+    const result = [];
+    for (const toDo of this.toDos) {
+      if (
+        toDo.task.toLowerCase().indexOf(searchInputValue.toLowerCase()) !== -1
+      ) {
         result.push(toDo);
       }
     }
-    this.toDos = result
+    this.toDos = result;
     if (!searchInputValue) {
-      this.getAllToDos()
+      this.getAllToDos();
     }
-    
   }
 
   openPhoneNumberComponent() {
@@ -88,21 +101,23 @@ export class MainComponent implements OnInit {
   }
 
   openCodeValidatorComponent() {
-    return this.dialog.open(CodeValidatorComponent, { disableClose: true }).afterClosed();
+    return this.dialog
+      .open(CodeValidatorComponent, { disableClose: true })
+      .afterClosed();
   }
 
   openUserComponent() {
     return this.dialog.open(UserComponent).afterClosed();
   }
-  
-  openGetResetEmailComponent(){
+
+  openGetResetEmailComponent() {
     return this.dialog.open(GetResetEmailComponent);
   }
 
   addAndUpdateToDos() {
     if (this.task.value.trim() !== '') {
-      if(this.dateTime.value === ''){
-        this.dateTime.setValue(null)
+      if (this.dateTime.value === '') {
+        this.dateTime.setValue(null);
       }
       this.mainService
         .create(
@@ -181,7 +196,7 @@ export class MainComponent implements OnInit {
       .getAll('/folder/get-todo-folders/' + localStorage.getItem('username'))
       .subscribe(
         (response: any) => {
-          this.toDoFolders = response
+          this.toDoFolders = response;
         },
         (error: HttpErrorResponse) => {
           console.log(error);
@@ -230,16 +245,21 @@ export class MainComponent implements OnInit {
       );
   }
 
-  loadCategory(category: string){
-    this.categoryService.getAll("category/get-category-to-dos/" + category + "/" + localStorage.getItem("username")).subscribe(
-      (response: any) => {
-        this.toDos = response
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error);
-        
-      }
-    )
-    
+  loadCategory(category: string) {
+    this.categoryService
+      .getAll(
+        'category/get-category-to-dos/' +
+          category +
+          '/' +
+          localStorage.getItem('username')
+      )
+      .subscribe(
+        (response: any) => {
+          this.toDos = response;
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error);
+        }
+      );
   }
 }
