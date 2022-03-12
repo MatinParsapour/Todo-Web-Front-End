@@ -19,3 +19,7 @@ mat-icon:hover {
 .doneAndUndone{
     cursor: pointer;
 }
+
+.toDo{
+    font-size: 20px;
+}
