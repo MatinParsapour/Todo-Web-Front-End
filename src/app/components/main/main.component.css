@@ -40,6 +40,7 @@ mat-card {
 mat-card>mat-form-field {
   width: 80%;
   height: 5em;
+  font-size: 15px;
 }
 
 mat-icon:hover {
