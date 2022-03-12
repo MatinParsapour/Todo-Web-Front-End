@@ -5,16 +5,21 @@
     </button>
     <br>
     <br>
+    <form class="search-container" action="//llamaswill.tumblr.com/search">
+      <input #searchInput ngModel (ngModelChange)="search(searchInput.value)" id="search-box" type="text" class="search-box" name="q" />
+      <label for="search-box"><span class="glyphicon glyphicon-search search-icon"></span></label>
+    </form>
+    <hr>
     <div class="category" (click)="loadCategory('Myday')">
       <mat-icon>category</mat-icon>
       <span>MyDay</span>
     </div>
-    <br>
+    <hr>
     <div class="category" (click)="loadCategory('Planned')">
       <mat-icon>category</mat-icon>
       <span>Planned</span>
     </div>
-    <br>
+    <hr>
     <div class="category" (click)="loadCategory('Tasks')">
       <mat-icon>category</mat-icon>
       <span>Tasks</span>
