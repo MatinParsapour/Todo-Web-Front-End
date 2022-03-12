@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css';
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
-@import '~@angular/material/input';
 @import "~angular-notifier/styles";
 @import url('http://fonts.cdnfonts.com/css/amazon');
 
