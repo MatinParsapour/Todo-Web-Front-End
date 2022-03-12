@@ -16,6 +16,7 @@ import { AggreementComponent } from '../aggreement/aggreement.component';
 })
 export class ToDoComponent implements OnInit {
   @Input('toDo') toDo: ToDo = new ToDo();
+  @Input('search') search = "";
   @Output('getToDos') getToDos = new EventEmitter();
   displayDatePicker: boolean = false;
 
