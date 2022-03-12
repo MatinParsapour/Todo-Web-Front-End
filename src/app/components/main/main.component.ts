@@ -19,7 +19,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css'],
+  styleUrls: ['./main.component.css','./main.component.scss'],
   animations: [slideToDown],
 })
 export class MainComponent implements OnInit {
@@ -67,6 +67,20 @@ export class MainComponent implements OnInit {
         this.openGetResetEmailComponent()
       }
     });
+  }
+
+  search(searchInputValue:any){
+    const result = []
+    for(const toDo of this.toDos){
+      if (toDo.task.toLowerCase().indexOf(searchInputValue.toLowerCase()) !== -1) {
+        result.push(toDo);
+      }
+    }
+    this.toDos = result
+    if (!searchInputValue) {
+      this.getAllToDos()
+    }
+    
   }
 
   openPhoneNumberComponent() {
