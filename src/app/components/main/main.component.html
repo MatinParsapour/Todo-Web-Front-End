@@ -6,25 +6,15 @@
     <br>
     <br>
     <form class="search-container" action="//llamaswill.tumblr.com/search">
-      <input #searchInput ngModel (ngModelChange)="search(searchInput.value)" id="search-box" type="text" class="search-box" name="q" />
+      <input #searchInput ngModel (ngModelChange)="search(searchInput.value)" id="search-box" type="text"
+        class="search-box" name="q" />
       <label for="search-box"><span class="glyphicon glyphicon-search search-icon"></span></label>
     </form>
     <hr>
-    <div class="category" (click)="loadCategory('Myday')">
-      <mat-icon>category</mat-icon>
-      <span>MyDay</span>
+    <div *ngFor="let category of categories">
+      <app-category [name]="category.name" (click)="loadCategory(category.name)"></app-category>
     </div>
-    <hr>
-    <div class="category" (click)="loadCategory('Planned')">
-      <mat-icon>category</mat-icon>
-      <span>Planned</span>
-    </div>
-    <hr>
-    <div class="category" (click)="loadCategory('Tasks')">
-      <mat-icon>category</mat-icon>
-      <span>Tasks</span>
-    </div>
-    <hr class="fancyLine">
+    <hr class="fancyLine" *ngIf="toDoFolders.length >=1">
     <div class="folders" *ngFor="let toDoFolder of toDoFolders">
       <span>
         <app-to-do-folders [toDoFolder]="toDoFolder" (updateData)="getAllToDoFolders()" (getToDos)="getAllToDos()">
@@ -49,7 +39,7 @@
           <h5>You have no todo</h5>
         </div>
       </div>
-      <div  *ngFor="let toDo of toDos">
+      <div *ngFor="let toDo of toDos">
         <app-to-do [toDo]="toDo" (getToDos)="getAllToDos()"></app-to-do>
       </div>
     </div>
