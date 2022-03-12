@@ -8,9 +8,8 @@
         check_circle
       </span>
     </div>
-    <span class="toDo" [contentEditable]="true" [class.lineThrough]="toDo.status === 'done'"
-      (keydown.enter)="updateToDoBody($event.target)">
-      {{toDo.task}} </span>
+    <div class="toDo" [contentEditable]="true" [class.lineThrough]="toDo.status === 'done'"
+      (keydown.enter)="updateToDoBody($event.target)" [innerHtml]="toDo.task | marker : search"></div>
   </div>
   <div>
     <button mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
