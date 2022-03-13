@@ -1,4 +1,13 @@
-mat-dialog-content {
-    overflow: auto;
-    font-size: 17px;
+@media screen and (max-width: 1400px) {
+    mat-dialog-content {
+      overflow: auto;
+      font-size: 17px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    mat-dialog-content {
+      overflow: auto;
+      font-size: 10px;
+    }
 }

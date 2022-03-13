@@ -1,47 +1,55 @@
-.todoDetails {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 17px;
+@media screen and (max-width: 1400px) {
+  .todoDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 17px;
+  }
+
+  .todoDetails>div>div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .todoDetails>button {
+    width: 90%;
+  }
+
+  mat-form-field {
+    width: 20em;
+  }
+
+  mat-icon {
+    cursor: pointer;
+  }
+
+  .icons {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5%;
+  }
+
+  .buttons>button {
+    width: 5em;
+  }
+
+  button[color="warn"] {
+    margin-left: 3em;
+  }
+
+  .displayNone {
+    display: none;
+  }
+
+  mat-spinner {
+    position: absolute;
+    top: 37%;
+    right: 47%;
+  }
 }
 
-.todoDetails>div>div {
-  display: flex;
-  flex-direction: column;
-}
-
-.todoDetails>button {
-  width: 90%;
-}
-
-mat-form-field {
-  width: 20em;
-}
-
-mat-icon{
-  cursor: pointer;
-}
-
-.icons{
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 5%;
-}
-
-.buttons>button {
-  width: 5em;
-}
-
-button[color="warn"]{
-  margin-left: 3em;
-}
-
-.displayNone{
-  display: none;
-}
-
-mat-spinner {
-  position: absolute;
-  top: 37%;
-  right: 47%;
+@media screen and (max-width: 600px) {
+  .todoDetails{
+    font-size: 14px;
+  }
 }

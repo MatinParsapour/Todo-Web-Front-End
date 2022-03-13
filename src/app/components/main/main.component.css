@@ -1,99 +1,135 @@
-.example-sidenav {
-  padding: 20px;
-  width: 300px;
-  font-size: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+@media screen and (max-width: 1400px) {
+  .example-sidenav {
+    padding: 20px;
+    width: 300px;
+    font-size: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .add-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 3em;
+  }
+
+  .add-icon>span:hover {
+    color: green;
+    cursor: pointer;
+  }
+
+  mat-card {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 3em;
+    position: fixed;
+    bottom: 0px;
+    width: 93%;
+    align-items: center;
+  }
+
+  .list:hover {
+    cursor: pointer;
+    color: rgb(46, 61, 201);
+  }
+
+  mat-card>mat-form-field {
+    width: 80%;
+    height: 5em;
+    font-size: 15px;
+  }
+
+  mat-icon:hover {
+    cursor: pointer;
+  }
+
+  .user {
+    left: 0;
+    bottom: 0px;
+    height: 5em;
+    width: 300px;
+    position: fixed;
+    align-items: center;
+    display: flex;
+  }
+
+  .toDos {
+    height: 52.4em;
+    overflow: auto;
+  }
+
+  .toDoMenu {
+    display: flex;
+  }
+
+  .date {
+    width: 6em;
+  }
+
+  .noToDoError {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .noToDoErrorContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .noToDoError>h1 {
+    font-size: 5em;
+  }
+
+  .noToDoError>h5 {
+    font-size: 2em;
+  }
+
+  .fancyLine {
+    border-bottom: 20px solid gray;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-}
+@media screen and (max-width: 992px) {
+  .toDos {
+    height: 58em;
+    overflow: auto;
+  }
 
-.add-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 3em;
-}
-
-.add-icon>span:hover {
-  color: green;
-  cursor: pointer;
-}
-
-mat-card {
-  display: flex;
-  justify-content: space-between;
-  margin-left: 3em;
-  position: fixed;
-  bottom: 0px;
-  width: 93%;
-  align-items: center;
-}
-
-.list:hover {
-  cursor: pointer;
-  color: rgb(46, 61, 201);
-}
-
-mat-card>mat-form-field {
-  width: 80%;
-  height: 5em;
-  font-size: 15px;
-}
-
-mat-icon:hover {
-  cursor: pointer;
-}
-
-.user {
-  left: 0;
-  bottom: 0px;
-  height: 5em;
-  width: 300px;
-  position: fixed;
-  align-items: center;
-  display: flex;
-}
-
-.toDos {
-  height: 52.4em;
-  overflow: auto;
-}
-
-.toDoMenu {
-  display: flex;
-}
-
-.date {
-  width: 6em;
-}
-
-.noToDoError {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.noToDoErrorContainer {
-  display: flex;
-  justify-content: center;
-}
-
-.noToDoError>h1 {
-  font-size: 5em;
-}
-
-.noToDoError>h5 {
-  font-size: 2em;
-}
-
-.fancyLine {
-  border-bottom: 20px solid gray;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  mat-card {
+    width: 48em;
+  }
 }
 
 
+@media screen and (max-width: 768px) {
+  .toDos {
+    height: 200em;
+    overflow: auto;
+  }
+
+  mat-card {
+    width: 48em;
+  }
+}
+
+
+
+@media screen and (max-width: 600px) {
+  .toDos {
+    height: 52em;
+    overflow: auto;
+  }
+
+  mat-card {
+    width: 35.5em;
+  }
+}

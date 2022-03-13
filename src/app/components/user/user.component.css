@@ -1,125 +1,128 @@
-.userDetails {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 17px;
-}
-
-.userDetails>div>div {
-  display: flex;
-  flex-direction: column;
-}
-
-.secondElement {
-  margin-left: 5em;
-}
-
-.userDetails>div {
-  display: flex;
-}
-
-.age {
-  display: flex;
-  flex-direction: column;
-  margin-top: 2%;
-}
-
-.userDetails>button {
-  margin-top: 5%;
-  width: 90%;
-}
-
-mat-form-field {
-  width: 20em;
-}
-
-.header {
-  display: flex;
-  justify-content: space-evenly;
-  width: 43em;
-  border-radius: 5px;
-}
-
-.fnln {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-img {
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-img:hover~.deleteButton {
-  display: block;
-  position: relative;
-  width: 175px;
-  height: 50px;
-  top: -50px;
-  left: 10px;
-  border-radius:0 0 400px 400px;
-  background: transparent;
-  margin-bottom: -50px;
-  transition-property: top;
-  transition-duration: 50s;
-  border-style: none;
-}
-
-.fnlninner {
-  margin-left: 10em;
-  height: 12em;
-  width: 18em;
-  border-radius: 5px;
-}
-
-mat-icon {
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-@keyframes spinner {
-  to {
-    transform: rotate(360deg);
+@media screen and (max-width: 1400px){
+  .userDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 17px;
   }
-}
 
-.spinner:before {
-  content: '';
-  box-sizing: border-box;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  margin-top: -10px;
-  margin-left: -10px;
-  border-radius: 50%;
-  border: 2px solid #ffffff;
-  border-top-color: #000000;
-  animation: spinner .8s linear infinite;
-}
+  .userDetails>div>div {
+    display: flex;
+    flex-direction: column;
+  }
 
-.deleteButton {
-  margin-bottom: -50px;
-  display: none;
-  top: 0
-}
+  .secondElement {
+    margin-left: 5em;
+  }
+
+  .userDetails>div {
+    display: flex;
+  }
+
+  .age {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+  }
+
+  .userDetails>button {
+    margin-top: 5%;
+    width: 90%;
+  }
+
+  mat-form-field {
+    width: 20em;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-evenly;
+    width: 43em;
+    border-radius: 5px;
+  }
+
+  .fnln {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img {
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  img:hover~.deleteButton {
+    display: block;
+    position: relative;
+    width: 175px;
+    height: 50px;
+    top: -50px;
+    left: 10px;
+    border-radius: 0 0 400px 400px;
+    background: transparent;
+    margin-bottom: -50px;
+    transition-property: top;
+    transition-duration: 50s;
+    border-style: none;
+  }
+
+  .fnlninner {
+    margin-left: 10em;
+    height: 12em;
+    width: 18em;
+    border-radius: 5px;
+  }
+
+  mat-icon {
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spinner:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    border-top-color: #000000;
+    animation: spinner .8s linear infinite;
+  }
+
+  .deleteButton {
+    margin-bottom: -50px;
+    display: none;
+    top: 0
+  }
 
 
-.deleteButton:visited {
-  border-style: none;
-  border-color: none;
-  outline: none;
-  color: black;
-}
-.deleteButton:focus {
-  border-style: none;
-  border-color: none;
-  outline: none;
-  color: black;
-}
-.deleteButton:hover{
+  .deleteButton:visited {
+    border-style: none;
+    border-color: none;
+    outline: none;
+    color: black;
+  }
+
+  .deleteButton:focus {
+    border-style: none;
+    border-color: none;
+    outline: none;
+    color: black;
+  }
+
+  .deleteButton:hover {
     display: block;
     position: relative;
     width: 175px;
@@ -127,21 +130,41 @@ mat-icon {
     top: -50px;
     left: 10px;
     color: rgb(255, 255, 255);
-    border-radius:0 0 400px 400px;
+    border-radius: 0 0 400px 400px;
     background: transparent;
     margin-bottom: -50px;
     transition-property: top;
     transition-duration: 50s;
     border-style: none;
-}
-.deleteButton:active {
-  border-style: none;
-  border-color: none;
-  outline: none;
-  color: red;
+  }
+
+  .deleteButton:active {
+    border-style: none;
+    border-color: none;
+    outline: none;
+    color: red;
+  }
+
+  .personIcon {
+    margin-right: 1em;
+    font-size: 150px;
+  }
 }
 
-.personIcon{
-  margin-right: 1em;
-  font-size: 150px;
+@media screen and (max-width: 992px) {
+    .userDetails {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 10px;
+    }
+    .userDetails>div>div {
+      margin-left: 5%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+      .userDetails>div {
+        display: block;
+      }
 }
