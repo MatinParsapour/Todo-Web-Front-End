@@ -43,6 +43,10 @@
         <app-to-do [toDo]="toDo" [search]="searchInput.value" (getToDos)="getAllToDos()"></app-to-do>
       </div>
     </div>
+    <button class="open-input" [class.hid-input]="displayInput" (click)="inputToggle()" mat-fab>
+      <mat-icon [hidden]="!displayInput">arrow_back</mat-icon>
+      <mat-icon [hidden]="displayInput">arrow_forward</mat-icon>
+    </button>
     <mat-card>
       <mat-form-field appearance="outline">
         <mat-label>ToDo</mat-label>

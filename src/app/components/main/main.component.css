@@ -44,6 +44,26 @@
     font-size: 15px;
   }
 
+  mat-card {
+    left: 500em;
+  }
+
+  mat-card:visited {
+    left: 500em;
+  }
+
+  mat-card:focus {
+    left: 0;
+  }
+
+  mat-card:hover {
+    left: 0;
+  }
+
+  mat-card:active {
+    left: 0;
+  }
+
   mat-icon:hover {
     cursor: pointer;
   }
@@ -59,12 +79,33 @@
   }
 
   .toDos {
-    height: 52.4em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     overflow: auto;
   }
 
   .toDoMenu {
     display: flex;
+  }
+
+  .open-input {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    z-index: 99;
+  }
+
+  .open-input:focus~mat-card {
+    transition-property: left;
+    transition-duration: 2s;
+    left: 0;
+  }
+
+  .hid-input:focus~mat-card {
+    transition-property: left;
+    transition-duration: 2s;
+    left: 500em;
   }
 
   .date {
@@ -99,37 +140,22 @@
 }
 
 @media screen and (max-width: 992px) {
-  .toDos {
-    height: 58em;
-    overflow: auto;
-  }
-
   mat-card {
-    width: 48em;
+    width: 90%;
   }
 }
 
 
 @media screen and (max-width: 768px) {
-  .toDos {
-    height: 200em;
-    overflow: auto;
-  }
-
   mat-card {
-    width: 48em;
+    width: 90%;
   }
 }
 
 
 
 @media screen and (max-width: 600px) {
-  .toDos {
-    height: 52em;
-    overflow: auto;
-  }
-
   mat-card {
-    width: 35.5em;
+    width: 80%;
   }
 }
