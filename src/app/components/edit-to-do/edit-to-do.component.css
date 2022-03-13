@@ -1,16 +1,16 @@
-.userDetails {
+.todoDetails {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 17px;
 }
 
-.userDetails>div>div {
+.todoDetails>div>div {
   display: flex;
   flex-direction: column;
 }
 
-.userDetails>button {
+.todoDetails>button {
   width: 90%;
 }
 
