@@ -1,4 +1,4 @@
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 2000px){
   @keyframes spinner {
     to {
       transform: rotate(360deg);
@@ -28,7 +28,8 @@
     background-image: url("../../../assets/images/jacob-dyer-R3ut7WOmeto-unsplash.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 41.46em;
+    height: 100%;
+    align-items: center;
     border-style: solid;
     border-color: rgb(255, 255, 255);
     border-radius: 20px;
@@ -66,6 +67,7 @@
 
   .main {
     display: flex;
+    height: 100%;
   }
 
   .pictureContainer {
