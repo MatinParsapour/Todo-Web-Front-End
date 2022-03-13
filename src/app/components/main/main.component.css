@@ -45,10 +45,14 @@
   }
 
   mat-card {
+    transition-property: left;
+    transition-duration: 2s;
     left: 500em;
   }
 
   mat-card:visited {
+    transition-property: left;
+    transition-duration: 2s;
     left: 500em;
   }
 
