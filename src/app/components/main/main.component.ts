@@ -107,7 +107,7 @@ export class MainComponent implements OnInit {
   }
 
   openUserComponent() {
-    return this.dialog.open(UserComponent).afterClosed();
+    return this.dialog.open(UserComponent, {width: '80em'}).afterClosed();
   }
 
   openGetResetEmailComponent() {
