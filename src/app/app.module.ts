@@ -56,6 +56,8 @@ import { SummaryPipesPipe } from './pipes/summary-pipes.pipe';
 import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
 import { CategoryComponent } from './components/category/category.component';
 import { MarkerPipe } from './pipes/marker.pipe';
+import { GoogleLoginProvider, SocialAuthService, SocialAuthServiceConfig } from 'angularx-social-login';
+
 const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {
@@ -148,7 +150,7 @@ const customNotifierOptions: NotifierOptions = {
     MatMenuModule,
     MatTableModule,
     MatSelectModule,
-    NgImageSliderModule
+    NgImageSliderModule,
   ],
   providers: [
     RegisterService,
@@ -160,6 +162,21 @@ const customNotifierOptions: NotifierOptions = {
     ToDoService,
     UserService,
     PhoneNumberService,
+    SocialAuthService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '124532971602-7m28ejks02ms2gickoqapu97bnuak9dl.apps.googleusercontent.com'
+            ),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
   ],
   bootstrap: [AppComponent],
 })
