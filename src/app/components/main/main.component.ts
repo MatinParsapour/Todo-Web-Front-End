@@ -192,6 +192,9 @@ export class MainComponent implements OnInit {
           });
         },
         (error: HttpErrorResponse) => {
+          if (error.status === 500) {
+            this.loadCategory("tasks")
+          }
           console.log(error);
         }
       );
