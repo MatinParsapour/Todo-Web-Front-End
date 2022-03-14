@@ -1,3 +1,4 @@
+import { AggreementComponent } from './../aggreement/aggreement.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NotificationService } from './../../services/notification/notification.service';
@@ -135,6 +136,14 @@ export class UserComponent implements OnInit {
         
       }
     )
+  }
+
+  openDeleteAccountAggreement(){
+    this.dialog.open(AggreementComponent, {data: {title: "Are you sure you want to delete your account"}}).afterClosed().subscribe((response:any) => {
+      if (response === 'Yes') {
+        this.deleteAccount()
+      }
+    })
   }
 
   openFullScreen(){
