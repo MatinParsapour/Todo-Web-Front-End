@@ -1,7 +1,7 @@
+import { Router } from '@angular/router';
 import { RegisterService } from './../../services/register/register.service';
 import { EmailValidator } from './email.validator';
 import { UsernameValidator } from './username.validator';
-import { CaptchaComponent } from './../captcha/captcha.component';
 import { MatDialog } from '@angular/material/dialog';
 import { slideToDown } from './../../animations';
 import { FormValidator } from './FormValidator';
@@ -12,6 +12,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationType } from 'src/app/enum/notification-type';
 
 @Component({
   selector: 'app-register',
@@ -22,12 +24,15 @@ import {
 export class RegisterComponent implements OnInit {
   isLoading = false;
   user: FormGroup;
-
+  siteKey: string = '6Lc7ct0eAAAAAD0Jqa_1Eih2MiucxWAGsDpRpOVn';
+  registerService: any;
+  notifier: any;
   constructor(
     formBuilder: FormBuilder,
     private dialog: MatDialog,
     private usernameValidator: UsernameValidator,
-    private emailValidator: EmailValidator
+    private emailValidator: EmailValidator,
+    private router: Router
   ) {
     this.user = formBuilder.group(
       {
@@ -38,6 +43,7 @@ export class RegisterComponent implements OnInit {
           [Validators.required, Validators.minLength(5)],
           this.usernameValidator.validate
         ),
+        recaptcha: ['', Validators.required],
         email: new FormControl(
           '',
           [Validators.required, Validators.email],
@@ -59,21 +65,19 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   registerUser() {
-    this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-      this.dialog.open(CaptchaComponent, {
-        data: {
-          url: '/login',
-          ok:
-            'Dear ' +
-            this.firstName.value +
-            ' check your inbox for confirmation email',
-          fail: 'The captcha is invalid',
-          user: this.user.value,
-        },
-      });
-    }, 2000);
+    this.isLoading = true
+    this.registerService.create('add-user', this.user).subscribe(
+      () => {
+        this.notifier.notify(NotificationType.SUCCESS, "Your account registered successfully");
+        this.router.navigateByUrl("/login");
+        this.dialog.closeAll();
+        this.isLoading = false
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.message);
+        this.isLoading = false
+      }
+    );
   }
 
   getFirstNameErrorMessages() {
@@ -122,6 +126,9 @@ export class RegisterComponent implements OnInit {
 
   get firstName(): any {
     return this.user.get('firstName');
+  }
+  get recaptcha(): any {
+    return this.user.get('recaptcha');
   }
   get lastName(): any {
     return this.user.get('lastName');
