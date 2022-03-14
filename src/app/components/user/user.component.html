@@ -13,7 +13,7 @@
           <input type="file" (change)="changeProfileImage($event)" id="select-picture" accept="image/*">
         </form>
       </div>
-      <div class="fnln">
+      <div class="fnln" [class.margintop]="!user.profileImageUrl">
         <div class="fnlninner">
           <div>
             <p> First name : <span #fName (blur)="user.firstName = fName.innerText" [contentEditable]="true">
