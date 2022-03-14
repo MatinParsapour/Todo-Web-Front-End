@@ -58,10 +58,11 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    this.user.get('userName')?.setValue(this.socialUser.email);
-    this.user.get('password')?.setValue("MMmm11!!11");
-    this.login();
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(() => {
+      this.user.get('userName')?.setValue(this.socialUser.email);
+      this.user.get('password')?.setValue("MMmm11!!11");
+      this.login();
+    });
   }
 
   login() {

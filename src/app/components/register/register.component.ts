@@ -15,7 +15,11 @@ import {
 } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationType } from 'src/app/enum/notification-type';
-import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+  SocialAuthService,
+  SocialUser,
+} from 'angularx-social-login';
 
 @Component({
   selector: 'app-register',
@@ -72,14 +76,13 @@ export class RegisterComponent implements OnInit {
     this.socialAuthService.authState.subscribe((user) => {
       this.socialUser = user;
       this.isLoggedin = user != null;
-      console.log(this.socialUser);
     });
   }
 
   registerUser() {
     this.isLoading = true;
     console.log(this.user.value);
-    
+
     this.registerService.create('add-user', this.user.value).subscribe(
       () => {
         this.notifier.notify(
@@ -98,13 +101,14 @@ export class RegisterComponent implements OnInit {
   }
 
   loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    this.user.get('firstName')?.setValue(this.socialUser.firstName)
-    this.user.get('lastName')?.setValue(this.socialUser.lastName)
-    this.user.get('userName')?.setValue(this.socialUser.email)
-    this.user.get('email')?.setValue(this.socialUser.email)
-    this.user.get('password')?.setValue("MMmm11!!11")
-    this.registerUser()
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((response: any) => {
+      this.user.get('firstName')?.setValue(this.socialUser.firstName);
+      this.user.get('lastName')?.setValue(this.socialUser.lastName);
+      this.user.get('userName')?.setValue(this.socialUser.email);
+      this.user.get('email')?.setValue(this.socialUser.email);
+      this.user.get('password')?.setValue('MMmm11!!11');
+      this.registerUser();
+    });
   }
 
   getFirstNameErrorMessages() {
