@@ -13,6 +13,7 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationType } from 'src/app/enum/notification-type';
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -24,13 +25,16 @@ export class LoginComponent implements OnInit {
   isLoading = false;
   user: FormGroup;
   siteKey: string = '6Lc7ct0eAAAAAD0Jqa_1Eih2MiucxWAGsDpRpOVn';
+  socialUser!: SocialUser;
+  isLoggedin!: boolean;
 
   constructor(
     fb: FormBuilder,
     private dialog: MatDialog,
     private loginService: LoginService,
     private notifier: NotificationService,
-    private router: Router
+    private router: Router,
+    private socialAuthService: SocialAuthService
   ) {
     this.user = fb.group({
       userName: new FormControl('', [
@@ -45,9 +49,22 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+        this.socialAuthService.authState.subscribe((user) => {
+      this.socialUser = user;
+      this.isLoggedin = user != null;
+      console.log(this.socialUser);
+    });
+  }
 
-  showResult() {
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.user.get('userName')?.setValue(this.socialUser.email);
+    this.user.get('password')?.setValue("MMmm11!!11");
+    this.login();
+  }
+
+  login() {
     this.isLoading = true;
     this.loginService.create('/log-in', this.user.value).subscribe(
       (response: any) => {

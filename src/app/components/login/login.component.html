@@ -4,6 +4,7 @@
   </div>
   <div class="container">
     <span @fade>Welcome</span>
+    <img @fade (click)="loginWithGoogle()" src="https://img.icons8.com/color/48/000000/google-logo.png" />
     <form class="logInForm" [formGroup]="user">
       <mat-form-field @fade appearance="outline">
         <mat-label>Username</mat-label>
@@ -17,7 +18,8 @@
       </mat-form-field>
         <ngx-recaptcha2 @fade #captchaElem [siteKey]="siteKey" [formControl]="recaptcha">
         </ngx-recaptcha2>
-      <button @fade [disabled]="user.invalid || isLoading" [class.spinner]="isLoading" (click)="showResult()" mat-raised-button color="primary">Login</button>
+      <button @fade [disabled]="user.invalid || isLoading" [class.spinner]="isLoading" (click)="login()"
+        mat-raised-button color="primary">Login</button>
     </form>
     <button @fade mat-raised-button color="accent" (click)="openForgetPassword()">Forget password</button>
     <div @fade class="d-flex justify-content-center links">
