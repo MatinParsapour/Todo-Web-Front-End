@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/notification/notification.service';
 import { Router } from '@angular/router';
 import { RegisterService } from './../../services/register/register.service';
 import { EmailValidator } from './email.validator';
@@ -5,7 +6,7 @@ import { UsernameValidator } from './username.validator';
 import { MatDialog } from '@angular/material/dialog';
 import { slideToDown } from './../../animations';
 import { FormValidator } from './FormValidator';
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -14,6 +15,7 @@ import {
 } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationType } from 'src/app/enum/notification-type';
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 
 @Component({
   selector: 'app-register',
@@ -25,14 +27,18 @@ export class RegisterComponent implements OnInit {
   isLoading = false;
   user: FormGroup;
   siteKey: string = '6Lc7ct0eAAAAAD0Jqa_1Eih2MiucxWAGsDpRpOVn';
-  registerService: any;
-  notifier: any;
+  onSignIn = 'onSignIn';
+  socialUser!: SocialUser;
+  isLoggedin!: boolean;
   constructor(
     formBuilder: FormBuilder,
     private dialog: MatDialog,
     private usernameValidator: UsernameValidator,
     private emailValidator: EmailValidator,
-    private router: Router
+    private router: Router,
+    private socialAuthService: SocialAuthService,
+    private registerService: RegisterService,
+    private notifier: NotificationService
   ) {
     this.user = formBuilder.group(
       {
@@ -62,22 +68,43 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.socialAuthService.authState.subscribe((user) => {
+      this.socialUser = user;
+      this.isLoggedin = user != null;
+      console.log(this.socialUser);
+    });
+  }
 
   registerUser() {
-    this.isLoading = true
-    this.registerService.create('add-user', this.user).subscribe(
+    this.isLoading = true;
+    console.log(this.user.value);
+    
+    this.registerService.create('add-user', this.user.value).subscribe(
       () => {
-        this.notifier.notify(NotificationType.SUCCESS, "Your account registered successfully");
-        this.router.navigateByUrl("/login");
+        this.notifier.notify(
+          NotificationType.SUCCESS,
+          'Your account registered successfully'
+        );
+        this.router.navigateByUrl('/login');
         this.dialog.closeAll();
-        this.isLoading = false
+        this.isLoading = false;
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.message);
-        this.isLoading = false
+        this.isLoading = false;
       }
     );
+  }
+
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.user.get('firstName')?.setValue(this.socialUser.firstName)
+    this.user.get('lastName')?.setValue(this.socialUser.lastName)
+    this.user.get('userName')?.setValue(this.socialUser.email)
+    this.user.get('email')?.setValue(this.socialUser.email)
+    this.user.get('password')?.setValue("MMmm11!!11")
+    this.registerUser()
   }
 
   getFirstNameErrorMessages() {

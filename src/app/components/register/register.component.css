@@ -1,4 +1,4 @@
-@media screen and (max-width: 2000px){
+@media screen and (max-width: 2000px) {
   @keyframes spinner {
     to {
       transform: rotate(360deg);
@@ -68,7 +68,11 @@
   .main {
     display: flex;
     height: 100%;
-    font-size: 15px;
+    font-size: 13px;
+  }
+
+  .container> img:hover{
+    cursor: pointer;
   }
 
   .pictureContainer {
@@ -98,14 +102,15 @@
   }
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 600px) {
 
-    .form>div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .form>div>mat-form-field {
-      width: 40%;
-    }
+  .form>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form>div>mat-form-field {
+    width: 40%;
+  }
 }
