@@ -15,6 +15,8 @@
         <input [formControl]="password" matInput autocomplete="off" type="password">
         <mat-error *ngIf="password.invalid">{{getPasswordErrorMessages()}}</mat-error>
       </mat-form-field>
+        <ngx-recaptcha2 @fade #captchaElem [siteKey]="siteKey" [formControl]="recaptcha">
+        </ngx-recaptcha2>
       <button @fade [disabled]="user.invalid || isLoading" [class.spinner]="isLoading" (click)="showResult()" mat-raised-button color="primary">Login</button>
     </form>
     <button @fade mat-raised-button color="accent" (click)="openForgetPassword()">Forget password</button>

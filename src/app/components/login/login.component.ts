@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { NotificationService } from './../../services/notification/notification.service';
 import { LoginService } from './../../services/login/login.service';
-import { CaptchaComponent } from './../captcha/captcha.component';
 import { ForgetPasswordComponent } from './../forget-password/forget-password.component';
 import { slideToDown } from './../../animations';
 import { Component, OnInit } from '@angular/core';
@@ -24,6 +23,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 export class LoginComponent implements OnInit {
   isLoading = false;
   user: FormGroup;
+  siteKey: string = '6Lc7ct0eAAAAAD0Jqa_1Eih2MiucxWAGsDpRpOVn';
 
   constructor(
     fb: FormBuilder,
@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
         Validators.required,
         Validators.minLength(10),
       ]),
+      recaptcha: ['', Validators.required],
     });
   }
 
@@ -51,18 +52,21 @@ export class LoginComponent implements OnInit {
     this.loginService.create('/log-in', this.user.value).subscribe(
       (response: any) => {
         if (response !== null) {
-          this.notifier.notify(NotificationType.SUCCESS, 'You are logged in');        
-          localStorage.setItem("username", response.userName)
-          localStorage.setItem("firstName", response.firstName)
-          localStorage.setItem("lastName", response.lastName)
-          this.router.navigateByUrl('/main')
+          this.notifier.notify(NotificationType.SUCCESS, 'You are logged in');
+          localStorage.setItem('username', response.userName);
+          localStorage.setItem('firstName', response.firstName);
+          localStorage.setItem('lastName', response.lastName);
+          this.router.navigateByUrl('/main');
         } else {
-          this.notifier.notify(NotificationType.ERROR,'Username or password is wrong');
+          this.notifier.notify(
+            NotificationType.ERROR,
+            'Username or password is wrong'
+          );
         }
         this.isLoading = false;
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR,error.message);
+        this.notifier.notify(NotificationType.ERROR, error.message);
         this.isLoading = false;
       }
     );
@@ -97,5 +101,8 @@ export class LoginComponent implements OnInit {
   }
   get password(): any {
     return this.user.get('password');
+  }
+  get recaptcha(): any {
+    return this.user.get('recaptcha');
   }
 }
