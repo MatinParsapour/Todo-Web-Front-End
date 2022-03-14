@@ -1,5 +1,6 @@
 <div *ngIf="open" class="viewer-container">
-    <div class="viewer-content">
-        <img [src]="imageUrl" class="main-img">
-    </div>
+  <div class="viewer-content">
+    <img [src]="imageUrl" class="main-img">
+  </div>
+  <button mat-button class="deleteButton" (click)="deleteProfile()"><mat-icon>delete</mat-icon></button>
 </div>
