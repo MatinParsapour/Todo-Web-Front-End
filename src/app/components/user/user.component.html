@@ -1,5 +1,5 @@
 <mat-dialog-content>
-  <app-image-viewer [imageUrl]="user.profileImageUrl" [open]="fullScreen" (click)="closeFullScreen()">
+  <app-image-viewer [imageUrl]="user.profileImageUrl" [open]="fullScreen" (click)="closeFullScreen()" (delete)="deleteProfile()">
   </app-image-viewer>
   <div class="userDetails" [class.spinner]="isLoading">
     <div class="header">
