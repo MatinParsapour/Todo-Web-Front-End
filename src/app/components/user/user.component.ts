@@ -1,3 +1,5 @@
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { NotificationService } from './../../services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +21,9 @@ export class UserComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private notifier: NotificationService
+    private notifier: NotificationService,
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -111,6 +115,22 @@ export class UserComponent implements OnInit {
         this.getUser()
       }, 
       (error: HttpErrorResponse) => {
+        console.log(error);
+        
+      }
+    )
+  }
+
+  deleteAccount(){
+    this.userService.delete("/user/delete-account/" + localStorage.getItem("username")).subscribe(
+      (response: any) => {
+        this.notifier.notify(NotificationType.SUCCESS, "Your account deleted successfully")
+        this.dialog.closeAll()
+        localStorage.clear()
+        this.router.navigateByUrl("/login")
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, "Something went wrong your account didn't delete")
         console.log(error);
         
       }
