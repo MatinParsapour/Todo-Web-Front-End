@@ -8,6 +8,7 @@ import { ForgetPasswordService } from './services/forget-password/forget-passwor
 import { RegisterService } from './services/register/register.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +25,6 @@ import {MatIconModule} from '@angular/material/icon';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component'
 import { NotifierOptions, NotifierModule } from 'angular-notifier';
 import { ValidateEmailComponent } from './components/validate-email/validate-email.component';
-import { CaptchaComponent } from './components/captcha/captcha.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -104,7 +104,6 @@ const customNotifierOptions: NotifierOptions = {
     RegisterComponent,
     ForgetPasswordComponent,
     ValidateEmailComponent,
-    CaptchaComponent,
     ResetPasswordComponent,
     NotFoundComponent,
     MainComponent,
@@ -134,6 +133,7 @@ const customNotifierOptions: NotifierOptions = {
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
+    NgxCaptchaModule,
     MatInputModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
@@ -148,7 +148,7 @@ const customNotifierOptions: NotifierOptions = {
     MatMenuModule,
     MatTableModule,
     MatSelectModule,
-    NgImageSliderModule,
+    NgImageSliderModule
   ],
   providers: [
     RegisterService,
