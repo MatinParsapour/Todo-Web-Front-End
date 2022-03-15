@@ -58,8 +58,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.redirectToMainIfUserSignedIn()
-    this.authenticateUserForSignIn()
+    this.redirectToMainIfUserSignedIn();
+    this.authenticateUserForSignIn();
   }
 
   authenticateUserForSignIn() {
@@ -69,17 +69,16 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  redirectToMainIfUserSignedIn(){
-    const username = localStorage.getItem("username")
+  redirectToMainIfUserSignedIn() {
+    const username = localStorage.getItem('username');
     if (username !== null) {
-      this.router.navigateByUrl('/main')
+      this.router.navigateByUrl('/main');
     }
   }
 
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(() => {
       this.initializeUser();
-      this.updateLocalStorage();
       this.signInUser();
     });
   }
@@ -89,7 +88,6 @@ export class LoginComponent implements OnInit {
       .signIn(FacebookLoginProvider.PROVIDER_ID)
       .then(() => {
         this.initializeUser();
-        this.updateLocalStorage();
         this.signInUser();
       });
   }
@@ -102,6 +100,7 @@ export class LoginComponent implements OnInit {
           'You logged in successfully'
         );
         this.router.navigateByUrl('/main');
+        this.updateLocalStorage(response);
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, 'Something went wrong');
@@ -118,10 +117,10 @@ export class LoginComponent implements OnInit {
     this.user.get('password')?.setValue('MMmm11!!11');
   }
 
-  updateLocalStorage() {
-    localStorage.setItem('username', this.socialUser.email);
-    localStorage.setItem('firstName', this.socialUser.firstName);
-    localStorage.setItem('lastName', this.socialUser.lastName);
+  updateLocalStorage(user: any) {
+    localStorage.setItem('username', user.userName);
+    localStorage.setItem('firstName', user.firstName);
+    localStorage.setItem('lastName', user.lastName);
   }
 
   login() {
@@ -130,7 +129,7 @@ export class LoginComponent implements OnInit {
       (response: any) => {
         if (response !== null) {
           this.notifier.notify(NotificationType.SUCCESS, 'You are logged in');
-          this.updateLocalStorage();
+          this.updateLocalStorage(response);
           this.router.navigateByUrl('/main');
         } else {
           this.notifier.notify(
