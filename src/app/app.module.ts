@@ -15,14 +15,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button'
-import {MatFormFieldModule} from '@angular/material/form-field'
-import {MatInputModule} from '@angular/material/input';
-import { RegisterComponent } from './components/register/register.component'
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
-import {MatIconModule} from '@angular/material/icon';
-import { ForgetPasswordComponent } from './components/forget-password/forget-password.component'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { NotifierOptions, NotifierModule } from 'angular-notifier';
 import { ValidateEmailComponent } from './components/validate-email/validate-email.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
@@ -30,13 +30,13 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResetPasswordService } from './services/reset-password/reset-password.service';
 import { MainComponent } from './components/main/main.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { InsertFolderComponent } from './components/insert-folder/insert-folder.component';
 import { InsertListComponent } from './components/insert-list/insert-list.component';
 import { ToDoFoldersComponent } from './components/to-do-folders/to-do-folders.component';
-import { ToDoComponent } from './components/to-do/to-do.component'
-import {MatCardModule} from '@angular/material/card'
-import {MatTooltipModule} from '@angular/material/tooltip'
+import { ToDoComponent } from './components/to-do/to-do.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
@@ -56,7 +56,12 @@ import { SummaryPipesPipe } from './pipes/summary-pipes.pipe';
 import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
 import { CategoryComponent } from './components/category/category.component';
 import { MarkerPipe } from './pipes/marker.pipe';
-import { GoogleLoginProvider, SocialAuthService, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthService,
+  SocialAuthServiceConfig,
+} from 'angularx-social-login';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -173,6 +178,10 @@ const customNotifierOptions: NotifierOptions = {
             provider: new GoogleLoginProvider(
               '124532971602-7m28ejks02ms2gickoqapu97bnuak9dl.apps.googleusercontent.com'
             ),
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('631558524611136'),
           },
         ],
       } as SocialAuthServiceConfig,
