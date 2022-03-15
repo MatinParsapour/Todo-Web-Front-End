@@ -74,10 +74,22 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.redirectToMainIfUserSignedIn()
+    this.authenticateUserForSignIn()
+  }
+
+  authenticateUserForSignIn() {
     this.socialAuthService.authState.subscribe((user) => {
       this.socialUser = user;
       this.isLoggedin = user != null;
     });
+  }
+
+  redirectToMainIfUserSignedIn() {
+    const username = localStorage.getItem('username');
+    if (username !== null) {
+      this.router.navigateByUrl('/main');
+    }
   }
 
   registerUser() {
@@ -90,7 +102,7 @@ export class RegisterComponent implements OnInit {
           NotificationType.SUCCESS,
           'Your account registered successfully'
         );
-        this.updateLocalStorage()
+        this.updateLocalStorage();
         this.router.navigateByUrl('/login');
         this.dialog.closeAll();
         this.isLoading = false;
@@ -106,8 +118,8 @@ export class RegisterComponent implements OnInit {
     this.socialAuthService
       .signIn(GoogleLoginProvider.PROVIDER_ID)
       .then((response: any) => {
-        this.initializeUser()
-        this.updateLocalStorage()
+        this.initializeUser();
+        this.updateLocalStorage();
         this.signInUser();
       });
   }
@@ -117,7 +129,7 @@ export class RegisterComponent implements OnInit {
       .signIn(FacebookLoginProvider.PROVIDER_ID)
       .then(() => {
         this.initializeUser();
-        this.updateLocalStorage()
+        this.updateLocalStorage();
         this.signInUser();
       });
   }
