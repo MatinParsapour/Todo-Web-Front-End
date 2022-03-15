@@ -83,8 +83,6 @@ export class RegisterComponent implements OnInit {
 
   registerUser() {
     this.isLoading = true;
-    console.log(this.user.value);
-
     this.registerService.create('add-user', this.user.value).subscribe(
       (response: any) => {
         this.notifier.notify(
