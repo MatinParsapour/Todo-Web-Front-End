@@ -62,6 +62,9 @@ import {
   SocialAuthService,
   SocialAuthServiceConfig,
 } from 'angularx-social-login';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { GoogleSignInComponent } from './components/google-sign-in/google-sign-in.component';
+import { FacebookSignInComponent } from './components/facebook-sign-in/facebook-sign-in.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -131,6 +134,9 @@ const customNotifierOptions: NotifierOptions = {
     ImageViewerComponent,
     CategoryComponent,
     MarkerPipe,
+    SignInComponent,
+    GoogleSignInComponent,
+    FacebookSignInComponent,
   ],
   imports: [
     BrowserModule,
