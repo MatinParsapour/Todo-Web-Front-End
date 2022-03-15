@@ -13,7 +13,12 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationType } from 'src/app/enum/notification-type';
-import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthService,
+  SocialUser,
+} from 'angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -37,6 +42,9 @@ export class LoginComponent implements OnInit {
     private socialAuthService: SocialAuthService
   ) {
     this.user = fb.group({
+      firstName: new FormControl(''),
+      lastName: new FormControl(''),
+      email: new FormControl(''),
       userName: new FormControl('', [
         Validators.required,
         Validators.minLength(5),
@@ -59,9 +67,9 @@ export class LoginComponent implements OnInit {
 
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(() => {
-      this.user.get('userName')?.setValue(this.socialUser.email);
-      this.user.get('password')?.setValue('MMmm11!!11');
-      this.login();
+      this.initializeUser();
+      this.updateLocalStorage();
+      this.signInUser();
     });
   }
 
@@ -69,9 +77,40 @@ export class LoginComponent implements OnInit {
     this.socialAuthService
       .signIn(FacebookLoginProvider.PROVIDER_ID)
       .then(() => {
-        this.user.get('userName')?.setValue(this.socialUser.email);
-        this.user.get('password')?.setValue('MMmm11!!11');
+        this.initializeUser();
+        this.updateLocalStorage();
+        this.signInUser();
       });
+  }
+
+  signInUser() {
+    this.loginService.create('/sign-in', this.user.value).subscribe(
+      (response: any) => {
+        this.notifier.notify(
+          NotificationType.SUCCESS,
+          'You logged in successfully'
+        );
+        this.router.navigateByUrl('/main');
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, 'Something went wrong');
+        console.log(error);
+      }
+    );
+  }
+
+  initializeUser() {
+    this.user.get('firstName')?.setValue(this.socialUser.firstName);
+    this.user.get('lastName')?.setValue(this.socialUser.lastName);
+    this.user.get('userName')?.setValue(this.socialUser.email);
+    this.user.get('email')?.setValue(this.socialUser.email);
+    this.user.get('password')?.setValue('MMmm11!!11');
+  }
+
+  updateLocalStorage() {
+    localStorage.setItem('username', this.socialUser.email);
+    localStorage.setItem('firstName', this.socialUser.firstName);
+    localStorage.setItem('lastName', this.socialUser.lastName);
   }
 
   login() {
@@ -80,9 +119,7 @@ export class LoginComponent implements OnInit {
       (response: any) => {
         if (response !== null) {
           this.notifier.notify(NotificationType.SUCCESS, 'You are logged in');
-          localStorage.setItem('username', response.userName);
-          localStorage.setItem('firstName', response.firstName);
-          localStorage.setItem('lastName', response.lastName);
+          this.updateLocalStorage()
           this.router.navigateByUrl('/main');
         } else {
           this.notifier.notify(
