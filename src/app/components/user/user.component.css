@@ -6,6 +6,19 @@
     font-size: 17px;
   }
 
+  .logout:visited{
+    color: white;
+  }
+  .logout:focus{
+    color: rgb(185, 25, 25);
+  }
+  .logout:hover{
+    color: rgb(235, 0, 0);
+  }
+  .logout:active{
+    color: rgb(87, 16, 16);
+  }
+
   .userDetails>div>div {
     display: flex;
     flex-direction: column;

@@ -19,6 +19,7 @@ export class UserComponent implements OnInit {
   isLoading: boolean = false;
   public profileImage: any;
   fullScreen = false
+  now = new Date()
 
   constructor(
     private userService: UserService,
@@ -136,6 +137,12 @@ export class UserComponent implements OnInit {
         
       }
     )
+  }
+
+  logout(){
+    localStorage.clear()
+    this.router.navigateByUrl("/login")
+    this.dialog.closeAll()
   }
 
   openDeleteAccountAggreement(){
