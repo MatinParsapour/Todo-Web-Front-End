@@ -74,8 +74,8 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.redirectToMainIfUserSignedIn()
-    this.authenticateUserForSignIn()
+    this.redirectToMainIfUserSignedIn();
+    this.authenticateUserForSignIn();
   }
 
   authenticateUserForSignIn() {
@@ -97,12 +97,12 @@ export class RegisterComponent implements OnInit {
     console.log(this.user.value);
 
     this.registerService.create('add-user', this.user.value).subscribe(
-      () => {
+      (response: any) => {
         this.notifier.notify(
           NotificationType.SUCCESS,
           'Your account registered successfully'
         );
-        this.updateLocalStorage();
+        this.updateLocalStorage(response);
         this.router.navigateByUrl('/login');
         this.dialog.closeAll();
         this.isLoading = false;
@@ -119,7 +119,6 @@ export class RegisterComponent implements OnInit {
       .signIn(GoogleLoginProvider.PROVIDER_ID)
       .then((response: any) => {
         this.initializeUser();
-        this.updateLocalStorage();
         this.signInUser();
       });
   }
@@ -129,7 +128,6 @@ export class RegisterComponent implements OnInit {
       .signIn(FacebookLoginProvider.PROVIDER_ID)
       .then(() => {
         this.initializeUser();
-        this.updateLocalStorage();
         this.signInUser();
       });
   }
@@ -142,6 +140,7 @@ export class RegisterComponent implements OnInit {
           'You logged in successfully'
         );
         this.router.navigateByUrl('/main');
+        this.updateLocalStorage(response);
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, 'Something went wrong');
@@ -158,10 +157,10 @@ export class RegisterComponent implements OnInit {
     this.user.get('password')?.setValue('MMmm11!!11');
   }
 
-  updateLocalStorage() {
-    localStorage.setItem('username', this.socialUser.email);
-    localStorage.setItem('firstName', this.socialUser.firstName);
-    localStorage.setItem('lastName', this.socialUser.lastName);
+  updateLocalStorage(user: any) {
+    localStorage.setItem('username', user.email);
+    localStorage.setItem('firstName', user.firstName);
+    localStorage.setItem('lastName', user.lastName);
   }
 
   getFirstNameErrorMessages() {
