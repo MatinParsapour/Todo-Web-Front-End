@@ -4,10 +4,7 @@
   </div>
   <div class="container">
     <span @fade>Welcome</span>
-    <div>
-      <img @fade (click)="loginWithGoogle()" src="https://img.icons8.com/color/48/000000/google-logo.png" />
-      <img @fade (click)="loginWithFacebook()" src="https://img.icons8.com/fluency/48/000000/facebook-new.png" />
-    </div>
+    <app-sign-in></app-sign-in>
     <form class="logInForm" [formGroup]="user">
       <mat-form-field @fade appearance="outline">
         <mat-label>Username</mat-label>
