@@ -42,9 +42,6 @@ export class LoginComponent implements OnInit {
     private socialAuthService: SocialAuthService
   ) {
     this.user = fb.group({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      email: new FormControl(''),
       userName: new FormControl('', [
         Validators.required,
         Validators.minLength(5),
@@ -59,62 +56,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.redirectToMainIfUserSignedIn();
-    this.authenticateUserForSignIn();
   }
 
-  authenticateUserForSignIn() {
-    this.socialAuthService.authState.subscribe((user) => {
-      this.socialUser = user;
-      this.isLoggedin = user != null;
-    });
-  }
 
   redirectToMainIfUserSignedIn() {
     const username = localStorage.getItem('username');
     if (username !== null) {
       this.router.navigateByUrl('/main');
     }
-  }
-
-  loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(() => {
-      this.initializeUser();
-      this.signInUser();
-    });
-  }
-
-  loginWithFacebook(): void {
-    this.socialAuthService
-      .signIn(FacebookLoginProvider.PROVIDER_ID)
-      .then(() => {
-        this.initializeUser();
-        this.signInUser();
-      });
-  }
-
-  signInUser() {
-    this.loginService.create('/sign-in', this.user.value).subscribe(
-      (response: any) => {
-        this.notifier.notify(
-          NotificationType.SUCCESS,
-          'You logged in successfully'
-        );
-        this.router.navigateByUrl('/main');
-        this.updateLocalStorage(response);
-      },
-      (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, 'Something went wrong');
-        console.log(error);
-      }
-    );
-  }
-
-  initializeUser() {
-    this.user.get('firstName')?.setValue(this.socialUser.firstName);
-    this.user.get('lastName')?.setValue(this.socialUser.lastName);
-    this.user.get('userName')?.setValue(this.socialUser.email);
-    this.user.get('email')?.setValue(this.socialUser.email);
-    this.user.get('password')?.setValue('MMmm11!!11');
   }
 
   updateLocalStorage(user: any) {
