@@ -58,11 +58,22 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.redirectToMainIfUserSignedIn()
+    this.authenticateUserForSignIn()
+  }
+
+  authenticateUserForSignIn() {
     this.socialAuthService.authState.subscribe((user) => {
       this.socialUser = user;
       this.isLoggedin = user != null;
-      console.log(this.socialUser);
     });
+  }
+
+  redirectToMainIfUserSignedIn(){
+    const username = localStorage.getItem("username")
+    if (username !== null) {
+      this.router.navigateByUrl('/main')
+    }
   }
 
   loginWithGoogle(): void {
@@ -119,7 +130,7 @@ export class LoginComponent implements OnInit {
       (response: any) => {
         if (response !== null) {
           this.notifier.notify(NotificationType.SUCCESS, 'You are logged in');
-          this.updateLocalStorage()
+          this.updateLocalStorage();
           this.router.navigateByUrl('/main');
         } else {
           this.notifier.notify(
