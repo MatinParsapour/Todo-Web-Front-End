@@ -1,7 +1,10 @@
 <div class="main">
   <div class="container">
     <span @fade>Welcome</span>
-    <img @fade (click)="loginWithGoogle()" src="https://img.icons8.com/color/48/000000/google-logo.png" />
+    <div>
+      <img @fade (click)="loginWithGoogle()" src="https://img.icons8.com/color/48/000000/google-logo.png" />
+      <img @fade (click)="loginWithFacebook()" src="https://img.icons8.com/fluency/48/000000/facebook-new.png" />
+    </div>
     <form class="form" [formGroup]="user">
       <mat-form-field @fade appearance="fill">
         <mat-label>First name</mat-label>

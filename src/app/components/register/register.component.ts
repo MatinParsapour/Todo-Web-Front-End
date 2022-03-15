@@ -16,6 +16,7 @@ import {
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationType } from 'src/app/enum/notification-type';
 import {
+  FacebookLoginProvider,
   GoogleLoginProvider,
   SocialAuthService,
   SocialUser,
@@ -101,13 +102,26 @@ export class RegisterComponent implements OnInit {
   }
 
   loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((response: any) => {
+    this.socialAuthService
+      .signIn(GoogleLoginProvider.PROVIDER_ID)
+      .then((response: any) => {
+        this.user.get('firstName')?.setValue(this.socialUser.firstName);
+        this.user.get('lastName')?.setValue(this.socialUser.lastName);
+        this.user.get('userName')?.setValue(this.socialUser.email);
+        this.user.get('email')?.setValue(this.socialUser.email);
+        this.user.get('password')?.setValue('MMmm11!!11');
+        
+        // this.registerUser();
+      });
+  }
+
+  loginWithFacebook(): void {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(() => {
       this.user.get('firstName')?.setValue(this.socialUser.firstName);
       this.user.get('lastName')?.setValue(this.socialUser.lastName);
       this.user.get('userName')?.setValue(this.socialUser.email);
       this.user.get('email')?.setValue(this.socialUser.email);
-      this.user.get('password')?.setValue('MMmm11!!11');
-      this.registerUser();
+      this.user.get('password')?.setValue('MMmm11!!11');      
     });
   }
 

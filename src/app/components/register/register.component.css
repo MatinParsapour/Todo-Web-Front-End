@@ -71,7 +71,7 @@
     font-size: 13px;
   }
 
-  .container> img:hover{
+  .container> div > img:hover{
     cursor: pointer;
   }
 
