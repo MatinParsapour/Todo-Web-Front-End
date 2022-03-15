@@ -13,7 +13,7 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationType } from 'src/app/enum/notification-type';
-import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-        this.socialAuthService.authState.subscribe((user) => {
+    this.socialAuthService.authState.subscribe((user) => {
       this.socialUser = user;
       this.isLoggedin = user != null;
       console.log(this.socialUser);
@@ -60,9 +60,18 @@ export class LoginComponent implements OnInit {
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(() => {
       this.user.get('userName')?.setValue(this.socialUser.email);
-      this.user.get('password')?.setValue("MMmm11!!11");
+      this.user.get('password')?.setValue('MMmm11!!11');
       this.login();
     });
+  }
+
+  loginWithFacebook(): void {
+    this.socialAuthService
+      .signIn(FacebookLoginProvider.PROVIDER_ID)
+      .then(() => {
+        this.user.get('userName')?.setValue(this.socialUser.email);
+        this.user.get('password')?.setValue('MMmm11!!11');
+      });
   }
 
   login() {
