@@ -33,15 +33,12 @@ export class RegisterComponent implements OnInit {
   user: FormGroup;
   siteKey: string = '6Lc7ct0eAAAAAD0Jqa_1Eih2MiucxWAGsDpRpOVn';
   onSignIn = 'onSignIn';
-  socialUser!: SocialUser;
-  isLoggedin!: boolean;
+
   constructor(
     formBuilder: FormBuilder,
-    private dialog: MatDialog,
     private usernameValidator: UsernameValidator,
     private emailValidator: EmailValidator,
     private router: Router,
-    private socialAuthService: SocialAuthService,
     private registerService: RegisterService,
     private notifier: NotificationService
   ) {
@@ -75,14 +72,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.redirectToMainIfUserSignedIn();
-    this.authenticateUserForSignIn();
-  }
-
-  authenticateUserForSignIn() {
-    this.socialAuthService.authState.subscribe((user) => {
-      this.socialUser = user;
-      this.isLoggedin = user != null;
-    });
   }
 
   redirectToMainIfUserSignedIn() {
@@ -102,9 +91,7 @@ export class RegisterComponent implements OnInit {
           NotificationType.SUCCESS,
           'Your account registered successfully'
         );
-        this.updateLocalStorage(response);
         this.router.navigateByUrl('/login');
-        this.dialog.closeAll();
         this.isLoading = false;
       },
       (error: HttpErrorResponse) => {
@@ -112,55 +99,6 @@ export class RegisterComponent implements OnInit {
         this.isLoading = false;
       }
     );
-  }
-
-  loginWithGoogle(): void {
-    this.socialAuthService
-      .signIn(GoogleLoginProvider.PROVIDER_ID)
-      .then((response: any) => {
-        this.initializeUser();
-        this.signInUser();
-      });
-  }
-
-  loginWithFacebook(): void {
-    this.socialAuthService
-      .signIn(FacebookLoginProvider.PROVIDER_ID)
-      .then(() => {
-        this.initializeUser();
-        this.signInUser();
-      });
-  }
-
-  signInUser() {
-    this.registerService.create('sign-in', this.user.value).subscribe(
-      (response: any) => {
-        this.notifier.notify(
-          NotificationType.SUCCESS,
-          'You logged in successfully'
-        );
-        this.router.navigateByUrl('/main');
-        this.updateLocalStorage(response);
-      },
-      (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, 'Something went wrong');
-        console.log(error);
-      }
-    );
-  }
-
-  initializeUser() {
-    this.user.get('firstName')?.setValue(this.socialUser.firstName);
-    this.user.get('lastName')?.setValue(this.socialUser.lastName);
-    this.user.get('userName')?.setValue(this.socialUser.email);
-    this.user.get('email')?.setValue(this.socialUser.email);
-    this.user.get('password')?.setValue('MMmm11!!11');
-  }
-
-  updateLocalStorage(user: any) {
-    localStorage.setItem('username', user.email);
-    localStorage.setItem('firstName', user.firstName);
-    localStorage.setItem('lastName', user.lastName);
   }
 
   getFirstNameErrorMessages() {
