@@ -90,6 +90,7 @@ export class RegisterComponent implements OnInit {
           NotificationType.SUCCESS,
           'Your account registered successfully'
         );
+        this.updateLocalStorage()
         this.router.navigateByUrl('/login');
         this.dialog.closeAll();
         this.isLoading = false;
@@ -105,24 +106,50 @@ export class RegisterComponent implements OnInit {
     this.socialAuthService
       .signIn(GoogleLoginProvider.PROVIDER_ID)
       .then((response: any) => {
-        this.user.get('firstName')?.setValue(this.socialUser.firstName);
-        this.user.get('lastName')?.setValue(this.socialUser.lastName);
-        this.user.get('userName')?.setValue(this.socialUser.email);
-        this.user.get('email')?.setValue(this.socialUser.email);
-        this.user.get('password')?.setValue('MMmm11!!11');
-        
-        // this.registerUser();
+        this.initializeUser()
+        this.updateLocalStorage()
+        this.signInUser();
       });
   }
 
   loginWithFacebook(): void {
-    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(() => {
-      this.user.get('firstName')?.setValue(this.socialUser.firstName);
-      this.user.get('lastName')?.setValue(this.socialUser.lastName);
-      this.user.get('userName')?.setValue(this.socialUser.email);
-      this.user.get('email')?.setValue(this.socialUser.email);
-      this.user.get('password')?.setValue('MMmm11!!11');      
-    });
+    this.socialAuthService
+      .signIn(FacebookLoginProvider.PROVIDER_ID)
+      .then(() => {
+        this.initializeUser();
+        this.updateLocalStorage()
+        this.signInUser();
+      });
+  }
+
+  signInUser() {
+    this.registerService.create('sign-in', this.user.value).subscribe(
+      (response: any) => {
+        this.notifier.notify(
+          NotificationType.SUCCESS,
+          'You logged in successfully'
+        );
+        this.router.navigateByUrl('/main');
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, 'Something went wrong');
+        console.log(error);
+      }
+    );
+  }
+
+  initializeUser() {
+    this.user.get('firstName')?.setValue(this.socialUser.firstName);
+    this.user.get('lastName')?.setValue(this.socialUser.lastName);
+    this.user.get('userName')?.setValue(this.socialUser.email);
+    this.user.get('email')?.setValue(this.socialUser.email);
+    this.user.get('password')?.setValue('MMmm11!!11');
+  }
+
+  updateLocalStorage() {
+    localStorage.setItem('username', this.socialUser.email);
+    localStorage.setItem('firstName', this.socialUser.firstName);
+    localStorage.setItem('lastName', this.socialUser.lastName);
   }
 
   getFirstNameErrorMessages() {
