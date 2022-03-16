@@ -1,13 +1,6 @@
 <mat-card>
   <div class="doneAndTask">
-    <div class="doneAndUndone" mat-fab color="" (click)="doneToDo()">
-      <span class="material-icons" *ngIf="toDo.status !== 'done'">
-        radio_button_unchecked
-      </span>
-      <span class="material-icons" *ngIf="toDo.status === 'done'">
-        check_circle
-      </span>
-    </div>
+    <app-check-circle [status]="toDo.status" (click)="doneToDo()"></app-check-circle>
     <div class="toDo" [contentEditable]="true" [class.lineThrough]="toDo.status === 'done'"
       (keydown.enter)="updateToDoBody($event.target)" [innerHtml]="toDo.task | summaryPipes: 20 | marker : search"></div>
   </div>
