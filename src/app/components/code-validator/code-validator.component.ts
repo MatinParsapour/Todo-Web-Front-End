@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from './../../services/notification/notification.service';
 import { PhoneNumberService } from './../../services/phone-number/phone-number.service';
 import { FormControl, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -35,6 +35,24 @@ export class CodeValidatorComponent implements OnInit {
     return 'You must enter exactly 5 numbers';
   }
 
+  @HostListener('window:beforeunload', ['$event']) 
+  unloadHandler(event: Event) {
+    let result = confirm('Are you sure you want to reload page');
+    if (result) {
+      window.opener.location.reload();
+    }
+    event.returnValue = false;
+  }
+
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event: any) {
+    let result = confirm('Are you sure you want to reload page');
+    if (result) {
+      window.opener.location.reload();
+    }
+    event.returnValue = false;
+  }
+
   validateCode() {
     this.isLoading = true;
     this.phoneNumberService
@@ -52,14 +70,14 @@ export class CodeValidatorComponent implements OnInit {
             this.notifier.notify(
               NotificationType.ERROR,
               'The code was invalid, new code sent to your phone'
-              );
+            );
             this.code.setValue(null);
           }
           this.isLoading = false;
         },
         (error: HttpErrorResponse) => {
           if (error.status === 406) {
-            this.notifier.notify(NotificationType.ERROR, error.error)
+            this.notifier.notify(NotificationType.ERROR, error.error);
           } else {
             console.log(error);
           }
@@ -72,7 +90,10 @@ export class CodeValidatorComponent implements OnInit {
     this.isLoading = true;
     this.phoneNumberService.isCodeValid('/phone/resend-code').subscribe(
       (response: any) => {
-        this.notifier.notify(NotificationType.SUCCESS, "New code sent to your phone number")
+        this.notifier.notify(
+          NotificationType.SUCCESS,
+          'New code sent to your phone number'
+        );
         this.code.setValue(null);
         this.isLoading = false;
       },
