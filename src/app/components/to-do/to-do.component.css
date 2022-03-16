@@ -16,9 +16,7 @@ mat-icon:hover {
     display: flex;
 }
 
-.doneAndUndone{
-    cursor: pointer;
-}
+
 
 .toDo{
     font-size: 20px;
