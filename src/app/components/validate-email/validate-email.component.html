@@ -1,6 +1,13 @@
-<div class="container">
+<div class="container" [class.spinner]="isLoading">
+  <div class="valid" *ngIf="isPageValid">
     <h1>Verified</h1>
-    <h6><i><b>{{email}}</b></i>   has been verified</h6>
+    <h6><i><b>{{email}}</b></i> has been verified</h6>
     <h5>Now click on the below button to log in</h5>
     <button mat-raised-button color="primary" (click)="goToLogInPage()">Go to Log in</button>
+  </div>
+  <div class="invalid" *ngIf="!isPageValid">
+    <h1>Invalid</h1>
+    <h6> {{error}} </h6>
+    <button mat-raised-button color="primary" (click)="goToLogInPage()">Go to Log in</button>
+  </div>
 </div>
