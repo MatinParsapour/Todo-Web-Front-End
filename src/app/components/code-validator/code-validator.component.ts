@@ -58,7 +58,11 @@ export class CodeValidatorComponent implements OnInit {
           this.isLoading = false;
         },
         (error: HttpErrorResponse) => {
-          console.log(error);
+          if (error.status === 406) {
+            this.notifier.notify(NotificationType.ERROR, error.error)
+          } else {
+            console.log(error);
+          }
           this.isLoading = false;
         }
       );
