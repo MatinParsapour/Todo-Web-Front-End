@@ -65,6 +65,7 @@ import {
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { GoogleSignInComponent } from './components/google-sign-in/google-sign-in.component';
 import { FacebookSignInComponent } from './components/facebook-sign-in/facebook-sign-in.component';
+import { StarComponent } from './components/star/star.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -137,6 +138,7 @@ const customNotifierOptions: NotifierOptions = {
     SignInComponent,
     GoogleSignInComponent,
     FacebookSignInComponent,
+    StarComponent,
   ],
   imports: [
     BrowserModule,
