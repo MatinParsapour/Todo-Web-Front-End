@@ -87,7 +87,7 @@ export class RegisterComponent implements OnInit {
       (response: any) => {
         this.notifier.notify(
           NotificationType.SUCCESS,
-          'Your account registered successfully'
+          'A verificaiton email sent to your email'
         );
         this.router.navigateByUrl('/login');
         this.isLoading = false;
