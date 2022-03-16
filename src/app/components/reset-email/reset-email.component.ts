@@ -18,7 +18,7 @@ export class ResetEmailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(result => {
       this.email = result['email']
-      this.validateEmailService.isEmailValid("http://localhost:8080/email/validate-email/" + result['email']).subscribe(
+      this.validateEmailService.isEmailValid("http://localhost:8080/email/validate-email/" + result['email'] + "/" + result['code']).subscribe(
         (response: any) => {
           this.isEmailOk = response
         },
