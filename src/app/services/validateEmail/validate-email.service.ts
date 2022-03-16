@@ -15,16 +15,7 @@ export class ValidateEmailService extends DataService {
   }
 
   sendValidatedUserEmail(email: any, code: any){
-    this.httpService.get('http://localhost:8080/email/verify-email/' + email + "/" + code).subscribe(
-      (response: any) => {
-        console.log(response);
-        
-      }, 
-      (error: HttpErrorResponse) => {
-        console.log(error);
-        
-      }
-    );
+    return this.httpService.get('http://localhost:8080/email/verify-email/' + email + "/" + code)
   }
 
   isEmailValid(url:string){
