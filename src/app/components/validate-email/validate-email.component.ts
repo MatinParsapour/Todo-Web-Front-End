@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ValidateEmailComponent implements OnInit {
 
   email: any;
+  code: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private service: ValidateEmailService) { }
 
@@ -17,7 +18,8 @@ export class ValidateEmailComponent implements OnInit {
     this.route.queryParams.subscribe(params => 
       {
       this.email = params['email']
-      this.service.sendValidatedUserEmail(this.email)
+      this.code = params['code']
+      this.service.sendValidatedUserEmail(this.email, this.code)
       })
   }
 
