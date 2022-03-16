@@ -18,6 +18,8 @@ export class ResetPasswordComponent implements OnInit {
   resetPassword: FormGroup
   email: any;
   code: any;
+  isPageValid!: boolean;
+  error!: HttpErrorResponse
   isLoading: boolean = false;
 
   constructor(fb : FormBuilder, 
@@ -42,10 +44,11 @@ export class ResetPasswordComponent implements OnInit {
     })
     this.resetPasswordService.isEmailValid(this.email, this.code).subscribe(
       (response: any) => {
-        console.log(response);
+        this.isPageValid = true
       },
       (error: HttpErrorResponse) => {
-        console.log(error);
+        this.isPageValid = false;
+        this.error = error.error
         
       }
     );
