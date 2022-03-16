@@ -1,9 +1,30 @@
-.displayNone {
-    display: none;
+.invalid {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("../../../assets/images/Wrong.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 100%;
+  max-height: 100%;
+  width: 100%;
+  max-width: 100%;
 }
 
-.displayBlock {
-    display: block;
+.invalid>h1 {
+  font-size: 7em;
+  margin-bottom: 1em;
+  font-family: 'Amazon',
+    sans-serif;
+  color: rgb(194, 9, 9);
+}
+
+.invalid>p {
+  font-size: 2em;
+  font-family: "Sofia",
+    sans-serif;
+  color: rgb(171, 185, 166);
 }
 
 .container{
@@ -34,4 +55,10 @@
   font-family: "Sofia",
     sans-serif;
   color: rgb(59, 206, 10);
+}
+
+mat-spinner{
+  position: fixed;
+  top: 10%;
+  left: 50%;
 }

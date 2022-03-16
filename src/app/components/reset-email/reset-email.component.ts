@@ -11,19 +11,25 @@ import { Component, OnInit } from '@angular/core';
 export class ResetEmailComponent implements OnInit {
 
   email: any;
-  isEmailOk = null;
+  isLoading = false
+  isPageValid!: Boolean 
+  error!:HttpErrorResponse;
 
   constructor(private router: Router,private activatedRoute: ActivatedRoute, private validateEmailService: ValidateEmailService) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.activatedRoute.queryParams.subscribe(result => {
       this.email = result['email']
       this.validateEmailService.isEmailValid("http://localhost:8080/email/validate-email/" + result['email'] + "/" + result['code']).subscribe(
         (response: any) => {
-          this.isEmailOk = response
+          this.isPageValid = true
+          this.isLoading = false
         },
         (error: HttpErrorResponse) => {
-          console.log(error);
+          this.isPageValid = false;
+          this.error = error.error
+          this.isLoading = false
         }
       )
     })

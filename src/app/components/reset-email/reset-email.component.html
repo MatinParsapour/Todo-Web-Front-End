@@ -1,14 +1,11 @@
-<div class="container">
-  <mat-spinner *ngIf="isEmailOk === null"></mat-spinner>
-  <div *ngIf="isEmailOk !== null" [class.displayBlock]="isEmailOk" [class.displayNone]="!isEmailOk">
-    <div class="container">
-      <h1>Reset</h1>
-      <h6><i><b>{{email}}</b></i> has been reset</h6>
-      <h5>Now click on the below button to main</h5>
-      <button mat-raised-button color="primary" (click)="goToMainPage()">Go to Main</button>
-    </div>
-  </div>
-  <div *ngIf="isEmailOk !== null" [class.displayBlock]="!isEmailOk" [class.displayNone]="isEmailOk">
-    <h2>Something went wrong your email didn't change</h2>
-  </div>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="invalid" *ngIf="!isPageValid">
+  <h1>Invalid</h1>
+  <p>You can't reset your email because {{error}} </p>
+</div>
+<div class="container" *ngIf="isPageValid">
+  <h1>Reset</h1>
+  <h6><i><b>{{email}}</b></i> has been reset</h6>
+  <h5>Now click on the below button to main</h5>
+  <button mat-raised-button color="primary" (click)="goToMainPage()">Go to Main</button>
 </div>
