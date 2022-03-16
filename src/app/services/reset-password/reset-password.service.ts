@@ -7,7 +7,19 @@ import { Injectable } from '@angular/core';
 })
 export class ResetPasswordService extends DataService {
 
+  httpService: HttpClient
+
   constructor(http: HttpClient) {
     super("http://localhost:8080/email/", http);
+    this.httpService = http;
+  }
+
+  isEmailValid(email:any, code:any){
+    return this.httpService.get(
+      'http://localhost:8080/email/verify-email-for-reset-password/' +
+        email +
+        '/' +
+        code
+    );
   }
 }
