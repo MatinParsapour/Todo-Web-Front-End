@@ -17,6 +17,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 export class ResetPasswordComponent implements OnInit {
   resetPassword: FormGroup
   email: any;
+  code: any;
   isLoading: boolean = false;
 
   constructor(fb : FormBuilder, 
@@ -37,7 +38,17 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.email = params['email']
+      this.code = params['code']
     })
+    this.resetPasswordService.isEmailValid(this.email, this.code).subscribe(
+      (response: any) => {
+        console.log(response);
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+        
+      }
+    );
   }
 
   get password(): any{return this.resetPassword.get('password')}
