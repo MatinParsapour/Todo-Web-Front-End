@@ -27,9 +27,9 @@
   color: rgb(171, 185, 166);
 }
 
-.container{
-    display: flex;
-    justify-content: center;
+.container {
+  display: flex;
+  justify-content: center;
 }
 
 .container {
@@ -37,9 +37,13 @@
   align-items: center;
   flex-direction: column;
   background-image: url("../../../assets/images/Cloud.jpg");
-  height: 41.45em;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 100%;
+  max-height: 100%;
   width: 100%;
-  max-width: 150%;
+  max-width: 100%;
 }
 
 .container>h1 {
@@ -57,7 +61,7 @@
   color: rgb(59, 206, 10);
 }
 
-mat-spinner{
+mat-spinner {
   position: fixed;
   top: 10%;
   left: 50%;
