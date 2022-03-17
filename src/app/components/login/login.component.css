@@ -49,12 +49,13 @@
   }
 
   .links {
-    margin-top: 5%;
+    margin-top: 1%;
+    font-size: 17px;
   }
 
   .container>button {
     margin-top: 20%;
-    width: 40%;
+    width: 100%;
   }
 
   .container>div>img:hover {
@@ -80,7 +81,11 @@
   }
 
   .logInForm>mat-form-field {
-    width: 30em;
+    width: 100%;
+  }
+
+  ngx-recaptcha2{
+    margin-bottom: 3%;
   }
 
   .logInForm>button {
