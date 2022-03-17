@@ -23,8 +23,6 @@
                 {{user.firstName}}</span></p>
             <p> Last name : <span #lName (blur)="user.lastName = lName.innerText" [contentEditable]="true">
                 {{user.lastName}} </span> </p>
-            <p> Username : <span #uName (blur)="user.userName = uName.innerText" [contentEditable]="true">
-                {{user.userName}} </span> </p>
           </div>
         </div>
       </div>
