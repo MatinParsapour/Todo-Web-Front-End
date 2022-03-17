@@ -21,25 +21,23 @@
           required>
         <mat-error *ngIf="email.invalid">{{getEmailErrorMessages()}}</mat-error>
       </mat-form-field>
-      <div>
-        <mat-form-field @fade appearance="fill">
-          <mat-label>Password</mat-label>
-          <input [readonly]="isLoading" autocomplete="off" type="password" matInput placeholder="password"
-            [formControl]="password" required>
-          <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
-        </mat-form-field>
-        <mat-form-field @fade appearance="fill">
-          <mat-label>Re enter password</mat-label>
-          <input [readonly]="isLoading" autocomplete="off" type="password" matInput placeholder="reTypePassword"
-            [formControl]="reTypePassword" required>
-          <mat-error *ngIf="password.invalid"> {{getPasswordErrorMessage()}} </mat-error>
-          <mat-error *ngIf="reTypePassword.touched"> Re enter your password </mat-error>
-        </mat-form-field>
-      </div>
-      <ngx-recaptcha2 @fade [siteKey]="siteKey" [formControl]="recaptcha">
-      </ngx-recaptcha2>
+      <mat-form-field @fade appearance="fill">
+        <mat-label>Password</mat-label>
+        <input [readonly]="isLoading" autocomplete="off" type="password" matInput placeholder="password"
+          [formControl]="password" required>
+        <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field @fade appearance="fill">
+        <mat-label>Re enter password</mat-label>
+        <input [readonly]="isLoading" autocomplete="off" type="password" matInput placeholder="reTypePassword"
+          [formControl]="reTypePassword" required>
+        <mat-error *ngIf="password.invalid"> {{getPasswordErrorMessage()}} </mat-error>
+        <mat-error *ngIf="reTypePassword.touched"> Re enter your password </mat-error>
+      </mat-form-field>
       <mat-error *ngIf="reTypePassword?.valid && user.invalid && user.errors?.['passwordsDoNotMatch']">Passwords don't
         match</mat-error>
+      <ngx-recaptcha2 @fade [siteKey]="siteKey" [formControl]="recaptcha">
+      </ngx-recaptcha2>
       <button @fade type="submit" [class.spinner]="isLoading" mat-raised-button color="primary"
         [disabled]="isLoading || user.invalid" (click)="registerUser()">Sign up
       </button>
