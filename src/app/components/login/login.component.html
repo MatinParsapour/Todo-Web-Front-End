@@ -7,9 +7,9 @@
     <app-sign-in></app-sign-in>
     <form class="logInForm" [formGroup]="user">
       <mat-form-field @fade appearance="outline">
-        <mat-label>Username</mat-label>
-        <input [formControl]="username" matInput autocomplete="off">
-        <mat-error *ngIf="username.invalid">{{getUsernameErrorMessages()}}</mat-error>
+        <mat-label>ٍEmail or phone number</mat-label>
+        <input [formControl]="emailOrPhone" matInput autocomplete="off">
+        <mat-error *ngIf="emailOrPhone.invalid">{{getUsernameErrorMessages()}}</mat-error>
       </mat-form-field>
       <mat-form-field @fade appearance="outline">
         <mat-label>Password</mat-label>
