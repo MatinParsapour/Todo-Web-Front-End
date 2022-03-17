@@ -36,7 +36,6 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     formBuilder: FormBuilder,
-    private usernameValidator: UsernameValidator,
     private emailValidator: EmailValidator,
     private router: Router,
     private registerService: RegisterService,
@@ -46,11 +45,6 @@ export class RegisterComponent implements OnInit {
       {
         firstName: new FormControl('', [Validators.required]),
         lastName: new FormControl('', [Validators.required]),
-        userName: new FormControl(
-          '',
-          [Validators.required, Validators.minLength(5)],
-          this.usernameValidator.validate
-        ),
         recaptcha: ['', Validators.required],
         email: new FormControl(
           '',
@@ -93,7 +87,7 @@ export class RegisterComponent implements OnInit {
         this.isLoading = false;
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.message);
+        this.notifier.notify(NotificationType.ERROR, error.error);
         this.isLoading = false;
       }
     );
