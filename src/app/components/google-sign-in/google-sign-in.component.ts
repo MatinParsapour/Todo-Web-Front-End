@@ -30,7 +30,6 @@ export class GoogleSignInComponent implements OnInit {
       firstName: new FormControl(''),
       lastName: new FormControl(''),
       email: new FormControl(''),
-      userName: new FormControl(''),
       password: new FormControl(''),
     });
   }
@@ -56,7 +55,6 @@ export class GoogleSignInComponent implements OnInit {
   initializeUser() {
     this.user.get('firstName')?.setValue(this.socialUser.firstName);
     this.user.get('lastName')?.setValue(this.socialUser.lastName);
-    this.user.get('userName')?.setValue(this.socialUser.email);
     this.user.get('email')?.setValue(this.socialUser.email);
     this.user.get('password')?.setValue('MMmm11!!11');
   }
