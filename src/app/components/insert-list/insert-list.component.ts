@@ -17,7 +17,7 @@ export class InsertListComponent implements OnInit {
   folderName: any;
 
   listDTO = new FormGroup({
-    username: new FormControl(),
+    userId: new FormControl(),
     folderName: new FormControl(),
     listName: new FormControl('',[Validators.required, Validators.minLength(3)])
   })
@@ -48,7 +48,7 @@ export class InsertListComponent implements OnInit {
 
   addList(){
     this.isLoading = true
-    this.listDTO.get('username')?.setValue(localStorage.getItem('username'))
+    this.listDTO.get('userId')?.setValue(localStorage.getItem('username'))
     this.listDTO.get('folderName')?.setValue(this.folderName)
     this.insertListService.update("/list/add-list-to-folder",this.listDTO.value).subscribe(
       (response: any) => {

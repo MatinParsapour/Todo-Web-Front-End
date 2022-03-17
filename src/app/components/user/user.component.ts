@@ -55,7 +55,7 @@ export class UserComponent implements OnInit {
     const formData = new FormData();
     const username = localStorage.getItem('username');
     if (username != null) {
-      formData.append('username', username);
+      formData.append('userId', username);
     }
     formData.append('profileImage', this.profileImage);
     this.userService.update('/user/update-profile-image', formData).subscribe(

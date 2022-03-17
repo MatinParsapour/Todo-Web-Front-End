@@ -82,7 +82,7 @@ export class FacebookSignInComponent implements OnInit {
   }
 
   updateLocalStorage(user: any) {
-    localStorage.setItem('username', user.userName);
+    localStorage.setItem('username', user.id);
     localStorage.setItem('firstName', user.firstName);
     localStorage.setItem('lastName', user.lastName);
   }

@@ -48,7 +48,7 @@ export class GetResetEmailComponent implements OnInit {
     const formData = new FormData()
     let username = localStorage.getItem("username")
     if (username !== null) {
-      formData.append("username",username)
+      formData.append("userId",username)
     }
     formData.append("newEmail",this.email.value)
         this.isLoading = true;

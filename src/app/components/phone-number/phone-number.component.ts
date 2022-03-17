@@ -47,7 +47,7 @@ export class PhoneNumberComponent implements OnInit {
     formData.append('phoneNumber', this.phoneNumberControl.value);
     let username = localStorage.getItem("username")
     if(username !== null){
-      formData.append("username", username)
+      formData.append("userId", username)
     }
     this.phoneNumberService.update("/phone/update-phone-number",formData).subscribe(
       (response: any) => {

@@ -27,7 +27,7 @@ export class InsertFolderComponent implements OnInit {
       Validators.required,
       Validators.minLength(3),
     ], this.folderNameValidator.validate),
-    username: new FormControl(''),
+    userId: new FormControl(''),
   });
 
   ngOnInit(): void {}
@@ -39,7 +39,7 @@ export class InsertFolderComponent implements OnInit {
   addFolder() {
     const localStorageUsername = localStorage.getItem('username');
     if (localStorageUsername?.toString() !== undefined) {
-      this.insertFolder.get('username')?.setValue(localStorageUsername);
+      this.insertFolder.get('userId')?.setValue(localStorageUsername);
     }
     this.isLoading = true;
     this.insertFolderService
