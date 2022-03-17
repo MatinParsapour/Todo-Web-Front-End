@@ -21,12 +21,6 @@
           required>
         <mat-error *ngIf="email.invalid">{{getEmailErrorMessages()}}</mat-error>
       </mat-form-field>
-      <mat-form-field @fade appearance="fill">
-        <mat-label>Username</mat-label>
-        <input [readonly]="isLoading" autocomplete="off" matInput placeholder="Username" [formControl]="username"
-          required>
-        <mat-error *ngIf="username.invalid">{{getUsernameErrorMessages()}}</mat-error>
-      </mat-form-field>
       <div>
         <mat-form-field @fade appearance="fill">
           <mat-label>Password</mat-label>
