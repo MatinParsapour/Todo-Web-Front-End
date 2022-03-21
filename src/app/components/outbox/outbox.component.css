@@ -1,0 +1,52 @@
+div {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  position: fixed;
+}
+
+.noneEmail {
+  display: flex;
+  flex-direction: column;
+  font-size: 50px;
+}
+
+mat-icon:hover {
+  cursor: pointer;
+  color: red;
+}
+
+
+
+button:hover {
+  color: rgb(166, 140, 192);
+}
+
+button:active {
+  color: rgb(215, 192, 238);
+}
+
+table {
+  width: 95%;
+}
+
+tr.tableData:visited {
+  background-color: rgb(36, 7, 7);
+}
+
+tr.tableData:focus {
+  background-color: rgb(49, 42, 42);
+}
+
+tr.tableData:hover {
+  cursor: pointer;
+  background-color: rgb(43, 36, 36);
+}
+
+tr.tableData:active {
+  background-color: rgb(49, 13, 13);
+}
