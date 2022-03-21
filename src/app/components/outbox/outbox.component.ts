@@ -29,7 +29,8 @@ export class OutboxComponent implements OnInit {
   displayedColumns: string[] = ['from', 'to', 'date', 'message'];
 
   emailDetails(element: any) {
-    this.dialog.open(EmailDetailsComponent, {data: {emailId: element}})
+    this.dialog.open(EmailDetailsComponent, {data: {emailId: element}}).afterClosed().subscribe(
+      () => this.getAllOutbox())
   }
 
   getAllOutbox() {
