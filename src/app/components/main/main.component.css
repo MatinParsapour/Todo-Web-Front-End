@@ -87,6 +87,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     overflow: auto;
+    margin-top: 2%;
   }
 
   .toDoMenu {
@@ -141,6 +142,16 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .buttons{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .sendEmailButton{
+    top: 10%;
+    right: 5%;
+  }
+  
 }
 
 @media screen and (max-width: 992px) {
