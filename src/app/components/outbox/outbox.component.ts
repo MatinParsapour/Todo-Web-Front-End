@@ -25,7 +25,7 @@ export class OutboxComponent implements OnInit {
 
   displayedColumns: string[] = ['from', 'to', 'date', 'message'];
 
-  displayData(element: any) {
+  emailDetails(element: any) {
     console.log(element);
   }
 

@@ -32,6 +32,6 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr (click)="displayData(row.id)" class="tableData" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr (click)="emailDetails(row.id)" class="tableData" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
