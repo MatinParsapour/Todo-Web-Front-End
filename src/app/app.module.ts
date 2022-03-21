@@ -1,3 +1,4 @@
+import { EmailDetailsService } from './services/emai-details/email-details.service';
 import { OutboxService } from './services/email-service/outbox/outbox.service';
 import { InboxService } from './services/email-service/inbox/inbox.service';
 import { SendEmailService } from './services/send-email/send-email.service';
@@ -73,6 +74,7 @@ import { CheckCircleComponent } from './components/check-circle/check-circle.com
 import { SendEmailComponent } from './components/send-email/send-email.component';
 import { InboxComponent } from './components/inbox/inbox.component';
 import { OutboxComponent } from './components/outbox/outbox.component';
+import { EmailDetailsComponent } from './components/email-details/email-details.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -150,6 +152,7 @@ const customNotifierOptions: NotifierOptions = {
     SendEmailComponent,
     InboxComponent,
     OutboxComponent,
+    EmailDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -190,6 +193,7 @@ const customNotifierOptions: NotifierOptions = {
     SendEmailService,
     InboxService,
     OutboxService,
+    EmailDetailsService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
