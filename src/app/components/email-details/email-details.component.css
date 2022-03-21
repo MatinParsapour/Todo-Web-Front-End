@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.colorFull{
+    color: rgb(128, 67, 224);
+}
+
+.borderForData{
+    border-style: outset;
+}
+
+button:hover{
+    color: brown;
+}
+
+button:active{
+    color: red;
+}

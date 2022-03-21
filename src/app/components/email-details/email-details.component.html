@@ -1,1 +1,16 @@
-<p>email-details works!</p>
+<button mat-icon-button (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+</button>
+<div class="container">
+    <p class="colorFull">Origin: </p>
+    <p class="borderForData">{{email.origin}}</p>
+    <p class="colorFull">Destination: </p>
+    <p class="borderForData">{{email.destination}}</p>
+    <p class="colorFull">Date: </p>
+    <p class="borderForData">{{email.sentDate | date: 'short'}}</p>
+    <p class="colorFull">Message: </p>
+    <p class="borderForData">{{email.message}}</p>
+</div>
+<button mat-icon-button (click)="deleteEmail(email.id)">
+    <mat-icon>delete</mat-icon>
+</button>
