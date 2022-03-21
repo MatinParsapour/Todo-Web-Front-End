@@ -46,7 +46,7 @@
   </div>
   <div class="icons">
     <div>
-      <button mat-raised-button (click)="toggleStar()">
+      <button mat-icon-button (click)="toggleStar()">
         <span *ngIf="toDo.isStarred" matTooltip="Starred">
           <mat-icon>star</mat-icon>
         </span>
@@ -55,24 +55,24 @@
         </span>
       </button>
     </div>
-    <div class="secondElement">
-      <button mat-raised-button (click)="toggleMyDay()">
-        <span *ngIf="toDo.isMyDay" matTooltip="Myday">
+    <div>
+      <button mat-icon-button (click)="toggleMyDay()">
+        <span [hidden]="!toDo.isMyDay" matTooltip="Myday">
           <mat-icon>brightness_7</mat-icon>
         </span>
-        <span *ngIf="!toDo.isMyDay" matTooltip="Not Myday">
+        <span [hidden]="toDo.isMyDay" matTooltip="Not Myday">
           <mat-icon>brightness_5</mat-icon>
         </span>
       </button>
     </div>
-    <div class="secondElement">
-      <button mat-raised-button (click)="selectPhoto()">
+    <div>
+      <button mat-icon-button (click)="selectPhoto()" matTooltip="Add picture">
         <span class="material-icons">
           add_a_photo
         </span>
       </button>
     </div>
-    <div class="secondElement">
+    <div>
       <button mat-raised-button mat-dialog-close="delete-picture" *ngIf="toDo.pictures.length > 0">
         <span class="material-icons">no_photography</span>
       </button>
