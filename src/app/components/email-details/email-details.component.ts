@@ -1,3 +1,4 @@
+import { AggreementComponent } from './../aggreement/aggreement.component';
 import { NotificationService } from './../../services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
@@ -43,6 +44,14 @@ export class EmailDetailsComponent implements OnInit {
 
   closeDialog(){
     this.dialog.closeAll()
+  }
+
+  openDeleteDialog(emailId: any){
+    this.dialog.open(AggreementComponent, {data: {title: "Are you sure you want to delete this email"}}).afterClosed().subscribe(
+      (response: any) => {if (response === 'Yes') {
+        this.deleteEmail(emailId)
+      }}
+    )
   }
 
   deleteEmail(emailId: any){
