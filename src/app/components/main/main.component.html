@@ -1,6 +1,6 @@
 <mat-sidenav-container class="example-container" fullscreen>
   <mat-sidenav #sidenav class="example-sidenav">
-    <button (click)="openCreateFolderDialog()" mat-mini-fab color="">
+    <button (click)="openCreateFolderDialog()" mat-icon-button color="">
       <mat-icon matTooltip="Add folder">create_new_folder</mat-icon>
     </button>
     <br>
@@ -51,7 +51,7 @@
         <app-to-do [toDo]="toDo" [search]="searchInput.value" (getToDos)="getAllToDos()"></app-to-do>
       </div>
     </div>
-    <button class="open-input" [class.hid-input]="displayInput" (click)="inputToggle()" mat-fab>
+    <button class="open-input" [class.hid-input]="displayInput" (click)="inputToggle()" mat-icon-button>
       <mat-icon [hidden]="!displayInput">arrow_back</mat-icon>
       <mat-icon [hidden]="displayInput">arrow_forward</mat-icon>
     </button>
