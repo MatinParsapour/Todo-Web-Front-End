@@ -1,3 +1,4 @@
+import { SendEmailComponent } from './../send-email/send-email.component';
 import { CategoryService } from './../../services/category/category.service';
 import { GetResetEmailComponent } from './../get-reset-email/get-reset-email.component';
 import { ForgetPasswordComponent } from './../forget-password/forget-password.component';
@@ -271,5 +272,9 @@ export class MainComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+
+  openSendEmailDialog(){
+    this.dialog.open(SendEmailComponent, {width: "50em"});
   }
 }
