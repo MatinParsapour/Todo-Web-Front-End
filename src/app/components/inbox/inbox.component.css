@@ -5,6 +5,17 @@ div {
   align-items: center;
 }
 
+button{
+    position: fixed;
+}
+
+button:hover {
+    color: rgb(166, 140, 192);
+}
+button:active {
+    color: rgb(215, 192, 238);
+}
+
 table {
   width: 95%;
 }

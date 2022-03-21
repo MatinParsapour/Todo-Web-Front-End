@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { InboxService } from './../../services/email-service/inbox/inbox.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -11,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class InboxComponent implements OnInit {
   dataSource: any;
 
-  constructor(private inboxService: InboxService) {}
+  constructor(private inboxService: InboxService, private router: Router) {}
 
   ngOnInit(): void {
     this.inboxService
@@ -31,5 +32,9 @@ export class InboxComponent implements OnInit {
   displayData(element: any){
     console.log(element);
     
+  }
+
+  backToMain(){
+    this.router.navigateByUrl('/main')
   }
 }
