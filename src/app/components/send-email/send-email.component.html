@@ -1,0 +1,20 @@
+<div>
+  <mat-spinner [hidden]="!isSending"></mat-spinner>
+  <mat-form-field appearance="outline">
+    <mat-label>To</mat-label>
+    <input [formControl]="to" matInput autocomplete="off">
+    <mat-error *ngIf="to.invalid">{{getEmailErrorMessages()}}</mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Message</mat-label>
+    <textarea [formControl]="message" matInput></textarea>
+    <mat-error *ngIf="message.invalid">{{getMessageErrorMessages()}}</mat-error>
+  </mat-form-field>
+  <div class="buttons">
+    <button [disabled]="email.invalid" mat-flat-button color="primary" (click)="sendEmail()">Send email</button>
+    <button mat-flat-button color="basic">Your emails <span class="material-icons">
+        inbox
+      </span></button>
+    <button mat-flat-button color="warn" (click)="closeDialog()">Cancel</button>
+  </div>
+</div>
