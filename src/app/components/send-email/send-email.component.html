@@ -1,8 +1,10 @@
 <div>
     <mat-spinner [hidden]="!isSending"></mat-spinner>
     <div class="icons">
-        <button mat-icon-button color="basic" matTooltip="Inbox"><mat-icon>inbox</mat-icon></button>
-        <button mat-icon-button color="basic" matTooltip="Outbox"><mat-icon>outbox</mat-icon></button>
+        <button [routerLink]="'/inbox'" (click)="closeDialog()" mat-icon-button color="basic" matTooltip="Inbox"><mat-icon>inbox</mat-icon></button>
+        <button [routerLink]="'/outbox'" (click)="closeDialog()" mat-icon-button color="basic" matTooltip="Outbox">
+          <mat-icon>outbox</mat-icon>
+        </button>
     </div>
     <mat-form-field appearance="outline">
         <mat-label>To</mat-label>
