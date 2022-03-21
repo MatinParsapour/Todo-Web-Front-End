@@ -1,5 +1,5 @@
 <mat-dialog-content>
-  <button class="logout" mat-fab color="" matTooltip="logout" (click)="logout()">
+  <button class="logout" mat-icon-button color="" matTooltip="logout" (click)="logout()">
     <mat-icon>logout</mat-icon>
   </button>
   <app-image-viewer [imageUrl]="user.profileImageUrl" [open]="fullScreen" (click)="closeFullScreen()" (delete)="deleteProfile()">
