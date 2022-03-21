@@ -69,6 +69,8 @@ import { FacebookSignInComponent } from './components/facebook-sign-in/facebook-
 import { StarComponent } from './components/star/star.component';
 import { CheckCircleComponent } from './components/check-circle/check-circle.component';
 import { SendEmailComponent } from './components/send-email/send-email.component';
+import { InboxComponent } from './components/inbox/inbox.component';
+import { OutboxComponent } from './components/outbox/outbox.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -144,6 +146,8 @@ const customNotifierOptions: NotifierOptions = {
     StarComponent,
     CheckCircleComponent,
     SendEmailComponent,
+    InboxComponent,
+    OutboxComponent,
   ],
   imports: [
     BrowserModule,
