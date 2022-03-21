@@ -1,1 +1,29 @@
-<p>inbox works!</p>
+<div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="from">
+    <th mat-header-cell *matHeaderCellDef> From </th>
+    <td mat-cell *matCellDef="let element"> {{element.origin}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="to">
+    <th mat-header-cell *matHeaderCellDef> To </th>
+    <td mat-cell *matCellDef="let element"> {{element.destination}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.sentDate | date:'short'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="message">
+    <th mat-header-cell *matHeaderCellDef> message </th>
+    <td mat-cell *matCellDef="let element"> {{element.message | summaryPipes}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr (click)="displayData(row.id)" class="tableData" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+</div>
