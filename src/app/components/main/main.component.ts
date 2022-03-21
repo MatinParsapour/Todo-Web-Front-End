@@ -109,7 +109,7 @@ export class MainComponent implements OnInit {
   }
 
   openUserComponent() {
-    return this.dialog.open(UserComponent, {width: '80em'}).afterClosed();
+    return this.dialog.open(UserComponent, { width: '80em' }).afterClosed();
   }
 
   openGetResetEmailComponent() {
@@ -144,7 +144,7 @@ export class MainComponent implements OnInit {
             this.notifier.notify(NotificationType.ERROR, error.error);
           }
         );
-        this.inputToggle()
+      this.inputToggle();
     }
   }
 
@@ -155,8 +155,8 @@ export class MainComponent implements OnInit {
     this.isMyDay.setValue(this.isMyDayAttr);
   }
 
-  inputToggle(){
-    this.displayInput = !this.displayInput
+  inputToggle() {
+    this.displayInput = !this.displayInput;
   }
 
   get task(): any {
@@ -194,7 +194,7 @@ export class MainComponent implements OnInit {
         },
         (error: HttpErrorResponse) => {
           if (error.status === 500) {
-            this.loadCategory("tasks")
+            this.loadCategory('tasks');
           } else {
             console.log(error);
           }
@@ -274,7 +274,7 @@ export class MainComponent implements OnInit {
       );
   }
 
-  openSendEmailDialog(){
-    this.dialog.open(SendEmailComponent, {width: "50em"});
+  openSendEmailDialog() {
+    this.dialog.open(SendEmailComponent, { width: '50em' });
   }
 }
