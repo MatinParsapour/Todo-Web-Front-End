@@ -46,7 +46,15 @@ export class EmailDetailsComponent implements OnInit {
   }
 
   deleteEmail(emailId: any){
-    console.log(emailId);
+    this.emailDetailsService.delete("/user-email/delete-email/" + emailId).subscribe(
+      (response:any) => {
+        this.notifier.notify(NotificationType.SUCCESS, "Email deleted")
+        this.closeDialog()
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error)
+      }
+    )
     
   }
 }
