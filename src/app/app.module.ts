@@ -1,3 +1,4 @@
+import { SendEmailService } from './services/send-email/send-email.service';
 import { PhoneNumberService } from './services/phone-number/phone-number.service';
 import { UserService } from './services/user/user.service';
 import { ToDoService } from './services/to-do/to-do.service';
@@ -67,6 +68,7 @@ import { GoogleSignInComponent } from './components/google-sign-in/google-sign-i
 import { FacebookSignInComponent } from './components/facebook-sign-in/facebook-sign-in.component';
 import { StarComponent } from './components/star/star.component';
 import { CheckCircleComponent } from './components/check-circle/check-circle.component';
+import { SendEmailComponent } from './components/send-email/send-email.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -141,6 +143,7 @@ const customNotifierOptions: NotifierOptions = {
     FacebookSignInComponent,
     StarComponent,
     CheckCircleComponent,
+    SendEmailComponent,
   ],
   imports: [
     BrowserModule,
@@ -178,6 +181,7 @@ const customNotifierOptions: NotifierOptions = {
     UserService,
     PhoneNumberService,
     SocialAuthService,
+    SendEmailService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
