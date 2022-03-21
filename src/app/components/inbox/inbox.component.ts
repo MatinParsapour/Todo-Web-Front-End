@@ -1,3 +1,4 @@
+import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from './../../services/notification/notification.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -11,6 +12,7 @@ import {
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
+import { EmailDetailsComponent } from '../email-details/email-details.component';
 
 @Component({
   selector: 'app-inbox',
@@ -23,7 +25,8 @@ export class InboxComponent implements OnInit {
   constructor(
     private inboxService: InboxService,
     private router: Router,
-    private notifier: NotificationService
+    private notifier: NotificationService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -33,7 +36,7 @@ export class InboxComponent implements OnInit {
   displayedColumns: string[] = ['from', 'to', 'date', 'message'];
 
   emailDetails(element: any) {
-    console.log(element);
+    this.dialog.open(EmailDetailsComponent, { data: { emailId: element } });
   }
 
   getAllInbox() {

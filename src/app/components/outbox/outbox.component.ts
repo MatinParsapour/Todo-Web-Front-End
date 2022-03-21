@@ -1,3 +1,5 @@
+import { EmailDetailsComponent } from './../email-details/email-details.component';
+import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from './../../services/notification/notification.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -16,7 +18,8 @@ export class OutboxComponent implements OnInit {
   constructor(
     private outboxService: OutboxService,
     private router: Router,
-    private notifier: NotificationService
+    private notifier: NotificationService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -26,7 +29,7 @@ export class OutboxComponent implements OnInit {
   displayedColumns: string[] = ['from', 'to', 'date', 'message'];
 
   emailDetails(element: any) {
-    console.log(element);
+    this.dialog.open(EmailDetailsComponent, {data: {emailId: element}})
   }
 
   getAllOutbox() {
