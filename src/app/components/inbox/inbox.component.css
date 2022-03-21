@@ -9,6 +9,17 @@ button{
     position: fixed;
 }
 
+.data {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 95%;
+}
+
+
 .noneEmail{
     display: flex;
     flex-direction: column;

@@ -1,3 +1,5 @@
+import { MatTableDataSource } from '@angular/material/table';
+import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from './../../services/notification/notification.service';
 import { Router } from '@angular/router';
@@ -20,7 +22,8 @@ import { EmailDetailsComponent } from '../email-details/email-details.component'
   styleUrls: ['./inbox.component.css'],
 })
 export class InboxComponent implements OnInit {
-  dataSource: any;
+  dataSource = new MatTableDataSource();
+  search = new FormControl('');
 
   constructor(
     private inboxService: InboxService,
@@ -30,14 +33,21 @@ export class InboxComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllInbox()
+    this.getAllInbox();
+  }
+
+  applyFilter() {
+    const filterValue = this.search.value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   displayedColumns: string[] = ['from', 'to', 'date', 'message'];
 
   emailDetails(element: any) {
-    this.dialog.open(EmailDetailsComponent, { data: { emailId: element } }).afterClosed().subscribe(
-      (response) => this.getAllInbox());
+    this.dialog
+      .open(EmailDetailsComponent, { data: { emailId: element } })
+      .afterClosed()
+      .subscribe((response) => this.getAllInbox());
   }
 
   getAllInbox() {
@@ -45,7 +55,7 @@ export class InboxComponent implements OnInit {
       .getAllInbox('inbox/' + localStorage.getItem('username'))
       .subscribe(
         (response: any) => {
-          this.dataSource = response;
+          this.dataSource.data = response;
           this.notifier.notify(NotificationType.SUCCESS, 'Data updated');
         },
         (error: HttpErrorResponse) => {
