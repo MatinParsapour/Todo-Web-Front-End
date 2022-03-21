@@ -31,6 +31,14 @@
       <div>
         <mat-icon class="list" (click)="sidenav.open()" matTooltip="Open sidebar">list</mat-icon>
       </div>
+      <div>
+        <button (click)="openSendEmailDialog()" class="sendEmailButton" mat-raised-button color="primary">
+          Email
+          <span class="material-icons">
+            email
+          </span>
+        </button>
+      </div>
     </div>
     <div class="toDos">
       <div class="noToDoErrorContainer">
@@ -50,7 +58,8 @@
     <mat-card>
       <mat-form-field appearance="outline">
         <mat-label>ToDo</mat-label>
-        <input (keydown.enter)="addAndUpdateToDos(); searchInput.value = ''" [formControl]="task" matInput autocomplete="off" type="text">
+        <input (keydown.enter)="addAndUpdateToDos(); searchInput.value = ''" [formControl]="task" matInput
+          autocomplete="off" type="text">
       </mat-form-field>
       <div class="toDoMenu">
         <div>
