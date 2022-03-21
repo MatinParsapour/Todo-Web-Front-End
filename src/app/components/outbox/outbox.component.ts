@@ -8,35 +8,43 @@ import { NotificationType } from 'src/app/enum/notification-type';
 @Component({
   selector: 'app-outbox',
   templateUrl: './outbox.component.html',
-  styleUrls: ['./outbox.component.css']
+  styleUrls: ['./outbox.component.css'],
 })
 export class OutboxComponent implements OnInit {
-  dataSource: any
+  dataSource: any;
 
-  constructor(private outboxService: OutboxService,
+  constructor(
+    private outboxService: OutboxService,
     private router: Router,
-    private notifier: NotificationService) { }
+    private notifier: NotificationService
+  ) {}
 
   ngOnInit(): void {
-    this.outboxService.getAllOutbox("outbox/" + localStorage.getItem("username")).subscribe(
-      (response: any) => {
-        this.dataSource = response
-        this.notifier.notify(NotificationType.SUCCESS, "Data updated")
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error);
-        this.notifier.notify(NotificationType.ERROR, error.error)
-      }
-    )
+    this.getAllOutbox()
   }
 
-  displayedColumns: string[] = ['from','to','date','message']
+  displayedColumns: string[] = ['from', 'to', 'date', 'message'];
 
-  displayData(element:any){
+  displayData(element: any) {
     console.log(element);
   }
 
-  backToMain(){
-    this.router.navigateByUrl("/main")
+  getAllOutbox() {
+    this.outboxService
+      .getAllOutbox('outbox/' + localStorage.getItem('username'))
+      .subscribe(
+        (response: any) => {
+          this.dataSource = response;
+          this.notifier.notify(NotificationType.SUCCESS, 'Data updated');
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error);
+          this.notifier.notify(NotificationType.ERROR, error.error);
+        }
+      );
+  }
+
+  backToMain() {
+    this.router.navigateByUrl('/main');
   }
 }
