@@ -141,7 +141,7 @@ export class MainComponent implements OnInit {
             this.clearToDo();
           },
           (error: HttpErrorResponse) => {
-            this.notifier.notify(NotificationType.ERROR, error.message);
+            this.notifier.notify(NotificationType.ERROR, error.error);
           }
         );
         this.inputToggle()
