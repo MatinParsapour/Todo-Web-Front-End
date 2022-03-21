@@ -1,3 +1,5 @@
+import { OutboxService } from './services/email-service/outbox/outbox.service';
+import { InboxService } from './services/email-service/inbox/inbox.service';
 import { SendEmailService } from './services/send-email/send-email.service';
 import { PhoneNumberService } from './services/phone-number/phone-number.service';
 import { UserService } from './services/user/user.service';
@@ -186,6 +188,8 @@ const customNotifierOptions: NotifierOptions = {
     PhoneNumberService,
     SocialAuthService,
     SendEmailService,
+    InboxService,
+    OutboxService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
