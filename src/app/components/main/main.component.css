@@ -89,6 +89,10 @@
     overflow: auto;
     margin-top: 2%;
   }
+  
+  .buttons > div {
+    display: flex;
+  }
 
   .toDoMenu {
     display: flex;

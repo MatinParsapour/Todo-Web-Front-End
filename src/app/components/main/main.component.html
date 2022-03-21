@@ -5,11 +5,6 @@
     </button>
     <br>
     <br>
-    <form class="search-container" action="//llamaswill.tumblr.com/search">
-      <input #searchInput ngModel (ngModelChange)="search(searchInput.value)" id="search-box" type="text"
-        class="search-box" name="q" />
-      <label for="search-box"><span class="glyphicon glyphicon-search search-icon"></span></label>
-    </form>
     <hr>
     <div *ngFor="let category of categories">
       <app-category [name]="category.name" (click)="loadCategory(category.name)"></app-category>
@@ -30,6 +25,11 @@
     <div class="buttons">
       <div>
         <mat-icon class="list" (click)="sidenav.open()" matTooltip="Open sidebar">list</mat-icon>
+        <form class="search-container" action="//llamaswill.tumblr.com/search">
+          <input #searchInput ngModel autocomplete="off" (ngModelChange)="search(searchInput.value)" id="search-box" type="text"
+            class="search-box" name="q" />
+          <label for="search-box"><span class="glyphicon glyphicon-search search-icon"></span></label>
+        </form>
       </div>
       <div>
         <button (click)="openSendEmailDialog()" class="sendEmailButton" mat-raised-button color="primary">
