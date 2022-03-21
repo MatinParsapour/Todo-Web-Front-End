@@ -33,7 +33,7 @@ export class InboxComponent implements OnInit {
       );
   }
 
-  displayedColumns: string[] = ['from', 'to', 'date', 'message', 'delete'];
+  displayedColumns: string[] = ['from', 'to', 'date', 'message'];
 
   displayData(element: any){
     console.log(element);
