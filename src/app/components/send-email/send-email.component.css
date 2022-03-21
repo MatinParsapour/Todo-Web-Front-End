@@ -16,3 +16,8 @@ mat-spinner {
   top: 40%;
   left: 46%;
 }
+
+.icons{
+    display: flex;
+    justify-content: space-around;
+}
