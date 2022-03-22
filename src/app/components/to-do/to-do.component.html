@@ -9,13 +9,13 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu class="menu" #normalMenu="matMenu">
+      <app-star (click)="starToDo()" [isStarred]="toDo.isStarred"></app-star>
       <button (click)="openEditToDoDialog()" mat-menu-item class="material-icons" matTooltip="Edit todo">
         <mat-icon>edit</mat-icon> Edit todo
       </button>
       <button (click)="openAggreementDialog()" mat-menu-item class="material-icons delete" matTooltip="Delete todo">
         <mat-icon>delete</mat-icon> Delete todo
       </button>
-      <app-star (click)="starToDo()" [isStarred]="toDo.isStarred"></app-star>
     </mat-menu>
   </div>
 </mat-card>
