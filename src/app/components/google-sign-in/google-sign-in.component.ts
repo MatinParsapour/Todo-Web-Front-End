@@ -63,6 +63,7 @@ export class GoogleSignInComponent implements OnInit {
     localStorage.setItem('username', user.id);
     localStorage.setItem('firstName', user.firstName);
     localStorage.setItem('lastName', user.lastName);
+    localStorage.setItem('role', user.role);
   }
 
   signInUser() {

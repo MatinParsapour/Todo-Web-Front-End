@@ -39,7 +39,7 @@ export class FacebookSignInComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authenticateUserForSignIn()
+    this.authenticateUserForSignIn();
   }
 
   authenticateUserForSignIn() {
@@ -62,7 +62,7 @@ export class FacebookSignInComponent implements OnInit {
     this.user.get('firstName')?.setValue(this.socialUser.firstName);
     this.user.get('lastName')?.setValue(this.socialUser.lastName);
     this.user.get('email')?.setValue(this.socialUser.email);
-    this.user.get('password')?.setValue('MMmm11!!11');    
+    this.user.get('password')?.setValue('MMmm11!!11');
   }
 
   signInUser() {
@@ -83,5 +83,6 @@ export class FacebookSignInComponent implements OnInit {
     localStorage.setItem('username', user.id);
     localStorage.setItem('firstName', user.firstName);
     localStorage.setItem('lastName', user.lastName);
+    localStorage.setItem('role', user.role);
   }
 }
