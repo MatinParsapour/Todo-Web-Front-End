@@ -1,3 +1,4 @@
+import { UserManangementComponent } from './components/user-manangement/user-manangement.component';
 import { OutboxComponent } from './components/outbox/outbox.component';
 import { InboxComponent } from './components/inbox/inbox.component';
 import { ResetEmailComponent } from './components/reset-email/reset-email.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'reset-email', component: ResetEmailComponent},
   {path: 'inbox', component: InboxComponent},
   {path: 'outbox', component: OutboxComponent},
+  {path: 'user-management', component: UserManangementComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: '**', component: NotFoundComponent},
 ];
