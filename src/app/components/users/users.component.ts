@@ -1,3 +1,4 @@
+import { MatTableDataSource } from '@angular/material/table';
 import { UserManagementService } from './../../services/user-management/user-management.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -10,7 +11,8 @@ import { NotificationService } from 'src/app/services/notification/notification.
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
-  users: any;
+  users = new MatTableDataSource();
+  columns: string[] = ['firstName','lastName','email']
 
   constructor(
     private userManagementService: UserManagementService,
@@ -24,7 +26,7 @@ export class UsersComponent implements OnInit {
   getAllUsers() {
     this.userManagementService.getAll('/get-all').subscribe(
       (response: any) => {
-        this.users = response;
+        this.users.data = response;
         console.log(this.users);
       },
       (error: HttpErrorResponse) => {

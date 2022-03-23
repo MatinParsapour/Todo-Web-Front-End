@@ -1,0 +1,20 @@
+table {
+  width: 100%;
+}
+
+tr.tableData:visited {
+  background-color: rgb(36, 7, 7);
+}
+
+tr.tableData:focus {
+  background-color: rgb(49, 42, 42);
+}
+
+tr.tableData:hover {
+  cursor: pointer;
+  background-color: rgb(43, 36, 36);
+}
+
+tr.tableData:active {
+  background-color: rgb(49, 13, 13);
+}
