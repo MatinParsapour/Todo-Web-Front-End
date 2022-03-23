@@ -32,7 +32,7 @@
         </form>
       </div>
       <div>
-        <button *ngIf="!isUser" class="userManagementButton" mat-raised-button color="primary">
+        <button *ngIf="!isUser" [routerLink]="'/user-management'" class="userManagementButton" mat-raised-button color="primary">
           User management
           <span class="material-icons">
             people
