@@ -44,6 +44,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
@@ -180,6 +181,7 @@ const customNotifierOptions: NotifierOptions = {
     MatMenuModule,
     MatTableModule,
     MatSelectModule,
+    MatTabsModule,
     NgImageSliderModule,
   ],
   providers: [
