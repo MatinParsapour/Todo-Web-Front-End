@@ -27,9 +27,9 @@ export class MainComponent implements OnInit {
   toDoFolders: any;
   isMyDayAttr = false;
   toDos: any;
-  displayInput = true
+  displayInput = true;
   user = '';
-  isUser!: boolean;
+  isUser = false;
 
   categories = [
     {
@@ -64,6 +64,7 @@ export class MainComponent implements OnInit {
       localStorage.getItem('lastName');
     this.getAllToDoFolders();
     this.getAllToDos();
+    this.checkUserRole();
   }
 
   openUserDialog() {
@@ -279,11 +280,12 @@ export class MainComponent implements OnInit {
     this.dialog.open(SendEmailComponent, { width: '50em' });
   }
 
-  checkUserRole():any{
-    const role = localStorage.getItem("role") 
+  checkUserRole(): any {
+    const role = localStorage.getItem('role');
     if (role === 'ROLE_USER') {
-      this.isUser = true
+      this.isUser = true;
+    } else {
+      this.isUser = false;
     }
-    this.isUser = false
   }
 }
