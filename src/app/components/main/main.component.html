@@ -32,6 +32,12 @@
         </form>
       </div>
       <div>
+        <button *ngIf="!isUser" class="userManagementButton" mat-raised-button color="primary">
+          User management
+          <span class="material-icons">
+            people
+          </span>
+        </button>
         <button (click)="openSendEmailDialog()" class="sendEmailButton" mat-raised-button color="primary">
           Email
           <span class="material-icons">

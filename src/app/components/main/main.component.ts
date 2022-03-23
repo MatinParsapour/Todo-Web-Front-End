@@ -29,6 +29,7 @@ export class MainComponent implements OnInit {
   toDos: any;
   displayInput = true
   user = '';
+  isUser!: boolean;
 
   categories = [
     {
@@ -276,5 +277,13 @@ export class MainComponent implements OnInit {
 
   openSendEmailDialog() {
     this.dialog.open(SendEmailComponent, { width: '50em' });
+  }
+
+  checkUserRole():any{
+    const role = localStorage.getItem("role") 
+    if (role === 'ROLE_USER') {
+      this.isUser = true
+    }
+    this.isUser = false
   }
 }
