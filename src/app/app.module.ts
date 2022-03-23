@@ -78,6 +78,7 @@ import { InboxComponent } from './components/inbox/inbox.component';
 import { OutboxComponent } from './components/outbox/outbox.component';
 import { EmailDetailsComponent } from './components/email-details/email-details.component';
 import { UserManangementComponent } from './components/user-manangement/user-manangement.component';
+import { UsersComponent } from './components/users/users.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -157,6 +158,7 @@ const customNotifierOptions: NotifierOptions = {
     OutboxComponent,
     EmailDetailsComponent,
     UserManangementComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
