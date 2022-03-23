@@ -12,7 +12,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
 })
 export class UsersComponent implements OnInit {
   users = new MatTableDataSource();
-  columns: string[] = ['firstName','lastName','email']
+  dataColumns: string[] = ['firstName','lastName','email', 'isBlocked', 'isDeleted']
 
   constructor(
     private userManagementService: UserManagementService,
