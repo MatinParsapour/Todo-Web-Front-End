@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { UserComponent } from './../user/user.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator/paginator';
@@ -15,6 +16,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
 })
 export class UsersComponent implements OnInit {
   users = new MatTableDataSource();
+  search = new FormControl();
   dataColumns: string[] = ['firstName','lastName','email', 'isBlocked', 'isDeleted']
   length = 0;
   pageSize = 5;
@@ -53,5 +55,10 @@ export class UsersComponent implements OnInit {
 
   loadUser(element: any){
     this.dialog.open(UserComponent, {data: {userId: element}})
+  }
+
+  filter(){
+    const filterValue = this.search.value;
+    this.users.filter = filterValue.trim().toLowerCase()
   }
 }
