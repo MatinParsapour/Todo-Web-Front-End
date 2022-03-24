@@ -17,7 +17,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
 export class UsersComponent implements OnInit {
   users = new MatTableDataSource();
   search = new FormControl();
-  dataColumns: string[] = ['firstName','lastName','email', 'isBlocked', 'isDeleted']
+  dataColumns: string[] = ['profile','firstName','lastName','email', 'isBlocked', 'isDeleted']
   length = 0;
   pageSize = 5;
   pageIndex = 0;

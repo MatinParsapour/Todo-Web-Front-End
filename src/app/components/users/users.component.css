@@ -10,6 +10,10 @@
   width: 100%;
 }
 
+img{
+  border-radius: 50%;
+}
+
 table {
   width: 100%;
 }
