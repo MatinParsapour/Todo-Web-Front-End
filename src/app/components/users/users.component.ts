@@ -1,3 +1,5 @@
+import { UserComponent } from './../user/user.component';
+import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserManagementService } from './../../services/user-management/user-management.service';
@@ -22,7 +24,8 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private userManagementService: UserManagementService,
-    private notifier: NotificationService
+    private notifier: NotificationService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -46,5 +49,9 @@ export class UsersComponent implements OnInit {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.getAllUsers()
+  }
+
+  loadUser(element: any){
+    this.dialog.open(UserComponent, {data: {userId: element}})
   }
 }

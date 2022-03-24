@@ -32,7 +32,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
-    <tr class="tableData" mat-row *matRowDef="let row; columns: dataColumns"></tr>
+    <tr (click)="loadUser(row.id)" class="tableData" mat-row *matRowDef="let row; columns: dataColumns"></tr>
   </table>
 
   <mat-paginator (page)="handlePageEvent($event)" [length]="length" [pageIndex]="pageIndex"
