@@ -111,7 +111,7 @@ export class MainComponent implements OnInit {
   }
 
   openUserComponent() {
-    return this.dialog.open(UserComponent, { width: '80em' }).afterClosed();
+    return this.dialog.open(UserComponent, { width: '80em' , data : {userId: localStorage.getItem("username")}}).afterClosed();
   }
 
   openGetResetEmailComponent() {
