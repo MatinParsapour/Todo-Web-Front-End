@@ -1,1 +1,7 @@
-<p>user-management-user-details works!</p>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div>
+    <img *ngIf="user.profileImageUrl" width="350px" height="350px" [src]="user.profileImageUrl" alt="">
+    <img *ngIf="!user.profileImageUrl" width="350px" height="350px"
+      src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdevitt-forand.com%2Fwp-content%2Fuploads%2F2018%2F05%2Fperson-icon.png&f=1&nofb=1"
+      alt="">
+</div>
