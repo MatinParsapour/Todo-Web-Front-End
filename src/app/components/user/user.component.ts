@@ -1,9 +1,9 @@
 import { AggreementComponent } from './../aggreement/aggreement.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NotificationService } from './../../services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { DatePipe } from '@angular/common';
@@ -19,14 +19,19 @@ export class UserComponent implements OnInit {
   isLoading: boolean = false;
   public profileImage: any;
   fullScreen = false
+  userId: any
   now = new Date()
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) data: any,
     private userService: UserService,
     private notifier: NotificationService,
     private router: Router,
     private dialog: MatDialog
-  ) {}
+  ) {
+    this.userId = data.userId
+    
+  }
 
   ngOnInit(): void {
     this.getUser();
@@ -34,7 +39,7 @@ export class UserComponent implements OnInit {
 
   getUser() {
     this.isLoading = true;
-    this.userService.getUser(localStorage.getItem('username')).subscribe(
+    this.userService.getUser(this.userId).subscribe(
       (response: any) => {        
         this.user = response;
         this.isLoading = false;
@@ -53,10 +58,7 @@ export class UserComponent implements OnInit {
   changeProfileImage(event: any) {
     this.profileImage = event.target.files[0];
     const formData = new FormData();
-    const username = localStorage.getItem('username');
-    if (username != null) {
-      formData.append('userId', username);
-    }
+    formData.append('userId', this.userId);
     formData.append('profileImage', this.profileImage);
     this.userService.update('/user/update-profile-image', formData).subscribe(
       (response: any) => {
