@@ -38,4 +38,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr (click)="emailDetails(row.id)" class="tableData" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <mat-paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize"
+  [showFirstLastButtons]="showFirstLastButtons" [pageSizeOptions]="pageSizeOptions" [pageIndex]="pageIndex">
+  </mat-paginator>
+
 </div>

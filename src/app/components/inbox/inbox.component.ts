@@ -1,3 +1,4 @@
+import { PageEvent } from '@angular/material/paginator/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -24,6 +25,11 @@ import { EmailDetailsComponent } from '../email-details/email-details.component'
 export class InboxComponent implements OnInit {
   dataSource = new MatTableDataSource();
   search = new FormControl('');
+  length = 0;
+  pageSize = 5;
+  pageIndex = 0;
+  pageSizeOptions = [5, 10, 15, 20]
+  showFirstLastButtons = true;
 
   constructor(
     private inboxService: InboxService,
@@ -52,10 +58,11 @@ export class InboxComponent implements OnInit {
 
   getAllInbox() {
     this.inboxService
-      .getAllInbox('inbox/' + localStorage.getItem('username'))
+      .getAllInbox('inbox/' + localStorage.getItem('username') + "/" + this.pageIndex + "/" + this.pageSize)
       .subscribe(
         (response: any) => {
-          this.dataSource.data = response;
+          this.dataSource.data = response.content;
+          this.length = response.totalElements
           this.notifier.notify(NotificationType.SUCCESS, 'Data updated');
         },
         (error: HttpErrorResponse) => {
@@ -67,5 +74,12 @@ export class InboxComponent implements OnInit {
 
   backToMain() {
     this.router.navigateByUrl('/main');
+  }
+
+  handlePageEvent(event: PageEvent){
+    this.length = event.length;
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex
+    this.getAllInbox()
   }
 }
