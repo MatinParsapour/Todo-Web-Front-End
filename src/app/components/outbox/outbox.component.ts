@@ -8,6 +8,7 @@ import { OutboxService } from './../../services/email-service/outbox/outbox.serv
 import { Component, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { MatTableDataSource } from '@angular/material/table';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-outbox',
@@ -16,7 +17,12 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class OutboxComponent implements OnInit {
   dataSource = new MatTableDataSource();
-  search = new FormControl('')
+  search = new FormControl('');
+  length = 0;
+  pageSize = 5;
+  pageIndex = 0;
+  pageSizeOptions = [5, 10, 15, 20];
+  showFirstLastButtons = true;
 
   constructor(
     private outboxService: OutboxService,
@@ -39,16 +45,17 @@ export class OutboxComponent implements OnInit {
   }
 
   applyFilter() {
-    const filterValue = this.search.value
+    const filterValue = this.search.value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   getAllOutbox() {
     this.outboxService
-      .getAllOutbox('outbox/' + localStorage.getItem('username'))
+      .getAllOutbox('outbox/' + localStorage.getItem('username') + '/' + this.pageIndex + '/' + this.pageSize)
       .subscribe(
         (response: any) => {
-          this.dataSource.data = response;
+          this.dataSource.data = response.content;
+          this.length = response.totalElements
           this.notifier.notify(NotificationType.SUCCESS, 'Data updated');
         },
         (error: HttpErrorResponse) => {
@@ -60,5 +67,12 @@ export class OutboxComponent implements OnInit {
 
   backToMain() {
     this.router.navigateByUrl('/main');
+  }
+
+  handlePageEvent(event: PageEvent) {
+    this.length = event.length;
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
+    this.getAllOutbox()
   }
 }
