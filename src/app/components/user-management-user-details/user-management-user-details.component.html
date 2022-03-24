@@ -14,31 +14,41 @@
     </div>
     <div class="displayGrid marginTop5">
       <div class="fontSize20">
-        <p>First name</p>
-        <mat-card> {{user.firstName}} </mat-card>
+        <p>Name</p>
+        <mat-card> {{user.role | cutter : 'first' : 5 | titlecase }} {{user.firstName}} {{user.lastName}}
+        </mat-card>
       </div>
       <div class="fontSize20">
-        <p>Last name</p>
-        <mat-card> {{user.lastName}} </mat-card>
+        <p>Birthday</p>
+        <mat-card> {{user.birthDay ? user.birthDay : '-'}} </mat-card>
       </div>
       <div class="fontSize20">
-        <p>Email</p>
-        <mat-card> {{user.email}} </mat-card>
+        <p>Age</p>
+        <mat-card> {{user.age ? user.age : '-'}} </mat-card>
       </div>
     </div>
     <div class="displayGrid marginTop5 maxWidth1200MarginTop0">
       <div class="fontSize20">
-        <p>Birthday</p>
-        <mat-card> {{user.birthDay ? user.birthDay : '-' | date: 'short'}} </mat-card>
-      </div>
-      <div class="fontSize20">
-        <p>Age</p>
-        <mat-card> {{user.lastName ? user.age : '-'}} </mat-card>
+        <p>Email</p>
+        <mat-card> {{user.email}} </mat-card>
       </div>
       <div class="fontSize20">
         <p>Phone number</p>
         <mat-card> {{user.phoneNumber ? user.phoneNumber : '-'}} </mat-card>
       </div>
+      <div class="fontSize20">
+        <p>Blocked</p>
+        <mat-card> {{user.isBlocked ? "Yes" : 'No'}} </mat-card>
+      </div>
+    </div>
+    <div class="displayGrid marginTop5 maxWidth1200MarginTop0 fontSize20 ">
+        <span>Authorities</span>
+      <mat-card class="authorities">
+        <div *ngFor="let authority of user.authorities">
+
+          {{authority}}
+        </div>
+      </mat-card>
     </div>
   </div>
 </div>

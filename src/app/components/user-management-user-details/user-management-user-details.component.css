@@ -4,6 +4,10 @@
     left: 50%;
   }
 
+  .authorities {
+      margin-top: -5em;
+  }
+
   .displayFlex {
     display: flex;
   }
@@ -60,15 +64,21 @@
     flex-direction: column;
   }
 
-  .maxWidth1200JustifyContent{
-      justify-content:  center;
+  .maxWidth1200JustifyContent {
+    justify-content: center;
   }
 
-  .maxWidth1200DisplayFlex{
+  .maxWidth1200DisplayFlex {
+    display: flex;
+  }
+
+  .maxWidth1200MarginTop0 {
+    margin-top: 0;
+  }
+
+  .authorities{
+      margin-top: unset;
       display: flex;
-  }
-
-  .maxWidth1200MarginTop0{
-      margin-top: 0;
+      justify-content: space-between;
   }
 }
