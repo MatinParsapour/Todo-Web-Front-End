@@ -53,10 +53,6 @@ export class UsersComponent implements OnInit {
     this.getAllUsers()
   }
 
-  loadUser(element: any){
-    this.dialog.open(UserComponent, {data: {userId: element}})
-  }
-
   filter(){
     const filterValue = this.search.value;
     this.users.filter = filterValue.trim().toLowerCase()
