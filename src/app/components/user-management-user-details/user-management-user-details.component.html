@@ -38,11 +38,13 @@
       </div>
       <div class="fontSize20">
         <p>Blocked</p>
-        <mat-card> {{user.isBlocked ? "Yes" : 'No'}} </mat-card>
+        <mat-card class="blocked"> {{user.isBlocked ? "Yes" : 'No'}} <button [disabled]="!isSuperAdmin" [matTooltip]="'Block ' +  user.firstName + ' ' + user.lastName" class="blockButton" mat-icon-button>
+            <mat-icon>block</mat-icon>
+          </button> </mat-card>
       </div>
     </div>
     <div class="displayGrid marginTop5 maxWidth1200MarginTop0 fontSize20 ">
-        <span>Authorities</span>
+      <span>Authorities</span>
       <mat-card class="authorities">
         <div *ngFor="let authority of user.authorities">
 

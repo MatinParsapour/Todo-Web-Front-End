@@ -15,6 +15,7 @@ export class UserManagementUserDetailsComponent implements OnInit {
   userId: any;
   user!: User;
   isLoading: boolean = false;
+  isSuperAdmin = false
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -55,5 +56,13 @@ export class UserManagementUserDetailsComponent implements OnInit {
 
   backToMain() {
     this.router.navigateByUrl('/user-management');
+  }
+
+  checkUserRole(){
+    if (this.user.role === 'ROLE_SUPER_ADMIN') {
+      this.isSuperAdmin = true
+    } else {
+      this.isSuperAdmin = false
+    }
   }
 }

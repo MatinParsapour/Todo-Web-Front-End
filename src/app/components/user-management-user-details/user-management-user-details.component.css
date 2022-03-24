@@ -5,7 +5,7 @@
   }
 
   .authorities {
-      margin-top: -5em;
+    margin-top: -5em;
   }
 
   .displayFlex {
@@ -57,6 +57,22 @@
   button:active {
     color: rgb(215, 192, 238);
   }
+
+  .blocked {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .blockButton {
+    all: unset;
+    display: flex;
+    align-items: center;
+  }
+
+  .blockButton:hover{
+      cursor: pointer;
+  }
 }
 
 @media screen and (max-width: 1200px) {
@@ -76,9 +92,9 @@
     margin-top: 0;
   }
 
-  .authorities{
-      margin-top: unset;
-      display: flex;
-      justify-content: space-between;
+  .authorities {
+    margin-top: unset;
+    display: flex;
+    justify-content: space-between;
   }
 }
