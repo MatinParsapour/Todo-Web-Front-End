@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationType } from 'src/app/enum/notification-type';
@@ -19,12 +19,13 @@ export class UserManagementUserDetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
-    private notifier: NotificationService
+    private notifier: NotificationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.getUrlParameters();
-    this.getUser()
+    this.getUser();
   }
 
   getUrlParameters() {
@@ -50,5 +51,9 @@ export class UserManagementUserDetailsComponent implements OnInit {
         );
       }
     );
+  }
+
+  backToMain() {
+    this.router.navigateByUrl('/user-management');
   }
 }

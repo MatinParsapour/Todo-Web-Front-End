@@ -8,3 +8,15 @@ img{
     padding-top: 2%;
     padding-left: 2%;
 }
+
+button{
+    position: fixed
+}
+
+button:hover {
+  color: rgb(166, 140, 192);
+}
+
+button:active {
+  color: rgb(215, 192, 238);
+}
