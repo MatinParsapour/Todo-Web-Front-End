@@ -80,6 +80,7 @@ import { OutboxComponent } from './components/outbox/outbox.component';
 import { EmailDetailsComponent } from './components/email-details/email-details.component';
 import { UserManangementComponent } from './components/user-manangement/user-manangement.component';
 import { UsersComponent } from './components/users/users.component';
+import { UserManagementUserDetailsComponent } from './components/user-management-user-details/user-management-user-details.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -160,6 +161,7 @@ const customNotifierOptions: NotifierOptions = {
     EmailDetailsComponent,
     UserManangementComponent,
     UsersComponent,
+    UserManagementUserDetailsComponent,
   ],
   imports: [
     BrowserModule,
