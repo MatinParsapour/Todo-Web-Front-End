@@ -34,4 +34,9 @@
     <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
     <tr class="tableData" mat-row *matRowDef="let row; columns: dataColumns"></tr>
   </table>
+
+  <mat-paginator (page)="handlePageEvent($event)" [length]="length" [pageIndex]="pageIndex"
+  [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [showFirstLastButtons]="showFirstLastButtons">
+
+  </mat-paginator>
 </div>
