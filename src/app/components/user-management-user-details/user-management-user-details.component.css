@@ -12,7 +12,7 @@
 
   .authorities {
     position: fixed;
-    top: 20%;
+    top: 25%;
     right: 2%;
     font-size: 15px;
     border-style: inset;
@@ -50,41 +50,13 @@
     width: 120em;
   }
 
-  .displayFlex {
-    display: flex;
-  }
-
-  .paddingLeft5 {
-    padding-left: 5%;
-  }
-
-  .paddingRight5 {
-    padding-right: 5%;
-  }
-
-  .displayGrid {
-    display: grid;
-  }
-
-  .width18em {
-    width: 18em;
-  }
-
-  .justifyContentSpaceBetween {
-    justify-content: space-between;
-  }
-
   .fontSize20 {
     font-size: 20px;
   }
 
-  .marginTop5 {
-    margin-top: 5%;
-  }
-
   img {
     border-radius: 50%;
-    top: 2%;
+    top: 7%;
     right: 2%;
     position: fixed;
   }
@@ -117,10 +89,6 @@
 
   .blockButton:hover {
     cursor: pointer;
-  }
-
-  .flexDirectionColumn {
-    flex-direction: column;
   }
 }
 
