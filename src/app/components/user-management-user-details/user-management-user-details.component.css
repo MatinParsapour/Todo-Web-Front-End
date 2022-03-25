@@ -23,6 +23,12 @@
     flex-direction: row-reverse;
   }
 
+  .editButton{
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+  }
+
   .buttons > button[color="warn"]{
     margin-right: 2%;
   }
