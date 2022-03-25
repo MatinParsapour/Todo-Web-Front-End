@@ -59,6 +59,8 @@
     top: 7%;
     right: 2%;
     position: fixed;
+    width: 100px;
+    height: 100px;
   }
 
   .blockButton {
