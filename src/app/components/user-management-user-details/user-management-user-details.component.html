@@ -20,8 +20,14 @@
     <mat-card class="details">
       <div>
         <div class="fontSize20">
-          <p>Name</p>
-          <mat-card> {{user.role | cutter : 'first' : 5 | titlecase | replacer : "_" : " " }} {{user.firstName}} {{user.lastName}}
+          <p>Name " {{user.role | cutter : 'first' : 5 | titlecase | replacer : "_" : " " }} "</p>
+          <mat-card> <span [contentEditable]="contentEditable" #fName (blur)="user.firstName = fName.innerText">
+
+            {{user.firstName}}
+          </span>
+           <span [contentEditable]="contentEditable" #lName (blur)="user.lastName = lName.innerText">
+             {{user.lastName}}
+            </span>
           </mat-card>
         </div>
         <div class="fontSize20">
@@ -36,7 +42,9 @@
       <div>
         <div class="fontSize20">
           <p>Email</p>
-          <mat-card> {{user.email}} </mat-card>
+          <mat-card> <span [contentEditable]="contentEditable" #email
+              (blur)="user.email = email.innerText">{{user.email}}</span>
+          </mat-card>
         </div>
         <div class="fontSize20">
           <p>Phone number</p>
@@ -44,16 +52,19 @@
         </div>
         <div class="fontSize20">
           <p>Blocked</p>
-          <mat-card class="blocked"> {{user.isBlocked ? "Yes" : 'No'}} <button (click)="blockUser()" class="blockButton" [disabled]="!isSuperAdmin"
-              [matTooltip]="'Block ' +  user.firstName + ' ' + user.lastName" class="blockButton" mat-icon-button>
+          <mat-card class="blocked"> {{user.isBlocked ? "Yes" : 'No'}} <button (click)="blockUser()" class="blockButton"
+              [disabled]="!isSuperAdmin" [matTooltip]="'Block ' +  user.firstName + ' ' + user.lastName"
+              class="blockButton" mat-icon-button>
               <mat-icon>block</mat-icon>
             </button> </mat-card>
         </div>
       </div>
+      <button class="editButton" mat-icon-button (click)="makeContentsEditable()">
+        <mat-icon>edit</mat-icon>
+      </button>
     </mat-card>
   </div>
 </div>
 <div class="buttons">
-  <button mat-flat-button color="primary">Update <mat-icon>update</mat-icon></button>
-  <button mat-flat-button color="warn">Cancel <mat-icon>cancel</mat-icon></button>
+  <button mat-flat-button (click)="updateUser()" color="primary">Update <mat-icon>update</mat-icon></button>
 </div>
