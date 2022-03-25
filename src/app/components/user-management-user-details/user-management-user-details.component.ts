@@ -15,7 +15,7 @@ export class UserManagementUserDetailsComponent implements OnInit {
   userId: any;
   user!: User;
   isLoading: boolean = false;
-  isSuperAdmin = false
+  isSuperAdmin = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -41,6 +41,7 @@ export class UserManagementUserDetailsComponent implements OnInit {
       (response: any) => {
         this.user = response;
         this.isLoading = false;
+        this.checkUserRole();
       },
       (error: HttpErrorResponse) => {
         console.log(error);
@@ -58,11 +59,15 @@ export class UserManagementUserDetailsComponent implements OnInit {
     this.router.navigateByUrl('/user-management');
   }
 
-  checkUserRole(){
+  checkUserRole() {
     if (this.user.role === 'ROLE_SUPER_ADMIN') {
-      this.isSuperAdmin = true
+      this.isSuperAdmin = true;
     } else {
-      this.isSuperAdmin = false
+      this.isSuperAdmin = false;
     }
+  }
+
+  blockUser(){
+    this.user.isBlocked = !this.user.isBlocked
   }
 }

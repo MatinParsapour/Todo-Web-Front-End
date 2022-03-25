@@ -5,7 +5,37 @@
   }
 
   .authorities {
-    margin-top: -5em;
+    position: fixed;
+    top: 20%;
+    right: 2%;
+    font-size: 15px;
+    border-style: inset;
+    border-radius: 5%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+  }
+
+  .buttons {
+    position: fixed;
+    right: 2em;
+    bottom: 2em;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .buttons > button[color="warn"]{
+    margin-right: 2%;
+  }
+
+  .details {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .detailsCard {
+    display: table-cell;
+    padding-left: 5%;
+    width: 120em;
   }
 
   .displayFlex {
@@ -42,12 +72,15 @@
 
   img {
     border-radius: 50%;
-    padding-top: 2%;
-    padding-left: 2%;
+    top: 2%;
+    right: 2%;
+    position: fixed;
   }
 
-  button {
-    position: fixed
+  .blockButton {
+    position: fixed;
+    top: 1%;
+    left: 0.5%;
   }
 
   button:hover {
@@ -70,8 +103,12 @@
     align-items: center;
   }
 
-  .blockButton:hover{
-      cursor: pointer;
+  .blockButton:hover {
+    cursor: pointer;
+  }
+
+  .flexDirectionColumn {
+    flex-direction: column;
   }
 }
 
