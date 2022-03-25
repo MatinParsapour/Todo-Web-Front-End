@@ -16,6 +16,7 @@ export class UserManagementUserDetailsComponent implements OnInit {
   user!: User;
   isLoading: boolean = false;
   isSuperAdmin = false;
+  contentEditable = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -60,7 +61,7 @@ export class UserManagementUserDetailsComponent implements OnInit {
   }
 
   checkUserRole() {
-    if (this.user.role === 'ROLE_SUPER_ADMIN') {
+    if (localStorage.getItem("role") === 'ROLE_SUPER_ADMIN') {
       this.isSuperAdmin = true;
     } else {
       this.isSuperAdmin = false;
@@ -69,5 +70,22 @@ export class UserManagementUserDetailsComponent implements OnInit {
 
   blockUser(){
     this.user.isBlocked = !this.user.isBlocked
+  }
+
+  makeContentsEditable(){
+    this.contentEditable = !this.contentEditable
+  }
+
+  updateUser(){
+    this.userService.update("/user/update-user",this.user).subscribe(
+      (response: any) => {
+        this.notifier.notify(NotificationType.SUCCESS, "Data updated")
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error)
+        console.log(error);
+        
+      }
+    )
   }
 }
