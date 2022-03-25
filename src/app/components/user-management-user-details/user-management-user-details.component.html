@@ -1,5 +1,5 @@
 <mat-spinner class="loader" *ngIf="isLoading"></mat-spinner>
-<button (click)="backToMain()" mat-icon-button>
+<button class="arrowBackButton" (click)="backToMain()" mat-icon-button>
   <span class="material-icons">
     arrow_back
   </span>
@@ -43,7 +43,7 @@
       <div>
         <div class="fontSize20">
           <p>Email</p>
-          <mat-card> <span [contentEditable]="contentEditable" #email
+          <mat-card> <span class="email" [contentEditable]="contentEditable" #email
               (blur)="user.email = email.innerText">{{user.email}}</span>
           </mat-card>
         </div>
