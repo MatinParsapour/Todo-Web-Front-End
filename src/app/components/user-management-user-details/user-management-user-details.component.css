@@ -4,6 +4,12 @@
     left: 50%;
   }
 
+  .loader {
+    left: 50%;
+    margin-left: -4em;
+    z-index: 99;
+  }
+
   .authorities {
     position: fixed;
     top: 20%;
@@ -23,13 +29,13 @@
     flex-direction: row-reverse;
   }
 
-  .editButton{
+  .editButton {
     position: absolute;
     bottom: 2%;
     right: 2%;
   }
 
-  .buttons > button[color="warn"]{
+  .buttons>button[color="warn"] {
     margin-right: 2%;
   }
 

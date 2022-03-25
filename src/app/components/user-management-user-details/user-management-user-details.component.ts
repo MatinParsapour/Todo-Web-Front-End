@@ -77,14 +77,16 @@ export class UserManagementUserDetailsComponent implements OnInit {
   }
 
   updateUser(){
+    this.isLoading = true
     this.userService.update("/user/update-user",this.user).subscribe(
       (response: any) => {
         this.notifier.notify(NotificationType.SUCCESS, "Data updated")
+        this.isLoading = false
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error)
         console.log(error);
-        
+        this.isLoading = false
       }
     )
   }
