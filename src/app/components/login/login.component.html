@@ -26,4 +26,14 @@
       Don't have an account? <a color="primary" routerLink="/register"> Sign Up</a>
     </div>
   </div>
+
+  <mat-card @fade class="popup" *ngIf="displayPopup">
+    <img
+      src="https://img.icons8.com/external-justicon-lineal-color-justicon/64/000000/external-block-notifications-justicon-lineal-color-justicon.png" />
+    <p> Your account has been blocked </p>
+    <p>
+      You can contact support
+    </p>
+    <a href="mailto:matin.parsapour.iam@example.com">matin.parsapour.iam@gmail.com</a>
+  </mat-card>
 </div>
