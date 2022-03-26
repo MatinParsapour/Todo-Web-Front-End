@@ -17,6 +17,7 @@ export class UserManagementUserDetailsComponent implements OnInit {
   isLoading: boolean = false;
   isSuperAdmin = false;
   contentEditable = false;
+  roles = ['ROLE_USER','ROLE_MANAGER','ROLE_ADMIN','ROLE_SUPER_ADMIN']
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -77,11 +78,14 @@ export class UserManagementUserDetailsComponent implements OnInit {
   }
 
   updateUser(){
+    console.log(this.user);
+    
     this.isLoading = true
     this.userService.update("/user/update-user",this.user).subscribe(
       (response: any) => {
         this.notifier.notify(NotificationType.SUCCESS, "Data updated")
         this.isLoading = false
+        this.getUser()
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error)

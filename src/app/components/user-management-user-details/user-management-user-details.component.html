@@ -20,7 +20,15 @@
     <mat-card class="details">
       <div>
         <div class="fontSize20">
-          <p>Name " {{user.role | cutter : 'first' : 5 | titlecase | replacer : "_" : " " }} "</p>
+          <p>Name 
+              <mat-form-field appearance="fill">
+                <mat-label>User</mat-label>
+                <select matNativeControl [(ngModel)]="user.role" name="car">
+                  <option *ngFor="let role of roles" [value]="role">
+                    {{role | cutter : 'first' : 5 | titlecase | replacer : '_' : ' '}}
+                  </option>
+                </select>
+              </mat-form-field></p>
           <mat-card> <span [class.hasBorder]="contentEditable" [contentEditable]="contentEditable" #fName
               (blur)="user.firstName = fName.innerText">
 
