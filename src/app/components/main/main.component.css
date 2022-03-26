@@ -44,34 +44,6 @@
     font-size: 15px;
   }
 
-  mat-card {
-    transition-property: left;
-    transition-duration: 2s;
-    left: 500em;
-  }
-
-  mat-card:visited {
-    transition-property: left;
-    transition-duration: 2s;
-    left: 500em;
-  }
-
-  mat-card:focus {
-    left: 0;
-  }
-
-  mat-card:hover {
-    left: 0;
-  }
-
-  mat-card:active {
-    left: 0;
-  }
-
-  mat-icon:hover {
-    cursor: pointer;
-  }
-
   .user {
     left: 0;
     bottom: 0px;
@@ -103,18 +75,6 @@
     bottom: 5px;
     right: 5px;
     z-index: 99;
-  }
-
-  .open-input:focus~mat-card {
-    transition-property: left;
-    transition-duration: 2s;
-    left: 0;
-  }
-
-  .hid-input:focus~mat-card {
-    transition-property: left;
-    transition-duration: 2s;
-    left: 500em;
   }
 
   .date {
