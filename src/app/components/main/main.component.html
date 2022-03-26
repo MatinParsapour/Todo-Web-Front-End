@@ -57,11 +57,11 @@
         <app-to-do [toDo]="toDo" [search]="searchInput.value" (getToDos)="getAllToDos()"></app-to-do>
       </div>
     </div>
-    <button class="open-input" [class.hid-input]="displayInput" (click)="inputToggle()" mat-icon-button>
-      <mat-icon [hidden]="!displayInput">arrow_back</mat-icon>
-      <mat-icon [hidden]="displayInput">arrow_forward</mat-icon>
+    <button class="open-input" (click)="toggleInputDisplay()" mat-icon-button>
+      <mat-icon [hidden]="isShow">arrow_back</mat-icon>
+      <mat-icon [hidden]="!isShow">arrow_forward</mat-icon>
     </button>
-    <mat-card>
+    <mat-card [@showHide]="isShow ? 'show' : 'hide' ">
       <mat-form-field appearance="outline">
         <mat-label>ToDo</mat-label>
         <input (keydown.enter)="addAndUpdateToDos(); searchInput.value = ''" [formControl]="task" matInput
