@@ -6,7 +6,7 @@ import { CodeValidatorComponent } from './../code-validator/code-validator.compo
 import { PhoneNumberComponent } from './../phone-number/phone-number.component';
 import { Router } from '@angular/router';
 import { UserComponent } from './../user/user.component';
-import { slideToDown } from './../../animations';
+import { slideToDown, showHide } from './../../animations';
 import { InsertListComponent } from './../insert-list/insert-list.component';
 import { NotificationService } from './../../services/notification/notification.service';
 import { InsertFolderComponent } from './../insert-folder/insert-folder.component';
@@ -21,7 +21,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css', './main.component.scss'],
-  animations: [slideToDown],
+  animations: [slideToDown, showHide],
 })
 export class MainComponent implements OnInit {
   toDoFolders: any;
@@ -30,6 +30,7 @@ export class MainComponent implements OnInit {
   displayInput = true;
   user = '';
   isUser = false;
+  isShow = false
 
   categories = [
     {
@@ -65,6 +66,10 @@ export class MainComponent implements OnInit {
     this.getAllToDoFolders();
     this.getAllToDos();
     this.checkUserRole();
+  }
+
+  toggleInputDisplay(){
+    this.isShow = !this.isShow
   }
 
   openUserDialog() {
@@ -141,9 +146,11 @@ export class MainComponent implements OnInit {
             );
             this.getAllToDos();
             this.clearToDo();
+            this.toggleInputDisplay()
           },
           (error: HttpErrorResponse) => {
             this.notifier.notify(NotificationType.ERROR, error.error);
+            this.toggleInputDisplay()
           }
         );
       this.inputToggle();
@@ -287,5 +294,9 @@ export class MainComponent implements OnInit {
     } else {
       this.isUser = false;
     }
+  }
+
+  displayToDoInput(){
+
   }
 }
