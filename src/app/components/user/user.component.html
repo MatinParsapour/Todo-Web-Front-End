@@ -11,7 +11,7 @@
           height="200px">
         <button class="deleteButton" (click)="deleteProfile()">Delete</button>
         <mat-icon (click)="selectProfile()" class="personIcon" *ngIf="!user.profileImageUrl">person</mat-icon>
-        <button mat-button (click)="selectProfile()" *ngIf="user.profileImageUrl">Change profile</button>
+        <button mat-button (click)="selectProfile()" *ngIf="user.profileImageUrl" class="changeProfileImage">Change profile</button>
         <form style="display:none">
           <input type="file" (change)="changeProfileImage($event)" id="select-picture" accept="image/*">
         </form>
@@ -63,7 +63,7 @@
             [(ngModel)]="user.phoneNumber" [value]="user.phoneNumber">
         </mat-form-field>
         <button mat-dialog-close="open-phone-dialog" mat-raised-button color="primary">
-          {{user.phoneNumber ? "Change phone number" : "Add phone number"}}
+          {{user.phoneNumber ? "Change phone number" : "Add phone number"}} <mat-icon>phone_number</mat-icon>
         </button>
       </div>
       <div class="secondElement">
@@ -73,11 +73,14 @@
           <input disabled autocomplete="off" type="text" matInput placeholder="password" required
             [(ngModel)]="user.email" [value]="user.email">
         </mat-form-field>
-        <button mat-dialog-close="reset-email" mat-raised-button color="primary">Change email</button>
+        <button mat-dialog-close="reset-email" mat-raised-button color="primary">Change email <mat-icon>email
+          </mat-icon></button>
       </div>
     </div>
-    <button mat-raised-button color="primary" [disabled]="isLoading" (click)="updateUser()">Update</button>
-    <button mat-raised-button color="warn" [disabled]="isLoading" (click)="openDeleteAccountAggreement()">Delete account</button>
+    <button mat-raised-button color="primary" [disabled]="isLoading" (click)="updateUser()">Update <mat-icon>update
+      </mat-icon></button>
+    <button mat-raised-button color="warn" [disabled]="isLoading" (click)="openDeleteAccountAggreement()">Delete account
+      <mat-icon>delete_account</mat-icon></button>
   </div>
 
 </mat-dialog-content>
