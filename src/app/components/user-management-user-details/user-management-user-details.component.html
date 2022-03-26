@@ -7,6 +7,8 @@
 <div>
   <div class="user">
     <img *ngIf="user.profileImageUrl" [src]="user.profileImageUrl" alt="">
+    <div [class.lineThrough]="user.isDeleted"></div>
+    <div [class.lineThrough]="user.isDeleted" [class.minust45degree]="user.isDeleted"></div>
     <img *ngIf="!user.profileImageUrl"
       src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdevitt-forand.com%2Fwp-content%2Fuploads%2F2018%2F05%2Fperson-icon.png&f=1&nofb=1"
       alt="">
@@ -22,8 +24,8 @@
         <div class="fontSize20">
           <p>Name 
               <mat-form-field appearance="fill">
-                <mat-label>User</mat-label>
-                <select matNativeControl [(ngModel)]="user.role" name="car">
+                <mat-label>As a</mat-label>
+                <select [disabled]="user.isDeleted" matNativeControl [(ngModel)]="user.role" name="car">
                   <option *ngFor="let role of roles" [value]="role">
                     {{role | cutter : 'first' : 5 | titlecase | replacer : '_' : ' '}}
                   </option>
@@ -65,26 +67,22 @@
         <div class="fontSize20">
           <p>Blocked</p>
           <mat-card class="blocked"> {{user.isBlocked ? "Yes" : 'No'}} <button (click)="blockUser()" class="blockButton"
-              [disabled]="!isSuperAdmin" [matTooltip]="'Block ' +  user.firstName + ' ' + user.lastName"
+              [disabled]="!isSuperAdmin || user.isDeleted" [matTooltip]="'Block ' +  user.firstName + ' ' + user.lastName"
               class="blockButton" mat-icon-button>
               <mat-icon>block</mat-icon>
             </button> </mat-card>
         </div>
         <div class="fontSize20">
           <p>Deleted</p>
-          <mat-card class="blocked"> {{user.isDeleted ? "Yes" : 'No'}} <button (click)="deleteUser()" class="blockButton"
-              [disabled]="!isSuperAdmin" [matTooltip]="'Delete ' +  user.firstName + ' ' + user.lastName"
-              class="blockButton" mat-icon-button>
-              <mat-icon>delete</mat-icon>
-            </button> </mat-card>
+          <mat-card class="blocked"> {{user.isDeleted ? "Yes" : 'No'}} </mat-card>
         </div>
       </div>
-      <button class="editButton" mat-icon-button (click)="makeContentsEditable()">
+      <button class="editButton" mat-icon-button [disabled]="user.isDeleted" (click)="makeContentsEditable()">
         <mat-icon>edit</mat-icon>
       </button>
     </mat-card>
   </div>
 </div>
 <div class="buttons">
-  <button mat-flat-button (click)="updateUser()" color="primary">Update <mat-icon>update</mat-icon></button>
+  <button mat-flat-button [disabled]="user.isDeleted" (click)="updateUser()" color="primary">Update <mat-icon>update</mat-icon></button>
 </div>
