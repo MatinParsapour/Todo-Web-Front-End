@@ -9,11 +9,11 @@ export let slideToDown = trigger('fade', [
 export const showHide = trigger('showHide', [
   state('hide', style({ left: '500em' })),
   transition('hide => show', [
-    animate('2s 0s ease-out'),
+    animate('1s 0s ease-out'),
     style({ left: '0em' }),
   ]),
   transition('show => hide', [
-    animate('2s 0s ease-out'),
+    animate('10s 0s ease-out'),
     style({ left: '500em' }),
   ]),
 ]);
