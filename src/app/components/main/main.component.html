@@ -71,15 +71,17 @@
       <div class="toDoMenu">
         <div>
           <div>
-            <span (click)="toggleIsMyDay()">
-              <mat-icon matTooltip="My day" *ngIf="isMyDayAttr">brightness_7</mat-icon>
-              <mat-icon matTooltip="My day" *ngIf="!isMyDayAttr">brightness_5</mat-icon>
-            </span>
+            <button mat-icon-button matTooltip="My day" (click)="toggleIsMyDay()">
+              <mat-icon *ngIf="isMyDayAttr">brightness_7</mat-icon>
+              <mat-icon *ngIf="!isMyDayAttr">brightness_5</mat-icon>
+            </button>
             <mat-form-field class="date" [hidden]="!dateTime.value" appearance="fill">
               <input [formControl]="dateTime" matInput [matDatepicker]="picker">
               <mat-datepicker #picker disabled="false"></mat-datepicker>
             </mat-form-field>
-            <mat-icon mat-raised-button (click)="picker.open()">event</mat-icon>
+            <button mat-icon-button matTooltip="Due to date" (click)="picker.open()">
+              <mat-icon>event</mat-icon>
+            </button>
           </div>
         </div>
       </div>
