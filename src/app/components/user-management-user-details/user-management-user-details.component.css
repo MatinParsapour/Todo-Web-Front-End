@@ -11,7 +11,7 @@
     left: 50%;
   }
 
-  .hasBorder{
+  .hasBorder {
     border-style: groove;
     border-radius: 5%;
   }
@@ -49,6 +49,23 @@
 
   .buttons>button[color="warn"] {
     margin-right: 2%;
+  }
+
+  .lineThrough {
+    color: #fdfdfd;
+    z-index: 99;
+    background-color: #f70404;
+    border-radius: 18%;
+    top: 14%;
+    right: 2%;
+    position: fixed;
+    width: 100px;
+    height: 13px;
+    transform: rotate(45deg);
+  }
+
+  .minust45degree {
+    transform: rotate(-45deg);
   }
 
   .details {
