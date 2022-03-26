@@ -1,4 +1,5 @@
-<div class="noneEmail" *ngIf="users.data.length === 0">
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="noneEmail" *ngIf="users.data.length === 0 && !isLoading">
   <img width="200px" height="200px"
     src="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-empty-money-soft-fill-soft-fill-juicy-fish.png">
   <p>There's no user</p>

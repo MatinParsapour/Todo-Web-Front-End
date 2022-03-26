@@ -23,6 +23,7 @@ export class UsersComponent implements OnInit {
   pageIndex = 0;
   pageSizeOptions = [5, 10, 15, 20];
   showFirstLastButtons = true;
+  isLoading = false
 
   constructor(
     private userManagementService: UserManagementService,
@@ -35,13 +36,16 @@ export class UsersComponent implements OnInit {
   }
 
   getAllUsers() {
+    this.isLoading = true
     this.userManagementService.getAll('/get-all/' + this.pageIndex + "/" + this.pageSize).subscribe(
       (response: any) => {
         this.users.data = response.content;
         this.length = response.totalElements
+        this.isLoading = false
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error);
+        this.isLoading = false
       }
     );
   }
