@@ -9,10 +9,7 @@ export let slideToDown = trigger('fade', [
 export const showHide = trigger('showHide', [
   state('hide', style({ left: '500em' })),
   transition('hide => show', [
-    animate(
-      '2s 0s ease-out',
-      keyframes([style({ transform: 'transition(-500em)' })])
-    ),
+    animate('2s 0s ease-out'),
     style({ left: '0em' }),
   ]),
   transition('show => hide', [
