@@ -27,7 +27,6 @@ export class MainComponent implements OnInit {
   toDoFolders: any;
   isMyDayAttr = false;
   toDos: any;
-  displayInput = true;
   user = '';
   isUser = false;
   isShow = false
@@ -153,7 +152,6 @@ export class MainComponent implements OnInit {
             this.toggleInputDisplay()
           }
         );
-      this.inputToggle();
     }
   }
 
@@ -162,10 +160,6 @@ export class MainComponent implements OnInit {
     this.dateTime.setValue('');
     this.isMyDayAttr = false;
     this.isMyDay.setValue(this.isMyDayAttr);
-  }
-
-  inputToggle() {
-    this.displayInput = !this.displayInput;
   }
 
   get task(): any {
