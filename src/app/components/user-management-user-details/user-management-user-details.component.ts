@@ -73,12 +73,10 @@ export class UserManagementUserDetailsComponent implements OnInit {
     this.user.isBlocked = !this.user.isBlocked;
   }
 
-  deleteUser(){
-    this.user.isDeleted = !this.user.isDeleted
-  }
-
   makeContentsEditable() {
-    this.contentEditable = !this.contentEditable;
+    if (!this.user.isDeleted) {
+      this.contentEditable = !this.contentEditable;
+    }
   }
 
   updateUser() {
