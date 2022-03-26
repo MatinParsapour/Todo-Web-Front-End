@@ -25,14 +25,10 @@
     <div class="buttons">
       <div>
         <mat-icon class="list" (click)="sidenav.open()" matTooltip="Open sidebar">list</mat-icon>
-        <form class="search-container" action="//llamaswill.tumblr.com/search">
-          <input #searchInput ngModel autocomplete="off" (ngModelChange)="search(searchInput.value)" id="search-box" type="text"
-            class="search-box" name="q" />
-          <label for="search-box"><span class="glyphicon glyphicon-search search-icon"></span></label>
-        </form>
       </div>
       <div>
-        <button *ngIf="!isUser" [routerLink]="'/user-management'" class="userManagementButton" mat-raised-button color="primary">
+        <button *ngIf="!isUser" [routerLink]="'/user-management'" class="userManagementButton" mat-raised-button
+          color="primary">
           User management
           <span class="material-icons">
             people
@@ -53,6 +49,11 @@
           <h5>You have no todo</h5>
         </div>
       </div>
+      <form class="search-container" action="//llamaswill.tumblr.com/search">
+        <input #searchInput ngModel autocomplete="off" (ngModelChange)="search(searchInput.value)" id="search-box"
+          type="text" class="search-box" name="q" />
+        <label for="search-box"><span class="glyphicon glyphicon-search search-icon"></span></label>
+      </form>
       <div *ngFor="let toDo of toDos">
         <app-to-do [toDo]="toDo" [search]="searchInput.value" (getToDos)="getAllToDos()"></app-to-do>
       </div>

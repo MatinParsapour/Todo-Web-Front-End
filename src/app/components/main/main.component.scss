@@ -7,20 +7,14 @@ $tl: 0.6s; // transition length
   border-radius: 20px;
   border: none;
   cursor: pointer;
-  background: rgb(235, 235, 235);
 
   &+label .search-icon {
     color: black
   }
 
   &:hover {
-    color: white;
-    background: rgb(200, 200, 200);
     box-shadow: 0 0 0 5px rgb(61, 71, 82);
 
-    &+label .search-icon {
-      color: white
-    }
   }
 
   &:focus {
@@ -28,11 +22,9 @@ $tl: 0.6s; // transition length
     border: none;
     outline: none;
     box-shadow: none;
-    // padding-left: 15px;
     cursor: text;
-    width: 235px;
+    width: 92%;
     border-radius: auto;
-    background: rgb(235, 235, 235);
     color: black;
 
     &+label .search-icon {
@@ -50,6 +42,9 @@ $tl: 0.6s; // transition length
 .search-icon {
   position: relative;
   left: -30px;
-  color: white;
   cursor: pointer;
+}
+
+.search-container{
+  margin-left: 3em;
 }
