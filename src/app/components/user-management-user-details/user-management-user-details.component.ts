@@ -17,7 +17,7 @@ export class UserManagementUserDetailsComponent implements OnInit {
   isLoading: boolean = false;
   isSuperAdmin = false;
   contentEditable = false;
-  roles = ['ROLE_USER','ROLE_MANAGER','ROLE_ADMIN','ROLE_SUPER_ADMIN']
+  roles = ['ROLE_USER', 'ROLE_MANAGER', 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -62,40 +62,44 @@ export class UserManagementUserDetailsComponent implements OnInit {
   }
 
   checkUserRole() {
-    if (localStorage.getItem("role") === 'ROLE_SUPER_ADMIN') {
+    if (localStorage.getItem('role') === 'ROLE_SUPER_ADMIN') {
       this.isSuperAdmin = true;
     } else {
       this.isSuperAdmin = false;
     }
   }
 
-  blockUser(){
-    this.user.isBlocked = !this.user.isBlocked
+  blockUser() {
+    this.user.isBlocked = !this.user.isBlocked;
   }
 
-  makeContentsEditable(){
-    this.contentEditable = !this.contentEditable
+  deleteUser(){
+    this.user.isDeleted = !this.user.isDeleted
   }
 
-  updateUser(){
+  makeContentsEditable() {
+    this.contentEditable = !this.contentEditable;
+  }
+
+  updateUser() {
     console.log(this.user);
-    
-    this.isLoading = true
-    this.userService.update("/user/update-user",this.user).subscribe(
+
+    this.isLoading = true;
+    this.userService.update('/user/update-user', this.user).subscribe(
       (response: any) => {
-        this.notifier.notify(NotificationType.SUCCESS, "Data updated")
-        this.isLoading = false
-        this.getUser()
+        this.notifier.notify(NotificationType.SUCCESS, 'Data updated');
+        this.isLoading = false;
+        this.getUser();
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error)
+        this.notifier.notify(NotificationType.ERROR, error.error);
         console.log(error);
-        this.isLoading = false
+        this.isLoading = false;
       }
-    )
+    );
   }
 
-  setPhoneNumber(element:any){
+  setPhoneNumber(element: any) {
     this.user.phoneNumber = Number.parseInt(element);
   }
 }

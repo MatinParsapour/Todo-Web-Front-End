@@ -70,6 +70,14 @@
               <mat-icon>block</mat-icon>
             </button> </mat-card>
         </div>
+        <div class="fontSize20">
+          <p>Deleted</p>
+          <mat-card class="blocked"> {{user.isDeleted ? "Yes" : 'No'}} <button (click)="deleteUser()" class="blockButton"
+              [disabled]="!isSuperAdmin" [matTooltip]="'Delete ' +  user.firstName + ' ' + user.lastName"
+              class="blockButton" mat-icon-button>
+              <mat-icon>delete</mat-icon>
+            </button> </mat-card>
+        </div>
       </div>
       <button class="editButton" mat-icon-button (click)="makeContentsEditable()">
         <mat-icon>edit</mat-icon>
