@@ -15,6 +15,8 @@ export class UserService extends DataService {
   }
 
   getUser(username: any){
-    return this.httpService.get("http://localhost:8080/user/get-user/" + username)
+    return this.httpService.get(
+      'http://localhost:8080/user/get-user-for-user-management/' + username
+    );
   }
 }
