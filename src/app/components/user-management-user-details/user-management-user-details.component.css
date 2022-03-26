@@ -11,6 +11,11 @@
     left: 50%;
   }
 
+  .hasBorder{
+    border-style: groove;
+    border-radius: 5%;
+  }
+
   .loader {
     left: 50%;
     margin-left: -4em;
@@ -49,13 +54,15 @@
   .details {
     display: flex;
     justify-content: space-around;
+    width: 100%;
   }
 
   .detailsCard {
     display: table-cell;
     padding-top: 4%;
     padding-left: 5%;
-    width: 120em;
+    width: 89%;
+    display: flex;
   }
 
   .fontSize20 {
@@ -115,6 +122,7 @@
     padding-top: 1em;
     padding-left: 2%;
     justify-content: center;
+    height: 80em;
   }
 
   .authorities {

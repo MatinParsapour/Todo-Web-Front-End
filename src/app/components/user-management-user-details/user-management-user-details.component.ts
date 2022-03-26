@@ -90,4 +90,8 @@ export class UserManagementUserDetailsComponent implements OnInit {
       }
     )
   }
+
+  setPhoneNumber(element:any){
+    this.user.phoneNumber = Number.parseInt(element);
+  }
 }

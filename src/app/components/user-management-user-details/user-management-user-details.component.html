@@ -4,7 +4,6 @@
     arrow_back
   </span>
 </button>
-<mat-spinner *ngIf="isLoading"></mat-spinner>
 <div>
   <div class="user">
     <img *ngIf="user.profileImageUrl" [src]="user.profileImageUrl" alt="">
@@ -22,11 +21,13 @@
       <div>
         <div class="fontSize20">
           <p>Name " {{user.role | cutter : 'first' : 5 | titlecase | replacer : "_" : " " }} "</p>
-          <mat-card> <span [contentEditable]="contentEditable" #fName (blur)="user.firstName = fName.innerText">
+          <mat-card> <span [class.hasBorder]="contentEditable" [contentEditable]="contentEditable" #fName
+              (blur)="user.firstName = fName.innerText">
 
             {{user.firstName}}
           </span>
-           <span [contentEditable]="contentEditable" #lName (blur)="user.lastName = lName.innerText">
+           <span [class.hasBorder]="contentEditable" [contentEditable]="contentEditable" #lName
+             (blur)="user.lastName = lName.innerText">
              {{user.lastName}}
             </span>
           </mat-card>
@@ -43,13 +44,15 @@
       <div>
         <div class="fontSize20">
           <p>Email</p>
-          <mat-card> <span class="email" [contentEditable]="contentEditable" #email
+          <mat-card> <span class="email" [class.hasBorder]="contentEditable" [contentEditable]="contentEditable" #email
               (blur)="user.email = email.innerText">{{user.email}}</span>
           </mat-card>
         </div>
         <div class="fontSize20">
           <p>Phone number</p>
-          <mat-card> {{user.phoneNumber ? user.phoneNumber : '-'}} </mat-card>
+          <mat-card> <span [class.hasBorder]="contentEditable" [contentEditable]="contentEditable" #phoneNumber
+              (blur)="setPhoneNumber(phoneNumber.innerHTML)">{{user.phoneNumber ? user.phoneNumber : '-'}}</span>
+              </mat-card>
         </div>
         <div class="fontSize20">
           <p>Blocked</p>
