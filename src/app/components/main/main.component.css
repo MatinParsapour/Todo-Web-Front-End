@@ -18,6 +18,10 @@
     margin-left: 3em;
   }
 
+  .toDoMenu>div>div>button{
+    cursor: pointer;
+  }
+
   .add-icon>span:hover {
     color: green;
     cursor: pointer;
