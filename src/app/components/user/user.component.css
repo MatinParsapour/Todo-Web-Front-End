@@ -151,6 +151,10 @@
     border-style: none;
   }
 
+  .fnlninner{
+    height: unset;
+  }
+
   .deleteButton:active {
     border-style: none;
     border-color: none;
@@ -161,6 +165,10 @@
   .personIcon {
     margin-right: 1em;
     font-size: 150px;
+  }
+
+  .changeProfileImage{
+    background-color: #4e4949;
   }
 }
 
