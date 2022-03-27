@@ -1,1 +1,16 @@
-<p>new-topic works!</p>
+<form>
+  <mat-form-field appearance="fill">
+    <mat-label>Priority</mat-label>
+    <select matNativeControl [formControl]="priority">
+      <option *ngFor="let priority of priorities" [value]="priority">
+        {{priority}}
+      </option>
+    </select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Topic</mat-label>
+    <input [formControl]="topic" matInput autocomplete="off" type="text">
+    <mat-error *ngIf="topic.invalid">{{getTopicErrorMessages()}}</mat-error>
+  </mat-form-field>
+  <button mat-raised-button [disabled]="request.invalid" color="primary" (click)="addNewTopic()">Add topic</button>
+</form>
