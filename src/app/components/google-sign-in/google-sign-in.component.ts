@@ -2,9 +2,18 @@ import { slideToDown } from './../../animations';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { LoginService } from './../../services/login/login.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+  SocialAuthService,
+  SocialUser,
+} from 'angularx-social-login';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationType } from 'src/app/enum/notification-type';
 
@@ -17,7 +26,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 export class GoogleSignInComponent implements OnInit {
   user: FormGroup;
   socialUser!: SocialUser;
-  isLoggedin!: boolean; 
+  isLoggedin!: boolean;
 
   constructor(
     private socialAuthService: SocialAuthService,
@@ -77,8 +86,16 @@ export class GoogleSignInComponent implements OnInit {
         this.updateLocalStorage(response);
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, 'Something went wrong');
-        console.log(error);
+        if (error.status === 403) {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error +
+              ', you can contact support matin.parsapour.iam@gmail.com'
+          );
+        } else {
+          this.notifier.notify(NotificationType.ERROR, 'Something went wrong');
+          console.log(error);
+        }
       }
     );
   }
