@@ -83,6 +83,7 @@ import { UsersComponent } from './components/users/users.component';
 import { UserManagementUserDetailsComponent } from './components/user-management-user-details/user-management-user-details.component';
 import { CutterPipe } from './pipes/cutter.pipe';
 import { ReplacerPipe } from './pipes/replacer.pipe';
+import { SupportComponent } from './components/support/support.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -166,6 +167,7 @@ const customNotifierOptions: NotifierOptions = {
     UserManagementUserDetailsComponent,
     CutterPipe,
     ReplacerPipe,
+    SupportComponent,
   ],
   imports: [
     BrowserModule,
