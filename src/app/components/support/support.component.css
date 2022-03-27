@@ -54,6 +54,7 @@ mat-spinner {
   background-color: rgb(28, 13, 95);
   border-radius: 10% 10% 10% 10%;
 }
+
 .topicContainer>div:active {
   background-color: rgb(30, 14, 102);
 }
@@ -86,4 +87,28 @@ mat-spinner {
   border-radius: 20px;
   height: 20px;
   background-color: #010118;
+}
+
+.requestData {
+  margin-top: 2em;
+  font-size: 20px;
+  background-color: #393648;
+  display: flex;
+  flex-direction: column;
+  width: 100em;
+}
+
+input{
+    display: flex;
+    width: 100%;
+    background-color: #393648;
+    border-radius: 0.75rem;
+    flex-grow: 1;
+    max-width: calc(37% - 4rem);
+    margin-bottom: 1.25rem;
+    outline: none;
+}
+
+.input{
+    padding: 0 1rem;
 }
