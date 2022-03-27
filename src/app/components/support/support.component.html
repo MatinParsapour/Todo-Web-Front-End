@@ -8,3 +8,26 @@
     <mat-icon>add</mat-icon>
   </button>
 </div>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="dataContainer">
+  <div>
+    <div class="topicContainer scrollbar-table" id="style-red">
+      <div *ngFor="let request of requests">
+        <div>
+          <span>Topic</span>
+          {{request.topic}}
+        </div>
+        <div>
+          <span>Started at</span>
+          {{request.startsAt | date : 'short'}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div *ngFor="let request of requests">
+      <div>
+      </div>
+    </div>
+  </div>
+</div>

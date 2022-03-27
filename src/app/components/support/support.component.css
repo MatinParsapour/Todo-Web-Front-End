@@ -6,3 +6,84 @@ div {
 div>button {
   background-image: linear-gradient(rgb(55, 9, 92), rgb(27, 10, 121), rgb(20, 24, 56), rgb(43, 19, 54));
 }
+
+mat-spinner {
+  left: 45%;
+  top: 30%;
+}
+
+.topicContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 40em;
+  background-color: rgb(13, 10, 31);
+  margin-top: 4em;
+}
+
+
+.dataContainer {
+  height: 100%;
+  position: fixed;
+  top: 0;
+}
+
+.topicContainer>div {
+  height: 10%;
+  padding-left: 5%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 20px;
+  background-color: rgb(14, 7, 46)
+}
+
+.topicContainer>div>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.topicContainer>div>div>span {
+  color: rgb(117, 113, 113);
+  font-size: 12px;
+}
+
+.topicContainer>div:hover {
+  cursor: pointer;
+  background-color: rgb(28, 13, 95);
+  border-radius: 10% 10% 10% 10%;
+}
+.topicContainer>div:active {
+  background-color: rgb(30, 14, 102);
+}
+
+.scrollbar-table {
+  overflow: auto;
+
+}
+
+.force-overflow {
+  min-height: 400px;
+
+}
+
+#wrapper {
+  text-align: center;
+  width: 400px;
+  margin: auto;
+}
+
+#style-red::-webkit-scrollbar-track {
+  border-radius: 20px;
+}
+
+#style-red::-webkit-scrollbar {
+  width: 5px;
+}
+
+#style-red::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  height: 20px;
+  background-color: #010118;
+}
