@@ -1,3 +1,5 @@
+import { NewTopicComponent } from './../new-topic/new-topic.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupportComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  openNewTopicDialog(){
+    this.dialog.open(NewTopicComponent)
+  }
 }
