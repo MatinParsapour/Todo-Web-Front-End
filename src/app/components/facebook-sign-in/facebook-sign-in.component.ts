@@ -73,8 +73,16 @@ export class FacebookSignInComponent implements OnInit {
         this.router.navigateByUrl('/main');
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, 'Something went wrong');
-        console.log(error);
+        if (error.status === 403) {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error +
+              ', you can contact support matin.parsapour.iam@gmail.com'
+          );
+        } else {
+          this.notifier.notify(NotificationType.ERROR, 'Something went wrong');
+          console.log(error);
+        }
       }
     );
   }
