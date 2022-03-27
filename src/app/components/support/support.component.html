@@ -1,5 +1,10 @@
 <div>
-    <button (click)="openNewTopicDialog()" mat-icon-button matTooltip="new topic">
-        <mat-icon>add</mat-icon>
-    </button>
+  <button class="arrowBackButton" (click)="backToMain()" mat-icon-button>
+    <span class="material-icons">
+      arrow_back
+    </span>
+  </button>
+  <button (click)="openNewTopicDialog()" mat-icon-button matTooltip="new topic">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>

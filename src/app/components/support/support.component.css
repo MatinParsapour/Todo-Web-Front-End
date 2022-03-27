@@ -1,8 +1,8 @@
-div{
-    display: flex;
-    justify-content: flex-end;
+div {
+  display: flex;
+  justify-content: space-between;
 }
 
-div > button {
-    background-image: linear-gradient(rgb(55, 9, 92), rgb(27, 10, 121), rgb(20, 24, 56),rgb(43, 19, 54));
+div>button {
+  background-image: linear-gradient(rgb(55, 9, 92), rgb(27, 10, 121), rgb(20, 24, 56), rgb(43, 19, 54));
 }
