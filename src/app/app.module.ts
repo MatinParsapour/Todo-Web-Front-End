@@ -1,3 +1,4 @@
+import { SupportService } from './services/support/support.service';
 import { UserManagementService } from './services/user-management/user-management.service';
 import { EmailDetailsService } from './services/emai-details/email-details.service';
 import { OutboxService } from './services/email-service/outbox/outbox.service';
@@ -214,6 +215,7 @@ const customNotifierOptions: NotifierOptions = {
     OutboxService,
     EmailDetailsService,
     UserManagementService,
+    SupportService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
