@@ -1,3 +1,4 @@
+import { SupportComponent } from './components/support/support.component';
 import { UserManagementUserDetailsComponent } from './components/user-management-user-details/user-management-user-details.component';
 import { UserManangementComponent } from './components/user-manangement/user-manangement.component';
 import { OutboxComponent } from './components/outbox/outbox.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'outbox', component: OutboxComponent},
   {path: 'user-management', component: UserManangementComponent},
   {path: 'observe-user', component: UserManagementUserDetailsComponent},
+  {path: 'support', component: SupportComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: '**', component: NotFoundComponent},
 ];
