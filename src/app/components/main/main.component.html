@@ -27,6 +27,13 @@
         <mat-icon class="list" (click)="sidenav.open()" matTooltip="Open sidebar">list</mat-icon>
       </div>
       <div>
+        <button *ngIf="isUser" [routerLink]="'/support'" class="userManagementButton" mat-raised-button
+          color="primary">
+          Support
+          <span class="material-icons">
+            support_agent
+          </span>
+        </button>
         <button *ngIf="!isUser" [routerLink]="'/user-management'" class="userManagementButton" mat-raised-button
           color="primary">
           User management
