@@ -1,11 +1,22 @@
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SupportService } from './../../services/support/support.service';
 import { Router } from '@angular/router';
 import { NewTopicComponent } from './../new-topic/new-topic.component';
 import { MatDialog } from '@angular/material/dialog';
-import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewChecked,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { MatMenuTrigger } from '@angular/material/menu';
 
@@ -135,13 +146,13 @@ export class SupportComponent implements OnInit, AfterViewChecked {
   }
 
   deleteMessage(messageId: any) {
-    this.supportService.delete("message/delete-message/" + messageId).subscribe(
-      (response:any) => {
-        this.getRequestData(this.request.id)
+    this.supportService.delete('message/delete-message/' + messageId).subscribe(
+      (response: any) => {
+        this.getRequestData(this.request.id);
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error)
+        this.notifier.notify(NotificationType.ERROR, error.error);
       }
-    )
+    );
   }
 }
