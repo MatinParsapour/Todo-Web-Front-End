@@ -14,6 +14,22 @@ mat-spinner {
   z-index: 99;
 }
 
+.menuButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 7px;
+  padding-right: 0;
+}
+
+.edit:hover{
+  background-color: green;
+}
+
+.delete:hover{
+  background-color: rgb(158, 27, 27);
+}
+
 .topicContainer {
   flex-direction: column;
   justify-content: flex-start;
@@ -156,8 +172,10 @@ input {
 }
 
 .messagesContainer {
+  height: 100%;
   flex-direction: column;
   background-color: #2b3868a3;
+  justify-content: unset;
 }
 
 .input {

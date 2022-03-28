@@ -7,6 +7,7 @@ import { NewTopicComponent } from './../new-topic/new-topic.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-support',
@@ -19,6 +20,8 @@ export class SupportComponent implements OnInit, AfterViewChecked {
   isLoading = false;
   message: FormGroup;
   @ViewChild('scroller') private scroller!: ElementRef;
+  @ViewChild(MatMenuTrigger, { static: true }) matMenuTrigger!: MatMenuTrigger;
+  menuTopLeftPosition = { x: '0', y: '0' };
 
   constructor(
     private dialog: MatDialog,
@@ -32,12 +35,14 @@ export class SupportComponent implements OnInit, AfterViewChecked {
       userId: new FormControl(''),
     });
   }
+
   scrollToBottom(): void {
     try {
       this.scroller.nativeElement.scrollTop =
         this.scroller.nativeElement.scrollHeight;
     } catch (err) {}
   }
+
   ngAfterViewChecked(): void {
     this.scrollToBottom();
   }
@@ -113,11 +118,30 @@ export class SupportComponent implements OnInit, AfterViewChecked {
     this.message.get('message')?.setValue('');
   }
 
+  openMenu(event: MouseEvent, item: any) {
+    event.preventDefault();
+    this.menuTopLeftPosition.x = event.clientX + 'px';
+    this.menuTopLeftPosition.y = event.clientY + 'px';
+    this.matMenuTrigger.menuData = { item: item };
+    this.matMenuTrigger.openMenu();
+  }
+
   preventDefault(event: any) {
     event.preventDefault();
   }
 
-  openMenu(){
-    alert("You right clicked")
+  editMessage(messageId: any) {
+    console.log(messageId);
+  }
+
+  deleteMessage(messageId: any) {
+    this.supportService.delete("message/delete-message/" + messageId).subscribe(
+      (response:any) => {
+        this.getRequestData(this.request.id)
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error)
+      }
+    )
   }
 }
