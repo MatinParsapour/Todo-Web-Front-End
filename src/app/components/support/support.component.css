@@ -24,8 +24,10 @@ mat-spinner {
 
 .dataContainer {
   height: 100%;
-  position: fixed;
+  position: absolute;
+  justify-content: unset;
   top: 0;
+  width: 100%;
 }
 
 .topicContainer>div {
@@ -95,20 +97,44 @@ mat-spinner {
   background-color: #393648;
   display: flex;
   flex-direction: column;
-  width: 100em;
+  width: 100%;
 }
 
-input{
-    display: flex;
-    width: 100%;
-    background-color: #393648;
-    border-radius: 0.75rem;
-    flex-grow: 1;
-    max-width: calc(37% - 4rem);
-    margin-bottom: 1.25rem;
-    outline: none;
+.requests {
+  width: 100%;
+  justify-content: space-between;
 }
 
-.input{
-    padding: 0 1rem;
+.requestHeader {
+  width: 100%;
+}
+
+.requestHeader>div {
+  display: flex;
+  flex-direction: column;
+}
+
+.requestHeader>div>span {
+  color: rgb(117, 113, 113);
+  font-size: 12px;
+}
+
+.requestHeader>span>p {
+  color: unset;
+  font-size: unset;
+}
+
+input {
+  display: flex;
+  width: 100%;
+  background-color: #393648;
+  border-radius: 0.75rem;
+  flex-grow: 1;
+  max-width: calc(105% - 4rem);
+  margin-bottom: 1.25rem;
+  outline: none;
+}
+
+.input {
+  padding: 0 1rem;
 }

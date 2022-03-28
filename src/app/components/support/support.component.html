@@ -12,7 +12,7 @@
 <div class="dataContainer">
   <div>
     <div class="topicContainer scrollbar-table" id="style-red">
-      <div *ngFor="let request of requests">
+      <div *ngFor="let request of requests" (click)="getRequestData(request.id)">
         <div>
           <span>Topic</span>
           {{request.topic}}
@@ -24,14 +24,34 @@
       </div>
     </div>
   </div>
-  <div>
+  <div class="requests">
     <div class="requestData">
-      <div class="request" *ngFor="let request of requests">
-        <div>
+      <div class="request" *ngIf="request">
+        <div class="requestHeader">
+          <div>
+            <span>Topic</span>
+            <p>{{request.topic}}</p>
+          </div>
+          <div>
+            <span>Started at</span>
+            <p>{{request.startsAt | date: 'short'}}</p>
+          </div>
+          <div>
+            <span>Solved</span>
+            <p>{{request.isFinished ? 'Yes' : 'No'}}</p>
+          </div>
+          <div>
+            <span>Priority</span>
+            <p>{{request.priority}}</p>
+          </div>
         </div>
       </div>
-      <div class="input">
-        <input type="text" matInput>
+      <div *ngIf="request">
+
+        {{request.topic}} {{request.startsAt}} {{request.priority}}
+      </div>
+      <div class="input" *ngIf="request">
+        <input type="text" matInput color="primary">
       </div>
     </div>
   </div>

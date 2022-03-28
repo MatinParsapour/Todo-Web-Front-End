@@ -14,6 +14,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 })
 export class SupportComponent implements OnInit {
   requests: any
+  request: any
   isLoading = false
 
   constructor(private dialog: MatDialog, 
@@ -46,5 +47,21 @@ export class SupportComponent implements OnInit {
         this.isLoading = false
       }
     )
+  }
+
+  getRequestData(id: any){
+    this.isLoading = true
+    this.supportService.getRequest("request/get-request/" + id).subscribe(
+      (response: any) => {
+        this.request = response
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error)
+      },
+      () => {
+        this.isLoading = false
+      }
+    )
+    
   }
 }
