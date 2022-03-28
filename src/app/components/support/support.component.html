@@ -25,8 +25,8 @@
     </div>
   </div>
   <div class="requests">
-    <div class="requestData">
-      <div class="request" *ngIf="request">
+    <div class="requestData" *ngIf="request">
+      <div class="request">
         <div class="requestHeader">
           <div>
             <span>Topic</span>
@@ -46,11 +46,11 @@
           </div>
         </div>
       </div>
-      <div *ngIf="request">
+      <div>
 
         {{request.topic}} {{request.startsAt}} {{request.priority}}
       </div>
-      <div class="input" *ngIf="request">
+      <div class="input">
         <input type="text" matInput color="primary">
       </div>
     </div>

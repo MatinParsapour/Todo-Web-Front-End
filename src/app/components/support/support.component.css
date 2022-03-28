@@ -107,6 +107,8 @@ mat-spinner {
 
 .requestHeader {
   width: 100%;
+  backdrop-filter: brightness(0.5);
+  background-color: #01012c45;
 }
 
 .requestHeader>div {
