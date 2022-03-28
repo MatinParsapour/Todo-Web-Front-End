@@ -116,6 +116,11 @@ mat-spinner {
   flex-direction: column;
 }
 
+.messages{
+  height: 100%;
+  overflow: auto;
+}
+
 .requestHeader>div>span {
   color: rgb(117, 113, 113);
   font-size: 12px;
