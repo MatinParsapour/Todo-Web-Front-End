@@ -1,4 +1,4 @@
-<div>
+<div class="buttons">
   <button class="arrowBackButton" (click)="backToMain()" mat-icon-button>
     <span class="material-icons">
       arrow_back
@@ -14,11 +14,11 @@
     <div class="topicContainer scrollbar-table" id="style-red">
       <div *ngFor="let request of requests" (click)="getRequestData(request.id)">
         <div>
-          <span>Topic</span>
+          <span class="colorAndFontSizeForHeaders">Topic</span>
           {{request.topic}}
         </div>
         <div>
-          <span>Started at</span>
+          <span class="colorAndFontSizeForHeaders">Started at</span>
           {{request.startsAt | date : 'short'}}
         </div>
       </div>
@@ -29,29 +29,37 @@
       <div class="request">
         <div class="requestHeader">
           <div>
-            <span>Topic</span>
+            <span class="colorAndFontSizeForHeaders">Topic</span>
             <p>{{request.topic}}</p>
           </div>
           <div>
-            <span>Started at</span>
+            <span class="colorAndFontSizeForHeaders">Started at</span>
             <p>{{request.startsAt | date: 'short'}}</p>
           </div>
           <div>
-            <span>Solved</span>
+            <span class="colorAndFontSizeForHeaders">Solved</span>
             <p>{{request.isFinished ? 'Yes' : 'No'}}</p>
           </div>
           <div>
-            <span>Priority</span>
+            <span class="colorAndFontSizeForHeaders">Priority</span>
             <p>{{request.priority}}</p>
           </div>
         </div>
       </div>
-      <div class="messages">
-
-        {{request.topic}} {{request.startsAt}} {{request.priority}}
+      <div #scroller (contextmenu)="preventDefault($event)" class="messagesContainer scrollbar-table" id="style-red">
+        <div (contextmenu)="openMenu()" class="message" *ngFor="let message of request.messages">
+          <div>
+            <p class="colorAndFontSizeForHeaders"> {{message.user.firstName}} {{message.user.lastName}} </p>
+            <p class="messageData"> {{message.message}} </p>
+            <p class="messageDate colorAndFontSizeForHeaders"> {{message.sentAt | date : 'shortTime'}} </p>
+          </div>
+          <div [class.alighItemsFlexEnd]="!isSender(message.user.id)" *ngIf="!isSender(message.user.id)">
+            <p> {{message.message}} </p>
+          </div>
+        </div>
       </div>
       <div class="input">
-        <input type="text" matInput color="primary">
+        <input (keydown.enter)="sendMessage()" [formControl]="messaged" type="text" matInput color="primary">
       </div>
     </div>
   </div>
