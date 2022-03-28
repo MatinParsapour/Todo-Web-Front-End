@@ -21,6 +21,15 @@
           <span class="colorAndFontSizeForHeaders">Started at</span>
           {{request.startsAt | date : 'short'}}
         </div>
+        <button id="iconButton" mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu class="menu" #normalMenu="matMenu">
+          <button mat-menu-item class="material-icons delete" (click)="deleteRequest(request.id)"
+            matTooltip="delete list">
+            <mat-icon>delete</mat-icon> Delete Request
+          </button>
+        </mat-menu>
       </div>
     </div>
   </div>
@@ -47,8 +56,7 @@
         </div>
       </div>
       <div #scroller (contextmenu)="preventDefault($event)" class="messagesContainer scrollbar-table" id="style-red">
-        <div (contextmenu)="openMenu($event, message)" class="message"
-          *ngFor="let message of request.messages">
+        <div (contextmenu)="openMenu($event, message)" class="message" *ngFor="let message of request.messages">
           <div>
             <p class="colorAndFontSizeForHeaders"> {{message.user.firstName}} {{message.user.lastName}} </p>
             <p class="messageData"> {{message.message}} </p>
@@ -67,12 +75,12 @@
 </div>
 
 <div (contextmenu)="preventDefault($event)" style="visibility: hidden; position: fixed;"
-  [style.left]="menuTopLeftPosition.x"
-  [style.top]="menuTopLeftPosition.y" [matMenuTriggerFor]="rightMenu"></div>
+  [style.left]="menuTopLeftPosition.x" [style.top]="menuTopLeftPosition.y" [matMenuTriggerFor]="rightMenu"></div>
 
 =<mat-menu #rightMenu="matMenu">
   <ng-template matMenuContent let-item="item">
     <button class="menuButton edit" (click)="editMessage(item.id)" mat-menu-item>Edit <mat-icon>edit</mat-icon></button>
-    <button class="menuButton delete" (click)="deleteMessage(item.id)" mat-menu-item>Delete <mat-icon>delete</mat-icon></button>
+    <button class="menuButton delete" (click)="deleteMessage(item.id)" mat-menu-item>Delete <mat-icon>delete</mat-icon>
+    </button>
   </ng-template>
 </mat-menu>

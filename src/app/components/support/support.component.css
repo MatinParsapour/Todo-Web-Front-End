@@ -171,6 +171,10 @@ input {
   outline: none;
 }
 
+#iconButton{
+  background-image: unset;
+}
+
 .messagesContainer {
   height: 100%;
   flex-direction: column;
