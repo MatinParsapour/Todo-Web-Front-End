@@ -1,0 +1,19 @@
+div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.requestHeader {
+  width: 100%;
+  backdrop-filter: brightness(0.5);
+  background-color: #01012c45;
+}
+
+.requestHeader>div {
+  flex-direction: column;
+}
+
+.colorAndFontSizeForHeaders {
+  color: rgb(117, 113, 113);
+  font-size: 12px;
+}
