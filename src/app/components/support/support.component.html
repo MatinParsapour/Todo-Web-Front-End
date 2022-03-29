@@ -83,7 +83,7 @@
         </div>
       </div>
       <div class="input">
-        <textarea (keydown.enter)="sendMessage(); preventDefault($event)" [formControl]="messaged" matInput
+        <textarea autofocus (keydown.enter)="sendMessage(); preventDefault($event)" [formControl]="messaged" matInput
           color="primary"></textarea>
         <img (click)="requestSolved()" [matTooltip]="request.isSolved ? 'Unsolve' : 'Solve'" class="solvedButton" src="https://img.icons8.com/fluency/48/000000/solve.png" />
         <button mat-icon-button (click)="requestFinished()" class="doneButton">
