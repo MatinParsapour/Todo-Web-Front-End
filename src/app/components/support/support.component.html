@@ -38,6 +38,14 @@
   </div>
   <div class="requests">
     <div class="requestData" *ngIf="request">
+      <div class="requestIsDone" *ngIf="request.isSolved || request.isFinished">
+        <div *ngIf="request.isSolved">
+          <span>this request is solved</span>
+        </div>
+        <div *ngIf="request.isFinished">
+          <span>this request is finished</span>
+        </div>
+      </div>
       <div class="request">
         <div class="requestHeader">
           <div>

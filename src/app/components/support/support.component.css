@@ -1,6 +1,7 @@
 div {
   display: flex;
   justify-content: space-between;
+  user-select: none;
 }
 
 div>button {
@@ -22,11 +23,11 @@ mat-spinner {
   padding-right: 0;
 }
 
-.edit:hover{
+.edit:hover {
   background-color: green;
 }
 
-.delete:hover{
+.delete:hover {
   background-color: rgb(158, 27, 27);
 }
 
@@ -171,16 +172,31 @@ input {
   outline: none;
 }
 
+.requestIsDone {
+  position: fixed;
+  z-index: 99;
+  background-color: #28292a91;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.requestIsDone > div {
+  width: 50%;
+}
+
 .solvedButton:hover {
   cursor: pointer;
 }
 
-.solvedButton:active{
+.solvedButton:active {
   background-color: #1a1a72;
   border-radius: 50%;
 }
 
-#iconButton{
+#iconButton {
   background-image: unset;
 }
 
