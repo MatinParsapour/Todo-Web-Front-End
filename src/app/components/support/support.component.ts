@@ -182,9 +182,12 @@ export class SupportComponent implements OnInit, AfterViewChecked {
     )
   }
   requestSolved(){
-    this.request.isSolved = !this.request.isSolved
-    console.log(this.request);
-    
+    this.request.isSolved = !this.request.isSolved    
+    this.updateRequest()
+  }
+
+  requestFinished(){
+    this.request.isFinished = !this.request.isFinished
     this.updateRequest()
   }
 }

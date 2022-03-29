@@ -53,6 +53,10 @@
             <p>{{request.isSolved ? 'Yes' : 'No'}}</p>
           </div>
           <div>
+            <span class="colorAndFontSizeForHeaders">Finished</span>
+            <p>{{request.isFinished ? 'Yes' : 'No'}}</p>
+          </div>
+          <div>
             <span class="colorAndFontSizeForHeaders">Priority</span>
             <p>{{request.priority}}</p>
           </div>
@@ -73,7 +77,9 @@
       <div class="input">
         <input (keydown.enter)="sendMessage()" [formControl]="messaged" type="text" matInput color="primary">
         <img (click)="requestSolved()" [matTooltip]="request.isSolved ? 'Unsolve' : 'Solve'" class="solvedButton" src="https://img.icons8.com/fluency/48/000000/solve.png" />
-        <button mat-icon-button class="doneButton"><mat-icon>done</mat-icon></button>
+        <button mat-icon-button (click)="requestFinished()" class="doneButton">
+          <mat-icon>done</mat-icon>
+        </button>
       </div>
     </div>
   </div>
