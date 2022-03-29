@@ -171,6 +171,15 @@ input {
   outline: none;
 }
 
+.solvedButton:hover {
+  cursor: pointer;
+}
+
+.solvedButton:active{
+  background-color: #1a1a72;
+  border-radius: 50%;
+}
+
 #iconButton{
   background-image: unset;
 }

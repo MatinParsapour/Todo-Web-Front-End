@@ -169,4 +169,22 @@ export class SupportComponent implements OnInit, AfterViewChecked {
       this.request = null
     )
   }
+  
+  updateRequest(){
+    this.supportService.update("request/update-request", this.request).subscribe(
+      (response: any) => {
+        this.getRequestData(this.request.id)
+      },
+      (error:HttpErrorResponse)=>{
+        this.notifier.notify(NotificationType.ERROR, error.error)
+      },
+
+    )
+  }
+  requestSolved(){
+    this.request.isSolved = !this.request.isSolved
+    console.log(this.request);
+    
+    this.updateRequest()
+  }
 }
