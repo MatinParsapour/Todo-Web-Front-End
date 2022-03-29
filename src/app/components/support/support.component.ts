@@ -136,20 +136,6 @@ export class SupportComponent implements OnInit, AfterViewChecked {
       this.sendMessage();
   }
 
-  deleteRequest(requestId: any) {
-    this.supportService.delete('request/delete-request/' + requestId).subscribe(
-      (response: any) => {
-        this.getAllRequests();
-        console.log(response);
-      },
-      (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
-        console.log(error);
-      },
-      (this.request = null)
-    );
-  }
-
   updateRequest() {
     this.supportService
       .update('request/update-request', this.request)
@@ -162,6 +148,7 @@ export class SupportComponent implements OnInit, AfterViewChecked {
         }
       );
   }
+  
   requestSolved() {
     this.request.isSolved = !this.request.isSolved;
     this.updateRequest();
