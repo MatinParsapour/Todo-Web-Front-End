@@ -1,0 +1,32 @@
+div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.request {
+  height: 100%;
+  padding-left: 5%;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 20px;
+  background-color: rgb(14, 7, 46);
+}
+
+.request>div{
+    flex-direction: column;
+}
+
+.request:hover {
+  cursor: pointer;
+  background-color: rgb(28, 13, 95);
+  border-radius: 10% 10% 10% 10%;
+}
+
+.colorAndFontSizeForHeaders {
+  color: rgb(117, 113, 113);
+  font-size: 12px;
+}
+
+#iconButton {
+  background-image: unset;
+}
