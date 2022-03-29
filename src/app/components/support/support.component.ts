@@ -14,6 +14,7 @@ import {
   AfterViewChecked,
   Component,
   ElementRef,
+  HostListener,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -124,9 +125,11 @@ export class SupportComponent implements OnInit, AfterViewChecked {
         },
         (error: HttpErrorResponse) => {
           this.notifier.notify(NotificationType.ERROR, error.error);
+        },
+        () => {
+          this.message.get('message')?.setValue('');
         }
       );
-    this.message.get('message')?.setValue('');
   }
 
   openMenu(event: MouseEvent, item: any) {
@@ -155,39 +158,46 @@ export class SupportComponent implements OnInit, AfterViewChecked {
       }
     );
   }
-  
-  deleteRequest(requestId: any){
-    this.supportService.delete("request/delete-request/" + requestId).subscribe(
-      (response:any) => {
-        this.getAllRequests()
+
+  @HostListener('window:keydown', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if ((event.ctrlKey || event.metaKey) && event.key == 'Enter')
+      this.sendMessage();
+  }
+
+  deleteRequest(requestId: any) {
+    this.supportService.delete('request/delete-request/' + requestId).subscribe(
+      (response: any) => {
+        this.getAllRequests();
         console.log(response);
       },
-      (error:HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error)
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error);
         console.log(error);
       },
-      this.request = null
-    )
-  }
-  
-  updateRequest(){
-    this.supportService.update("request/update-request", this.request).subscribe(
-      (response: any) => {
-        this.getRequestData(this.request.id)
-      },
-      (error:HttpErrorResponse)=>{
-        this.notifier.notify(NotificationType.ERROR, error.error)
-      },
-
-    )
-  }
-  requestSolved(){
-    this.request.isSolved = !this.request.isSolved    
-    this.updateRequest()
+      (this.request = null)
+    );
   }
 
-  requestFinished(){
-    this.request.isFinished = !this.request.isFinished
-    this.updateRequest()
+  updateRequest() {
+    this.supportService
+      .update('request/update-request', this.request)
+      .subscribe(
+        (response: any) => {
+          this.getRequestData(this.request.id);
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(NotificationType.ERROR, error.error);
+        }
+      );
+  }
+  requestSolved() {
+    this.request.isSolved = !this.request.isSolved;
+    this.updateRequest();
+  }
+
+  requestFinished() {
+    this.request.isFinished = !this.request.isFinished;
+    this.updateRequest();
   }
 }
