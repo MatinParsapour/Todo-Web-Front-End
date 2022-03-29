@@ -9,6 +9,10 @@ div>button {
   z-index: 99;
 }
 
+app-message{
+  width: 60%;
+}
+
 mat-spinner {
   left: 45%;
   top: 30%;
