@@ -16,23 +16,7 @@
         You have no request
       </div>
       <div *ngFor="let request of requests" (click)="getRequestData(request.id)">
-        <div>
-          <span class="colorAndFontSizeForHeaders">Topic</span>
-          {{request.topic}}
-        </div>
-        <div>
-          <span class="colorAndFontSizeForHeaders">Started at</span>
-          {{request.startsAt | date : 'short'}}
-        </div>
-        <button id="iconButton" mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu class="menu" #normalMenu="matMenu">
-          <button mat-menu-item class="material-icons delete" (click)="deleteRequest(request.id)"
-            matTooltip="delete list">
-            <mat-icon>delete</mat-icon> Delete Request
-          </button>
-        </mat-menu>
+        <app-request [request]="request" (update)="getAllRequests()"></app-request>
       </div>
     </div>
   </div>
