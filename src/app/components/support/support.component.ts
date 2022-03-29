@@ -32,8 +32,6 @@ export class SupportComponent implements OnInit, AfterViewChecked {
   isLoading = false;
   message: FormGroup;
   @ViewChild('scroller') private scroller!: ElementRef;
-  @ViewChild(MatMenuTrigger, { static: true }) matMenuTrigger!: MatMenuTrigger;
-  menuTopLeftPosition = { x: '0', y: '0' };
 
   constructor(
     private dialog: MatDialog,
@@ -111,10 +109,6 @@ export class SupportComponent implements OnInit, AfterViewChecked {
     return this.message.get('message');
   }
 
-  isSender(userId: any): boolean {
-    return userId === localStorage.getItem('username');
-  }
-
   sendMessage() {
     this.message.get('userId')?.setValue(localStorage.getItem('username'));
     this.supportService
@@ -132,31 +126,8 @@ export class SupportComponent implements OnInit, AfterViewChecked {
       );
   }
 
-  openMenu(event: MouseEvent, item: any) {
-    event.preventDefault();
-    this.menuTopLeftPosition.x = event.clientX + 'px';
-    this.menuTopLeftPosition.y = event.clientY + 'px';
-    this.matMenuTrigger.menuData = { item: item };
-    this.matMenuTrigger.openMenu();
-  }
-
   preventDefault(event: any) {
     event.preventDefault();
-  }
-
-  editMessage(messageId: any) {
-    console.log(messageId);
-  }
-
-  deleteMessage(messageId: any) {
-    this.supportService.delete('message/delete-message/' + messageId).subscribe(
-      (response: any) => {
-        this.getRequestData(this.request.id);
-      },
-      (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
-      }
-    );
   }
 
   @HostListener('window:keydown', ['$event'])
