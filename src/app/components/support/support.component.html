@@ -11,7 +11,7 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <div class="dataContainer">
   <div>
-    <div class="topicContainer scrollbar-table" id="style-red">
+    <div (contextmenu)="preventDefault($event)" class="topicContainer scrollbar-table" id="style-red">
       <div *ngIf="requests.length === 0">
         You have no request
       </div>
@@ -83,7 +83,8 @@
         </div>
       </div>
       <div class="input">
-        <input (keydown.enter)="sendMessage()" [formControl]="messaged" type="text" matInput color="primary">
+        <textarea (keydown.enter)="sendMessage(); preventDefault($event)" [formControl]="messaged" matInput
+          color="primary"></textarea>
         <img (click)="requestSolved()" [matTooltip]="request.isSolved ? 'Unsolve' : 'Solve'" class="solvedButton" src="https://img.icons8.com/fluency/48/000000/solve.png" />
         <button mat-icon-button (click)="requestFinished()" class="doneButton">
           <mat-icon>done</mat-icon>

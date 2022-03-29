@@ -164,12 +164,13 @@ mat-spinner {
   justify-content: flex-end;
 }
 
-input {
+textarea {
   background-color: #393648;
   border-radius: 0.75rem;
   flex-grow: 1;
   margin-bottom: 1.25rem;
   outline: none;
+  resize: none;
 }
 
 .requestIsDone {
@@ -183,8 +184,13 @@ input {
   flex-direction: column;
 }
 
-.requestIsDone > div {
+.requestIsDone>div {
   width: 50%;
+}
+
+.solvedButton {
+  width: 9%;
+  height: 74%;
 }
 
 .solvedButton:hover {
