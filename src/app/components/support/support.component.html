@@ -30,30 +30,7 @@
           <span>this request is finished</span>
         </div>
       </div>
-      <div class="request">
-        <div class="requestHeader">
-          <div>
-            <span class="colorAndFontSizeForHeaders">Topic</span>
-            <p>{{request.topic}}</p>
-          </div>
-          <div>
-            <span class="colorAndFontSizeForHeaders">Started at</span>
-            <p>{{request.startsAt | date: 'short'}}</p>
-          </div>
-          <div>
-            <span class="colorAndFontSizeForHeaders">Solved</span>
-            <p>{{request.isSolved ? 'Yes' : 'No'}}</p>
-          </div>
-          <div>
-            <span class="colorAndFontSizeForHeaders">Finished</span>
-            <p>{{request.isFinished ? 'Yes' : 'No'}}</p>
-          </div>
-          <div>
-            <span class="colorAndFontSizeForHeaders">Priority</span>
-            <p>{{request.priority}}</p>
-          </div>
-        </div>
-      </div>
+      <app-request-header [request]="request"></app-request-header>
       <div #scroller (contextmenu)="preventDefault($event)" class="messagesContainer scrollbar-table" id="style-red">
         <div *ngFor="let message of request.messages">
           <app-message [message]="message" (update)="getRequestData(request.id)"></app-message>
