@@ -23,3 +23,21 @@
   color: rgb(117, 113, 113);
   font-size: 12px;
 }
+
+.edit:hover {
+  background-color: green;
+}
+
+.delete:hover {
+  background-color: rgb(158, 27, 27);
+}
+
+.menuButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 7px;
+  padding-right: 0;
+}
+
+
