@@ -38,7 +38,7 @@ export class MessageComponent implements OnInit {
     event.preventDefault();
   }
 
-  editMessage(messageId: any) {
+  makeMessageContentEditable(messageId: any) {
     this.isEditable = !this.isEditable
   }
 

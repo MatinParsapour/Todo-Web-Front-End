@@ -14,7 +14,8 @@
 
 <mat-menu #rightMenu="matMenu">
   <ng-template matMenuContent let-item="item">
-    <button class="menuButton edit" (click)="editMessage(item.id)" mat-menu-item>Edit <mat-icon>edit</mat-icon></button>
+    <button class="menuButton edit" (click)="makeMessageContentEditable(item.id)" mat-menu-item>Edit <mat-icon>edit
+      </mat-icon></button>
     <button class="menuButton delete" (click)="deleteMessage(item.id)" mat-menu-item>Delete <mat-icon>delete</mat-icon>
     </button>
   </ng-template>
