@@ -71,15 +71,8 @@
         </div>
       </div>
       <div #scroller (contextmenu)="preventDefault($event)" class="messagesContainer scrollbar-table" id="style-red">
-        <div (contextmenu)="openMenu($event, message)" class="message" *ngFor="let message of request.messages">
-          <div>
-            <p class="colorAndFontSizeForHeaders"> {{message.user.firstName}} {{message.user.lastName}} </p>
-            <p class="messageData"> {{message.message}} </p>
-            <p class="messageDate colorAndFontSizeForHeaders"> {{message.sentAt | date : 'shortTime'}} </p>
-          </div>
-          <div [class.alighItemsFlexEnd]="!isSender(message.user.id)" *ngIf="!isSender(message.user.id)">
-            <p> {{message.message}} </p>
-          </div>
+        <div *ngFor="let message of request.messages">
+          <app-message [message]="message" (delete)="getRequestData(request.id)"></app-message>
         </div>
       </div>
       <div class="input">
@@ -93,14 +86,3 @@
     </div>
   </div>
 </div>
-
-<div (contextmenu)="preventDefault($event)" style="visibility: hidden; position: fixed;"
-  [style.left]="menuTopLeftPosition.x" [style.top]="menuTopLeftPosition.y" [matMenuTriggerFor]="rightMenu"></div>
-
-=<mat-menu #rightMenu="matMenu">
-  <ng-template matMenuContent let-item="item">
-    <button class="menuButton edit" (click)="editMessage(item.id)" mat-menu-item>Edit <mat-icon>edit</mat-icon></button>
-    <button class="menuButton delete" (click)="deleteMessage(item.id)" mat-menu-item>Delete <mat-icon>delete</mat-icon>
-    </button>
-  </ng-template>
-</mat-menu>
