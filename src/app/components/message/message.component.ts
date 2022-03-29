@@ -52,4 +52,18 @@ export class MessageComponent implements OnInit {
       }
     );
   }
+
+  editMessage(target: any, event: any){
+    event.preventDefault()
+    this.message.message = target.innerText
+    this.supportService.update("message/update-message", this.message).subscribe(
+      (resposne: any) => {
+        this.update.next('')
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error)
+      }
+    )
+    
+  }
 }

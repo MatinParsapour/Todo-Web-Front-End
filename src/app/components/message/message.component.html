@@ -1,11 +1,14 @@
 <div class="message" (contextmenu)="openMenu($event, message)">
   <div>
-    <p class="colorAndFontSizeForHeaders"> {{message.user.firstName}} {{message.user.lastName}} </p>
-    <p class="messageData" [contentEditable]="isEditable"> {{message.message}} </p>
-    <p class="messageDate colorAndFontSizeForHeaders"> {{message.sentAt | date : 'shortTime'}} </p>
-  </div>
-  <div [class.alighItemsFlexEnd]="!isSender(message.user.id)" *ngIf="!isSender(message.user.id)">
-    <p> {{message.message}} </p>
+    <div>
+      <p class="colorAndFontSizeForHeaders"> {{message.user.firstName}} {{message.user.lastName}} </p>
+      <p class="messageData" [contentEditable]="isEditable" (keydown.enter)="editMessage($event.target, $event)">
+        {{message.message}} </p>
+      <p class="messageDate colorAndFontSizeForHeaders"> {{message.sentAt | date : 'shortTime'}} </p>
+    </div>
+    <div [class.alighItemsFlexEnd]="!isSender(message.user.id)" *ngIf="!isSender(message.user.id)">
+      <p> {{message.message}} </p>
+    </div>
   </div>
 </div>
 
