@@ -13,7 +13,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 export class MessageComponent implements OnInit {
   @Input('message') message: any;
   @ViewChild(MatMenuTrigger, { static: true }) matMenuTrigger!: MatMenuTrigger;
-  @Output('delete') delete = new EventEmitter()
+  @Output('update') update = new EventEmitter()
   menuTopLeftPosition = { x: '0', y: '0' };
   isEditable = false
 
@@ -45,7 +45,7 @@ export class MessageComponent implements OnInit {
   deleteMessage(messageId: any) {
     this.supportService.delete('message/delete-message/' + messageId).subscribe(
       (response: any) => {
-        this.delete.next('')
+        this.update.next('')
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error);

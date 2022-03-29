@@ -72,7 +72,7 @@
       </div>
       <div #scroller (contextmenu)="preventDefault($event)" class="messagesContainer scrollbar-table" id="style-red">
         <div *ngFor="let message of request.messages">
-          <app-message [message]="message" (delete)="getRequestData(request.id)"></app-message>
+          <app-message [message]="message" (update)="getRequestData(request.id)"></app-message>
         </div>
       </div>
       <div class="input">
