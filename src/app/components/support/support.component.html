@@ -12,6 +12,9 @@
 <div class="dataContainer">
   <div>
     <div class="topicContainer scrollbar-table" id="style-red">
+      <div *ngIf="requests.length === 0">
+        You have no request
+      </div>
       <div *ngFor="let request of requests" (click)="getRequestData(request.id)">
         <div>
           <span class="colorAndFontSizeForHeaders">Topic</span>
