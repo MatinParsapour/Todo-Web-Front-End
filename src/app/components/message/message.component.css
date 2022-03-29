@@ -1,0 +1,25 @@
+.message {
+  word-break: break-word;
+  white-space: pre-wrap;
+  max-width: 100%;
+  background-color: #141426;
+  width: fit-content;
+  padding-right: 1em;
+  padding-left: 0.5em;
+  border-radius: 0.75rem;
+  margin-left: 1em;
+  margin-bottom: 0.625rem;
+}
+
+.message>div {
+  flex-direction: column;
+}
+
+.message:hover {
+  background-color: #1a1a72;
+}
+
+.colorAndFontSizeForHeaders {
+  color: rgb(117, 113, 113);
+  font-size: 12px;
+}

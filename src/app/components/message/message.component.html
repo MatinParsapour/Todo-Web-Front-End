@@ -1,0 +1,21 @@
+<div class="message" (contextmenu)="openMenu($event, message)">
+  <div>
+    <p class="colorAndFontSizeForHeaders"> {{message.user.firstName}} {{message.user.lastName}} </p>
+    <p class="messageData" [contentEditable]="isEditable"> {{message.message}} </p>
+    <p class="messageDate colorAndFontSizeForHeaders"> {{message.sentAt | date : 'shortTime'}} </p>
+  </div>
+  <div [class.alighItemsFlexEnd]="!isSender(message.user.id)" *ngIf="!isSender(message.user.id)">
+    <p> {{message.message}} </p>
+  </div>
+</div>
+
+<div (contextmenu)="preventDefault($event)" style="visibility: hidden; position: fixed;"
+  [style.left]="menuTopLeftPosition.x" [style.top]="menuTopLeftPosition.y" [matMenuTriggerFor]="rightMenu"></div>
+
+<mat-menu #rightMenu="matMenu">
+  <ng-template matMenuContent let-item="item">
+    <button class="menuButton edit" (click)="editMessage(item.id)" mat-menu-item>Edit <mat-icon>edit</mat-icon></button>
+    <button class="menuButton delete" (click)="deleteMessage(item.id)" mat-menu-item>Delete <mat-icon>delete</mat-icon>
+    </button>
+  </ng-template>
+</mat-menu>
