@@ -40,7 +40,7 @@
         <textarea autofocus [formControl]="messaged" matInput
           color="primary"></textarea>
         <img (click)="requestSolved()" [matTooltip]="request.isSolved ? 'Unsolve' : 'Solve'" class="solvedButton" src="https://img.icons8.com/fluency/48/000000/solve.png" />
-        <button mat-icon-button (click)="requestFinished()" class="doneButton">
+        <button mat-icon-button (click)="requestFinished()" [matTooltip]="request.isFinished ? 'Undone' : 'done'" class="doneButton">
           <mat-icon>done</mat-icon>
         </button>
       </div>
