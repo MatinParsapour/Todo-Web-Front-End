@@ -87,6 +87,7 @@ import { ReplacerPipe } from './pipes/replacer.pipe';
 import { SupportComponent } from './components/support/support.component';
 import { NewTopicComponent } from './components/new-topic/new-topic.component';
 import { MessageComponent } from './components/message/message.component';
+import { RequestComponent } from './components/request/request.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -173,6 +174,7 @@ const customNotifierOptions: NotifierOptions = {
     SupportComponent,
     NewTopicComponent,
     MessageComponent,
+    RequestComponent,
   ],
   imports: [
     BrowserModule,
