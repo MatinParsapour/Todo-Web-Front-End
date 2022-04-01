@@ -28,6 +28,7 @@ export class MainComponent implements OnInit {
   isMyDayAttr = false;
   toDos: any;
   user = '';
+  userId = ''
   isUser = false;
   isShow = false
 
@@ -65,12 +66,16 @@ export class MainComponent implements OnInit {
     this.getAllToDoFolders();
     this.getAllToDos();
     this.checkUserRole();
+    const userId = localStorage.getItem("username");
+    if (userId !== null) {
+      this.userId = userId
+    }
   }
 
   toggleInputDisplay(){
     this.isShow = !this.isShow
   }
-
+  
   openUserDialog() {
     this.openUserComponent().subscribe((result) => {
       if (result === 'open-phone-dialog') {
