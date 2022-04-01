@@ -89,6 +89,7 @@ import { NewTopicComponent } from './components/new-topic/new-topic.component';
 import { MessageComponent } from './components/message/message.component';
 import { RequestComponent } from './components/request/request.component';
 import { RequestHeaderComponent } from './components/request-header/request-header.component';
+import { UsersRequestsComponent } from './components/users-requests/users-requests.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -177,6 +178,7 @@ const customNotifierOptions: NotifierOptions = {
     MessageComponent,
     RequestComponent,
     RequestHeaderComponent,
+    UsersRequestsComponent,
   ],
   imports: [
     BrowserModule,
