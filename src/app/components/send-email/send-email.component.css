@@ -1,4 +1,4 @@
-div {
+form {
   font-size: 20px;
 }
 
@@ -6,9 +6,12 @@ mat-form-field {
   width: 100%;
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-around;
+textarea{
+  resize: none;
+}
+
+button{
+  margin-right: 2%;
 }
 
 mat-spinner {
