@@ -20,6 +20,7 @@ import {
 } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-support',
@@ -40,6 +41,7 @@ export class SupportComponent implements OnInit, AfterViewChecked {
     private supportService: SupportService,
     private notifier: NotificationService,
     private fb: FormBuilder,
+    private location: Location,
     private activatedRoute: ActivatedRoute
   ) {
     this.message = fb.group({
@@ -79,7 +81,7 @@ export class SupportComponent implements OnInit, AfterViewChecked {
   }
 
   backToMain() {
-    this.router.navigateByUrl('/main');
+    this.location.back()
   }
 
   getAllRequests() {
