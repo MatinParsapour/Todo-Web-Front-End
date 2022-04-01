@@ -1,23 +1,24 @@
-<div>
-    <mat-spinner [hidden]="!isSending"></mat-spinner>
-    <div class="icons">
-        <button [routerLink]="'/inbox'" (click)="closeDialog()" mat-icon-button color="basic" matTooltip="Inbox"><mat-icon>inbox</mat-icon></button>
-        <button [routerLink]="'/outbox'" (click)="closeDialog()" mat-icon-button color="basic" matTooltip="Outbox">
-          <mat-icon>outbox</mat-icon>
-        </button>
-    </div>
-    <mat-form-field appearance="outline">
-        <mat-label>To</mat-label>
-        <input [formControl]="to" matInput autocomplete="off">
-        <mat-error *ngIf="to.invalid">{{getEmailErrorMessages()}}</mat-error>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Message</mat-label>
-        <textarea [formControl]="message" matInput></textarea>
-        <mat-error *ngIf="message.invalid">{{getMessageErrorMessages()}}</mat-error>
-    </mat-form-field>
-    <div class="buttons">
-    <button [disabled]="email.invalid" mat-flat-button color="primary" (click)="sendEmail()">Send email <mat-icon>send</mat-icon></button>
-    <button mat-flat-button color="warn" (click)="closeDialog()">Cancel</button>
+<form>
+  <mat-spinner [hidden]="!isSending"></mat-spinner>
+  <div class="icons">
+    <button [routerLink]="'/inbox'" (click)="closeDialog()" mat-icon-button color="basic" matTooltip="Inbox">
+      <mat-icon>inbox</mat-icon>
+    </button>
+    <button [routerLink]="'/outbox'" (click)="closeDialog()" mat-icon-button color="basic" matTooltip="Outbox">
+      <mat-icon>outbox</mat-icon>
+    </button>
   </div>
-</div>
+  <mat-form-field appearance="outline">
+    <mat-label>To</mat-label>
+    <input [formControl]="to" matInput autocomplete="off">
+    <mat-error *ngIf="to.invalid">{{getEmailErrorMessages()}}</mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Message</mat-label>
+    <textarea [formControl]="message" matInput></textarea>
+    <mat-error *ngIf="message.invalid">{{getMessageErrorMessages()}}</mat-error>
+  </mat-form-field>
+  <button type="submit" id="sendEmail" matTooltip="Ctrl + enter" [disabled]="email.invalid" mat-flat-button color="primary" (click)="sendEmail()">Send email <mat-icon>send
+    </mat-icon></button>
+  <button mat-flat-button color="warn" (click)="closeDialog()">Cancel</button>
+</form>
