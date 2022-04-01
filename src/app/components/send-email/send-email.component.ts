@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationType } from 'src/app/enum/notification-type';
@@ -88,5 +88,12 @@ export class SendEmailComponent implements OnInit {
           this.isSending = false;
         }
       );
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  keyEvent(event: KeyboardEvent){
+    if ((event.ctrlKey || event.metaKey) && event.key == 'Enter') {
+      document.getElementById("sendEmail")?.click()
+    }
   }
 }
