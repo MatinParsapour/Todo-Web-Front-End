@@ -27,7 +27,8 @@
         <mat-icon class="list" (click)="sidenav.open()" matTooltip="Open sidebar">list</mat-icon>
       </div>
       <div>
-        <button *ngIf="isUser" [routerLink]="'/support'" class="userManagementButton" mat-raised-button
+        <button *ngIf="isUser" [routerLink]="'/support'" [queryParams]="{userId: userId}" class="userManagementButton"
+          mat-raised-button
           color="primary">
           Support
           <span class="material-icons">
