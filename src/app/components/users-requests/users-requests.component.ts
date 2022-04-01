@@ -12,7 +12,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 export class UsersRequestsComponent implements OnInit {
   requests: any;
   isLoading = false
-  dataColumns = ['firstName','lastName','email']
+  dataColumns = ['firstName','lastName','email', 'topic', 'isFinished','isSolved']
 
   constructor(private supportService: SupportService,
     private notifier: NotificationService) { }
