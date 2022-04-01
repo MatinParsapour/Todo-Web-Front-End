@@ -7,7 +7,7 @@ import {
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SupportService } from './../../services/support/support.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NewTopicComponent } from './../new-topic/new-topic.component';
 import { MatDialog } from '@angular/material/dialog';
 import {
@@ -31,6 +31,7 @@ export class SupportComponent implements OnInit, AfterViewChecked {
   request: any;
   isLoading = false;
   message: FormGroup;
+  userId: any;
   @ViewChild('scroller') private scroller!: ElementRef;
 
   constructor(
@@ -38,11 +39,19 @@ export class SupportComponent implements OnInit, AfterViewChecked {
     private router: Router,
     private supportService: SupportService,
     private notifier: NotificationService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private activatedRoute: ActivatedRoute
   ) {
     this.message = fb.group({
       message: new FormControl('', [Validators.required]),
       userId: new FormControl(''),
+    });
+    this.getUrlParameters()
+  }
+
+  getUrlParameters() {
+    this.activatedRoute.queryParams.subscribe((parameter: any) => {
+      this.userId = parameter['userId'];
     });
   }
 
@@ -76,7 +85,7 @@ export class SupportComponent implements OnInit, AfterViewChecked {
   getAllRequests() {
     this.isLoading = true;
     this.supportService
-      .getAll('request/get-user-requests/' + localStorage.getItem('username'))
+      .getAll('request/get-user-requests/' + this.userId)
       .subscribe(
         (response: any) => {
           this.requests = response;
@@ -148,7 +157,7 @@ export class SupportComponent implements OnInit, AfterViewChecked {
         }
       );
   }
-  
+
   requestSolved() {
     this.request.isSolved = !this.request.isSolved;
     this.updateRequest();
