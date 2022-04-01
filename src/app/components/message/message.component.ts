@@ -57,7 +57,7 @@ export class MessageComponent implements OnInit {
     event.preventDefault()
     this.message.message = target.innerText
     this.supportService.update("message/update-message", this.message).subscribe(
-      (resposne: any) => {
+      resposne => {
         this.update.next('')
       },
       (error: HttpErrorResponse) => {
