@@ -11,12 +11,8 @@ mat-form-field {
 span{
   font-size: 13px;
 }
-.createFolder>div>button {
-  width: 9em;
-}
-
-.createFolder>div>button[color="warn"] {
-  margin-left: 5em;
+.createFolder>button {
+  margin-bottom: 2%;
 }
 
 .createFolder>span {
