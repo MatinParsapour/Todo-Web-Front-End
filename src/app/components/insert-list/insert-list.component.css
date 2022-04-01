@@ -12,12 +12,8 @@ span{
   font-size: 13px;
 }
 
-.addList>div>button {
-  width: 9em;
-}
-
-.addList>div>button[color="warn"] {
-  margin-left: 5em;
+.addList>button {
+  margin-bottom: 2%;
 }
 
 .addList>span {
