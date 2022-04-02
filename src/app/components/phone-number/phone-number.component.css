@@ -5,6 +5,11 @@ mat-card {
   align-items: center;
 }
 
+form{
+  display: flex;
+  flex-direction: column;
+}
+
 @keyframes spinner {
   to {
     transform: rotate(360deg);

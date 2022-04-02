@@ -20,8 +20,8 @@
           <mat-hint>{{phoneHint}}</mat-hint>
         </mat-form-field>
       </div>
+      <button type="submit" mat-dialog-close="send-code" (click)="updatePhoneNumber()" [class.spinner]="isLoading" mat-raised-button
+        color="primary" [disabled]="profileForm.invalid || isLoading">Update your phone number</button>
     </form>
   </mat-card-content>
-  <button mat-dialog-close="send-code" (click)="updatePhoneNumber()" [class.spinner]="isLoading" mat-raised-button
-    color="primary" [disabled]="profileForm.invalid || isLoading">Update your phone number</button>
 </mat-card>
