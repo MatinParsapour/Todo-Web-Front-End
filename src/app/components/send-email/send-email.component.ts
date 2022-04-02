@@ -15,7 +15,7 @@ import { ForgetPasswordEmailValidator } from './../forget-password/forget-passwo
 export class SendEmailComponent implements OnInit {
   email: FormGroup;
   isSending!: boolean;
-  recommendations: any
+  recommendations: any;
 
   constructor(
     private fb: FormBuilder,
@@ -67,7 +67,7 @@ export class SendEmailComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-  getRecommendation(){
+  getRecommendation() {
     this.sendEmailService
       .getAll('user-email/get-recommendation/' + this.email.get('to')?.value)
       .subscribe(
@@ -102,6 +102,11 @@ export class SendEmailComponent implements OnInit {
           this.isSending = false;
         }
       );
+  }
+
+  selectEmail(email: string) {
+    this.email.get('to')?.setValue(email);
+    this.recommendations = undefined;
   }
 
   @HostListener('window:keydown', ['$event'])
