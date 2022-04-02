@@ -1,4 +1,8 @@
-<div class="todoSharedContainer">
+<div *ngIf="!toDo.id" class="noToDo">
+    <span>(0_o)</span>
+    <p>{{'No To-Do found' | uppercase}} </p>
+</div>
+<div class="todoSharedContainer" *ngIf="toDo.id">
   <mat-card>
     <span>Task</span>
     {{toDo.task}}
@@ -28,7 +32,8 @@
     </mat-card>
     <mat-card>
         <span>Pictures</span>
-      <ng-image-slider [images]="slideShowImages" [imageSize]="slideShowSize()">
+        <p *ngIf="slideShowImages.length == 0"> {{'No picture'| uppercase}}</p>
+      <ng-image-slider *ngIf="slideShowImages.length > 0" [images]="slideShowImages" [imageSize]="slideShowSize()">
       </ng-image-slider>
     </mat-card>
   </div>
