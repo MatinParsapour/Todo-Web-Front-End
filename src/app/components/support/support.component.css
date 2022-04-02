@@ -86,7 +86,7 @@ mat-spinner {
   z-index: 99;
 }
 
-textarea {
+#input {
   background-color: #393648;
   border-radius: 0.75rem;
   flex-grow: 1;
