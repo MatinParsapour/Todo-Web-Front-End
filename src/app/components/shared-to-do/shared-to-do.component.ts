@@ -12,13 +12,17 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class SharedToDoComponent implements OnInit {
   toDoId: any;
   toDo: ToDo = new ToDo();
+  canExecute = false;
+  slideShowImages: Array<Object> = [];
 
-  constructor(private activatedRoute: ActivatedRoute,
-    private toDoService: ToDoService) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private toDoService: ToDoService
+  ) {}
 
   ngOnInit(): void {
-    this.getToDoId()
-    this.getToDo()
+    this.getToDoId();
+    this.getToDo();
   }
 
   getToDoId() {
@@ -31,10 +35,25 @@ export class SharedToDoComponent implements OnInit {
     this.toDoService.getToDo('to-do/get-to-do/' + this.toDoId).subscribe(
       (response: any) => {
         this.toDo = response;
+        this.addToQueue();
       },
       (error: HttpErrorResponse) => {
         console.log(error);
       }
     );
+  }
+
+  addToQueue() {
+    this.slideShowImages = [];
+    this.toDo.pictures.forEach((element: any) => {
+      this.slideShowImages.push({ image: element, thumbImage: element });
+    });
+    this.canExecute = false;
+  }
+
+  slideShowSize() {
+    return {
+      height: '100px',
+    };
   }
 }
