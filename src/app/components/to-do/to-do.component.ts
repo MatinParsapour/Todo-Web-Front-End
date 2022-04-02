@@ -8,6 +8,7 @@ import { ToDoService } from './../../services/to-do/to-do.service';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { AggreementComponent } from '../aggreement/aggreement.component';
+import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'app-to-do',
@@ -27,7 +28,8 @@ export class ToDoComponent implements OnInit {
   constructor(
     private toDoService: ToDoService,
     private notifier: NotificationService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private clipBoardService: ClipboardService
   ) {}
 
   ngOnInit(): void {}
@@ -154,5 +156,10 @@ export class ToDoComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  shareToDo(){
+    this.clipBoardService.copy("http://localhost:4200/to-do?todoId=" + this.toDo.id)
+    this.notifier.notify(NotificationType.SUCCESS, "Link copied to your clipboard")
   }
 }
