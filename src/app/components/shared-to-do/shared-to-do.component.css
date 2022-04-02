@@ -1,0 +1,35 @@
+.todoSharedContainer {
+  font-size: 25px;
+  padding: 15px;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2%;
+  padding: 10px;
+}
+
+mat-card>span {
+  color: rgb(104, 104, 104);
+  font-size: 17px;
+}
+
+.statusContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.statusContainer>mat-card{
+    width: 32%;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer >mat-card{
+    width: 48%;
+}
+
