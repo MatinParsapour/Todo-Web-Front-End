@@ -34,8 +34,12 @@ export class SharedToDoComponent implements OnInit {
   getToDo() {
     this.toDoService.getToDo('to-do/get-to-do/' + this.toDoId).subscribe(
       (response: any) => {
-        this.toDo = response;
-        this.addToQueue();
+        if (response){
+          this.toDo = response;
+          this.addToQueue();
+        } else {
+          this.toDo.id = null
+        }
       },
       (error: HttpErrorResponse) => {
         console.log(error);
