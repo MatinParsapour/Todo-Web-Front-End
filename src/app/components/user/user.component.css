@@ -151,6 +151,10 @@
     border-style: none;
   }
 
+  button{
+    width: 100%;
+  }
+
   .fnlninner{
     height: unset;
   }
