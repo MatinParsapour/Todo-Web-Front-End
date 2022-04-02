@@ -2,16 +2,17 @@
   <div>
     <div>
       <p class="colorAndFontSizeForHeaders"> {{message.user.firstName}} {{message.user.lastName}} </p>
-      <p class="messageData" [contentEditable]="isEditable" (keydown.enter)="editMessage($event.target, $event)">
+      <p class="messageData" [class.hasBorder]="isEditable" [contentEditable]="isEditable" (keydown.enter)="editMessage($event.target, $event)">
         {{message.message}} </p>
       <p class="messageDate colorAndFontSizeForHeaders"> {{message.sentAt | date : 'shortTime'}} </p>
     </div>
   </div>
 </div>
-<div class="message" (contextmenu)="openMenu($event, message)" [class.alignSelfEnd]="!isSender(message.user.id)"
+<div class="message" [class.alignSelfEnd]="!isSender(message.user.id)"
   *ngIf="!isSender(message.user.id)">
   <p class="colorAndFontSizeForHeaders"> {{message.user.firstName}} {{message.user.lastName}} </p>
-  <p class="messageData" [contentEditable]="isEditable" (keydown.enter)="editMessage($event.target, $event)">
+  <p class="messageData" [contentEditable]="isEditable"
+    (keydown.enter)="editMessage($event.target, $event)">
     {{message.message}} </p>
   <p class="messageDate colorAndFontSizeForHeaders"> {{message.sentAt | date : 'shortTime'}} </p>
 </div>
