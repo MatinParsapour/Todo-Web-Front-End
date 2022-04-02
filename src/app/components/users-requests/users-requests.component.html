@@ -4,48 +4,25 @@
     <ng-container matColumnDef="firstName">
       <th mat-header-cell *matHeaderCellDef>First name</th>
       <td mat-cell *matCellDef="let element">
-        {{element.user.firstName}}
+        {{element.firstName}}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="lastName">
       <th mat-header-cell *matHeaderCellDef>Last name</th>
       <td mat-cell *matCellDef="let element">
-        {{element.user.lastName}}
+        {{element.lastName}}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef>Email</th>
       <td mat-cell *matCellDef="let element">
-        {{element.user.email}}
-      </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="isFinished">
-      <th mat-header-cell *matHeaderCellDef>Finished</th>
-      <td mat-cell *matCellDef="let element">
-        {{element.isFinished ? 'Yes' : 'No'}}
-      </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="isSolved">
-      <th mat-header-cell *matHeaderCellDef>Solved</th>
-      <td mat-cell *matCellDef="let element">
-        {{element.isSolved ? 'Yes' : 'No'}}
-      </td>
-    </ng-container>
-
-
-
-    <ng-container matColumnDef="topic">
-      <th mat-header-cell *matHeaderCellDef>Topic</th>
-      <td mat-cell *matCellDef="let element">
-        {{element.topic}}
+        {{element.email}}
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
-    <tr [routerLink]="'/support'" [queryParams]="{userId: row.user.id}" class="tableData" mat-row *matRowDef="let row; columns: dataColumns"></tr>
+    <tr [routerLink]="'/support'" [queryParams]="{userId: row.id}" class="tableData" mat-row *matRowDef="let row; columns: dataColumns"></tr>
   </table>
 </div>
