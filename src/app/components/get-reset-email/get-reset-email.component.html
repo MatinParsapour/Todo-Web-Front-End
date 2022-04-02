@@ -6,7 +6,7 @@
     <mat-error *ngIf="email.invalid"> {{getEmailErrorMessages()}} </mat-error>
   </mat-form-field>
   <div>
-    <button type="button" [disabled]="isLoading || email.invalid" @fade mat-raised-button color="primary"
+    <button type="submit" [disabled]="isLoading || email.invalid" @fade mat-raised-button color="primary"
       (click)="sendEmail()">Send
       email</button>
     <button type="button" mat-raised-button color="warn" (click)="closeDialog()">Close</button>
