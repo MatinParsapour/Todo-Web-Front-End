@@ -72,7 +72,11 @@ export class SendEmailComponent implements OnInit {
       .getAll('user-email/get-recommendation/' + this.email.get('to')?.value)
       .subscribe(
         (response: any) => {
-          this.recommendations = response;
+          if (response.length === 0) {
+            this.recommendations = undefined
+          } else {
+            this.recommendations = response;
+          }
         },
         (error: HttpErrorResponse) => {
           console.log(error);
