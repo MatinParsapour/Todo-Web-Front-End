@@ -90,6 +90,7 @@ import { MessageComponent } from './components/message/message.component';
 import { RequestComponent } from './components/request/request.component';
 import { RequestHeaderComponent } from './components/request-header/request-header.component';
 import { UsersRequestsComponent } from './components/users-requests/users-requests.component';
+import { SharedToDoComponent } from './components/shared-to-do/shared-to-do.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -179,6 +180,7 @@ const customNotifierOptions: NotifierOptions = {
     RequestComponent,
     RequestHeaderComponent,
     UsersRequestsComponent,
+    SharedToDoComponent,
   ],
   imports: [
     BrowserModule,
