@@ -1,4 +1,36 @@
-<div>
+<div class="todoSharedContainer">
+  <mat-card>
+    <span>Task</span>
     {{toDo.task}}
-    {{toDo.note}}
+  </mat-card>
+  <mat-card>
+    <span>Note</span>
+    {{toDo.note ? toDo.note : "-"}}
+  </mat-card>
+  <div class="statusContainer">
+    <mat-card>
+      <span>Myday</span>
+      {{toDo.isMyDay ? "Yes" : "No"}}
+    </mat-card>
+    <mat-card>
+      <span>Starred</span>
+      {{toDo.isStarred ? "Yes" : "No"}}
+    </mat-card>
+    <mat-card>
+      <span>Status</span>
+      {{toDo.status ? toDo.status : "-"}}
+    </mat-card>
+  </div>
+  <div class="footer">
+    <mat-card>
+      <span>Due to date</span>
+      {{toDo.dateTime ? toDo.dateTime : "-" }}
+    </mat-card>
+    <mat-card>
+        <span>Pictures</span>
+      <ng-image-slider [images]="slideShowImages" [imageSize]="slideShowSize()">
+      </ng-image-slider>
+    </mat-card>
+  </div>
+
 </div>
