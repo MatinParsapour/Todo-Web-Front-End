@@ -5,6 +5,12 @@ div {
   font-size: 17px;
 }
 
+form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 div>mat-form-field {
   width: 20em;
 }
