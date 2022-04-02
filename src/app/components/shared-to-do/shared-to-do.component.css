@@ -10,6 +10,18 @@ mat-card {
   padding: 10px;
 }
 
+.noToDo{
+    font-size: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.noToDo>span{
+    font-size: 70px;
+}
+
 mat-card>span {
   color: rgb(104, 104, 104);
   font-size: 17px;
