@@ -1,7 +1,7 @@
 .message {
   word-break: break-word;
   white-space: pre-wrap;
-  max-width: 100%;
+  max-width: 60%;
   background-color: #141426;
   width: fit-content;
   padding-right: 1em;
@@ -9,6 +9,10 @@
   border-radius: 0.75rem;
   margin-left: 1em;
   margin-bottom: 0.625rem;
+}
+
+.alignSelfEnd {
+  align-self: flex-end;
 }
 
 .message>div {
@@ -40,12 +44,10 @@
   padding-right: 0;
 }
 
-.message>div{
-    width: 100%;
+.message>div {
+  width: 100%;
 }
 
 .alighItemsFlexEnd {
   align-items: flex-end;
 }
-
-
