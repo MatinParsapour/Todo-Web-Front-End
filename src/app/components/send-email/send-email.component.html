@@ -10,8 +10,16 @@
   </div>
   <mat-form-field appearance="outline">
     <mat-label>To</mat-label>
-    <input [formControl]="to" matInput autocomplete="off">
+    <input (keydown)="getRecommendation()" autofocus="1" [formControl]="to" matInput autocomplete="off">
     <mat-error *ngIf="to.invalid">{{getEmailErrorMessages()}}</mat-error>
+    <div class="recommendations" *ngIf="recommendations">
+      <div *ngFor="let recommendation of recommendations">
+        <div class="recommendation" (click)="selectEmail(recommendation.email)">
+          <p>{{recommendation.email}}</p>
+          <span> {{recommendation.firstName}} {{recommendation.lastName}} </span>
+        </div>
+      </div>
+    </div>
   </mat-form-field>
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Message</mat-label>
