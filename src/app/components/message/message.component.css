@@ -11,6 +11,11 @@
   margin-bottom: 0.625rem;
 }
 
+.hasBorder {
+  border-style: groove;
+  border-radius: 5%;
+}
+
 .alignSelfEnd {
   align-self: flex-end;
 }
