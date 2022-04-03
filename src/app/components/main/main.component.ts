@@ -287,8 +287,4 @@ export class MainComponent implements OnInit {
   setPlanned(){
     this.toDo.category = Category.PLANNED
   }
-
-  removePlanned(){
-    this.toDo.category = Category.TASKS
-  }
 }
