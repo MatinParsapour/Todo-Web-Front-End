@@ -2,8 +2,9 @@
   <div>
     <div>
       <p class="colorAndFontSizeForHeaders"> {{message.user.firstName}} {{message.user.lastName}} </p>
-      <p class="messageData" [class.hasBorder]="isEditable" [contentEditable]="isEditable" (keydown.enter)="editMessage($event.target, $event)">
+      <p class="messageData" [class.hasBorder]="isEditable" *ngIf="!isImage(message.message)" [contentEditable]="isEditable" (keydown.enter)="editMessage($event.target, $event)">
         {{message.message}} </p>
+        <img width="100%" [src]="message.message" *ngIf="isImage(message.message)" alt="">
       <p class="messageDate colorAndFontSizeForHeaders"> {{message.sentAt | date : 'shortTime'}} </p>
     </div>
   </div>
