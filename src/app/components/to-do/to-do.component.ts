@@ -16,6 +16,7 @@ import { ClipboardService } from 'ngx-clipboard';
   styleUrls: ['./to-do.component.css'],
 })
 export class ToDoComponent implements OnInit {
+  folders: any;
   @Input('toDo') toDo: ToDo = new ToDo();
   @Input('search') search = '';
   @Output('getToDos') getToDos = new EventEmitter();
@@ -152,6 +153,17 @@ export class ToDoComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  getFolders(){
+    this.toDoService.getAll("folder/get-todo-folders/" + localStorage.getItem("username")).subscribe(
+      response => {
+        this.folders = response        
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error)
+      }
+    )
   }
 
   shareToDo(){
