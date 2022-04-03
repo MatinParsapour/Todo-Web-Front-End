@@ -19,9 +19,17 @@
       <button (click)="shareToDo()" mat-menu-item class="material-icons delete" matTooltip="Delete todo">
         <mat-icon>share</mat-icon> Share todo
       </button>
-      <button (click)="shareToDo()" mat-menu-item class="material-icons delete" matTooltip="Delete todo">
+      <button (mouseenter)="getFolders()" mat-menu-item [matMenuTriggerFor]="todoLists">
         <mat-icon>add</mat-icon> Add todo to folder
       </button>
+    </mat-menu>
+
+    <mat-menu #todoLists="matMenu">
+      <div *ngFor="let folder of folders"> 
+        <button mat-menu-item *ngFor="let list of folder.toDoLists">
+          <span>{{folder.name}} --> {{list.name}}</span>
+        </button>
+      </div>
     </mat-menu>
   </div>
 </mat-card>
