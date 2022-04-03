@@ -16,5 +16,9 @@ export class ToDoService extends DataService{
 
    getToDo(uri:any){
     return this.httpService.get("http://localhost:8080/" + uri)     
-   }
+  }
+  
+  addToDoToList(uri:any){
+    return this.httpService.put("http://localhost:8080/" + uri, null)     
+  }
 }
