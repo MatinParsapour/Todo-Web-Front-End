@@ -81,7 +81,7 @@ export class ToDoComponent implements OnInit {
   deleteToDo() {
     this.toDoService
       .delete(
-        'to-do/delete-to-do/'  +
+        'to-do/delete-to-do/' +
           localStorage.getItem('username') +
           '/' +
           this.toDo.id
@@ -155,19 +155,39 @@ export class ToDoComponent implements OnInit {
     );
   }
 
-  getFolders(){
-    this.toDoService.getAll("folder/get-todo-folders/" + localStorage.getItem("username")).subscribe(
+  getFolders() {
+    this.toDoService.getAll('folder/get-todo-folders/' + localStorage.getItem('username')).subscribe(
+        (response) => {
+          this.folders = response;
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(NotificationType.ERROR, error.error);
+        }
+      );
+  }
+
+  shareToDo() {
+    this.clipBoardService.copy(
+      'http://localhost:4200/to-do?todoId=' + this.toDo.id
+    );
+    this.notifier.notify(
+      NotificationType.SUCCESS,
+      'Link copied to your clipboard'
+    );
+  }
+
+  addToList(folderName: any, listName: any) {
+    this.toDoService.addToDoToList(
+      'to-do/add-to-do/' + this.toDo.id + '/list/' + listName + '/folder/' + folderName + '/for/' + localStorage.getItem("username")
+    ).subscribe(
       response => {
-        this.folders = response        
+        this.notifier.notify(NotificationType.SUCCESS, "Todo added to folder")
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error)
+        console.log(error);
+        
       }
-    )
-  }
-
-  shareToDo(){
-    this.clipBoardService.copy("http://localhost:4200/to-do?todoId=" + this.toDo.id)
-    this.notifier.notify(NotificationType.SUCCESS, "Link copied to your clipboard")
+    );
   }
 }
