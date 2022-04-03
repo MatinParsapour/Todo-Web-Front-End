@@ -53,6 +53,14 @@ export class MessageComponent implements OnInit {
     );
   }
 
+  isImage(parameter:string){
+    parameter = parameter.substring(0, 35);
+    if (parameter.match('http://localhost:8080/message/image')) {
+      return true
+    }
+    return false
+  }
+
   editMessage(target: any, event: any){
     event.preventDefault()
     this.message.message = target.innerText
