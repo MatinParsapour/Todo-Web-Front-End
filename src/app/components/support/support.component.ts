@@ -169,4 +169,23 @@ export class SupportComponent implements OnInit, AfterViewChecked {
     this.request.isFinished = !this.request.isFinished;
     this.updateRequest();
   }
+
+  sendPicture(event: any) {
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append('picture', file);
+    formData.append('requestId', this.request.id);
+    const userId = localStorage.getItem("username")
+    if (userId){
+      formData.append("userId", userId)
+    }
+    this.supportService.create("message/send-picture",formData).subscribe(
+      response => {
+        this.updateRequest()
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    )
+  }
 }
