@@ -86,6 +86,10 @@ mat-spinner {
   z-index: 99;
 }
 
+.input>button{
+  background: unset;
+}
+
 #input {
   background-color: #393648;
   border-radius: 0.75rem;
