@@ -80,11 +80,7 @@ export class ToDoComponent implements OnInit {
   deleteToDo() {
     this.toDoService
       .delete(
-        'to-do/delete-to-do/' +
-          localStorage.getItem('folder') +
-          '/' +
-          localStorage.getItem('list') +
-          '/' +
+        'to-do/delete-to-do/'  +
           localStorage.getItem('username') +
           '/' +
           this.toDo.id
