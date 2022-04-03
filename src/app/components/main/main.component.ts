@@ -1,3 +1,5 @@
+import { ToDo } from './../../classes/todo';
+import { Category } from './../../enum/category-type';
 import { SendEmailComponent } from './../send-email/send-email.component';
 import { CategoryService } from './../../services/category/category.service';
 import { GetResetEmailComponent } from './../get-reset-email/get-reset-email.component';
@@ -14,7 +16,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { MainService } from './../../services/main/main.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { NotificationType } from 'src/app/enum/notification-type';
 
 @Component({
@@ -25,12 +27,13 @@ import { NotificationType } from 'src/app/enum/notification-type';
 })
 export class MainComponent implements OnInit {
   toDoFolders: any;
-  isMyDayAttr = false;
   toDos: any;
+  isMyDay = false;
   user = '';
-  userId = ''
+  userId = '';
   isUser = false;
-  isShow = false
+  isShow = false;
+  now = new Date();
 
   categories = [
     {
@@ -44,11 +47,7 @@ export class MainComponent implements OnInit {
     },
   ];
 
-  toDo = new FormGroup({
-    task: new FormControl(''),
-    dateTime: new FormControl(null),
-    isMyDay: new FormControl(this.isMyDayAttr),
-  });
+  toDo: ToDo = new ToDo();
 
   constructor(
     private mainService: MainService,
@@ -64,18 +63,18 @@ export class MainComponent implements OnInit {
       ' ' +
       localStorage.getItem('lastName');
     this.getAllToDoFolders();
-    this.getAllToDos();
+    this.loadCategory('tasks');
     this.checkUserRole();
-    const userId = localStorage.getItem("username");
+    const userId = localStorage.getItem('username');
     if (userId !== null) {
-      this.userId = userId
+      this.userId = userId;
     }
   }
 
-  toggleInputDisplay(){
-    this.isShow = !this.isShow
+  toggleInputDisplay() {
+    this.isShow = !this.isShow;
   }
-  
+
   openUserDialog() {
     this.openUserComponent().subscribe((result) => {
       if (result === 'open-phone-dialog') {
@@ -120,7 +119,12 @@ export class MainComponent implements OnInit {
   }
 
   openUserComponent() {
-    return this.dialog.open(UserComponent, { width: '80em' , data : {userId: localStorage.getItem("username")}}).afterClosed();
+    return this.dialog
+      .open(UserComponent, {
+        width: '80em',
+        data: { userId: localStorage.getItem('username') },
+      })
+      .afterClosed();
   }
 
   openGetResetEmailComponent() {
@@ -128,19 +132,11 @@ export class MainComponent implements OnInit {
   }
 
   addAndUpdateToDos() {
-    if (this.task.value.trim() !== '') {
-      if (this.dateTime.value === '') {
-        this.dateTime.setValue(null);
-      }
+    if (this.toDo.task.trim() !== '') {
       this.mainService
         .create(
-          '/to-do/add-to-do/' +
-            localStorage.getItem('list') +
-            '/folder/' +
-            localStorage.getItem('folder') +
-            '/for/' +
-            localStorage.getItem('username'),
-          this.toDo.value
+          '/to-do/add-to-do/' + localStorage.getItem('username'),
+          this.toDo
         )
         .subscribe(
           (response: any) => {
@@ -148,38 +144,31 @@ export class MainComponent implements OnInit {
               NotificationType.SUCCESS,
               'Your to do successfully added'
             );
-            this.getAllToDos();
+            this.loadCategory("tasks");
             this.clearToDo();
-            this.toggleInputDisplay()
+            this.toggleInputDisplay();
           },
           (error: HttpErrorResponse) => {
             this.notifier.notify(NotificationType.ERROR, error.error);
-            this.toggleInputDisplay()
+            this.toggleInputDisplay();
           }
         );
     }
   }
 
   clearToDo() {
-    this.task.setValue('');
-    this.dateTime.setValue('');
-    this.isMyDayAttr = false;
-    this.isMyDay.setValue(this.isMyDayAttr);
-  }
-
-  get task(): any {
-    return this.toDo.get('task');
-  }
-  get dateTime(): any {
-    return this.toDo.get('dateTime');
-  }
-  get isMyDay(): any {
-    return this.toDo.get('isMyDay');
+    this.toDo.task = '';
+    this.toDo.dateTime = '';
+    this.isMyDay = false
   }
 
   toggleIsMyDay() {
-    this.isMyDayAttr = !this.isMyDayAttr;
-    this.toDo.get('isMyDay')?.setValue(this.isMyDayAttr);
+    this.isMyDay = !this.isMyDay;
+    if (this.isMyDay) {
+      this.toDo.category = Category.MYDAY;
+    } else {
+      this.toDo.category = Category.TASKS;
+    }
   }
 
   getAllToDos() {
@@ -201,11 +190,7 @@ export class MainComponent implements OnInit {
           });
         },
         (error: HttpErrorResponse) => {
-          if (error.status === 500) {
-            this.loadCategory('tasks');
-          } else {
-            console.log(error);
-          }
+          this.notifier.notify(NotificationType.ERROR, error.error)
         }
       );
   }
@@ -295,7 +280,15 @@ export class MainComponent implements OnInit {
     }
   }
 
-  displayToDoInput(){
+  getIsMyDay() {
+    return this.isMyDay;
+  }
 
+  setPlanned(){
+    this.toDo.category = Category.PLANNED
+  }
+
+  removePlanned(){
+    this.toDo.category = Category.TASKS
   }
 }
