@@ -69,6 +69,10 @@
     width: 6em;
   }
 
+  .toDoMenu>div>div{
+    display: flex;
+  }
+
   .noToDoError {
     display: flex;
     flex-direction: column;
