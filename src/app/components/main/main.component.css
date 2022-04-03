@@ -73,6 +73,14 @@
     display: flex;
   }
 
+  .displayNone{
+    display: none;
+  }
+
+  mat-form-field{
+    width: 8em;
+  }
+
   .noToDoError {
     display: flex;
     flex-direction: column;
@@ -126,6 +134,10 @@
 @media screen and (max-width: 768px) {
   mat-card {
     width: 90%;
+  }
+  .enterToDo{
+    display: flex;
+    flex-direction: column;
   }
 }
 
