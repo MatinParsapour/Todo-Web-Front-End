@@ -9,6 +9,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { AggreementComponent } from '../aggreement/aggreement.component';
 import { ClipboardService } from 'ngx-clipboard';
+import { Status } from 'src/app/enum/status-type';
 
 @Component({
   selector: 'app-to-do',
@@ -36,14 +37,13 @@ export class ToDoComponent implements OnInit {
   ngOnInit(): void {}
 
   doneToDo() {
-    if (this.toDo.status !== 'done') {
-      this.toDo.status = 'done';
+    if (this.toDo.status.toString() !== Status[Status.DONE]) {
+      this.toDo.status = Status.DONE;
     } else {
-      this.toDo.status = 'in progress';
+      this.toDo.status = Status.IN_PROGRESS;
     }
     this.toDoService.update('to-do/update-to-do', this.toDo).subscribe(
       (response: any) => {
-        this.notifier.notify(NotificationType.SUCCESS, 'Success');
         this.getToDo();
       },
       (error: HttpErrorResponse) => {
@@ -98,6 +98,10 @@ export class ToDoComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+
+  isDone() {
+    return this.toDo.status.toString() === Status[Status.DONE];
   }
 
   updateToDoBody(event: any) {
@@ -156,7 +160,9 @@ export class ToDoComponent implements OnInit {
   }
 
   getFolders() {
-    this.toDoService.getAll('folder/get-todo-folders/' + localStorage.getItem('username')).subscribe(
+    this.toDoService
+      .getAll('folder/get-todo-folders/' + localStorage.getItem('username'))
+      .subscribe(
         (response) => {
           this.folders = response;
         },
@@ -177,17 +183,28 @@ export class ToDoComponent implements OnInit {
   }
 
   addToList(folderName: any, listName: any) {
-    this.toDoService.addToDoToList(
-      'to-do/add-to-do/' + this.toDo.id + '/list/' + listName + '/folder/' + folderName + '/for/' + localStorage.getItem("username")
-    ).subscribe(
-      response => {
-        this.notifier.notify(NotificationType.SUCCESS, "Todo added to folder")
-      },
-      (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error)
-        console.log(error);
-        
-      }
-    );
+    this.toDoService
+      .addToDoToList(
+        'to-do/add-to-do/' +
+          this.toDo.id +
+          '/list/' +
+          listName +
+          '/folder/' +
+          folderName +
+          '/for/' +
+          localStorage.getItem('username')
+      )
+      .subscribe(
+        (response) => {
+          this.notifier.notify(
+            NotificationType.SUCCESS,
+            'Todo added to folder'
+          );
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(NotificationType.ERROR, error.error);
+          console.log(error);
+        }
+      );
   }
 }
