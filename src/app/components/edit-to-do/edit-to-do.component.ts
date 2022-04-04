@@ -12,6 +12,7 @@ import {
 } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { NotificationType } from 'src/app/enum/notification-type';
+import { Status } from 'src/app/enum/status-type';
 
 @Component({
   selector: 'app-edit-to-do',
@@ -22,8 +23,14 @@ export class EditToDoComponent implements OnInit {
   toDo: ToDo = new ToDo();
   minDate = new Date();
   canExecute = false;
-  slideShowImages: Array<Object> = []
+  slideShowImages: Array<Object> = [];
   isLoading = false;
+
+  statuses = [
+    { value: Status.CREATED, viewValue: "Created" },
+    { value: Status.IN_PROGRESS, viewValue: 'In progress' },
+    { value: Status.DONE, viewValue: 'Done' },
+  ];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
@@ -34,22 +41,22 @@ export class EditToDoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getToDo()
-    this.addToQueue()
+    this.getToDo();
+    this.addToQueue();
   }
 
-  addToQueue(){
-    this.slideShowImages = []
+  addToQueue() {
+    this.slideShowImages = [];
     this.toDo.pictures.forEach((element: any) => {
       this.slideShowImages.push({ image: element, thumbImage: element });
     });
-    this.canExecute = false
+    this.canExecute = false;
   }
 
-  slideShowSize(){
+  slideShowSize() {
     return {
-      height: '100px'
-    }
+      height: '100px',
+    };
   }
 
   updateToDo() {
@@ -64,7 +71,7 @@ export class EditToDoComponent implements OnInit {
       this.toDoService.update('to-do/update-to-do', this.toDo).subscribe(
         (response: any) => {
           this.notifier.notify(NotificationType.SUCCESS, 'Your to do updated');
-          this.getToDo()
+          this.getToDo();
         },
         (error: HttpErrorResponse) => {
           console.log(error);
@@ -75,39 +82,41 @@ export class EditToDoComponent implements OnInit {
     }
   }
 
-  selectPhoto(){
+  selectPhoto() {
     document.getElementById('selectInput')?.click();
   }
 
-  addPhoto(event:any){
-    const file = event.target.files[0]
+  addPhoto(event: any) {
+    const file = event.target.files[0];
     const formData = new FormData();
-    formData.append("picture",file)
-    formData.append("toDoId",this.toDo.id)
+    formData.append('picture', file);
+    formData.append('toDoId', this.toDo.id);
     this.isLoading = true;
-    this.toDoService.update('to-do/add-photo',formData).subscribe(
+    this.toDoService.update('to-do/add-photo', formData).subscribe(
       (response: any) => {
-        this.getToDo()
-        this.notifier.notify(NotificationType.SUCCESS, "The picture added to your to do")
-        this.isLoading = false
+        this.getToDo();
+        this.notifier.notify(
+          NotificationType.SUCCESS,
+          'The picture added to your to do'
+        );
+        this.isLoading = false;
       },
-      (error:HttpErrorResponse) => {
+      (error: HttpErrorResponse) => {
         console.log(error);
-        this.isLoading = false
-        
+        this.isLoading = false;
       }
-    )
+    );
   }
 
-  getToDo(){ 
-    this.toDoService.getToDo("to-do/get-to-do/" + this.toDo.id).subscribe(
+  getToDo() {
+    this.toDoService.getToDo('to-do/get-to-do/' + this.toDo.id).subscribe(
       (response: any) => {
         this.toDo = response;
         this.addToQueue();
       },
       (error: HttpErrorResponse) => {
         console.log(error);
-        
+
       }
     )
   }
