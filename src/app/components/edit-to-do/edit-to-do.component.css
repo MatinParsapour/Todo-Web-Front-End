@@ -33,6 +33,12 @@
     width: 5em;
   }
 
+  p{
+    font-size: 0.5em;
+    color: aquamarine;
+    margin: 0;
+  }
+
   button[color="warn"] {
     margin-left: 3em;
   }
