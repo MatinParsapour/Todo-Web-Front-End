@@ -21,12 +21,11 @@
   </div>
   <div>
     <div>
+      <p>Todo status : {{toDo.status}} </p>
       <mat-form-field appearance="fill">
-        <mat-label>Status :</mat-label>
-        <mat-select [(ngModel)]="toDo.status">
-          <mat-option value="created"> Created </mat-option>
-          <mat-option value="in progress">In progress</mat-option>
-          <mat-option value="done">Done</mat-option>
+        <mat-label>Status</mat-label>
+        <mat-select [value]="toDo.status" [(ngModel)]="toDo.status">
+          <mat-option [value]="status.value" *ngFor="let status of statuses">{{ status.viewValue }}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
