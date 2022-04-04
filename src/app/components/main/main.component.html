@@ -1,8 +1,16 @@
 <mat-sidenav-container class="example-container" fullscreen>
   <mat-sidenav #sidenav class="example-sidenav">
-    <button (click)="openCreateFolderDialog()" mat-icon-button color="">
-      <mat-icon matTooltip="Add folder">create_new_folder</mat-icon>
-    </button>
+    <div class="navBarHeader">
+      <button (click)="openCreateFolderDialog()" mat-icon-button color="">
+        <mat-icon matTooltip="Add folder">create_new_folder</mat-icon>
+      </button>
+      <button mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu class="menu" #normalMenu="matMenu">
+        <button mat-menu-item class="starToDos" (click)="getStarredToDos()">Starred todos <mat-icon>star</mat-icon></button>
+      </mat-menu>
+    </div>
     <br>
     <br>
     <hr>
@@ -19,7 +27,6 @@
     <button (click)="openUserDialog(); sidenav.close()" class="user" mat-raised-button>
       <span class="material-icons">person</span>
       {{user}} </button>
-
   </mat-sidenav>
   <div class="example-sidenav-content">
     <div class="buttons">
@@ -62,7 +69,8 @@
         <label for="search-box"><span class="glyphicon glyphicon-search search-icon"></span></label>
       </form>
       <div *ngFor="let toDo of toDos">
-        <app-to-do [toDo]="toDo" *ngIf="toDo.status !== 'done'" [search]="searchInput.value" (getToDos)="loadCategory('tasks')">
+        <app-to-do [toDo]="toDo" *ngIf="toDo.status !== 'done'" [search]="searchInput.value"
+          (getToDos)="loadCategory('tasks')">
         </app-to-do>
       </div>
       <details>
