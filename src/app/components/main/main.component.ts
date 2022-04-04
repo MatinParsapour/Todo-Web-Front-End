@@ -18,6 +18,7 @@ import { MainService } from './../../services/main/main.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { NotificationType } from 'src/app/enum/notification-type';
+import { Status } from 'src/app/enum/status-type';
 
 @Component({
   selector: 'app-main',
@@ -70,6 +71,10 @@ export class MainComponent implements OnInit {
     if (userId !== null) {
       this.userId = userId;
     }
+  }
+
+  isDone(toDo: any) {
+    return toDo.status.toString() === Status[Status.DONE];
   }
 
   toggleInputDisplay() {
@@ -293,7 +298,7 @@ export class MainComponent implements OnInit {
   checkToDosStatus() {
     this.completedToDos.length = 0;
     this.toDos.forEach((element: ToDo) => {
-      if (element.status === 'done') {
+      if (element.status.toString() === Status[Status.DONE]) {
         this.completedToDos.push(element);
       }
     });
