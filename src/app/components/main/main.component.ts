@@ -28,6 +28,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 export class MainComponent implements OnInit {
   toDoFolders: any;
   toDos: any;
+  completedToDos: Array<ToDo> = [];
   isMyDay = false;
   user = '';
   userId = '';
@@ -260,6 +261,7 @@ export class MainComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.toDos = response;
+          this.checkToDosStatus()
         },
         (error: HttpErrorResponse) => {
           console.log(error);
@@ -286,5 +288,14 @@ export class MainComponent implements OnInit {
 
   setPlanned(){
     this.toDo.category = Category.PLANNED
+  }
+
+  checkToDosStatus(){
+    this.completedToDos.length = 0
+    this.toDos.forEach((element:ToDo) => {
+      if (element.status === 'done') {
+        this.completedToDos.push(element)
+      }
+    });
   }
 }
