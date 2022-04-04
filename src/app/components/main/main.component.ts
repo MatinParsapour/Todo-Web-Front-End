@@ -145,7 +145,7 @@ export class MainComponent implements OnInit {
               NotificationType.SUCCESS,
               'Your to do successfully added'
             );
-            this.loadCategory("tasks");
+            this.loadCategory('tasks');
             this.clearToDo();
             this.toggleInputDisplay();
           },
@@ -160,7 +160,7 @@ export class MainComponent implements OnInit {
   clearToDo() {
     this.toDo.task = '';
     this.toDo.dateTime = '';
-    this.isMyDay = false
+    this.isMyDay = false;
   }
 
   toggleIsMyDay() {
@@ -191,7 +191,7 @@ export class MainComponent implements OnInit {
           });
         },
         (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, error.error)
+          this.notifier.notify(NotificationType.ERROR, error.error);
         }
       );
   }
@@ -261,7 +261,7 @@ export class MainComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.toDos = response;
-          this.checkToDosStatus()
+          this.checkToDosStatus();
         },
         (error: HttpErrorResponse) => {
           console.log(error);
@@ -286,16 +286,30 @@ export class MainComponent implements OnInit {
     return this.isMyDay;
   }
 
-  setPlanned(){
-    this.toDo.category = Category.PLANNED
+  setPlanned() {
+    this.toDo.category = Category.PLANNED;
   }
 
-  checkToDosStatus(){
-    this.completedToDos.length = 0
-    this.toDos.forEach((element:ToDo) => {
+  checkToDosStatus() {
+    this.completedToDos.length = 0;
+    this.toDos.forEach((element: ToDo) => {
       if (element.status === 'done') {
-        this.completedToDos.push(element)
+        this.completedToDos.push(element);
       }
     });
+  }
+
+  getStarredToDos() {
+    this.mainService
+      .getToDos('/to-do/get-starred-todos/' + localStorage.getItem('username'))
+      .subscribe(
+        (response) => {
+          this.toDos = response;
+          this.checkToDosStatus();
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error);
+        }
+      );
   }
 }
