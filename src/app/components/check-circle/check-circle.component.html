@@ -1,8 +1,8 @@
 <div class="doneAndUndone" mat-fab color="">
-  <span class="material-icons" *ngIf="status !== 'done'">
+  <span class="material-icons" *ngIf="!isDone()">
     radio_button_unchecked
   </span>
-  <span class="material-icons" *ngIf="status === 'done'">
+  <span class="material-icons" *ngIf="isDone()">
     check_circle
   </span>
 </div>
