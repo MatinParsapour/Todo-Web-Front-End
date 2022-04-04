@@ -11,6 +11,23 @@
     justify-content: space-between;
   }
 
+  summary {
+    border-style: groove;
+    border-color: #404040;
+    width: fit-content;
+    padding: 0.5em;
+    font-size: 15px;
+    margin-left: 2em;
+    border-radius: 1em;
+    color: aquamarine;
+    background-color: black;
+    margin-bottom: 1%;
+  }
+
+  summary:active{
+    transform: scale(0.75);
+  }
+
   mat-card {
     display: flex;
     justify-content: space-between;
@@ -69,15 +86,15 @@
     width: 6em;
   }
 
-  .toDoMenu>div>div{
+  .toDoMenu>div>div {
     display: flex;
   }
 
-  .displayNone{
+  .displayNone {
     display: none;
   }
 
-  mat-form-field{
+  mat-form-field {
     width: 8em;
   }
 
@@ -135,7 +152,8 @@
   mat-card {
     width: 90%;
   }
-  .enterToDo{
+
+  .enterToDo {
     display: flex;
     flex-direction: column;
   }
