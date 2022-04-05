@@ -1,10 +1,10 @@
 <mat-sidenav-container class="example-container" fullscreen>
   <mat-sidenav #sidenav class="example-sidenav">
     <div class="navBarHeader">
-      <button (click)="openCreateFolderDialog()" mat-icon-button color="">
+      <button class="createNewFolder" (click)="openCreateFolderDialog()" mat-icon-button color="">
         <mat-icon matTooltip="Add folder">create_new_folder</mat-icon>
       </button>
-      <button mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
+      <button id="moreButton" mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu class="menu" #normalMenu="matMenu">
@@ -14,7 +14,7 @@
     <br>
     <br>
     <hr>
-    <div *ngFor="let category of categories">
+    <div class="categories" *ngFor="let category of categories">
       <app-category [name]="category.name" (click)="loadCategory(category.name)"></app-category>
     </div>
     <hr class="fancyLine" *ngIf="toDoFolders.length >=1">
@@ -31,7 +31,7 @@
   <div class="example-sidenav-content">
     <div class="buttons">
       <div>
-        <mat-icon class="list" (click)="sidenav.open()" matTooltip="Open sidebar">list</mat-icon>
+        <mat-icon class="list" id="openSideNav" (click)="sidenav.open()" matTooltip="Open sidebar">list</mat-icon>
       </div>
       <div>
         <button *ngIf="isUser" [routerLink]="'/support'" [queryParams]="{userId: userId}" class="userManagementButton"
@@ -108,10 +108,10 @@
                 </mat-datepicker-actions>
               </mat-datepicker>
             </mat-form-field>
-            <button mat-icon-button (click)="datepicker.open()">
+            <button mat-icon-button (click)="datepicker.open()" matTooltip="Select date">
               <mat-icon>event</mat-icon>
             </button>
-            <button mat-icon-button (click)="addAndUpdateToDos()">
+            <button mat-icon-button (click)="addAndUpdateToDos()" matTooltip="Add todo">
               <mat-icon>send</mat-icon>
             </button>
           </div>
