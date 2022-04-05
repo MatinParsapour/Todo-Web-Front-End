@@ -100,6 +100,13 @@ export class MainComponent implements OnInit {
         orientation: Orientation.BottomRight,
       },
       {
+        title: 'Search',
+        selector: '.search-container',
+        content:
+          "By click on this button you can search through todos and find which one you want",
+        orientation: Orientation.BottomLeft,
+      },
+      {
         title: 'Sidebar',
         selector: '.list',
         content:
