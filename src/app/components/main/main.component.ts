@@ -19,6 +19,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { Status } from 'src/app/enum/status-type';
+import { GuidedTour, GuidedTourService, Orientation } from 'ngx-guided-tour';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-main',
@@ -56,8 +58,82 @@ export class MainComponent implements OnInit {
     private categoryService: CategoryService,
     private dialog: MatDialog,
     private notifier: NotificationService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private guidedService: GuidedTourService
+  ) {
+    this.guidedService.startTour(this.mainTour);
+  }
+
+  public mainTour: GuidedTour = {
+    tourId: 'main-tour',
+    steps: [
+      {
+        title: 'Welcome',
+        content:
+          "Here's a tour of website to better understand how to use website, if you are not willing to take this tour simply skip this tour",
+      },
+      {
+        title: 'Add todo',
+        selector: '.open-input',
+        content: 'By click on this button, you can enter your todo',
+        orientation: Orientation.TopRight,
+      },
+      {
+        title: 'Send email',
+        selector: '.sendEmailButton',
+        content:
+          "By click on this button, you'll see a panel that you can send an email to person you want",
+        orientation: Orientation.BottomRight,
+      },
+      {
+        title: 'Contact support',
+        selector: '.userManagementButton',
+        content:
+          "By click on this button you'll redirect to another page that you can contact support and ask any question you want",
+        orientation: Orientation.BottomRight,
+      },
+      {
+        title: 'Sidebar',
+        selector: '.list',
+        content:
+          'By click on this button, a side bar will appear that you can see categories and folders and lists',
+        orientation: Orientation.BottomLeft,
+        closeAction: () => document.getElementById('openSideNav')?.click(),
+      },
+      {
+        title: 'Create folder',
+        selector: '.createNewFolder',
+        content:
+          'By click on this button, you can select a name and add a folder to your folders',
+        orientation: Orientation.BottomLeft,
+      },
+      {
+        title: 'Categories',
+        selector: '.categories',
+        content: 'These are categories that you can select them',
+        orientation: Orientation.BottomLeft,
+      },
+      {
+        title: 'Get starred todos',
+        selector: '.menu',
+        content: "By click on this button you'll get all of starred todos",
+        action: () => document.getElementById('moreButton')?.click(),
+        closeAction: () => document.getElementById('moreButton')?.click(),
+      },
+      {
+        title: 'Folders',
+        selector: '.folders',
+        content: 'Your folder will appear here',
+        orientation: Orientation.TopLeft,
+      },
+      {
+        title: 'Personal information',
+        selector: '.user',
+        content: "By click here you'll see your information",
+        orientation: Orientation.TopLeft,
+      },
+    ],
+  };
 
   ngOnInit(): void {
     this.user =
