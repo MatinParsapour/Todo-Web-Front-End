@@ -107,6 +107,13 @@ export class MainComponent implements OnInit {
         orientation: Orientation.BottomLeft,
       },
       {
+        title: 'Completed todos',
+        selector: 'details',
+        content:
+          "Your completed todos will appear below this button and you can see by click on this button",
+        orientation: Orientation.BottomLeft,
+      },
+      {
         title: 'Sidebar',
         selector: '.list',
         content:
