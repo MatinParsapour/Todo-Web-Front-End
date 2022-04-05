@@ -61,10 +61,14 @@ export class MainComponent implements OnInit {
     private router: Router,
     private guidedService: GuidedTourService
   ) {
-    this.checkUserRole()
+    this.checkUserRole();
     if (this.isUser) {
       this.guidedService.startTour(this.mainTour);
     }
+  }
+
+  restartTour() {
+    this.guidedService.startTour(this.mainTour);
   }
 
   public mainTour: GuidedTour = {
@@ -118,9 +122,16 @@ export class MainComponent implements OnInit {
       },
       {
         title: 'Get starred todos',
-        selector: '.menu',
+        selector: '.starToDos',
         content: "By click on this button you'll get all of starred todos",
+        orientation: Orientation.Bottom,
         action: () => document.getElementById('moreButton')?.click(),
+      },
+      {
+        title: 'Restart tour',
+        selector: '.guide',
+        content: 'By click on this button you can start this tour again',
+        orientation: Orientation.Bottom,
         closeAction: () => document.getElementById('moreButton')?.click(),
       },
       {
