@@ -1,3 +1,4 @@
+import { GuidedTourModule, GuidedTourService } from 'ngx-guided-tour';
 import { SupportService } from './services/support/support.service';
 import { UserManagementService } from './services/user-management/user-management.service';
 import { EmailDetailsService } from './services/emai-details/email-details.service';
@@ -208,6 +209,7 @@ const customNotifierOptions: NotifierOptions = {
     MatSelectModule,
     MatTabsModule,
     NgImageSliderModule,
+    GuidedTourModule
   ],
   providers: [
     RegisterService,
@@ -226,6 +228,7 @@ const customNotifierOptions: NotifierOptions = {
     EmailDetailsService,
     UserManagementService,
     SupportService,
+    GuidedTourService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
