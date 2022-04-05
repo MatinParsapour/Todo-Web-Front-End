@@ -39,6 +39,7 @@ export class ToDoComponent implements OnInit {
   doneToDo() {
     if (this.toDo.status.toString() !== Status[Status.DONE]) {
       this.toDo.status = Status.DONE;
+      this.playSound();
     } else {
       this.toDo.status = Status.IN_PROGRESS;
     }
@@ -50,6 +51,12 @@ export class ToDoComponent implements OnInit {
         this.notifier.notify(NotificationType.ERROR, error.message);
       }
     );
+  }
+
+  playSound() {
+    let audio = new Audio();
+    audio.src = '../../../assets/audios/Success.mp3';
+    audio.play();
   }
 
   starToDo() {
