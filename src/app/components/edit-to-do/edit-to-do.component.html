@@ -81,4 +81,5 @@
     <button mat-raised-button color="primary" (click)="updateToDo()">Update</button>
     <button mat-raised-button color="warn" mat-dialog-close="delete">Delete</button>
   </div>
-  <input type="file" (change)="addPhoto($event)" id="selectInput" style="display: none;">
+  <input type="file" (change)="addPhoto($event)" accept="image/x-png,image/gif,image/jpeg" id="selectInput"
+    style="display: none;">

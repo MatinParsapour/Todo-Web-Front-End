@@ -13,7 +13,8 @@
         <mat-icon (click)="selectProfile()" class="personIcon" *ngIf="!user.profileImageUrl">person</mat-icon>
         <button mat-button (click)="selectProfile()" *ngIf="user.profileImageUrl" class="changeProfileImage">Change profile</button>
         <form style="display:none">
-          <input type="file" (change)="changeProfileImage($event)" id="select-picture" accept="image/*">
+          <input type="file" (change)="changeProfileImage($event)" id="select-picture"
+            accept="image/x-png,image/gif,image/jpeg">
         </form>
       </div>
       <div class="fnln" [class.margintop]="!user.profileImageUrl">
