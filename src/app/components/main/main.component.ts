@@ -61,7 +61,10 @@ export class MainComponent implements OnInit {
     private router: Router,
     private guidedService: GuidedTourService
   ) {
-    this.guidedService.startTour(this.mainTour);
+    this.checkUserRole()
+    if (this.isUser) {
+      this.guidedService.startTour(this.mainTour);
+    }
   }
 
   public mainTour: GuidedTour = {
