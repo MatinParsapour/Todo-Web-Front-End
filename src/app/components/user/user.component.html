@@ -9,6 +9,7 @@
       <div>
         <img (click)="openFullScreen()" *ngIf="user.profileImageUrl" [src]="user.profileImageUrl" width="200px"
           height="200px">
+          <progress max="100" [value]="uploaded" *ngIf="uploaded"></progress>
         <button class="deleteButton" (click)="deleteProfile()">Delete</button>
         <mat-icon (click)="selectProfile()" class="personIcon" *ngIf="!user.profileImageUrl">person</mat-icon>
         <button mat-button (click)="selectProfile()" *ngIf="user.profileImageUrl" class="changeProfileImage">Change profile</button>

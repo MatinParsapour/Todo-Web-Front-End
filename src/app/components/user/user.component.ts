@@ -2,7 +2,7 @@ import { AggreementComponent } from './../aggreement/aggreement.component';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NotificationService } from './../../services/notification/notification.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { NotificationType } from 'src/app/enum/notification-type';
@@ -21,6 +21,7 @@ export class UserComponent implements OnInit {
   fullScreen = false
   userId: any
   now = new Date()
+  uploaded = 0
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
@@ -60,18 +61,38 @@ export class UserComponent implements OnInit {
     const formData = new FormData();
     formData.append('userId', this.userId);
     formData.append('profileImage', this.profileImage);
-    this.userService.update('/user/update-profile-image', formData).subscribe(
-      (response: any) => {
-        this.notifier.notify(
-          NotificationType.SUCCESS,
-          'You profile successfully changed'
-        );
+    this.userService.updateProfileImage(formData).subscribe(
+      (event: HttpEvent<any>) => {
+        this.reportUploadProgress(event);
         this.getUser();
       },
       (error: HttpErrorResponse) => {
         console.log(error);
       }
     );
+  }
+
+  reportUploadProgress(event: HttpEvent<any>) {
+    switch (event.type){
+      case HttpEventType.UploadProgress :
+        if (event.total){
+          this.uploaded = (100 * event.loaded) / event.total;
+        }
+        break;
+      case HttpEventType.Response:
+        if (event.status === 200) {
+          this.user.profileImageUrl = ""
+          this.user.profileImageUrl = `${event.body.profileImageUrl}`;
+          this.user.profileImageUrl = `${event.body.profileImageUrl}?time=${new Date().getTime()}`
+          this.notifier.notify(NotificationType.SUCCESS, "Profile image updated")
+        } else {
+          this.notifier.notify(NotificationType.ERROR, "Unable to upload image")
+          console.log(event);
+        }
+        break;
+      default:
+        this.uploaded = 0
+    }
   }
 
   updateUser() {
