@@ -24,10 +24,6 @@
     margin-bottom: 1%;
   }
 
-  summary:active{
-    transform: scale(0.75);
-  }
-
   mat-card {
     display: flex;
     justify-content: space-between;
