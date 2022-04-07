@@ -9,7 +9,7 @@ div>button {
   z-index: 99;
 }
 
-app-message{
+app-message {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -81,12 +81,26 @@ mat-spinner {
   justify-content: space-between;
 }
 
+.emoji-mart {
+  position: absolute;
+  bottom: 77px;
+  z-index: 99;
+}
+
+.emojiContainer {
+  background-color: #393648;
+  border-radius: 5em 0 0 5em;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
 .buttons {
   background-color: #13087070;
   z-index: 99;
 }
 
-.input>button{
+.input>button {
   background: unset;
 }
 
@@ -116,7 +130,7 @@ mat-spinner {
 
 .solvedButton {
   width: 9%;
-  height: 74%;
+  height: 40px;
 }
 
 .solvedButton:hover {
@@ -128,7 +142,7 @@ mat-spinner {
   border-radius: 50%;
 }
 
-app-request{
+app-request {
   width: 100%;
 }
 
