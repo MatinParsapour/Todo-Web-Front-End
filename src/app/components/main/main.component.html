@@ -36,21 +36,21 @@
         <mat-icon class="list" id="openSideNav" (click)="sidenav.open()" matTooltip="Open sidebar">list</mat-icon>
       </div>
       <div>
-        <button *ngIf="isUser" [routerLink]="'/support'" [queryParams]="{userId: userId}" class="userManagementButton"
+        <button *ngIf="isUser" [routerLink]="'/support'" [queryParams]="{userId: userId}" class="fancyButton"
           mat-raised-button color="primary">
           Support
           <span class="material-icons">
             support_agent
           </span>
         </button>
-        <button *ngIf="!isUser" [routerLink]="'/user-management'" class="userManagementButton" mat-raised-button
+        <button *ngIf="!isUser" [routerLink]="'/user-management'" class="fancyButton" mat-raised-button
           color="primary">
           User management
           <span class="material-icons">
             people
           </span>
         </button>
-        <button (click)="openSendEmailDialog()" class="sendEmailButton" mat-raised-button color="primary">
+        <button (click)="openSendEmailDialog()" class="marginLeft2 fancyButton" mat-raised-button color="primary">
           Email
           <span class="material-icons">
             email

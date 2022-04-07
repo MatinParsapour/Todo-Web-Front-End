@@ -129,14 +129,45 @@
     justify-content: space-between;
   }
 
-  .sendEmailButton {
-    top: 10%;
-    right: 5%;
+  .marginLeft2 {
+    margin-left: 2%;
   }
 
-  .userManagementButton {
+  .fancyButton {
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: 2px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    transition: color 1s;
     top: 10%;
     right: 10%;
+  }
+
+  .fancyButton:active{
+    transform: scale(0.9);
+  }
+
+  .fancyButton:hover{
+    color: #ffffff;
+  }
+
+  .fancyButton::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50px;
+    width: 0;
+    height: 100%;
+    background-color: rgb(103, 209, 103);
+    transform: skew(35deg);
+    z-index: -1;
+    transition: width 1s;
+  }
+
+  .fancyButton:hover::before{
+    width: 170%;
   }
 
   .navBarHeader{
