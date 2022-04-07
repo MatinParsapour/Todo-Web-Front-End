@@ -92,6 +92,7 @@ import { RequestComponent } from './components/request/request.component';
 import { RequestHeaderComponent } from './components/request-header/request-header.component';
 import { UsersRequestsComponent } from './components/users-requests/users-requests.component';
 import { SharedToDoComponent } from './components/shared-to-do/shared-to-do.component';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -209,7 +210,8 @@ const customNotifierOptions: NotifierOptions = {
     MatSelectModule,
     MatTabsModule,
     NgImageSliderModule,
-    GuidedTourModule
+    GuidedTourModule,
+    PickerModule
   ],
   providers: [
     RegisterService,
