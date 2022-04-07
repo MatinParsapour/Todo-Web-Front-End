@@ -7,7 +7,6 @@ import {
   Input,
   OnInit,
   Output,
-  ViewChild,
   EventEmitter,
 } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';

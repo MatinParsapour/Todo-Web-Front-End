@@ -3,7 +3,6 @@ import { Category } from './../../enum/category-type';
 import { SendEmailComponent } from './../send-email/send-email.component';
 import { CategoryService } from './../../services/category/category.service';
 import { GetResetEmailComponent } from './../get-reset-email/get-reset-email.component';
-import { ForgetPasswordComponent } from './../forget-password/forget-password.component';
 import { CodeValidatorComponent } from './../code-validator/code-validator.component';
 import { PhoneNumberComponent } from './../phone-number/phone-number.component';
 import { Router } from '@angular/router';
@@ -16,11 +15,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { MainService } from './../../services/main/main.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { Status } from 'src/app/enum/status-type';
 import { GuidedTour, GuidedTourService, Orientation } from 'ngx-guided-tour';
-import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-main',

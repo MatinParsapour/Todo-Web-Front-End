@@ -19,7 +19,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
-import { MatMenuTrigger } from '@angular/material/menu';
 import { Location } from '@angular/common';
 
 @Component({

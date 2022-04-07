@@ -1,5 +1,4 @@
 import { FormControl } from '@angular/forms';
-import { UserComponent } from './../user/user.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator/paginator';
 import { MatTableDataSource } from '@angular/material/table';

@@ -6,7 +6,6 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
-  Validators,
 } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {

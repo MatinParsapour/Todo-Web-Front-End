@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from './../../services/notification/notification.service';
 import { ToDoService } from './../../services/to-do/to-do.service';
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 
 @Component({

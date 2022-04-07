@@ -6,13 +6,6 @@ import { NotificationService } from './../../services/notification/notification.
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { InboxService } from './../../services/email-service/inbox/inbox.service';
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate,
-} from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { EmailDetailsComponent } from '../email-details/email-details.component';

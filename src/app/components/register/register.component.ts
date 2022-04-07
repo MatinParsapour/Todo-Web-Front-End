@@ -2,11 +2,9 @@ import { NotificationService } from './../../services/notification/notification.
 import { Router } from '@angular/router';
 import { RegisterService } from './../../services/register/register.service';
 import { EmailValidator } from './email.validator';
-import { UsernameValidator } from './username.validator';
-import { MatDialog } from '@angular/material/dialog';
 import { slideToDown } from './../../animations';
 import { FormValidator } from './FormValidator';
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -15,12 +13,6 @@ import {
 } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationType } from 'src/app/enum/notification-type';
-import {
-  FacebookLoginProvider,
-  GoogleLoginProvider,
-  SocialAuthService,
-  SocialUser,
-} from 'angularx-social-login';
 
 @Component({
   selector: 'app-register',
