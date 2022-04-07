@@ -9,7 +9,7 @@
       </button>
       <mat-menu class="menu" #normalMenu="matMenu">
         <button mat-menu-item class="starToDos" (click)="getStarredToDos()">Starred todos <mat-icon>star</mat-icon></button>
-        <button mat-menu-item class="guide" (click)="restartTour()">See guided tour <mat-icon>help_outline</mat-icon>
+        <button mat-menu-item class="guide" (click)="restartTour(); sidenav.close()">See guided tour <mat-icon>help_outline</mat-icon>
           </button>
       </mat-menu>
     </div>
@@ -36,7 +36,7 @@
         <mat-icon class="list" id="openSideNav" (click)="sidenav.open()" matTooltip="Open sidebar">list</mat-icon>
       </div>
       <div>
-        <button *ngIf="isUser" [routerLink]="'/support'" [queryParams]="{userId: userId}" class="fancyButton"
+        <button *ngIf="isUser" [routerLink]="'/support'" [queryParams]="{userId: userId}" class="fancyButton support"
           mat-raised-button color="primary">
           Support
           <span class="material-icons">
@@ -50,7 +50,7 @@
             people
           </span>
         </button>
-        <button (click)="openSendEmailDialog()" class="marginLeft2 fancyButton" mat-raised-button color="primary">
+        <button (click)="openSendEmailDialog()" class="marginLeft2 fancyButton email" mat-raised-button color="primary">
           Email
           <span class="material-icons">
             email
