@@ -216,6 +216,7 @@ export class MainComponent implements OnInit {
               this.toDos = list.toDos;
             });
           });
+          this.checkToDosStatus()
         },
         (error: HttpErrorResponse) => {
           this.notifier.notify(NotificationType.ERROR, error.error);
