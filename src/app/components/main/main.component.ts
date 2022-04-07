@@ -58,8 +58,9 @@ export class MainComponent implements OnInit {
     private router: Router,
     private guidedService: GuidedTourService
   ) {
+    this.getUserId();
     this.checkUserRole();
-    if (this.isUser) {
+    if (this.isUser && !this.isUserVisitedGuide()) {
       this.guidedService.startTour(this.mainTour);
     }
   }
@@ -67,98 +68,6 @@ export class MainComponent implements OnInit {
   restartTour() {
     this.guidedService.startTour(this.mainTour);
   }
-
-  public mainTour: GuidedTour = {
-    tourId: 'main-tour',
-    steps: [
-      {
-        title: 'Welcome',
-        content:
-          "Here's a tour of website to better understand how to use website, if you are not willing to take this tour simply skip this tour",
-      },
-      {
-        title: 'Add todo',
-        selector: '.open-input',
-        content: 'By click on this button, you can enter your todo',
-        orientation: Orientation.TopRight,
-      },
-      {
-        title: 'Send email',
-        selector: '.sendEmailButton',
-        content:
-          "By click on this button, you'll see a panel that you can send an email to person you want",
-        orientation: Orientation.BottomRight,
-      },
-      {
-        title: 'Contact support',
-        selector: '.userManagementButton',
-        content:
-          "By click on this button you'll redirect to another page that you can contact support and ask any question you want",
-        orientation: Orientation.BottomRight,
-      },
-      {
-        title: 'Search',
-        selector: '.search-container',
-        content:
-          "By click on this button you can search through todos and find which one you want",
-        orientation: Orientation.BottomLeft,
-      },
-      {
-        title: 'Completed todos',
-        selector: 'details',
-        content:
-          "Your completed todos will appear below this button and you can see by click on this button",
-        orientation: Orientation.BottomLeft,
-      },
-      {
-        title: 'Sidebar',
-        selector: '.list',
-        content:
-          'By click on this button, a side bar will appear that you can see categories and folders and lists',
-        orientation: Orientation.BottomLeft,
-        closeAction: () => document.getElementById('openSideNav')?.click(),
-      },
-      {
-        title: 'Create folder',
-        selector: '.createNewFolder',
-        content:
-          'By click on this button, you can select a name and add a folder to your folders',
-        orientation: Orientation.BottomLeft,
-      },
-      {
-        title: 'Categories',
-        selector: '.categories',
-        content: 'These are categories that you can select them',
-        orientation: Orientation.BottomLeft,
-      },
-      {
-        title: 'Get starred todos',
-        selector: '.starToDos',
-        content: "By click on this button you'll get all of starred todos",
-        orientation: Orientation.Bottom,
-        action: () => document.getElementById('moreButton')?.click(),
-      },
-      {
-        title: 'Restart tour',
-        selector: '.guide',
-        content: 'By click on this button you can start this tour again',
-        orientation: Orientation.Bottom,
-        closeAction: () => document.getElementById('moreButton')?.click(),
-      },
-      {
-        title: 'Folders',
-        selector: '.folders',
-        content: 'Your folder will appear here',
-        orientation: Orientation.TopLeft,
-      },
-      {
-        title: 'Personal information',
-        selector: '.user',
-        content: "By click here you'll see your information",
-        orientation: Orientation.TopLeft,
-      },
-    ],
-  };
 
   ngOnInit(): void {
     this.user =
@@ -168,10 +77,22 @@ export class MainComponent implements OnInit {
     this.getAllToDoFolders();
     this.loadCategory('tasks');
     this.checkUserRole();
+  }
+
+  getUserId() {
     const userId = localStorage.getItem('username');
     if (userId !== null) {
       this.userId = userId;
     }
+  }
+
+  userVisitedGuide() {
+    localStorage.setItem('Visited guide', this.userId);
+  }
+
+  isUserVisitedGuide() {
+    const userId = localStorage.getItem('Visited guide');
+    return userId === this.userId;
   }
 
   isDone(toDo: any) {
@@ -418,4 +339,102 @@ export class MainComponent implements OnInit {
         }
       );
   }
+
+  public mainTour: GuidedTour = {
+    tourId: 'main-tour',
+    completeCallback: () => {
+      this.userVisitedGuide();
+    },
+    skipCallback: () => {
+      this.userVisitedGuide();
+    },
+    steps: [
+      {
+        title: 'Welcome',
+        content:
+          "Here's a tour of website to better understand how to use website, if you are not willing to take this tour simply skip this tour",
+      },
+      {
+        title: 'Add todo',
+        selector: '.open-input',
+        content: 'By click on this button, you can enter your todo',
+        orientation: Orientation.TopRight,
+      },
+      {
+        title: 'Send email',
+        selector: '.email',
+        content:
+          "By click on this button, you'll see a panel that you can send an email to person you want",
+        orientation: Orientation.BottomRight,
+      },
+      {
+        title: 'Contact support',
+        selector: '.support',
+        content:
+          "By click on this button you'll redirect to another page that you can contact support and ask any question you want",
+        orientation: Orientation.BottomRight,
+      },
+      {
+        title: 'Search',
+        selector: '.search-container',
+        content:
+          'By click on this button you can search through todos and find which one you want',
+        orientation: Orientation.BottomLeft,
+      },
+      {
+        title: 'Completed todos',
+        selector: 'details',
+        content:
+          'Your completed todos will appear below this button and you can see by click on this button',
+        orientation: Orientation.BottomLeft,
+      },
+      {
+        title: 'Sidebar',
+        selector: '.list',
+        content:
+          'By click on this button, a side bar will appear that you can see categories and folders and lists',
+        orientation: Orientation.BottomLeft,
+        closeAction: () => document.getElementById('openSideNav')?.click(),
+      },
+      {
+        title: 'Create folder',
+        selector: '.createNewFolder',
+        content:
+          'By click on this button, you can select a name and add a folder to your folders',
+        orientation: Orientation.BottomLeft,
+      },
+      {
+        title: 'Categories',
+        selector: '.categories',
+        content: 'These are categories that you can select them',
+        orientation: Orientation.BottomLeft,
+      },
+      {
+        title: 'Get starred todos',
+        selector: '.starToDos',
+        content: "By click on this button you'll get all of starred todos",
+        orientation: Orientation.Bottom,
+        action: () => document.getElementById('moreButton')?.click(),
+      },
+      {
+        title: 'Restart tour',
+        selector: '.guide',
+        content: 'By click on this button you can start this tour again',
+        orientation: Orientation.Bottom,
+        closeAction: () => document.getElementById('moreButton')?.click(),
+      },
+      {
+        title: 'Folders',
+        selector: '.folders',
+        content: 'Your folder will appear here',
+        orientation: Orientation.TopLeft,
+      },
+      {
+        title: 'Personal information',
+        selector: '.user',
+        content: "By click here you'll see your information",
+        orientation: Orientation.TopLeft,
+      },
+    ],
+  };
 }
