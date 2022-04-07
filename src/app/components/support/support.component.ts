@@ -33,6 +33,7 @@ export class SupportComponent implements OnInit, AfterViewChecked {
   isLoading = false;
   message: FormGroup;
   userId: any;
+  isEmojiPickerVisible = false
   @ViewChild('scroller') private scroller!: ElementRef;
 
   constructor(
@@ -66,6 +67,10 @@ export class SupportComponent implements OnInit, AfterViewChecked {
 
   ngAfterViewChecked(): void {
     this.scrollToBottom();
+  }
+
+  addEmoji(event:any){
+    this.message.get('message')?.setValue(this.message.get('message')?.value + event.emoji.native) 
   }
 
   ngOnInit(): void {
