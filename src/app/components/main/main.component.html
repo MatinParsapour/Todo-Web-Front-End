@@ -78,7 +78,7 @@
       <details>
         <summary>Completed {{completedToDos.length}} </summary>
         <div *ngFor="let toDo of completedToDos">
-          <app-to-do [toDo]="toDo" [search]="searchInput.value" (getToDos)="getAllToDos()"></app-to-do>
+          <app-to-do [toDo]="toDo" [search]="searchInput.value" (getToDos)="loadCategory('tasks')"></app-to-do>
         </div>
       </details>
     </div>
