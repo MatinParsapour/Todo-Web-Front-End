@@ -38,6 +38,10 @@
     color: aquamarine;
     margin: 0;
   }
+  
+  progress{
+    width: 100%;
+  }
 
   button[color="warn"] {
     margin-left: 3em;

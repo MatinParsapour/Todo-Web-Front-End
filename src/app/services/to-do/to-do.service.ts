@@ -1,4 +1,5 @@
-import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 import { DataService } from './../data/data.service';
 import { Injectable } from '@angular/core';
 
@@ -20,5 +21,13 @@ export class ToDoService extends DataService{
   
   addToDoToList(uri:any){
     return this.httpService.put("http://localhost:8080/" + uri, null)     
+  }
+
+  sendPicture(formData: FormData):Observable<HttpEvent<any>>{
+    return this.httpService.put<HttpEvent<any>>(
+      'http://localhost:8080/to-do/add-photo',
+      formData,
+      { reportProgress: true, observe: 'events' }
+    );
   }
 }

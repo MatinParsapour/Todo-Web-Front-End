@@ -1,6 +1,7 @@
 <ng-image-slider [class.displayNone]="slideShowImages.length === 0" [images]="slideShowImages"
   [imageSize]="slideShowSize()">
 </ng-image-slider>
+<progress max="100" [value]="uploaded" *ngIf="uploaded"></progress>
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <div class="todoDetails">
   <div>

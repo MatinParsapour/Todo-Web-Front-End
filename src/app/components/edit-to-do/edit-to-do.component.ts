@@ -1,4 +1,8 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpEventType,
+} from '@angular/common/http';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ToDoService } from './../../services/to-do/to-do.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -19,9 +23,10 @@ export class EditToDoComponent implements OnInit {
   canExecute = false;
   slideShowImages: Array<Object> = [];
   isLoading = false;
+  uploaded = 0;
 
   statuses = [
-    { value: Status.CREATED, viewValue: "Created" },
+    { value: Status.CREATED, viewValue: 'Created' },
     { value: Status.IN_PROGRESS, viewValue: 'In progress' },
     { value: Status.DONE, viewValue: 'Done' },
   ];
@@ -86,20 +91,41 @@ export class EditToDoComponent implements OnInit {
     formData.append('picture', file);
     formData.append('toDoId', this.toDo.id);
     this.isLoading = true;
-    this.toDoService.update('to-do/add-photo', formData).subscribe(
-      (response: any) => {
-        this.getToDo();
-        this.notifier.notify(
-          NotificationType.SUCCESS,
-          'The picture added to your to do'
-        );
-        this.isLoading = false;
+    this.toDoService.sendPicture(formData).subscribe(
+      (event: HttpEvent<any>) => {
+        this.reportUploadProgress(event);
       },
       (error: HttpErrorResponse) => {
         console.log(error);
+      },
+      () => {
         this.isLoading = false;
+        this.uploaded = 0;
       }
     );
+  }
+  reportUploadProgress(event: HttpEvent<any>) {
+    switch (event.type) {
+      case HttpEventType.UploadProgress:
+        if (event.total) {
+          this.uploaded = (100 * event.loaded) / event.total;
+        }
+        break;
+      case HttpEventType.Response:
+        if (event.status === 200) {
+          this.notifier.notify(
+            NotificationType.SUCCESS,
+            'The picture uploaded'
+          );
+        } else {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            'Unable to upload image, try again'
+          );
+        }
+        this.getToDo();
+        break;
+    }
   }
 
   getToDo() {
@@ -110,10 +136,13 @@ export class EditToDoComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         console.log(error);
-
       }
-    )
+    );
   }
-  toggleStar() {this.toDo.isStarred = !this.toDo.isStarred;}
-  toggleMyDay() {this.toDo.isMyDay = !this.toDo.isMyDay;}
+  toggleStar() {
+    this.toDo.isStarred = !this.toDo.isStarred;
+  }
+  toggleMyDay() {
+    this.toDo.isMyDay = !this.toDo.isMyDay;
+  }
 }
