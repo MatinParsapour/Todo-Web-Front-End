@@ -42,6 +42,11 @@
         </button>
         <input (change)="sendPicture($event)" type="file" accept="image/x-png,image/gif,image/jpeg"
           style="display: none;" #selectFile>
+          <span class="emojiContainer">
+            <button mat-icon-button (click)="isEmojiPickerVisible = !isEmojiPickerVisible">😀</button>
+          </span>
+          <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible" (emojiSelect)="addEmoji($event)"
+            title="Choose your emoji"></emoji-mart>
         <textarea id="input" autofocus [formControl]="messaged" matInput
           color="primary"></textarea>
         <img (click)="requestSolved()" [matTooltip]="request.isSolved ? 'Unsolve' : 'Solve'" class="solvedButton" src="https://img.icons8.com/fluency/48/000000/solve.png" />
