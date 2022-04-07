@@ -23,10 +23,6 @@ export class ToDoComponent implements OnInit {
   @Output('getToDos') getToDos = new EventEmitter();
   displayDatePicker: boolean = false;
 
-  getAllToDos() {
-    this.getToDos.next('');
-  }
-
   constructor(
     private toDoService: ToDoService,
     private notifier: NotificationService,
@@ -45,7 +41,7 @@ export class ToDoComponent implements OnInit {
     }
     this.toDoService.update('to-do/update-to-do', this.toDo).subscribe(
       (response: any) => {
-        this.getToDo();
+        this.getToDos.emit();
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.message);
@@ -99,7 +95,7 @@ export class ToDoComponent implements OnInit {
             NotificationType.SUCCESS,
             'The to do successfully deleted'
           );
-          this.getAllToDos();
+          this.getToDos.emit();
         },
         (error: HttpErrorResponse) => {
           console.log(error);
@@ -117,7 +113,7 @@ export class ToDoComponent implements OnInit {
       this.toDoService.update('to-do/update-to-do', this.toDo).subscribe(
         (response: any) => {
           this.notifier.notify(NotificationType.SUCCESS, 'Success');
-          this.getAllToDos();
+          this.getToDos.emit();
         },
         (error: HttpErrorResponse) => {
           this.notifier.notify(NotificationType.ERROR, error.message);
