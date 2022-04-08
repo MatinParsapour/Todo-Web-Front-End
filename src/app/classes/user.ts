@@ -9,6 +9,8 @@ export class User {
   authorities = [];
   isBlocked!: boolean;
   isDeleted!: boolean;
+  registerDate: any;
+  lastLoginDate: any;
   age: string = '';
   profileImageUrl: string = '';
 }
