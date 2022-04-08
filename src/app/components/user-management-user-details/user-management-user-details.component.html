@@ -31,7 +31,7 @@
                   </option>
                 </select>
               </mat-form-field></p>
-          <mat-card> <span [class.hasBorder]="contentEditable" [contentEditable]="contentEditable" #fName
+          <mat-card class="user-name"> <span [class.hasBorder]="contentEditable" [contentEditable]="contentEditable" #fName
               (blur)="user.firstName = fName.innerText">
 
             {{user.firstName}}
@@ -49,6 +49,10 @@
         <div class="fontSize20">
           <p>Age</p>
           <mat-card> {{user.age ? user.age : '-'}} </mat-card>
+        </div>
+        <div class="fontSize20">
+          <p>Registered at</p>
+          <mat-card> {{user.registerDate | date: "short"}} </mat-card>
         </div>
       </div>
       <div>
@@ -75,6 +79,10 @@
         <div class="fontSize20">
           <p>Deleted</p>
           <mat-card class="blocked"> {{user.isDeleted ? "Yes" : 'No'}} </mat-card>
+        </div>
+        <div class="fontSize20">
+          <p>Last login</p>
+          <mat-card class="blocked"> {{user.lastLoginDate | date: 'short'}} </mat-card>
         </div>
       </div>
       <button class="editButton" mat-icon-button [disabled]="user.isDeleted" (click)="makeContentsEditable()">
