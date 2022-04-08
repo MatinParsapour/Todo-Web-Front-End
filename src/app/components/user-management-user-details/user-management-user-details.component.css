@@ -22,17 +22,20 @@
     z-index: 99;
   }
 
+  .user-name {
+    margin-top: 9%;
+  }
+
   .authorities {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     position: fixed;
     top: 25%;
-    right: 2%;
+    right: -8%;
     font-size: 15px;
     border-style: inset;
     border-radius: 5%;
     padding-left: 0.5%;
-    padding-right: 0.5%;
   }
 
   .buttons {
