@@ -2,17 +2,19 @@
   <button class="logout" mat-button color="" matTooltip="logout" (click)="logout()">
     <mat-icon>logout</mat-icon>
   </button>
-  <app-image-viewer [imageUrl]="user.profileImageUrl" [open]="fullScreen" (click)="closeFullScreen()" (delete)="deleteProfile()">
+  <app-image-viewer [imageUrl]="user.profileImageUrl" [open]="fullScreen" (click)="closeFullScreen()"
+    (delete)="deleteProfile()">
   </app-image-viewer>
   <div class="userDetails" [class.spinner]="isLoading">
     <div class="header">
       <div>
         <img (click)="openFullScreen()" *ngIf="user.profileImageUrl" [src]="user.profileImageUrl" width="200px"
           height="200px">
-          <progress max="100" [value]="uploaded" *ngIf="uploaded"></progress>
+        <progress max="100" [value]="uploaded" *ngIf="uploaded"></progress>
         <button class="deleteButton" (click)="deleteProfile()">Delete</button>
         <mat-icon (click)="selectProfile()" class="personIcon" *ngIf="!user.profileImageUrl">person</mat-icon>
-        <button mat-button (click)="selectProfile()" *ngIf="user.profileImageUrl" class="changeProfileImage">Change profile</button>
+        <button mat-button (click)="selectProfile()" *ngIf="user.profileImageUrl" class="changeProfileImage">Change
+          profile</button>
         <form style="display:none">
           <input type="file" (change)="changeProfileImage($event)" id="select-picture"
             accept="image/x-png,image/gif,image/jpeg">
@@ -25,6 +27,14 @@
                 {{user.firstName}}</span></p>
             <p> Last name : <span #lName (blur)="user.lastName = lName.innerText" [contentEditable]="true">
                 {{user.lastName}} </span> </p>
+            <div class="follows">
+              <span>Followers</span>
+              <button mat-button>{{user.followers.length}}</button>
+            </div>
+            <div class="follows">
+              <span>Followings</span>
+              <button mat-button>{{user.followings.length}}</button>
+            </div>
           </div>
         </div>
       </div>
@@ -44,8 +54,7 @@
         <span> Birthday: </span>
         <mat-form-field appearance="fill" class="example-form-field">
           <mat-label>Choose a date</mat-label>
-          <input [max]="now" [(ngModel)]="user.birthDay" [value]="user.birthDay" matInput
-            [matDatepicker]="datepicker">
+          <input [max]="now" [(ngModel)]="user.birthDay" [value]="user.birthDay" matInput [matDatepicker]="datepicker">
           <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
           <mat-datepicker #datepicker>
             <mat-datepicker-actions>
