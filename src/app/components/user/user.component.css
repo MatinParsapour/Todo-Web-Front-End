@@ -166,6 +166,15 @@
     color: red;
   }
 
+  .follows{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .follows>button{
+    width: fit-content;
+  }
+
   .personIcon {
     margin-bottom: 75%;
     margin-right: 1em;
