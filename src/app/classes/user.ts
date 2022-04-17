@@ -7,6 +7,8 @@ export class User {
   birthDay: any;
   role: any;
   authorities = [];
+  followers = [];
+  followings = [];
   isBlocked!: boolean;
   isDeleted!: boolean;
   registerDate: any;
