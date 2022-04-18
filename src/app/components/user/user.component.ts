@@ -21,7 +21,8 @@ export class UserComponent implements OnInit {
   fullScreen = false
   userId: any
   now = new Date()
-  uploaded = 0
+  uploaded = 0;
+  requests: any;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
@@ -36,6 +37,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+    this.getRequests()
   }
 
   getUser() {
@@ -93,6 +95,19 @@ export class UserComponent implements OnInit {
       default:
         this.uploaded = 0
     }
+  }
+
+  getRequests(){
+    this.userService.getAll("/follow-request/get-all-user-requests/" + localStorage.getItem("username")).subscribe(
+      response => {
+        this.requests = response;
+      },
+      (error: HttpErrorResponse)=> {
+        console.log(error);
+        
+        this.notifier.notify(NotificationType.ERROR, error.error)
+      }
+    )
   }
 
   updateUser() {
