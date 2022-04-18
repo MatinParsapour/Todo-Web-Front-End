@@ -29,11 +29,11 @@
                 {{user.lastName}} </span> </p>
             <div class="follows">
               <span>Followers</span>
-              <button mat-button>{{user.followers.length}}</button>
+              <button (click)="follows.open(user.followers, 'followers')" mat-button>{{user.followers.length}}</button>
             </div>
             <div class="follows">
               <span>Followings</span>
-              <button mat-button>{{user.followings.length}}</button>
+              <button (click)="follows.open(user.followings, 'followings')" mat-button>{{user.followings.length}}</button>
             </div>
           </div>
         </div>
@@ -95,3 +95,5 @@
   </div>
 
 </mat-dialog-content>
+
+<app-followers-followings #follows></app-followers-followings>
