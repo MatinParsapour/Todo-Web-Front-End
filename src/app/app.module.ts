@@ -93,6 +93,7 @@ import { RequestHeaderComponent } from './components/request-header/request-head
 import { UsersRequestsComponent } from './components/users-requests/users-requests.component';
 import { SharedToDoComponent } from './components/shared-to-do/shared-to-do.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { FollowersFollowingsComponent } from './components/followers-followings/followers-followings.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -183,6 +184,7 @@ const customNotifierOptions: NotifierOptions = {
     RequestHeaderComponent,
     UsersRequestsComponent,
     SharedToDoComponent,
+    FollowersFollowingsComponent,
   ],
   imports: [
     BrowserModule,
