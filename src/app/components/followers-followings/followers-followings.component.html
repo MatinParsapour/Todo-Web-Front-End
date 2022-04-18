@@ -1,6 +1,6 @@
-<div class="background" (click)="close()" [hidden]="!isDisplay">
+<div class="background" (click)="close()" *ngIf="isDisplay">
 </div>
-<div class="container" [hidden]="!isDisplay">
+<div class="container" *ngIf="isDisplay">
   <button mat-icon-button (click)="close()">
     <mat-icon>close</mat-icon>
   </button>
