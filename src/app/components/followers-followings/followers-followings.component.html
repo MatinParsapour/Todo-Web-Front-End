@@ -1,0 +1,22 @@
+<div class="background" (click)="close()" [hidden]="!isDisplay">
+</div>
+<div class="container" [hidden]="!isDisplay">
+  <button mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <div class="follows">
+    <div *ngFor="let follow of list" class="follow">
+      <img [src]="follow.profileImageUrl" *ngIf="follow.profileImageUrl" class="profileImage" alt="">
+      <img
+        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_405941.png&f=1&nofb=1"
+        *ngIf="!follow.profileImageUrl" class="profileImage" alt="">
+      <div>
+        <p>{{follow.firstName}} {{follow.lastName}}</p>
+      </div>
+      <div>
+        <button mat-stroked-button>{{type=="followers"? 'Unfollow' : 'Remove'}}</button>
+      </div>
+    </div>
+  </div>
+
+</div>
