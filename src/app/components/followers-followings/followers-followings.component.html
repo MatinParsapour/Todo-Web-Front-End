@@ -14,7 +14,7 @@
         <p>{{follow.firstName}} {{follow.lastName}}</p>
       </div>
       <div>
-        <button mat-stroked-button>{{type=="followers"? 'Unfollow' : 'Remove'}}</button>
+        <button mat-stroked-button (click)="removeOrUnFollow(follow.id)">{{type=="followers"? 'Unfollow' : 'Remove'}}</button>
       </div>
     </div>
   </div>
