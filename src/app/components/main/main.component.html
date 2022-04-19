@@ -20,11 +20,10 @@
       <app-category [name]="category.name" (click)="loadCategory(category.name)"></app-category>
     </div>
     <hr class="fancyLine" *ngIf="toDoFolders.length >=1">
-    <div class="folders" *ngFor="let toDoFolder of toDoFolders">
-      <span>
-        <app-to-do-folders [toDoFolder]="toDoFolder" (updateData)="getAllToDoFolders()" (getToDos)="getAllToDos()">
-        </app-to-do-folders>
-      </span>
+    <div class="folders">
+      <app-to-do-folders *ngFor="let toDoFolder of toDoFolders" [toDoFolder]="toDoFolder"
+        (updateData)="getAllToDoFolders()" (getToDos)="getAllToDos()">
+      </app-to-do-folders>
     </div>
     <button (click)="openUserDialog(); sidenav.close()" class="user" mat-raised-button>
       <span class="material-icons">person</span>
