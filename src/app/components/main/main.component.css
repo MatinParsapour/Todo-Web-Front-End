@@ -49,8 +49,8 @@
     left: 0;
     bottom: 0px;
     height: 5em;
-    width: 300px;
-    position: fixed;
+    position: sticky;
+    width: 100%;
     align-items: center;
     display: flex;
   }
@@ -141,15 +141,33 @@
     right: 10%;
   }
 
-  .fancyButton:active{
+  .fancyButton:active {
     transform: scale(0.9);
   }
 
-  .fancyButton:hover{
+  .folders {
+    overflow: auto;
+    height: 12em;
+  }
+  .folders::-webkit-scrollbar{
+    width: 5px;
+  }
+
+  .folders::-webkit-scrollbar-track {
+    background-color: #404040;
+    border-radius: 5px;
+  }
+
+  .folders::-webkit-scrollbar-thumb {
+    background-color: #233e24;
+    border-radius: 5px;
+  }
+
+  .fancyButton:hover {
     color: #ffffff;
   }
 
-  .fancyButton::before{
+  .fancyButton::before {
     content: '';
     position: absolute;
     top: 0;
@@ -162,11 +180,11 @@
     transition: width 1s;
   }
 
-  .fancyButton:hover::before{
+  .fancyButton:hover::before {
     width: 170%;
   }
 
-  .navBarHeader{
+  .navBarHeader {
     display: flex;
     justify-content: space-between;
   }
