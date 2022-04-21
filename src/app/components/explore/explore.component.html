@@ -3,16 +3,18 @@
     <mat-icon>arrow_back </mat-icon>
   </button>
   <span class="search">
-      <input type="search" placeholder="Search...">
+    <input type="search" placeholder="Search...">
   </span>
   <div class="todos">
-    <mat-card class="todo" *ngFor="let todo of todos">
-      <span>Task</span>
-      <p>{{todo.task}}</p>
-      <div *ngIf="todo.note">
-        <span>Note</span>
-        <p>{{todo.note}}</p>
-      </div>
+    <mat-card (click)="displayToDo(todo.id)" class="todo" *ngFor="let todo of todos">
+      <mat-card-content>
+        <span>Task</span>
+        <p>{{todo.task}}</p>
+        <div *ngIf="todo.note">
+          <span>Note</span>
+          <p>{{todo.note}}</p>
+        </div>
+      </mat-card-content>
     </mat-card>
   </div>
 </div>
