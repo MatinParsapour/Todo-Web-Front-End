@@ -1,0 +1,23 @@
+.container {
+  height: 100%;
+  padding: 10em 3em 0em 3em
+}
+
+.back{
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.todos {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 4px;
+}
+
+.todo{
+    font-size: medium;
+    height: 15em;
+}

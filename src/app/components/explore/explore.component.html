@@ -1,0 +1,15 @@
+<div class="container">
+  <button (click)="backToMain()" class="back" mat-icon-button>
+    <mat-icon>arrow_back </mat-icon>
+  </button>
+  <div class="todos">
+    <mat-card class="todo" *ngFor="let todo of todos">
+      <span>Task</span>
+      <p>{{todo.task}}</p>
+      <div *ngIf="todo.note">
+        <span>Note</span>
+        <p>{{todo.note}}</p>
+      </div>
+    </mat-card>
+  </div>
+</div>
