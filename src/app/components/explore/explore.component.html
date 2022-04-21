@@ -2,6 +2,9 @@
   <button (click)="backToMain()" class="back" mat-icon-button>
     <mat-icon>arrow_back </mat-icon>
   </button>
+  <span class="search">
+      <input type="search" placeholder="Search...">
+  </span>
   <div class="todos">
     <mat-card class="todo" *ngFor="let todo of todos">
       <span>Task</span>
