@@ -1,3 +1,4 @@
+import { ExploreComponent } from './components/explore/explore.component';
 import { SharedToDoComponent } from './components/shared-to-do/shared-to-do.component';
 import { SupportComponent } from './components/support/support.component';
 import { UserManagementUserDetailsComponent } from './components/user-management-user-details/user-management-user-details.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'observe-user', component: UserManagementUserDetailsComponent},
   {path: 'support', component: SupportComponent},
   {path: 'to-do', component: SharedToDoComponent},
+  {path: 'explore', component: ExploreComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: '**', component: NotFoundComponent},
 ];
