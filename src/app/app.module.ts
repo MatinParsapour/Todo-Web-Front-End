@@ -95,6 +95,7 @@ import { SharedToDoComponent } from './components/shared-to-do/shared-to-do.comp
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { FollowersFollowingsComponent } from './components/followers-followings/followers-followings.component';
 import { ExploreComponent } from './components/explore/explore.component';
+import { ExploreTodosComponent } from './components/explore-todos/explore-todos.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -187,6 +188,7 @@ const customNotifierOptions: NotifierOptions = {
     SharedToDoComponent,
     FollowersFollowingsComponent,
     ExploreComponent,
+    ExploreTodosComponent,
   ],
   imports: [
     BrowserModule,
