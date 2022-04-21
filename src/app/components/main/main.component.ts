@@ -341,6 +341,10 @@ export class MainComponent implements OnInit {
       );
   }
 
+  explore(){
+    this.router.navigateByUrl('/explore')
+  }
+
   public mainTour: GuidedTour = {
     tourId: 'main-tour',
     completeCallback: () => {
