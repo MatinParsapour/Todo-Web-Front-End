@@ -3,10 +3,10 @@
   padding: 10em 3em 0em 3em
 }
 
-.back{
-    top: 0;
-    left: 0;
-    position: absolute;
+.back {
+  top: 0;
+  left: 0;
+  position: absolute;
 }
 
 .todos {
@@ -17,7 +17,21 @@
   gap: 4px;
 }
 
-.todo{
-    font-size: medium;
-    height: 15em;
+.todo {
+  font-size: medium;
+  height: 15em;
+}
+
+.search {
+  width: 81%;
+  position: absolute;
+  top: 0;
+}
+
+.search>input {
+  width: 100%;
+  height: 4em;
+  background-color: #303030;
+  border-radius: 40px;
+  margin-bottom: 2%;
 }
