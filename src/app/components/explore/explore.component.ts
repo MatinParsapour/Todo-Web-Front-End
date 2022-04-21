@@ -1,3 +1,6 @@
+import { ExploreTodosComponent } from './../explore-todos/explore-todos.component';
+import { ToDoComponent } from './../to-do/to-do.component';
+import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToDo } from './../../classes/todo';
@@ -17,7 +20,8 @@ export class ExploreComponent implements OnInit {
   constructor(
     private toDoService: ToDoService,
     private notifier: NotificationService,
-    private location: Location
+    private location: Location,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +32,6 @@ export class ExploreComponent implements OnInit {
     this.toDoService.getAll('to-do/explore').subscribe(
       (response: any) => {
         this.todos = response;
-        console.log(this.todos);
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error);
@@ -39,5 +42,10 @@ export class ExploreComponent implements OnInit {
 
   backToMain() {
     this.location.back();
+  }
+
+  displayToDo(id: any){
+    this.dialog.open(ExploreTodosComponent, {data: {id: id}})
+    
   }
 }
