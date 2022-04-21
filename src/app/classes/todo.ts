@@ -10,4 +10,5 @@ export class ToDo {
   task: string = '';
   category = Category.TASKS
   pictures: any;
+  createdAt: any;
 }
