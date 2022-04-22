@@ -107,21 +107,6 @@ export class ToDoComponent implements OnInit {
     return this.toDo.status.toString() === Status[Status.DONE];
   }
 
-  updateToDoBody(event: any) {
-    if (event.innerText !== '') {
-      this.toDo.task = event.innerText;
-      this.toDoService.update('to-do/update-to-do', this.toDo).subscribe(
-        (response: any) => {
-          this.notifier.notify(NotificationType.SUCCESS, 'Success');
-          this.getToDos.emit();
-        },
-        (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, error.message);
-        }
-      );
-    }
-  }
-
   openEditToDoDialog() {
     this.dialog
       .open(EditToDoComponent, { data: { todo: this.toDo } })

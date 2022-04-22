@@ -1,8 +1,7 @@
 <mat-card>
   <div class="doneAndTask">
     <app-check-circle [status]="toDo.status" (click)="doneToDo()"></app-check-circle>
-    <div class="toDo" [contentEditable]="true" [class.lineThrough]="isDone()"
-      (keydown.enter)="updateToDoBody($event.target)" [innerHtml]="toDo.task | summaryPipes: 20 | marker : search"></div>
+    <div class="toDo" [class.lineThrough]="isDone()" [innerHtml]="toDo.task | summaryPipes: 20 | marker : search"></div>
   </div>
   <div>
     <button mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
