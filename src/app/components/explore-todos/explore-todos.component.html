@@ -1,14 +1,17 @@
 <div class="container">
-    <div class="todo content">
-        <div class="user">
-            <img [src]="user.profileImageUrl" [routerLink]="'#'" alt="">
-            <p> <a [routerLink]="'#'">{{user.firstName}} {{user.lastName}}</a> wants to </p>
-        </div>
-        <div>
-            <p> {{todo.task}} </p>
-        </div>
+  <div class="todo content">
+    <div class="user">
+      <a [routerLink]="'#'" matDialogClose> <img [src]="user.profileImageUrl" *ngIf="user.profileImageUrl" [routerLink]="'#'" alt="">
+      </a>
+      <a [routerLink]="'#'" matDialogClose><img src="https://img.icons8.com/fluency/48/000000/user-male-circle.png"
+          *ngIf="!user.profileImageUrl"></a>
+      <p> <a [routerLink]="'#'" matDialogClose>{{user.firstName}} {{user.lastName}}</a> wants to </p>
     </div>
-    <div class="comments content">
+    <div>
+      <p> {{todo.task}} </p>
+    </div>
+  </div>
+  <div class="comments content">
 
-    </div>
+  </div>
 </div>
