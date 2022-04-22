@@ -25,4 +25,8 @@ export class UserService extends DataService {
     return this.httpService.put<HttpEvent<any>>(
       'http://localhost:8080/user/update-profile-image', formData, {reportProgress: true, observe: 'events'})
   }
+
+  getUserByToDoId(todoId: any){
+    return this.httpService.get("http://localhost:8080/user/get-user-by-todoid/" + todoId)
+  }
 }
