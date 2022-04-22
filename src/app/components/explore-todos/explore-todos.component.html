@@ -5,10 +5,20 @@
       </a>
       <a [routerLink]="'#'" matDialogClose><img src="https://img.icons8.com/fluency/48/000000/user-male-circle.png"
           *ngIf="!user.profileImageUrl"></a>
-      <p> <a [routerLink]="'#'" matDialogClose>{{user.firstName}} {{user.lastName}}</a> wants to </p>
+      <p class="systemMessage"> <a [routerLink]="'#'" matDialogClose>{{user.firstName}} {{user.lastName}}</a> wants to
+      </p>
     </div>
     <div>
       <p> {{todo.task}} </p>
+    </div>
+    <div *ngIf="todo.note">
+      <p class="systemMessage">And here's some notes about the task {{user.firstName}} wants to do</p>
+      <p>{{todo.note}}</p>
+    </div>
+    <div *ngIf="todo.pictures.length !== 0">
+      <p class="systemMessage">Some pictures about {{user.firstName}}'s todo</p>
+      <ng-image-slider [images]="slideShowImages" [imageSize]="slideShowSize()">
+      </ng-image-slider>
     </div>
   </div>
   <div class="comments content">
