@@ -1,8 +1,8 @@
 <div class="container">
     <div class="todo content">
-        <div>
-            <img [src]="user.profileImageUrl" alt="">
-            <p> {{user.firstName}} {{user.lastName}} wants to </p>
+        <div class="user">
+            <img [src]="user.profileImageUrl" [routerLink]="'#'" alt="">
+            <p> <a [routerLink]="'#'">{{user.firstName}} {{user.lastName}}</a> wants to </p>
         </div>
         <div>
             <p> {{todo.task}} </p>
