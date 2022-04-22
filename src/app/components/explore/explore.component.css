@@ -14,6 +14,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: min-content;
   gap: 4px;
 }
 
@@ -37,11 +38,11 @@
   margin-bottom: 2%;
 }
 
-mat-card:hover{
-    background-color: rgb(95, 93, 93);
-    cursor: pointer;
+mat-card:hover {
+  background-color: rgb(95, 93, 93);
+  cursor: pointer;
 }
 
-mat-card:active{
-    transform: scale(0.97);
+mat-card:active {
+  transform: scale(0.97);
 }
