@@ -10,47 +10,61 @@ import { NotificationType } from 'src/app/enum/notification-type';
 @Component({
   selector: 'app-explore-todos',
   templateUrl: './explore-todos.component.html',
-  styleUrls: ['./explore-todos.component.css']
+  styleUrls: ['./explore-todos.component.css'],
 })
 export class ExploreTodosComponent implements OnInit {
-  id: any
+  id: any;
   user: any;
   todo: any;
+  slideShowImages: Array<Object> = [];
 
-  constructor(@Inject(MAT_DIALOG_DATA) data: any, 
-              private todoService: ToDoService,
-              private userService: UserService,
-              private notifier: NotificationService) {
-    this.id = data.id
+  constructor(
+    @Inject(MAT_DIALOG_DATA) data: any,
+    private todoService: ToDoService,
+    private userService: UserService,
+    private notifier: NotificationService
+  ) {
+    this.id = data.id;
   }
 
   ngOnInit(): void {
-    this.getUser()
-    this.getToDo()
+    this.getUser();
+    this.getToDo();
   }
 
-  getUser(){
+  getUser() {
     this.userService.getUserByToDoId(this.id).subscribe(
-      response => {
-        this.user = response
-        console.log(this.user);
-        
-      },
-      (error:HttpErrorResponse)=> {
-        this.notifier.notify(NotificationType.ERROR, error.error)
-      }
-    )
-  }
-
-  getToDo(){
-    this.todoService.getToDo("to-do/get-to-do/" + this.id).subscribe(
-      response => {
-        this.todo = response
+      (response) => {
+        this.user = response;
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error);
       }
-    )
+    );
   }
 
+  getToDo() {
+    this.todoService.getToDo('to-do/get-to-do/' + this.id).subscribe(
+      (response) => {
+        this.todo = response;
+        this.addToQueue();
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error);
+      }
+    );
+  }
+
+  slideShowSize() {
+    return {
+      height: '100px',
+    };
+  }
+
+  addToQueue() {
+    this.slideShowImages = [];
+    this.todo.pictures.forEach((element: any) => {
+      this.slideShowImages.push({ image: element, thumbImage: element });
+    });
+  }
 }
