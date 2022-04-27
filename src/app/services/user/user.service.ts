@@ -27,6 +27,6 @@ export class UserService extends DataService {
   }
 
   getUserByToDoId(todoId: any){
-    return this.httpService.get("http://localhost:8080/user/get-user-by-todoid/" + todoId)
+    return this.httpService.get("http://localhost:8080/user/get-user-by-todoId/" + todoId)
   }
 }
