@@ -49,7 +49,7 @@
     left: 0;
     bottom: 0px;
     height: 5em;
-    position: sticky;
+    position: absolute;
     width: 100%;
     align-items: center;
     display: flex;
