@@ -28,14 +28,14 @@ export class ToDoFoldersComponent implements OnInit {
   @Output('getToDos') getToDos = new EventEmitter();
 
   listDTO = new FormGroup({
-    username: new FormControl(''),
+    userId: new FormControl(''),
     oldListName: new FormControl(''),
     newListName: new FormControl(''),
     folderName: new FormControl(''),
   });
 
   folderDTO = new FormGroup({
-    username: new FormControl(''),
+    userId: new FormControl(''),
     oldName: new FormControl(''),
     newName: new FormControl(''),
   });
@@ -85,7 +85,7 @@ export class ToDoFoldersComponent implements OnInit {
 
   validateAndChangeListName(event: any) {
     this.listDTO.get('newListName')?.setValue(event.innerText);
-    this.listDTO.get('username')?.setValue(localStorage.getItem('username'));
+    this.listDTO.get('userId')?.setValue(localStorage.getItem('username'));
     this.mainService
       .update('/list/change-list-name', this.listDTO.value)
       .subscribe(
@@ -104,7 +104,7 @@ export class ToDoFoldersComponent implements OnInit {
   }
 
   validateAndChangeFolderName(event: any) {
-    this.folderDTO.get('username')?.setValue(localStorage.getItem('username'));
+    this.folderDTO.get('userId')?.setValue(localStorage.getItem('username'));
     this.folderDTO.get('newName')?.setValue(event.innerText);
     if (
       this.folderDTO.get('oldName')?.value ===
