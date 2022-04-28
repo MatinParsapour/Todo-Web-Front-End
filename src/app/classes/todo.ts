@@ -11,4 +11,5 @@ export class ToDo {
   category = Category.TASKS
   pictures: any;
   createdAt: any;
+  likes = []
 }
