@@ -22,6 +22,10 @@
     </div>
   </div>
   <div class="comments content">
+    <button mat-icon-button (click)="toggleLike()">
+      <mat-icon [hidden]="!userLiked">thumb_up</mat-icon>
+      <mat-icon [hidden]="userLiked">thumb_up_off_alt</mat-icon>
+    </button>
 
   </div>
 </div>
