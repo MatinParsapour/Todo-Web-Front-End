@@ -1,3 +1,4 @@
+import { CommentService } from './services/comment/comment.service';
 import { GuidedTourModule, GuidedTourService } from 'ngx-guided-tour';
 import { SupportService } from './services/support/support.service';
 import { UserManagementService } from './services/user-management/user-management.service';
@@ -236,6 +237,7 @@ const customNotifierOptions: NotifierOptions = {
     EmailDetailsService,
     UserManagementService,
     SupportService,
+    CommentService,
     GuidedTourService,
     {
       provide: 'SocialAuthServiceConfig',
