@@ -17,6 +17,7 @@ export class ExploreTodosComponent implements OnInit {
   user: any;
   todo: any;
   slideShowImages: Array<Object> = [];
+  userLiked = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
@@ -48,6 +49,7 @@ export class ExploreTodosComponent implements OnInit {
       (response) => {
         this.todo = response;
         this.addToQueue();
+        this.isLiked()
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error);
@@ -65,6 +67,57 @@ export class ExploreTodosComponent implements OnInit {
     this.slideShowImages = [];
     this.todo.pictures.forEach((element: any) => {
       this.slideShowImages.push({ image: element, thumbImage: element });
+    });
+  }
+
+  toggleLike() {
+    if (this.userLiked) {
+      this.disLike();
+    } else {
+      this.like();
+    }
+    this.userLiked = !this.userLiked
+  }
+
+  like() {
+    const formData = this.createFormData();
+    this.todoService.like(formData).subscribe(
+      response => {
+        this.getToDo()
+      },
+      (error:HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error);
+      }
+    )
+  }
+
+  disLike() {
+    const formData = this.createFormData();
+    this.todoService.disLike(formData).subscribe(
+      response => {
+        this.getToDo()
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error)        
+      }
+    )
+  }
+
+  createFormData(): FormData{
+    const formData = new FormData();
+    let userId = localStorage.getItem('username');
+    if (userId){
+      formData.append("userId", userId)
+    }
+    formData.append("todoId", this.todo.id);
+    return formData;
+  }
+
+  isLiked(){
+    this.todo.likes.forEach((user:any) => {
+      if (user.id === localStorage.getItem("username")) {
+        this.userLiked = true;
+      }
     });
   }
 }
