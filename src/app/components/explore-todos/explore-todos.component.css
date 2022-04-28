@@ -3,7 +3,6 @@
 }
 
 .content {
-  height: 100%;
   width: 50%;
   font-size: 20px;
   padding: 2%;
@@ -28,4 +27,42 @@ img {
 
 .systemMessage {
   color: burlywood;
+}
+
+.commentInput{
+  margin-top: 100%;
+  display: flex;
+}
+
+.commentInput>textarea{
+  border-radius: 2px;
+  background-color: #424242;
+  width: 100%;
+  resize: none;
+}
+
+.emoji-mart{
+    position: absolute;
+    bottom: 77px;
+    z-index: 99;
+    right: 10%;
+}
+
+.emojiContainer {
+      background: #343333;
+      border-radius: 50px 0 0 50px;
+}
+
+.commentInput>textarea:focus{
+  outline: none;
+}
+
+.centeralize{
+  display: flex;
+  align-items: center;
+}
+
+.sendButton{
+      background: #343333;
+      border-radius: 0 50px 50px 0;
 }
