@@ -30,4 +30,12 @@ export class ToDoService extends DataService{
       { reportProgress: true, observe: 'events' }
     );
   }
+
+  like(data: FormData): Observable<any>{
+    return this.httpService.put("http://localhost:8080/to-do/like", data)
+  }
+
+  disLike(data: FormData): Observable<any>{
+    return this.httpService.put("http://localhost:8080/to-do/dislike", data)
+  }
 }
