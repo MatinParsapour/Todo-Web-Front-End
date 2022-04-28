@@ -1,7 +1,8 @@
 <div class="container">
   <div class="todo content">
     <div class="user">
-      <a [routerLink]="'#'" matDialogClose> <img [src]="user.profileImageUrl" *ngIf="user.profileImageUrl" [routerLink]="'#'" alt="">
+      <a [routerLink]="'#'" matDialogClose> <img [src]="user.profileImageUrl" *ngIf="user.profileImageUrl"
+          [routerLink]="'#'" alt="">
       </a>
       <a [routerLink]="'#'" matDialogClose><img src="https://img.icons8.com/fluency/48/000000/user-male-circle.png"
           *ngIf="!user.profileImageUrl"></a>
@@ -26,6 +27,18 @@
       <mat-icon [hidden]="!userLiked">thumb_up</mat-icon>
       <mat-icon [hidden]="userLiked">thumb_up_off_alt</mat-icon>
     </button>
+
+    <div class="commentInput">
+      <span class="emojiContainer centeralize">
+        <button mat-icon-button (click)="isEmojiPickerVisible = !isEmojiPickerVisible">😀</button>
+      </span>
+      <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible" (emojiSelect)="addEmoji($event)"
+        title="Choose your emoji"></emoji-mart>
+      <textarea [formControl]="message" type="text"></textarea>
+      <span class="centeralize sendButton">
+        <button mat-icon-button (click)="sendComment()"><mat-icon>send</mat-icon></button>
+      </span>
+    </div>
 
   </div>
 </div>
