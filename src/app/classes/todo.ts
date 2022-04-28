@@ -12,4 +12,5 @@ export class ToDo {
   pictures: any;
   createdAt: any;
   likes = []
+  comments = []
 }
