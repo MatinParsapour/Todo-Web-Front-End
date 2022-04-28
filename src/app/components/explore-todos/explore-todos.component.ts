@@ -1,3 +1,10 @@
+import { CommentService } from './../../services/comment/comment.service';
+import {
+  FormGroup,
+  FormBuilder,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { ToDoService } from './../../services/to-do/to-do.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -18,14 +25,23 @@ export class ExploreTodosComponent implements OnInit {
   todo: any;
   slideShowImages: Array<Object> = [];
   userLiked = false;
+  isEmojiPickerVisible = false;
+  comment: FormGroup;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
     private todoService: ToDoService,
     private userService: UserService,
-    private notifier: NotificationService
+    private notifier: NotificationService,
+    private fb: FormBuilder,
+    private commentService: CommentService
   ) {
     this.id = data.id;
+    this.comment = fb.group({
+      userId: new FormControl('', Validators.required),
+      message: new FormControl('', Validators.required),
+      todoId: new FormControl('', Validators.required),
+    });
   }
 
   ngOnInit(): void {
@@ -49,7 +65,13 @@ export class ExploreTodosComponent implements OnInit {
       (response) => {
         this.todo = response;
         this.addToQueue();
-        this.isLiked()
+        this.isLiked();
+        console.log(this.todo);
+        console.log(
+          this.todo.comments.forEach((element: any) => {
+            console.log(element.user.firstName);
+          })
+        );
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error);
@@ -76,48 +98,78 @@ export class ExploreTodosComponent implements OnInit {
     } else {
       this.like();
     }
-    this.userLiked = !this.userLiked
+    this.userLiked = !this.userLiked;
   }
 
   like() {
     const formData = this.createFormData();
     this.todoService.like(formData).subscribe(
-      response => {
-        this.getToDo()
+      (response) => {
+        this.getToDo();
       },
-      (error:HttpErrorResponse) => {
+      (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error);
       }
-    )
+    );
   }
 
   disLike() {
     const formData = this.createFormData();
     this.todoService.disLike(formData).subscribe(
-      response => {
-        this.getToDo()
+      (response) => {
+        this.getToDo();
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error)        
+        this.notifier.notify(NotificationType.ERROR, error.error);
       }
-    )
+    );
   }
 
-  createFormData(): FormData{
+  createFormData(): FormData {
     const formData = new FormData();
     let userId = localStorage.getItem('username');
-    if (userId){
-      formData.append("userId", userId)
+    if (userId) {
+      formData.append('userId', userId);
     }
-    formData.append("todoId", this.todo.id);
+    formData.append('todoId', this.todo.id);
     return formData;
   }
 
-  isLiked(){
-    this.todo.likes.forEach((user:any) => {
-      if (user.id === localStorage.getItem("username")) {
+  isLiked() {
+    this.todo.likes.forEach((user: any) => {
+      if (user.id === localStorage.getItem('username')) {
         this.userLiked = true;
       }
     });
+  }
+
+  get message(): any {
+    return this.comment.get('message');
+  }
+
+  sendComment() {
+    this.initializeComment();
+    this.commentService.create('/comment', this.comment.value).subscribe(
+      (response) => {
+        this.getToDo();
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error);
+      },
+      () => {
+        this.comment.get('message')?.setValue('');
+      }
+    );
+  }
+
+  addEmoji(event: any) {
+    this.comment
+      .get('message')
+      ?.setValue(this.comment.get('message')?.value + event.emoji.native);
+  }
+
+  initializeComment() {
+    this.comment.get('userId')?.setValue(localStorage.getItem('username'));
+    this.comment.get('todoId')?.setValue(this.todo.id);
   }
 }
