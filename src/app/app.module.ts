@@ -97,6 +97,9 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { FollowersFollowingsComponent } from './components/followers-followings/followers-followings.component';
 import { ExploreComponent } from './components/explore/explore.component';
 import { ExploreTodosComponent } from './components/explore-todos/explore-todos.component';
+import { CaptionComponent } from './components/caption/caption.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { CommentInputComponent } from './components/comment-input/comment-input.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -190,6 +193,9 @@ const customNotifierOptions: NotifierOptions = {
     FollowersFollowingsComponent,
     ExploreComponent,
     ExploreTodosComponent,
+    CaptionComponent,
+    CommentsComponent,
+    CommentInputComponent,
   ],
   imports: [
     BrowserModule,
