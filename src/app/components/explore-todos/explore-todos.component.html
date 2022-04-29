@@ -22,14 +22,22 @@
       </ng-image-slider>
     </div>
   </div>
-  <div class="content">
-    <button mat-icon-button (click)="toggleLike()">
-      <mat-icon [hidden]="!userLiked">thumb_up</mat-icon>
-      <mat-icon [hidden]="userLiked">thumb_up_off_alt</mat-icon>
-    </button>
+  <div class="content sidebar">
+    <div class="header">
+      <div class="like">
+        <button class="likeButton" mat-icon-button (click)="toggleLike()">
+          <mat-icon [hidden]="!userLiked">thumb_up</mat-icon>
+          <mat-icon [hidden]="userLiked">thumb_up_off_alt</mat-icon>
+        </button>
+        <p> {{todo.likes.length}} </p>
+      </div>
+    </div>
 
     <div class="comments">
-
+      <div class="comment" *ngFor="let comment of todo.comments">
+        <p class="userComment"> <b> {{comment.user.firstName}} {{comment.user.lastName}} </b> </p>
+        <p class="message"> {{comment.message}} </p>
+      </div>
     </div>
 
     <div class="commentInput">
@@ -40,7 +48,9 @@
         title="Choose your emoji"></emoji-mart>
       <textarea [formControl]="message" type="text"></textarea>
       <span class="centralize sendButton">
-        <button mat-icon-button (click)="sendComment()"><mat-icon>send</mat-icon></button>
+        <button mat-icon-button (click)="sendComment()">
+          <mat-icon>send</mat-icon>
+        </button>
       </span>
     </div>
 
