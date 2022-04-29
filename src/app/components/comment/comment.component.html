@@ -1,1 +1,11 @@
-<p>comment works!</p>
+<div class="header">
+  <p class="userComment"> <b> {{comment.user.firstName}} {{comment.user.lastName}} </b> </p>
+  <button mat-icon-button #triggerButton [matMenuTriggerFor]="commentMenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #commentMenu>
+    <button class="menuButton editButton" mat-menu-item>Edit <mat-icon>edit</mat-icon></button>
+    <button class="menuButton deleteButton" mat-menu-item>Delete <mat-icon>delete</mat-icon></button>
+  </mat-menu>
+</div>
+<p class="message"> {{comment.message}} </p>
