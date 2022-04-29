@@ -25,20 +25,6 @@
   <div class="content sidebar">
     <app-caption (update)="getToDo()" [todo]="todo"></app-caption>
     <app-comments [todo]="todo"></app-comments>
-
-    <div class="commentInput">
-      <span class="emojiContainer centralize">
-        <button mat-icon-button (click)="isEmojiPickerVisible = !isEmojiPickerVisible">😀</button>
-      </span>
-      <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible" (emojiSelect)="addEmoji($event)"
-        title="Choose your emoji"></emoji-mart>
-      <textarea [formControl]="message" type="text"></textarea>
-      <span class="centralize sendButton">
-        <button mat-icon-button (click)="sendComment()">
-          <mat-icon>send</mat-icon>
-        </button>
-      </span>
-    </div>
-
+    <app-comment-input [todo]="todo" (update)="getToDo()"></app-comment-input>
   </div>
 </div>
