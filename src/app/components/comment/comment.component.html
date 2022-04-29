@@ -5,7 +5,7 @@
   </button>
   <mat-menu #commentMenu>
     <button class="menuButton editButton" mat-menu-item>Edit <mat-icon>edit</mat-icon></button>
-    <button class="menuButton deleteButton" mat-menu-item>Delete <mat-icon>delete</mat-icon></button>
+    <button (click)="deleteComment()" class="menuButton deleteButton" mat-menu-item>Delete <mat-icon>delete</mat-icon></button>
   </mat-menu>
 </div>
 <p class="message"> {{comment.message}} </p>
