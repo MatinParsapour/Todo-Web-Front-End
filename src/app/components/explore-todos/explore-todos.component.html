@@ -24,13 +24,7 @@
   </div>
   <div class="content sidebar">
     <app-caption (update)="getToDo()" [todo]="todo"></app-caption>
-
-    <div class="comments">
-      <div class="comment" *ngFor="let comment of todo.comments">
-        <p class="userComment"> <b> {{comment.user.firstName}} {{comment.user.lastName}} </b> </p>
-        <p class="message"> {{comment.message}} </p>
-      </div>
-    </div>
+    <app-comments [todo]="todo"></app-comments>
 
     <div class="commentInput">
       <span class="emojiContainer centralize">
