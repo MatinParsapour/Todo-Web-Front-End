@@ -24,8 +24,6 @@ export class ExploreTodosComponent implements OnInit {
   user: any;
   todo: any;
   slideShowImages: Array<Object> = [];
-  isEmojiPickerVisible = false;
-  comment: FormGroup;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
@@ -36,11 +34,6 @@ export class ExploreTodosComponent implements OnInit {
     private commentService: CommentService
   ) {
     this.id = data.id;
-    this.comment = fb.group({
-      userId: new FormControl('', Validators.required),
-      message: new FormControl('', Validators.required),
-      todoId: new FormControl('', Validators.required),
-    });
   }
 
   ngOnInit(): void {
@@ -88,35 +81,5 @@ export class ExploreTodosComponent implements OnInit {
     this.todo.pictures.forEach((element: any) => {
       this.slideShowImages.push({ image: element, thumbImage: element });
     });
-  }
-
-  get message(): any {
-    return this.comment.get('message');
-  }
-
-  sendComment() {
-    this.initializeComment();
-    this.commentService.create('/comment', this.comment.value).subscribe(
-      (response) => {
-        this.getToDo();
-      },
-      (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
-      },
-      () => {
-        this.comment.get('message')?.setValue('');
-      }
-    );
-  }
-
-  addEmoji(event: any) {
-    this.comment
-      .get('message')
-      ?.setValue(this.comment.get('message')?.value + event.emoji.native);
-  }
-
-  initializeComment() {
-    this.comment.get('userId')?.setValue(localStorage.getItem('username'));
-    this.comment.get('todoId')?.setValue(this.todo.id);
   }
 }
