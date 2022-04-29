@@ -57,12 +57,6 @@ export class ExploreTodosComponent implements OnInit {
       (response) => {
         this.todo = response;
         this.addToQueue();
-        console.log(this.todo);
-        console.log(
-          this.todo.comments.forEach((element: any) => {
-            console.log(element.user.firstName);
-          })
-        );
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error);
