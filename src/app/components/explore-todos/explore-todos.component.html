@@ -29,13 +29,13 @@
     </button>
 
     <div class="commentInput">
-      <span class="emojiContainer centeralize">
+      <span class="emojiContainer centralize">
         <button mat-icon-button (click)="isEmojiPickerVisible = !isEmojiPickerVisible">😀</button>
       </span>
       <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible" (emojiSelect)="addEmoji($event)"
         title="Choose your emoji"></emoji-mart>
       <textarea [formControl]="message" type="text"></textarea>
-      <span class="centeralize sendButton">
+      <span class="centralize sendButton">
         <button mat-icon-button (click)="sendComment()"><mat-icon>send</mat-icon></button>
       </span>
     </div>
