@@ -100,6 +100,7 @@ import { ExploreTodosComponent } from './components/explore-todos/explore-todos.
 import { CaptionComponent } from './components/caption/caption.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { CommentInputComponent } from './components/comment-input/comment-input.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -196,6 +197,7 @@ const customNotifierOptions: NotifierOptions = {
     CaptionComponent,
     CommentsComponent,
     CommentInputComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,
