@@ -1,0 +1,21 @@
+.comments {
+  height: 20em;
+  overflow: auto;
+}
+
+.comments::-webkit-scrollbar {
+  width: 0;
+}
+
+.userComment {
+  color: #969393;
+  font-size: 14px;
+}
+
+.message {
+  padding-left: 4px;
+}
+
+.comment {
+  padding: 2px;
+}

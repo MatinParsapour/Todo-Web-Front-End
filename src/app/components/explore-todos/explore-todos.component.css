@@ -20,18 +20,6 @@
   grid-template-columns: 326px;
 }
 
-.comment{
-  padding: 2px;
-}
-
-.userComment{
-  color: #969393;
-  font-size: 14px;
-}
-
-.message {
-  padding-left: 4px;
-}
 
 img {
   width: 50px;
@@ -50,11 +38,6 @@ img {
 
 .commentInput {
   display: flex;
-}
-
-.comments {
-  height: 20em;
-  overflow: auto;
 }
 
 .commentInput>textarea {
@@ -90,7 +73,3 @@ img {
   border-radius: 0 50px 50px 0;
 }
 
-
-.comments::-webkit-scrollbar {
-  width: 0;
-}
