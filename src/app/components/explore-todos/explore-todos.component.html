@@ -23,15 +23,7 @@
     </div>
   </div>
   <div class="content sidebar">
-    <div class="header">
-      <div class="like">
-        <button class="likeButton" mat-icon-button (click)="toggleLike()">
-          <mat-icon [hidden]="!userLiked">thumb_up</mat-icon>
-          <mat-icon [hidden]="userLiked">thumb_up_off_alt</mat-icon>
-        </button>
-        <p> {{todo.likes.length}} </p>
-      </div>
-    </div>
+    <app-caption (update)="getToDo()" [todo]="todo"></app-caption>
 
     <div class="comments">
       <div class="comment" *ngFor="let comment of todo.comments">

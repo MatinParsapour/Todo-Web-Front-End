@@ -1,1 +1,9 @@
-<p>caption works!</p>
+<div>
+  <div class="like">
+    <button mat-icon-button (click)="toggleLike()">
+      <mat-icon [hidden]="!userLiked">thumb_up</mat-icon>
+      <mat-icon [hidden]="userLiked">thumb_up_off_alt</mat-icon>
+    </button>
+    <p> {{todo.likes.length}} </p>
+  </div>
+</div>
