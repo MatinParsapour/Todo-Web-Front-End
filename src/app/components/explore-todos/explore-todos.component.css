@@ -11,6 +11,7 @@
   display: grid;
   grid-template-rows: 2em 20em 3em;
   gap: 1em;
+  width: 20em;
 }
 
 .todo {
