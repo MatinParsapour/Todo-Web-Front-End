@@ -1,0 +1,25 @@
+.header {
+  display: grid;
+  gap: 10%;
+  grid-template-columns: 10em 2em;
+}
+
+.menuButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deleteButton:hover {
+  background-color: rgba(139, 17, 17, 0.726);
+}
+
+.editButton:hover {
+  background-color: rgba(20, 87, 34, 0.61);
+}
+
+.userComment {
+  color: #969393;
+  font-size: 14px;
+  padding-top: 6%;
+}

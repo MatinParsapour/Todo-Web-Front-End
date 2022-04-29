@@ -1,15 +1,11 @@
 .comments {
   height: 20em;
   overflow: auto;
+  width: 14em;
 }
 
 .comments::-webkit-scrollbar {
   width: 0;
-}
-
-.userComment {
-  color: #969393;
-  font-size: 14px;
 }
 
 .message {
@@ -19,3 +15,4 @@
 .comment {
   padding: 2px;
 }
+
