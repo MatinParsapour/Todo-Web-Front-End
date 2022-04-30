@@ -23,3 +23,17 @@
   font-size: 14px;
   padding-top: 6%;
 }
+
+.itIsEditable {
+  background-color: #342828;
+  border-radius: 10px;
+  padding: 6px;
+}
+
+.itIsEditable:focus{
+  outline: none;
+}
+
+.message{
+  word-break: break-all;
+}
