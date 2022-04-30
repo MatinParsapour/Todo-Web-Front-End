@@ -1,5 +1,5 @@
 <div class="comments">
   <div class="comment" *ngFor="let comment of todo.comments">
-      <app-comment [comment]="comment" [todo]="todo"></app-comment>
+      <app-comment [comment]="comment" [todo]="todo" (update)="updateComment()"></app-comment>
   </div>
 </div>
