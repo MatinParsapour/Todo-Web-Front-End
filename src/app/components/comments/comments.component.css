@@ -1,7 +1,7 @@
 .comments {
   height: 20em;
   overflow: auto;
-  width: 14em;
+  width: 100%;
 }
 
 .comments::-webkit-scrollbar {
