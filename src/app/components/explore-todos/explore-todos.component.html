@@ -24,7 +24,7 @@
   </div>
   <div class="content sidebar">
     <app-caption (update)="getToDo()" [todo]="todo"></app-caption>
-    <app-comments [todo]="todo"></app-comments>
+    <app-comments [todo]="todo" (update)="getToDo()"></app-comments>
     <app-comment-input [todo]="todo" (update)="getToDo()"></app-comment-input>
   </div>
 </div>
