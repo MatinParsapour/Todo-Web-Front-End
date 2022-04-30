@@ -1,6 +1,6 @@
 .header {
   display: grid;
-  gap: 10%;
+  gap: 30%;
   grid-template-columns: 10em 2em;
 }
 
