@@ -1,21 +1,31 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.css']
+  styleUrls: ['./comments.component.css'],
 })
-export class CommentsComponent implements OnInit {
-  @Input('todo') todo: any
-  @Output('update') update = new EventEmitter()
+export class CommentsComponent implements OnInit, AfterViewChecked {
+  @Input('todo') todo: any;
+  @Output('update') update = new EventEmitter();
+  @ViewChild('scroller') private scroller!: ElementRef;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  updateComment() {
+    this.update.emit();
   }
 
-  updateComment(){
-    this.update.emit()
+  scrollToBottom(): void {
+    try {
+      this.scroller.nativeElement.scrollTop =
+        this.scroller.nativeElement.scrollHeight;
+    } catch (err) {}
   }
 
+  ngAfterViewChecked(): void {
+    this.scrollToBottom();
+  }
 }
