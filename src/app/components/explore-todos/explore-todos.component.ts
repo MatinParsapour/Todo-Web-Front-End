@@ -25,6 +25,8 @@ export class ExploreTodosComponent implements OnInit {
   user: any;
   todo: any;
   slideShowImages: Array<Object> = [];
+  isSaving = false;
+  isAdding = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
@@ -79,49 +81,58 @@ export class ExploreTodosComponent implements OnInit {
     });
   }
 
-  shareToDo(){
+  shareToDo() {
     this.clipboardService.copy(
-      "http://localhost:4200/to-do?todoId=" + this.todo.id
-    )
-    this.notifier.notify(NotificationType.SUCCESS, "Link of todo copied to you clipboard")
+      'http://localhost:4200/to-do?todoId=' + this.todo.id
+    );
+    this.notifier.notify(
+      NotificationType.SUCCESS,
+      'Link of todo copied to you clipboard'
+    );
   }
 
-  addToUserToDos(){
-    const data = this.createFormData()
-    this.todoService
-      .update('to-do/add-todo-to-user-todos', data)
-      .subscribe(
-        (response) => {
-          this.notifier.notify(
-            NotificationType.SUCCESS,
-            'The todo added to your to dos'
-          );
-        },
-        (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, error.error);
-        }
-      );
+  addToUserToDos() {
+    this.isAdding = true
+    const data = this.createFormData();
+    this.todoService.update('to-do/add-todo-to-user-todos', data).subscribe(
+      (response) => {
+        this.notifier.notify(
+          NotificationType.SUCCESS,
+          'The todo added to your to dos'
+        );
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error);
+      },
+      () => {
+        this.isAdding = false
+      }
+    );
   }
 
-  createFormData(): FormData{
+  createFormData(): FormData {
     const formData = new FormData();
     const userId = localStorage.getItem('username');
     if (userId) {
-      formData.append("userId", userId)
+      formData.append('userId', userId);
     }
-    formData.append("todoId", this.todo.id)
+    formData.append('todoId', this.todo.id);
     return formData;
   }
 
-  saveToDo(){
+  saveToDo() {
+    this.isSaving = true;
     const data = this.createFormData();
-    this.todoService.update("to-do/save-todo-for-user",data).subscribe(
-      response => {
-        this.notifier.notify(NotificationType.SUCCESS, "Saved to your saves")
+    this.todoService.update('to-do/save-todo-for-user', data).subscribe(
+      (response) => {
+        this.notifier.notify(NotificationType.SUCCESS, 'Saved to your saves');
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error)
+        this.notifier.notify(NotificationType.ERROR, error.error);
+      },
+      () => {
+        this.isSaving = false;
       }
-    )
+    );
   }
 }

@@ -31,11 +31,13 @@
       <button mat-menu-item class="menuItem" (click)="shareToDo()">Share
         <mat-icon>share</mat-icon>
       </button>
-      <button mat-menu-item class="menuItem" (click)="saveToDo()">Save
-        <mat-icon>save</mat-icon>
+      <button [disabled]="isSaving" mat-menu-item class="menuItem" (click)="saveToDo()">Save
+        <div class="loading" *ngIf="isSaving">Loading&#8230;</div>
+        <mat-icon *ngIf="!isSaving">save</mat-icon>
       </button>
-      <button mat-menu-item class="menuItem" (click)="addToUserToDos()">Add to your to dos
-        <mat-icon>add</mat-icon>
+      <button [disabled]="isAdding" mat-menu-item class="menuItem" (click)="addToUserToDos()">Add to your to dos
+        <div class="loading" *ngIf="isAdding">Loading&#8230;</div>
+        <mat-icon *ngIf="!isAdding">add</mat-icon>
       </button>
     </mat-menu>
   </div>
