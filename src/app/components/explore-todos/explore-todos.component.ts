@@ -85,4 +85,32 @@ export class ExploreTodosComponent implements OnInit {
     )
     this.notifier.notify(NotificationType.SUCCESS, "Link of todo copied to you clipboard")
   }
+
+  addToUserToDos(){
+    const data = this.createFormData()
+    this.todoService
+      .update('to-do/add-todo-to-user-todos', data)
+      .subscribe(
+        (response) => {
+          this.notifier.notify(
+            NotificationType.SUCCESS,
+            'The todo added to your to dos'
+          );
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(NotificationType.ERROR, error.error);
+          console.log(error);
+        }
+      );
+  }
+
+  createFormData(): FormData{
+    const formData = new FormData();
+    const userId = localStorage.getItem('username');
+    if (userId) {
+      formData.append("userId", userId)
+    }
+    formData.append("todoId", this.todo.id)
+    return formData;
+  }
 }
