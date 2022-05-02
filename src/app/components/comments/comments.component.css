@@ -1,5 +1,5 @@
 .comments {
-  height: 20em;
+  height: 13em;
   overflow: auto;
   width: 100%;
   display: flex;
@@ -16,4 +16,20 @@
 
 .comment {
   padding: 2px;
+}
+
+.captionSection {
+  position: sticky;
+  background-color: #2c243870;
+  border-radius: 7px;
+  padding: 2%;
+}
+
+.caption {
+  height: 4em;
+  overflow: auto;
+}
+
+.caption::-webkit-scrollbar{
+  width: 0;
 }
