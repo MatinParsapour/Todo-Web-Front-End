@@ -13,4 +13,5 @@ export class ToDo {
   createdAt: any;
   likes = []
   comments = []
+  caption: string = "";
 }
