@@ -8,9 +8,12 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu class="menu" #normalMenu="matMenu">
-        <button mat-menu-item class="starToDos item" (click)="getStarredToDos()">Starred todos <mat-icon>star</mat-icon></button>
-        <button mat-menu-item class="guide item" (click)="restartTour(); sidenav.close()">See guided tour <mat-icon>help_outline</mat-icon></button>
-        <button mat-menu-item class="item" (click)="explore(); sidenav.close()">Explore <mat-icon>explore</mat-icon></button>
+        <button mat-menu-item class="starToDos item" (click)="getStarredToDos()">Starred todos <mat-icon>star</mat-icon>
+          </button>
+        <button mat-menu-item class="guide item" (click)="restartTour(); sidenav.close()">See guided tour <mat-icon>
+            help_outline</mat-icon></button>
+        <button mat-menu-item class="item" (click)="explore(); sidenav.close()">Explore <mat-icon>explore</mat-icon>
+          </button>
       </mat-menu>
     </div>
     <br>
@@ -70,8 +73,7 @@
         <label for="search-box"><span class="glyphicon glyphicon-search search-icon"></span></label>
       </form>
       <div *ngFor="let toDo of toDos">
-        <app-to-do [toDo]="toDo" *ngIf="!isDone(toDo)" [search]="searchInput.value"
-          (getToDos)="loadCategory('tasks')">
+        <app-to-do [toDo]="toDo" *ngIf="!isDone(toDo)" [search]="searchInput.value" (getToDos)="loadCategory('tasks')">
         </app-to-do>
       </div>
       <details>
@@ -86,11 +88,18 @@
       <mat-icon [hidden]="!isShow">arrow_forward</mat-icon>
     </button>
     <mat-card class="enterToDo" [@showHide]="isShow ? 'show' : 'hide' ">
-      <mat-form-field appearance="outline">
-        <mat-label>ToDo</mat-label>
-        <input (keydown.enter)="addAndUpdateToDos(); searchInput.value = ''" [(ngModel)]="toDo.task" matInput
-          autocomplete="off" type="text">
-      </mat-form-field>
+      <div class="inputs">
+        <mat-form-field class="input" appearance="outline">
+          <mat-label>ToDo</mat-label>
+          <input [(ngModel)]="toDo.task" matInput
+            autocomplete="off" type="text">
+        </mat-form-field>
+        <mat-form-field class="input" appearance="outline">
+          <mat-label>Caption</mat-label>
+          <input [(ngModel)]="toDo.caption" matInput
+            autocomplete="off" type="text">
+        </mat-form-field>
+      </div>
       <div class="toDoMenu">
         <div>
           <div>
@@ -112,7 +121,7 @@
             <button mat-icon-button (click)="datepicker.open()" matTooltip="Select date">
               <mat-icon>event</mat-icon>
             </button>
-            <button mat-icon-button (click)="addAndUpdateToDos()" matTooltip="Add todo">
+            <button mat-icon-button (click)="addAndUpdateToDos(); searchInput.value = ''" matTooltip="Add todo">
               <mat-icon>send</mat-icon>
             </button>
           </div>
