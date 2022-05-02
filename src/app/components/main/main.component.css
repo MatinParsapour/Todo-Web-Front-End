@@ -39,16 +39,10 @@
     color: rgb(46, 61, 201);
   }
 
-  .item{
+  .item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  mat-card>mat-form-field {
-    width: 80%;
-    height: 5em;
-    font-size: 15px;
   }
 
   .user {
@@ -74,7 +68,9 @@
   }
 
   .toDoMenu {
-    display: flex;
+    display: grid;
+    grid-template-columns: 70px 70px 70px;
+    gap: 2%;
   }
 
   .open-input {
@@ -89,7 +85,9 @@
   }
 
   .toDoMenu>div>div {
-    display: flex;
+    display: grid;
+    grid-template-columns: 70px 70px 70px;
+    gap: 2%;
   }
 
   .displayNone {
@@ -109,6 +107,21 @@
   .noToDoErrorContainer {
     display: flex;
     justify-content: center;
+  }
+
+  .enterToDo {
+    display: grid;
+    grid-template-columns: 120%;
+  }
+
+  .inputs {
+    display: grid;
+    gap: 2%;
+  }
+
+  .input {
+    width: 80%;
+    font-size: 11.5px;
   }
 
   .noToDoError>h1 {
@@ -155,7 +168,8 @@
     overflow: auto;
     height: 12em;
   }
-  .folders::-webkit-scrollbar{
+
+  .folders::-webkit-scrollbar {
     width: 5px;
   }
 
@@ -206,11 +220,6 @@
 @media screen and (max-width: 768px) {
   mat-card {
     width: 90%;
-  }
-
-  .enterToDo {
-    display: flex;
-    flex-direction: column;
   }
 }
 
