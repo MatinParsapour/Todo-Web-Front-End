@@ -14,6 +14,12 @@
   width: 20em;
 }
 
+.menuItem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .todo {
   display: flex;
   background-color: rgb(107 124 167 / 50%);
