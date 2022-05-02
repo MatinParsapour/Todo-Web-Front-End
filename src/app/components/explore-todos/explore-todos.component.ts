@@ -1,3 +1,4 @@
+import { ClipboardService } from 'ngx-clipboard';
 import { CommentService } from './../../services/comment/comment.service';
 import {
   FormGroup,
@@ -31,7 +32,8 @@ export class ExploreTodosComponent implements OnInit {
     private userService: UserService,
     private notifier: NotificationService,
     private fb: FormBuilder,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private clipboardService: ClipboardService
   ) {
     this.id = data.id;
   }
@@ -75,5 +77,12 @@ export class ExploreTodosComponent implements OnInit {
     this.todo.pictures.forEach((element: any) => {
       this.slideShowImages.push({ image: element, thumbImage: element });
     });
+  }
+
+  shareToDo(){
+    this.clipboardService.copy(
+      "http://localhost:4200/to-do?todoId=" + this.todo.id
+    )
+    this.notifier.notify(NotificationType.SUCCESS, "Link of todo copied to you clipboard")
   }
 }
