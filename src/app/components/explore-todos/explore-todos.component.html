@@ -24,10 +24,20 @@
         </ng-image-slider>
       </div>
     </div>
-    <button mat-icon-button>
+    <button mat-icon-button [matMenuTriggerFor]="todoMenu">
       <mat-icon>more_vert</mat-icon>
     </button>
-
+    <mat-menu #todoMenu>
+      <button mat-menu-item class="menuItem" (click)="shareToDo()">Share
+        <mat-icon>share</mat-icon>
+      </button>
+      <button mat-menu-item class="menuItem">Save
+        <mat-icon>save</mat-icon>
+      </button>
+      <button mat-menu-item class="menuItem">Add to your to dos
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-menu>
   </div>
   <div class="content sidebar">
     <app-caption (update)="getToDo()" [todo]="todo"></app-caption>
