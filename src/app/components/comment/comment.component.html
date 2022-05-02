@@ -1,6 +1,6 @@
 <div class="header">
   <p class="userComment"> <b> {{comment.user.firstName}} {{comment.user.lastName}} </b> </p>
-  <button mat-icon-button #triggerButton [matMenuTriggerFor]="commentMenu">
+  <button mat-icon-button #triggerButton *ngIf="isSender()" [matMenuTriggerFor]="commentMenu">
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #commentMenu>

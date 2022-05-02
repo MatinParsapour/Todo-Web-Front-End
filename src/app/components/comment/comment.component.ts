@@ -70,4 +70,9 @@ export class CommentComponent implements OnInit {
       formData.append('message', message);
     return formData;
   }
+
+  isSender(): boolean{
+    const userId = localStorage.getItem("username");
+    return this.comment.user.id === userId 
+  }
 }
