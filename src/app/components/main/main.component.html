@@ -8,9 +8,9 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu class="menu" #normalMenu="matMenu">
-        <button mat-menu-item class="starToDos" (click)="getStarredToDos()">Starred todos <mat-icon>star</mat-icon></button>
-        <button mat-menu-item class="guide" (click)="restartTour(); sidenav.close()">See guided tour <mat-icon>help_outline</mat-icon></button>
-        <button mat-menu-item (click)="explore(); sidenav.close()">Explore <mat-icon>explore</mat-icon></button>
+        <button mat-menu-item class="starToDos item" (click)="getStarredToDos()">Starred todos <mat-icon>star</mat-icon></button>
+        <button mat-menu-item class="guide item" (click)="restartTour(); sidenav.close()">See guided tour <mat-icon>help_outline</mat-icon></button>
+        <button mat-menu-item class="item" (click)="explore(); sidenav.close()">Explore <mat-icon>explore</mat-icon></button>
       </mat-menu>
     </div>
     <br>

@@ -39,6 +39,12 @@
     color: rgb(46, 61, 201);
   }
 
+  .item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
   mat-card>mat-form-field {
     width: 80%;
     height: 5em;
