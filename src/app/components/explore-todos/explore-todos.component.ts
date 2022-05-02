@@ -99,7 +99,6 @@ export class ExploreTodosComponent implements OnInit {
         },
         (error: HttpErrorResponse) => {
           this.notifier.notify(NotificationType.ERROR, error.error);
-          console.log(error);
         }
       );
   }
@@ -112,5 +111,17 @@ export class ExploreTodosComponent implements OnInit {
     }
     formData.append("todoId", this.todo.id)
     return formData;
+  }
+
+  saveToDo(){
+    const data = this.createFormData();
+    this.todoService.update("to-do/save-todo-for-user",data).subscribe(
+      response => {
+        this.notifier.notify(NotificationType.SUCCESS, "Saved to your saves")
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error)
+      }
+    )
   }
 }
