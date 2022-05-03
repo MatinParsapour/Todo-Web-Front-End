@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     font-size: 17px;
-    column-gap: 5px;
+    column-gap: 10px;
   }
 
   footer {
@@ -21,7 +21,7 @@
   }
 
   mat-form-field {
-    width: 20em;
+    width: 100%;
   }
 
   mat-icon {
