@@ -1,4 +1,4 @@
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 2000px) {
   .todoDetails {
     display: grid;
     grid-template-columns: 1fr 1fr;
