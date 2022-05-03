@@ -28,7 +28,12 @@
         (updateData)="getAllToDoFolders()" (getToDos)="getAllToDos()">
       </app-to-do-folders>
     </div>
-    <button (click)="openUserDialog(); sidenav.close()" class="user" mat-raised-button>
+    <mat-menu #mainMenu>
+      <button mat-menu-item class="item">Home feed <mat-icon>home</mat-icon></button>
+      <button mat-menu-item class="item">Profile <mat-icon>person</mat-icon></button>
+      <button mat-menu-item class="item">Settings <mat-icon>settings</mat-icon></button>
+    </mat-menu>
+    <button [matMenuTriggerFor]="mainMenu" class="user" mat-menu-item>
       <span class="material-icons">person</span>
       {{user}} </button>
   </mat-sidenav>
