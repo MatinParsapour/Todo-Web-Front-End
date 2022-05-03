@@ -8,11 +8,17 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu class="menu" #normalMenu="matMenu">
-        <button mat-menu-item class="starToDos item" (click)="getStarredToDos()">Starred todos <mat-icon>star</mat-icon>
+        <button mat-menu-item class="starToDos item" (click)="getStarredToDos()">
+          <mat-icon>star</mat-icon>
+          <p>Starred todos</p>
           </button>
-        <button mat-menu-item class="guide item" (click)="restartTour(); sidenav.close()">See guided tour <mat-icon>
-            help_outline</mat-icon></button>
-        <button mat-menu-item class="item" (click)="explore(); sidenav.close()">Explore <mat-icon>explore</mat-icon>
+        <button mat-menu-item class="guide item" (click)="restartTour(); sidenav.close()">
+          <mat-icon>help_outline</mat-icon>
+          <p>See guided tour</p>
+        </button>
+        <button mat-menu-item class="item" (click)="explore(); sidenav.close()">
+          <mat-icon>explore</mat-icon>
+          <p>Explore</p>
           </button>
       </mat-menu>
     </div>
@@ -29,9 +35,18 @@
       </app-to-do-folders>
     </div>
     <mat-menu #mainMenu>
-      <button mat-menu-item class="item">Home feed <mat-icon>home</mat-icon></button>
-      <button mat-menu-item class="item">Profile <mat-icon>person</mat-icon></button>
-      <button mat-menu-item class="item">Settings <mat-icon>settings</mat-icon></button>
+      <button mat-menu-item class="item">
+        <mat-icon>home</mat-icon>
+        <p>Home feed</p>
+      </button>
+      <button mat-menu-item class="item">
+        <mat-icon>person</mat-icon>
+        <p>Profile</p>
+      </button>
+      <button mat-menu-item class="item">
+        <mat-icon>settings</mat-icon>
+        <p>Settings</p>
+      </button>
     </mat-menu>
     <button [matMenuTriggerFor]="mainMenu" class="user" mat-menu-item>
       <span class="material-icons">person</span>
