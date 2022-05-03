@@ -1,9 +1,14 @@
 @media screen and (max-width: 1400px) {
   .todoDetails {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     font-size: 17px;
+    column-gap: 5px;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-around;
   }
 
   .todoDetails>div>div {
@@ -33,13 +38,13 @@
     width: 5em;
   }
 
-  p{
+  p {
     font-size: 0.5em;
     color: aquamarine;
     margin: 0;
   }
-  
-  progress{
+
+  progress {
     width: 100%;
   }
 
@@ -58,8 +63,14 @@
   }
 }
 
+@media screen and (max-width: 900px) {
+  .todoDetails {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media screen and (max-width: 600px) {
-  .todoDetails{
+  .todoDetails {
     font-size: 14px;
   }
 }
