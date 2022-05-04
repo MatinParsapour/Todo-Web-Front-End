@@ -1,9 +1,9 @@
 @media screen and (max-width: 1400px) {
   .userDetails {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(43em, 1fr));
     font-size: 17px;
+    margin-left: 22%;
   }
 
   .logout:visited {
