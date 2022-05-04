@@ -1,3 +1,4 @@
+import { UserComponent } from './components/user/user.component';
 import { ExploreComponent } from './components/explore/explore.component';
 import { SharedToDoComponent } from './components/shared-to-do/shared-to-do.component';
 import { SupportComponent } from './components/support/support.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'support', component: SupportComponent},
   {path: 'to-do', component: SharedToDoComponent},
   {path: 'explore', component: ExploreComponent},
+  {path: 'user/:id', component: UserComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: '**', component: NotFoundComponent},
 ];
