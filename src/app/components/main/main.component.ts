@@ -103,24 +103,6 @@ export class MainComponent implements OnInit {
     this.isShow = !this.isShow;
   }
 
-  openUserDialog() {
-    this.openUserComponent().subscribe((result) => {
-      if (result === 'open-phone-dialog') {
-        this.openPhoneNumberComponent().subscribe((result) => {
-          if (result === 'send-code') {
-            this.openCodeValidatorComponent().subscribe(() => {
-              this.openUserDialog();
-            });
-          } else {
-            this.openUserDialog();
-          }
-        });
-      } else if (result === 'reset-email') {
-        this.openGetResetEmailComponent();
-      }
-    });
-  }
-
   search(searchInputValue: any) {
     const result = [];
     for (const toDo of this.toDos) {
