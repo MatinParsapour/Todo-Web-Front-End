@@ -1,4 +1,4 @@
-<mat-dialog-content>
+
   <button class="logout" mat-button color="" matTooltip="logout" (click)="logout()">
     <mat-icon>logout</mat-icon>
   </button>
@@ -77,7 +77,8 @@
           <input disabled autocomplete="off" type="text" matInput placeholder="password" required
             [(ngModel)]="user.phoneNumber" [value]="user.phoneNumber">
         </mat-form-field>
-        <button mat-dialog-close="open-phone-dialog" mat-raised-button color="primary">
+        <button (click)="openPhoneNumberComponent()" mat-dialog-close="open-phone-dialog" mat-raised-button
+          color="primary">
           {{user.phoneNumber ? "Change phone number" : "Add phone number"}} <mat-icon>phone_number</mat-icon>
         </button>
       </div>
@@ -88,7 +89,8 @@
           <input disabled autocomplete="off" type="text" matInput placeholder="password" required
             [(ngModel)]="user.email" [value]="user.email">
         </mat-form-field>
-        <button mat-dialog-close="reset-email" mat-raised-button color="primary">Change email <mat-icon>email
+        <button (click)="openGetResetEmailComponent()" mat-dialog-close="reset-email" mat-raised-button
+          color="primary">Change email <mat-icon>email
           </mat-icon></button>
       </div>
     </div>
@@ -97,7 +99,5 @@
     <button mat-raised-button color="warn" [disabled]="isLoading" (click)="openDeleteAccountAggreement()">Delete account
       <mat-icon>delete_account</mat-icon></button>
   </div>
-
-</mat-dialog-content>
 
 <app-followers-followings #follows (update)="updateUser()"></app-followers-followings>
