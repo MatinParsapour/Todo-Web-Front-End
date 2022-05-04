@@ -1,6 +1,6 @@
+import { MatDialog } from '@angular/material/dialog';
 import { AggreementComponent } from './../aggreement/aggreement.component';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NotificationService } from './../../services/notification/notification.service';
 import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -25,17 +25,16 @@ export class UserComponent implements OnInit {
   requests: any;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) data: any,
     private userService: UserService,
     private notifier: NotificationService,
     private router: Router,
+    private activatedRouter: ActivatedRoute,
     private dialog: MatDialog
-  ) {
-    this.userId = data.userId
-    
+  ) {    
   }
 
   ngOnInit(): void {
+    this.userId = this.activatedRouter.snapshot.params['id']
     this.getUser();
     this.getRequests()
   }
@@ -180,7 +179,6 @@ export class UserComponent implements OnInit {
   logout(){
     localStorage.clear()
     this.router.navigateByUrl("/login")
-    this.dialog.closeAll()
   }
 
   openDeleteAccountAggreement(){
