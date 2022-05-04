@@ -124,6 +124,14 @@
     top: 0
   }
 
+  footer {
+    display: grid;
+    grid-template-columns: 20em 20em;
+    column-gap: 85px;
+    grid-template-rows: 40px 40px;
+    margin-top: 10px;
+  }
+
 
   .deleteButton:visited {
     border-style: none;
