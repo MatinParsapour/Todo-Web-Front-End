@@ -39,7 +39,7 @@
         <mat-icon>home</mat-icon>
         <p>Home feed</p>
       </button>
-      <button mat-menu-item class="item">
+      <button [routerLink]="'/user/' + userId" mat-menu-item class="item">
         <mat-icon>person</mat-icon>
         <p>Profile</p>
       </button>
