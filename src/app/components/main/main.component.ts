@@ -118,29 +118,6 @@ export class MainComponent implements OnInit {
     }
   }
 
-  openPhoneNumberComponent() {
-    return this.dialog.open(PhoneNumberComponent).afterClosed();
-  }
-
-  openCodeValidatorComponent() {
-    return this.dialog
-      .open(CodeValidatorComponent, { disableClose: true })
-      .afterClosed();
-  }
-
-  openUserComponent() {
-    return this.dialog
-      .open(UserComponent, {
-        width: '80em',
-        data: { userId: localStorage.getItem('username') },
-      })
-      .afterClosed();
-  }
-
-  openGetResetEmailComponent() {
-    return this.dialog.open(GetResetEmailComponent);
-  }
-
   addAndUpdateToDos() {
     if (this.toDo.task.trim() !== '') {
       this.mainService
