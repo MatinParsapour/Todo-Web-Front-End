@@ -5,7 +5,60 @@ div {
   font-size: 17px;
 }
 
-form{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&display=swap');
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 10px;
+  padding: 2rem;
+  background: #424242;
+}
+
+.container h1 {
+  margin: 1rem;
+}
+
+.codes {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 1rem;
+  flex-direction: row;
+}
+
+.code {
+  border-radius: 5px;
+  border: 1px solid #424242;
+  height: 120px;
+  width: 90px;
+  font-size: 70px;
+  margin: 0.3rem;
+  text-align: center;
+  font-weight: 300;
+  background-color: #424242;
+}
+
+.code:focus{
+  outline-color: #3b23a5;
+}
+
+.code::-webkit-outer-spin-button,
+.code::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.code:valid {
+  border-color: rgb(34, 197, 69);
+  background-color: rgba(34, 197, 69, 0.1);
+  box-shadow: 4px 4px 15px -7px rgba(0, 0, 0, 0.5);
+}
+
+form {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -21,7 +74,7 @@ div>mat-form-field {
   }
 }
 
-div > button[color="primary"]{
+div>button[color="primary"] {
   width: 90%;
 }
 
