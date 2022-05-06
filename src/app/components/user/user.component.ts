@@ -250,4 +250,8 @@ export class UserComponent implements OnInit {
   closeFullScreen() {
     this.fullScreen = false;
   }
+
+  backToMain(){
+    this.router.navigateByUrl('/main')
+  }
 }

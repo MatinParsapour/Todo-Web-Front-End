@@ -1,9 +1,19 @@
 @media screen and (max-width: 1400px) {
+  nav {
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+    column-gap: 2px;
+  }
+
   .userDetails {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(43em, 1fr));
     font-size: 17px;
     margin-left: 22%;
+  }
+
+  .back:hover{
+    color: #02022a;
   }
 
   .logout:visited {

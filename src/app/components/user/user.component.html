@@ -1,6 +1,12 @@
-<button class="logout" mat-button color="" matTooltip="logout" (click)="logout()">
-  <mat-icon>logout</mat-icon>
-</button>
+<nav>
+  <button class="back" mat-icon-button (click)="backToMain()" matTooltip="Back"><mat-icon>arrow_back</mat-icon></button>
+  <button class="logout" mat-icon-button color="" matTooltip="logout" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+  <button class="logout" mat-icon-button matTooltip="Delete account" (click)="openDeleteAccountAggreement()">
+    <mat-icon>delete_account</mat-icon>
+  </button>
+</nav>
 <app-image-viewer [imageUrl]="user.profileImageUrl" [open]="fullScreen" (click)="closeFullScreen()"
   (delete)="deleteProfile()">
 </app-image-viewer>
@@ -96,9 +102,6 @@
   <footer>
     <button mat-raised-button color="primary" [disabled]="isLoading" (click)="updateUser()">Save <mat-icon>save
       </mat-icon></button>
-    <button mat-raised-button color="warn" [disabled]="isLoading" (click)="openDeleteAccountAggreement()">Delete
-      account
-      <mat-icon>delete_account</mat-icon></button>
   </footer>
 </div>
 
