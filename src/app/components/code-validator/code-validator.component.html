@@ -1,10 +1,14 @@
 <div [class.spinner]="isLoading">
   <form>
-    <mat-form-field appearance="outline">
-      <mat-label>code</mat-label>
-      <input [readonly]="isLoading" type="number" [formControl]="code" matInput autocomplete="off">
-      <mat-error *ngIf="code.invalid">{{getCodeErrorMessages()}}</mat-error>
-    </mat-form-field>
+    <div class="container">
+      <div class="codes">
+        <input type="number" class="code" min="0" max="9" placeholder="0" required />
+        <input type="number" class="code" min="0" max="9" placeholder="0" required />
+        <input type="number" class="code" min="0" max="9" placeholder="0" required />
+        <input type="number" class="code" min="0" max="9" placeholder="0" required />
+        <input type="number" class="code" min="0" max="9" placeholder="0" required />
+      </div>
+    </div>
     <button type="submit" mat-raised-button [disabled]="isLoading || code.invalid" color="primary"
       (click)="validateCode()">Check
       code</button>
