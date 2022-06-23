@@ -5,6 +5,10 @@
     }
   }
 
+  .form-control{
+    height: 50px;
+  }
+
   .spinner:before {
     content: '';
     box-sizing: border-box;
@@ -33,6 +37,11 @@
     border-radius: 20px;
   }
 
+  .wrong {
+    color: red;
+    font-size: 10px;
+  }
+
   .links {
     margin-top: 2%;
     font-size: 17px;
@@ -40,8 +49,10 @@
 
   .submit-btn {
     position: absolute;
-    bottom: 2px;
-    width: 100%;
+    bottom: 13px;
+    width: 74%;
+    height: 50px;
+    margin-left: 12%;
   }
 
   mat-form-field {

@@ -4,24 +4,27 @@
     <app-sign-in></app-sign-in>
     <form class="forms" [formGroup]="user">
       <div class="firstPartForm">
-        <mat-form-field [color]="'warn'" @fade appearance="fill">
-          <mat-label>First name</mat-label>
-          <input [readonly]="isLoading" autocomplete="off" matInput placeholder="firstName" [formControl]="firstName"
-            required>
-          <mat-error *ngIf="firstName.invalid">{{getFirstNameErrorMessages()}}</mat-error>
-        </mat-form-field>
-        <mat-form-field @fade appearance="fill">
-          <mat-label>Last name</mat-label>
-          <input [readonly]="isLoading" autocomplete="off" matInput placeholder="lastName" [formControl]="lastName"
-            required>
-          <mat-error *ngIf="lastName.invalid">{{getLastNameErrorMessages()}}</mat-error>
-        </mat-form-field>
-        <mat-form-field @fade appearance="fill">
-          <mat-label>Email</mat-label>
-          <input [readonly]="isLoading" autocomplete="off" matInput placeholder="pat@example.com" [formControl]="email"
-            required>
-          <mat-error *ngIf="email.invalid">{{getEmailErrorMessages()}}</mat-error>
-        </mat-form-field>
+        <div @fade class="mb-3">
+          <input [readonly]="isLoading" autocomplete="off" type="text" [formControl]="firstName" required
+            class="form-control"
+            placeholder="First name">
+          </div>
+          <div @fade class="wrong" *ngIf="firstName.invalid && firstName.touched">Please enter your first name</div>
+          <div @fade class="mb-3">
+            <input [readonly]="isLoading" autocomplete="off" type="text" [formControl]="lastName" required
+            class="form-control"
+            placeholder="Last name">
+          </div>
+          <div [@fade]="lastName.invalid && lastName.touched" class="wrong" *ngIf="lastName.invalid && lastName.touched">Please enter your last name</div>
+        <div @fade class="mb-3">
+          <input [readonly]="isLoading" autocomplete="off" type="email" [formControl]="email" required
+            class="form-control"
+            placeholder="Email">
+            <div class="wrong" *ngIf="email.invalid">
+              <div *ngIf="email.required">Please enter your email</div>
+              <div *ngIf="email.errors['emailIsDoplicate']">The email already exists</div>
+            </div>
+        </div>
       </div>
       <div class="secondPartForm">
         <mat-form-field @fade appearance="fill">
