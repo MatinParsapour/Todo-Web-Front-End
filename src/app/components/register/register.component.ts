@@ -1,3 +1,4 @@
+import { UsernameValidator } from './username.validator';
 import { NotificationService } from './../../services/notification/notification.service';
 import { Router } from '@angular/router';
 import { RegisterService } from './../../services/register/register.service';
@@ -29,6 +30,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     formBuilder: FormBuilder,
     private emailValidator: EmailValidator,
+    private usernameValidator: UsernameValidator,
     private router: Router,
     private registerService: RegisterService,
     private notifier: NotificationService
@@ -42,6 +44,11 @@ export class RegisterComponent implements OnInit {
           '',
           [Validators.required, Validators.email],
           this.emailValidator.validate
+        ),
+        username: new FormControl(
+          '',
+          [Validators.required],
+          this.usernameValidator.validate
         ),
         password: new FormControl('', [
           Validators.required,

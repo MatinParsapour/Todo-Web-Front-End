@@ -25,13 +25,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: url("../../../assets/images/jacob-dyer-R3ut7WOmeto-unsplash.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100%;
+    box-shadow: 0 0 34px 0px #525252;
+    width: 38%;
+    height: 80%;
+    align-self: center;
     align-items: center;
-    border-style: solid;
-    border-color: rgb(255, 255, 255);
     border-radius: 20px;
   }
 
@@ -40,15 +38,46 @@
     font-size: 17px;
   }
 
-  mat-form-field{
+  .submit-btn {
+    position: absolute;
+    bottom: 2px;
+    width: 100%;
+  }
+
+  mat-form-field {
     font-size: 12px;
+    padding: 10px;
+  }
+
+  .forms {
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 6% auto;
+    background: #fff;
+    padding: 5px;
+    overflow: hidden;
   }
 
   .form>div {
     display: flex;
   }
 
-  ngx-recaptcha2{
+  .firstPartForm {
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+    left: 50px;
+  }
+
+  .secondPartForm {
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+    left: 450px;
+  }
+
+  ngx-recaptcha2 {
     display: flex;
     justify-content: center;
     margin-bottom: 3%;
@@ -76,14 +105,13 @@
     font-size: 13px;
   }
 
-  .container> div > img:hover{
+  .container>div>img:hover {
     cursor: pointer;
   }
 
   .pictureContainer {
-    background-image: url("../../../assets/images/Cloud.jpg");
-    width: 200%;
-    max-width: 200%;
+    position: absolute;
+    padding-left: 24em;
     height: auto;
     padding-top: 10em;
     background-size: cover;

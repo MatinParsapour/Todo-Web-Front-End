@@ -2,43 +2,82 @@
   <div class="container">
     <span @fade>Welcome</span>
     <app-sign-in></app-sign-in>
-    <form class="form" [formGroup]="user">
-      <mat-form-field @fade appearance="fill">
-        <mat-label>First name</mat-label>
-        <input [readonly]="isLoading" autocomplete="off" matInput placeholder="firstName" [formControl]="firstName"
-          required>
-        <mat-error *ngIf="firstName.invalid">{{getFirstNameErrorMessages()}}</mat-error>
-      </mat-form-field>
-      <mat-form-field @fade appearance="fill">
-        <mat-label>Last name</mat-label>
-        <input [readonly]="isLoading" autocomplete="off" matInput placeholder="lastName" [formControl]="lastName"
-          required>
-        <mat-error *ngIf="lastName.invalid">{{getLastNameErrorMessages()}}</mat-error>
-      </mat-form-field>
-      <mat-form-field @fade appearance="fill">
-        <mat-label>Email</mat-label>
-        <input [readonly]="isLoading" autocomplete="off" matInput placeholder="pat@example.com" [formControl]="email"
-          required>
-        <mat-error *ngIf="email.invalid">{{getEmailErrorMessages()}}</mat-error>
-      </mat-form-field>
-      <mat-form-field @fade appearance="fill">
-        <mat-label>Password</mat-label>
-        <input [readonly]="isLoading" autocomplete="off" type="password" matInput placeholder="password"
-          [formControl]="password" required>
-        <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
-      </mat-form-field>
-      <mat-form-field @fade appearance="fill">
-        <mat-label>Re enter password</mat-label>
-        <input [readonly]="isLoading" autocomplete="off" type="password" matInput placeholder="reTypePassword"
-          [formControl]="reTypePassword" required>
-        <mat-error *ngIf="password.invalid"> {{getPasswordErrorMessage()}} </mat-error>
-        <mat-error *ngIf="reTypePassword.touched"> Re enter your password </mat-error>
-      </mat-form-field>
-      <mat-error *ngIf="reTypePassword?.valid && user.invalid && user.errors?.['passwordsDoNotMatch']">Passwords don't
-        match</mat-error>
+    <form class="forms" [formGroup]="user">
+      <div class="firstPartForm">
+        <mat-form-field [color]="'warn'" @fade appearance="fill">
+          <mat-label>First name</mat-label>
+          <input [readonly]="isLoading" autocomplete="off" matInput placeholder="firstName" [formControl]="firstName"
+            required>
+          <mat-error *ngIf="firstName.invalid">{{getFirstNameErrorMessages()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field @fade appearance="fill">
+          <mat-label>Last name</mat-label>
+          <input [readonly]="isLoading" autocomplete="off" matInput placeholder="lastName" [formControl]="lastName"
+            required>
+          <mat-error *ngIf="lastName.invalid">{{getLastNameErrorMessages()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field @fade appearance="fill">
+          <mat-label>Email</mat-label>
+          <input [readonly]="isLoading" autocomplete="off" matInput placeholder="pat@example.com" [formControl]="email"
+            required>
+          <mat-error *ngIf="email.invalid">{{getEmailErrorMessages()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="secondPartForm">
+        <mat-form-field @fade appearance="fill">
+          <mat-label>Username</mat-label>
+          <input [readonly]="isLoading" type="text" matInput placeholder="username" [formControl]="username" required>
+          <mat-error *ngIf="username.invalid">{{getPasswordErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field @fade appearance="fill">
+          <mat-label>Password</mat-label>
+          <input [readonly]="isLoading" autocomplete="off" type="password" matInput placeholder="password"
+            [formControl]="password" required>
+          <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <div class="pictureContainer">
+          <div @fade *ngIf="password.touched && password.invalid">
+            <h6 [class.wrong]="!isMinimum" [class.ok]="isMinimum">
+              <span class="material-icons" *ngIf="!isMinimum">error</span>
+              <span class="material-icons" *ngIf="isMinimum">done</span>
+              At least 10 characters
+            </h6>
+            <h6 [class.wrong]="!hasNumber" [class.ok]="hasNumber">
+              <span class="material-icons" *ngIf="!hasNumber">error</span>
+              <span class="material-icons" *ngIf="hasNumber">done</span>
+              Contains at least 2 numbers
+            </h6>
+            <h6 [class.wrong]="!hasSpecialCharacters" [class.ok]="hasSpecialCharacters">
+              <span class="material-icons" *ngIf="!hasSpecialCharacters">error</span>
+              <span class="material-icons" *ngIf="hasSpecialCharacters">done</span>
+              Contains at least 2 special characters
+            </h6>
+            <h6 [class.wrong]="!hasLowerCase" [class.ok]="hasLowerCase">
+              <span class="material-icons" *ngIf="!hasLowerCase">error</span>
+              <span class="material-icons" *ngIf="hasLowerCase">done</span>
+              Contians at least 2 lowercase
+            </h6>
+            <h6 [class.wrong]="!hasUpperCase" [class.ok]="hasUpperCase">
+              <span class="material-icons" *ngIf="!hasUpperCase">error</span>
+              <span class="material-icons" *ngIf="hasUpperCase">done</span>
+              Contians at least 2 uppercase
+            </h6>
+          </div>
+          <mat-form-field @fade appearance="fill">
+            <mat-label>Re enter password</mat-label>
+            <input [readonly]="isLoading" autocomplete="off" type="password" matInput placeholder="reTypePassword"
+              [formControl]="reTypePassword" required>
+            <mat-error *ngIf="password.invalid"> {{getPasswordErrorMessage()}} </mat-error>
+            <mat-error *ngIf="reTypePassword.touched"> Re enter your password </mat-error>
+          </mat-form-field>
+          <mat-error *ngIf="reTypePassword?.valid && user.invalid && user.errors?.['passwordsDoNotMatch']">
+            Passwords don't
+            match</mat-error>
+        </div>
+      </div>
       <ngx-recaptcha2 @fade [siteKey]="siteKey" [formControl]="recaptcha">
       </ngx-recaptcha2>
-      <button @fade type="submit" [class.spinner]="isLoading" mat-raised-button color="primary"
+      <button class="submit-btn" @fade type="submit" [class.spinner]="isLoading" mat-raised-button color="primary"
         [disabled]="isLoading || user.invalid" (click)="registerUser()">Sign up
       </button>
     </form>
@@ -46,33 +85,5 @@
       Alrady have an account? <a routerLink="/login">log in</a>
     </div>
   </div>
-  <div class="pictureContainer">
-    <div @fade *ngIf="password.touched && password.invalid">
-      <h6 [class.wrong]="!isMinimum" [class.ok]="isMinimum">
-        <span class="material-icons" *ngIf="!isMinimum">error</span>
-        <span class="material-icons" *ngIf="isMinimum">done</span>
-        At least 10 characters
-      </h6>
-      <h6 [class.wrong]="!hasNumber" [class.ok]="hasNumber">
-        <span class="material-icons" *ngIf="!hasNumber">error</span>
-        <span class="material-icons" *ngIf="hasNumber">done</span>
-        Contains at least 2 numbers
-      </h6>
-      <h6 [class.wrong]="!hasSpecialCharacters" [class.ok]="hasSpecialCharacters">
-        <span class="material-icons" *ngIf="!hasSpecialCharacters">error</span>
-        <span class="material-icons" *ngIf="hasSpecialCharacters">done</span>
-        Contains at least 2 special characters
-      </h6>
-      <h6 [class.wrong]="!hasLowerCase" [class.ok]="hasLowerCase">
-        <span class="material-icons" *ngIf="!hasLowerCase">error</span>
-        <span class="material-icons" *ngIf="hasLowerCase">done</span>
-        Contians at least 2 lowercase
-      </h6>
-      <h6 [class.wrong]="!hasUpperCase" [class.ok]="hasUpperCase">
-        <span class="material-icons" *ngIf="!hasUpperCase">error</span>
-        <span class="material-icons" *ngIf="hasUpperCase">done</span>
-        Contians at least 2 uppercase
-      </h6>
-    </div>
-  </div>
+
 </div>
