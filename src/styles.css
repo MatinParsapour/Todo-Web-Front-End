@@ -3,6 +3,7 @@
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 @import "~angular-notifier/styles";
 @import url('http://fonts.cdnfonts.com/css/amazon');
+@import '~bootstrap/dist/css/bootstrap.css';
 
 html, body {
     height: 100%;
