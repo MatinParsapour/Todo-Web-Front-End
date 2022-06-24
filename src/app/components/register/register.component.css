@@ -5,7 +5,7 @@
     }
   }
 
-  .form-control{
+  .form-control {
     height: 50px;
     font-size: 20px;
     font-family: 'Sofia';
@@ -119,13 +119,10 @@
     cursor: pointer;
   }
 
-  .pictureContainer {
+  .passwordErrors {
     position: absolute;
-    padding-left: 24em;
     height: auto;
-    padding-top: 10em;
-    background-size: cover;
-    background-repeat: no-repeat;
+    left: 65em;
   }
 
   .container>span {
