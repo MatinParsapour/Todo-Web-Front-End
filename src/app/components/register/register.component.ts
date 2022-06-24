@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
   user: FormGroup;
   siteKey: string = '6Lc7ct0eAAAAAD0Jqa_1Eih2MiucxWAGsDpRpOVn';
   onSignIn = 'onSignIn';
+  isSecondForm = false;
 
   constructor(
     formBuilder: FormBuilder,
@@ -75,21 +76,32 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
-    this.isLoading = true;
-    this.registerService.create('add-user', this.user.value).subscribe(
-      (response: any) => {
-        this.notifier.notify(
-          NotificationType.SUCCESS,
-          'A verificaiton email sent to your email'
-        );
-        this.router.navigateByUrl('/login');
-        this.isLoading = false;
-      },
-      (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
-        this.isLoading = false;
+    if (!this.isSecondForm) {
+      var fpf = document.getElementById('fpf');
+      var spf = document.getElementById('spf');
+
+      if (fpf != null && spf != null) {
+        spf.style.left = '35px';
+        fpf.style.left = '-450px';
       }
-    );
+      this.isSecondForm = true;
+    } else {
+      this.isLoading = true;
+      this.registerService.create('add-user', this.user.value).subscribe(
+        (response: any) => {
+          this.notifier.notify(
+            NotificationType.SUCCESS,
+            'A verificaiton email sent to your email'
+          );
+          this.router.navigateByUrl('/login');
+          this.isLoading = false;
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(NotificationType.ERROR, error.error);
+          this.isLoading = false;
+        }
+      );
+    }
   }
 
   getFirstNameErrorMessages() {
