@@ -80,7 +80,7 @@ export class RegisterComponent implements OnInit {
     var spf = document.getElementById('spf');
 
     if (fpf != null && spf != null) {
-      spf.style.left = '35px';
+      spf.style.left = '50px';
       fpf.style.left = '-450px';
     }
     this.isSecondForm = true;
