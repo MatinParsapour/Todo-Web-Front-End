@@ -37,21 +37,18 @@
           *ngIf="username.touched && username.invalid && username.errors.usernameisDoplicate">The
           username already exists</div>
         <div @fade class="mb-3">
-          <input [readonly]="isLoading" autocomplete="off" type="text" [formControl]="password" required
+          <input [readonly]="isLoading" autocomplete="off" type="password" [formControl]="password" required
             class="form-control" placeholder="Password">
         </div>
-        <div @fade class="alert alert-danger" *ngIf="password.invalid && password.touched">Please enter your
+        <div @fade class="alert alert-danger" *ngIf="password.invalid && password.touched && password.errors.required">Please enter your
           password</div>
-        <mat-form-field @fade appearance="fill">
-          <mat-label>Re enter password</mat-label>
-          <input [readonly]="isLoading" autocomplete="off" type="password" matInput placeholder="reTypePassword"
-            [formControl]="reTypePassword" required>
-          <mat-error *ngIf="password.invalid"> {{getPasswordErrorMessage()}} </mat-error>
-          <mat-error *ngIf="reTypePassword.touched"> Re enter your password </mat-error>
-        </mat-form-field>
-        <mat-error *ngIf="reTypePassword?.valid && user.invalid && user.errors?.['passwordsDoNotMatch']">
-          Passwords don't
-          match</mat-error>
+          <div @fade class="mb-3">
+            <input [readonly]="isLoading" autocomplete="off" type="password" [formControl]="reTypePassword" required
+            class="form-control" placeholder="Retype password">
+            <div @fade class="alert alert-danger" *ngIf="reTypePassword.invalid && reTypePassword.touched">Please enter your
+              password</div>
+          </div>
+          <div *ngIf="reTypePassword.valid && user.invalid && user.errors?.['passwordsDoNotMatch']">Passwords don't match</div>
         <div class="pictureContainer">
           <div @fade *ngIf="password.touched && password.invalid">
             <h6 [class.wrong]="!isMinimum" [class.ok]="isMinimum">
@@ -84,7 +81,10 @@
       </div>
       <ngx-recaptcha2 @fade [siteKey]="siteKey" [formControl]="recaptcha">
       </ngx-recaptcha2>
-      <button class="submit-btn" @fade type="submit" [class.spinner]="isLoading" mat-raised-button color="primary"
+      <button *ngIf="!isSecondForm" class="submit-btn" @fade type="button" mat-raised-button color="primary"
+        [disabled]="email.invalid || firstName.invalid || lastName.invalid" (click)="nextForm()">Next
+      </button>
+      <button *ngIf="isSecondForm" class="submit-btn" @fade type="submit" [class.spinner]="isLoading" mat-raised-button color="primary"
         [disabled]="isLoading || user.invalid" (click)="registerUser()">Sign up
       </button>
     </form>
