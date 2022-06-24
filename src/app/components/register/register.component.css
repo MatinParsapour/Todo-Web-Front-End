@@ -85,10 +85,9 @@
   }
 
   ngx-recaptcha2 {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 3%;
-    width: 100%;
+    bottom: 67px;
+    position: absolute;
+    left: 36px;
   }
 
   .form>button {
