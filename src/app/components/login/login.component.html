@@ -3,22 +3,27 @@
     <span @fade>Welcome</span>
     <app-sign-in></app-sign-in>
     <form class="logInForm" [formGroup]="user">
-      <mat-form-field @fade appearance="outline">
-        <mat-label>Username</mat-label>
-        <input [formControl]="username" matInput autocomplete="off">
-        <mat-error *ngIf="username.invalid">{{getUsernameErrorMessages()}}</mat-error>
-      </mat-form-field>
-      <mat-form-field @fade appearance="outline">
-        <mat-label>Password</mat-label>
-        <input [formControl]="password" matInput autocomplete="off" type="password">
-        <mat-error *ngIf="password.invalid">{{getPasswordErrorMessages()}}</mat-error>
-      </mat-form-field>
+      <div class="input">
+        <mat-form-field @fade appearance="outline">
+          <mat-label>Username</mat-label>
+          <input [formControl]="username" matInput autocomplete="off">
+          <mat-error *ngIf="username.invalid">{{getUsernameErrorMessages()}}</mat-error>
+        </mat-form-field>
+        <span @fade class="forget">Forget username?</span>
+      </div>
+      <div class="input">
+        <mat-form-field @fade appearance="outline">
+          <mat-label>Password</mat-label>
+          <input [formControl]="password" matInput autocomplete="off" type="password">
+          <mat-error *ngIf="password.invalid">{{getPasswordErrorMessages()}}</mat-error>
+        </mat-form-field>
+        <span @fade class="forget" (click)="openForgetPassword()">Forget password?</span>
+      </div>
       <ngx-recaptcha2 @fade #captchaElem [siteKey]="siteKey" [formControl]="recaptcha">
       </ngx-recaptcha2>
       <button @fade [disabled]="user.invalid || isLoading" [class.spinner]="isLoading" (click)="login()"
         mat-raised-button color="primary">Login</button>
     </form>
-    <button @fade mat-raised-button color="accent" (click)="openForgetPassword()">Forget password</button>
     <div @fade class="d-flex justify-content-center links">
       Don't have an account? <a color="primary" routerLink="/register"> Sign Up</a>
     </div>
