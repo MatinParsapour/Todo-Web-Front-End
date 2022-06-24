@@ -84,18 +84,6 @@
     padding: 37px;
   }
 
-
-  .pictureContainer {
-    background-image: url("../../../assets/images/Cloud.jpg");
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    transform: scaleX(-1);
-    padding-top: 10em;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
   .logInForm>mat-form-field {
     width: 100%;
   }
