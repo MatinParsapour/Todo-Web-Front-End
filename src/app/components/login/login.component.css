@@ -70,11 +70,6 @@
     font-size: 17px;
   }
 
-  .container>button {
-    margin-top: 5%;
-    width: 100%;
-  }
-
   .container>div>img:hover {
     cursor: pointer;
   }
@@ -86,6 +81,27 @@
 
   .logInForm>mat-form-field {
     width: 100%;
+  }
+
+  .input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .forget {
+    padding-bottom: 16px;
+    margin-left: 1em;
+  }
+
+  .forget:hover {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .forget:active {
+    color: black;
   }
 
   ngx-recaptcha2 {
