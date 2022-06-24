@@ -1,7 +1,7 @@
 <div class="main">
   <div class="container">
     <span @fade>Welcome</span>
-    <app-sign-in></app-sign-in>
+    <app-sign-in @fade></app-sign-in>
     <form class="forms" [formGroup]="user">
       <div class="firstPartForm">
         <div @fade class="mb-3">
@@ -9,22 +9,21 @@
             class="form-control"
             placeholder="First name">
           </div>
-          <div @fade class="wrong" *ngIf="firstName.invalid && firstName.touched">Please enter your first name</div>
+          <div @fade class="alert alert-danger" *ngIf="firstName.invalid && firstName.touched">Please enter your first name</div>
           <div @fade class="mb-3">
             <input [readonly]="isLoading" autocomplete="off" type="text" [formControl]="lastName" required
             class="form-control"
             placeholder="Last name">
           </div>
-          <div [@fade]="lastName.invalid && lastName.touched" class="wrong" *ngIf="lastName.invalid && lastName.touched">Please enter your last name</div>
+          <div [@fade]="lastName.invalid && lastName.touched" class="alert alert-danger" *ngIf="lastName.invalid && lastName.touched">Please enter your last name</div>
         <div @fade class="mb-3">
           <input [readonly]="isLoading" autocomplete="off" type="email" [formControl]="email" required
             class="form-control"
             placeholder="Email">
-            <div class="wrong" *ngIf="email.invalid">
-              <div *ngIf="email.required">Please enter your email</div>
-              <div *ngIf="email.errors['emailIsDoplicate']">The email already exists</div>
-            </div>
-        </div>
+          </div>
+          <div class="alert alert-danger"  *ngIf="email.touched && email.invalid && email.errors.required">Please enter
+            your email</div>
+          <div class="alert alert-danger" *ngIf="email.touched && email.invalid && email.errors.emailIsDoplicate">The email already exists</div>
       </div>
       <div class="secondPartForm">
         <mat-form-field @fade appearance="fill">
