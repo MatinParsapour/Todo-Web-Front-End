@@ -3,40 +3,55 @@
     <span @fade>Welcome</span>
     <app-sign-in @fade></app-sign-in>
     <form class="forms" [formGroup]="user">
-      <div class="firstPartForm">
+      <div id="fpf" class="firstPartForm">
         <div @fade class="mb-3">
           <input [readonly]="isLoading" autocomplete="off" type="text" [formControl]="firstName" required
-            class="form-control"
-            placeholder="First name">
-          </div>
-          <div @fade class="alert alert-danger" *ngIf="firstName.invalid && firstName.touched">Please enter your first name</div>
-          <div @fade class="mb-3">
-            <input [readonly]="isLoading" autocomplete="off" type="text" [formControl]="lastName" required
-            class="form-control"
-            placeholder="Last name">
-          </div>
-          <div [@fade]="lastName.invalid && lastName.touched" class="alert alert-danger" *ngIf="lastName.invalid && lastName.touched">Please enter your last name</div>
+            class="form-control" placeholder="First name">
+        </div>
+        <div @fade class="alert alert-danger" *ngIf="firstName.invalid && firstName.touched">Please enter your first
+          name</div>
+        <div @fade class="mb-3">
+          <input [readonly]="isLoading" autocomplete="off" type="text" [formControl]="lastName" required
+            class="form-control" placeholder="Last name">
+        </div>
+        <div [@fade]="lastName.invalid && lastName.touched" class="alert alert-danger"
+          *ngIf="lastName.invalid && lastName.touched">Please enter your last name</div>
         <div @fade class="mb-3">
           <input [readonly]="isLoading" autocomplete="off" type="email" [formControl]="email" required
-            class="form-control"
-            placeholder="Email">
-          </div>
-          <div class="alert alert-danger"  *ngIf="email.touched && email.invalid && email.errors.required">Please enter
-            your email</div>
-          <div class="alert alert-danger" *ngIf="email.touched && email.invalid && email.errors.emailIsDoplicate">The email already exists</div>
+            class="form-control" placeholder="Email">
+        </div>
+        <div class="alert alert-danger" *ngIf="email.touched && email.invalid && email.errors.required">Please enter
+          your email</div>
+        <div class="alert alert-danger" *ngIf="email.touched && email.invalid && email.errors.emailIsDoplicate">The
+          email already exists</div>
       </div>
-      <div class="secondPartForm">
+      <div id="spf" class="secondPartForm">
+        <div @fade class="mb-3">
+          <input [readonly]="isLoading" autocomplete="off" type="text" [formControl]="username" required
+            class="form-control" placeholder="Username">
+        </div>
+        <div class="alert alert-danger" *ngIf="username.touched && username.invalid && username.errors.required">Please
+          enter
+          your username</div>
+        <div class="alert alert-danger"
+          *ngIf="username.touched && username.invalid && username.errors.usernameisDoplicate">The
+          username already exists</div>
+        <div @fade class="mb-3">
+          <input [readonly]="isLoading" autocomplete="off" type="text" [formControl]="password" required
+            class="form-control" placeholder="Password">
+        </div>
+        <div @fade class="alert alert-danger" *ngIf="password.invalid && password.touched">Please enter your
+          password</div>
         <mat-form-field @fade appearance="fill">
-          <mat-label>Username</mat-label>
-          <input [readonly]="isLoading" type="text" matInput placeholder="username" [formControl]="username" required>
-          <mat-error *ngIf="username.invalid">{{getPasswordErrorMessage()}}</mat-error>
+          <mat-label>Re enter password</mat-label>
+          <input [readonly]="isLoading" autocomplete="off" type="password" matInput placeholder="reTypePassword"
+            [formControl]="reTypePassword" required>
+          <mat-error *ngIf="password.invalid"> {{getPasswordErrorMessage()}} </mat-error>
+          <mat-error *ngIf="reTypePassword.touched"> Re enter your password </mat-error>
         </mat-form-field>
-        <mat-form-field @fade appearance="fill">
-          <mat-label>Password</mat-label>
-          <input [readonly]="isLoading" autocomplete="off" type="password" matInput placeholder="password"
-            [formControl]="password" required>
-          <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
-        </mat-form-field>
+        <mat-error *ngIf="reTypePassword?.valid && user.invalid && user.errors?.['passwordsDoNotMatch']">
+          Passwords don't
+          match</mat-error>
         <div class="pictureContainer">
           <div @fade *ngIf="password.touched && password.invalid">
             <h6 [class.wrong]="!isMinimum" [class.ok]="isMinimum">
@@ -65,16 +80,6 @@
               Contians at least 2 uppercase
             </h6>
           </div>
-          <mat-form-field @fade appearance="fill">
-            <mat-label>Re enter password</mat-label>
-            <input [readonly]="isLoading" autocomplete="off" type="password" matInput placeholder="reTypePassword"
-              [formControl]="reTypePassword" required>
-            <mat-error *ngIf="password.invalid"> {{getPasswordErrorMessage()}} </mat-error>
-            <mat-error *ngIf="reTypePassword.touched"> Re enter your password </mat-error>
-          </mat-form-field>
-          <mat-error *ngIf="reTypePassword?.valid && user.invalid && user.errors?.['passwordsDoNotMatch']">
-            Passwords don't
-            match</mat-error>
         </div>
       </div>
       <ngx-recaptcha2 @fade [siteKey]="siteKey" [formControl]="recaptcha">
