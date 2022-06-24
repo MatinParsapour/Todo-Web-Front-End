@@ -62,7 +62,7 @@
     <div @fade class="d-flex justify-content-center links">
       Already have an account? <a routerLink="/login">log in</a>
     </div>
-    <div class="pictureContainer">
+    <div class="passwordErrors">
       <div @fade *ngIf="password.touched && password.invalid">
         <h6 [class.wrong]="!isMinimum" [class.ok]="isMinimum">
           <span class="material-icons" *ngIf="!isMinimum">error</span>
