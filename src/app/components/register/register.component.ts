@@ -104,50 +104,6 @@ export class RegisterComponent implements OnInit {
       );
   }
 
-  getFirstNameErrorMessages() {
-    if (this.firstName.hasError('required')) {
-      return 'First name is manadatory';
-    }
-    return null;
-  }
-
-  getLastNameErrorMessages() {
-    if (this.lastName.hasError('required')) {
-      return 'Last name is manadatory';
-    }
-    return null;
-  }
-
-  getEmailErrorMessages() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-    if (this.email.hasError('emailIsDoplicate')) {
-      return 'The email is taken';
-    }
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
-
-  getUsernameErrorMessages() {
-    if (this.username.hasError('required')) {
-      return 'Username is mandatory';
-    }
-    if (this.username.hasError('usernameisDoplicate')) {
-      return this.username.value + " isn't available";
-    }
-    return 5 - this.username.value.length + ' more charater(s)';
-  }
-
-  getPasswordErrorMessage() {
-    if (this.password.hasError('required')) {
-      return 'Password is mandatory';
-    }
-    if (this.password.hasError('passwordIsWeak')) {
-      return 'Create a stronger password';
-    }
-    return 10 - this.password?.value.length + ' more character(s)';
-  }
-
   get firstName(): any {
     return this.user.get('firstName');
   }
