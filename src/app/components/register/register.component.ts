@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
-    if (!this.isSecondForm) {
+    if (!this.isSecondForm && this.email.value && this.firstName.value && this.lastName.value) {
       var fpf = document.getElementById('fpf');
       var spf = document.getElementById('spf');
 
