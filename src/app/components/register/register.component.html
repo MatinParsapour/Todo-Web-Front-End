@@ -7,23 +7,23 @@
         <div @fade class="mb-3">
           <input [readonly]="isLoading" autocomplete="off" type="text" [formControl]="firstName" required
             class="form-control" placeholder="First name">
+            <div @fade class="alert alert-danger" *ngIf="firstName.invalid && firstName.touched">Please enter your first
+              name</div>
         </div>
-        <div @fade class="alert alert-danger" *ngIf="firstName.invalid && firstName.touched">Please enter your first
-          name</div>
         <div @fade class="mb-3">
           <input [readonly]="isLoading" autocomplete="off" type="text" [formControl]="lastName" required
             class="form-control" placeholder="Last name">
+            <div [@fade]="lastName.invalid && lastName.touched" class="alert alert-danger"
+              *ngIf="lastName.invalid && lastName.touched">Please enter your last name</div>
         </div>
-        <div [@fade]="lastName.invalid && lastName.touched" class="alert alert-danger"
-          *ngIf="lastName.invalid && lastName.touched">Please enter your last name</div>
         <div @fade class="mb-3">
           <input [readonly]="isLoading" autocomplete="off" type="email" [formControl]="email" required
             class="form-control" placeholder="Email">
+            <div @fade class="alert alert-danger" *ngIf="email.touched && email.invalid && email.errors.required">Please enter
+              your email</div>
+            <div @fade class="alert alert-danger" *ngIf="email.touched && email.invalid && email.errors.emailIsDoplicate">The
+              email already exists</div>
         </div>
-        <div class="alert alert-danger" *ngIf="email.touched && email.invalid && email.errors.required">Please enter
-          your email</div>
-        <div class="alert alert-danger" *ngIf="email.touched && email.invalid && email.errors.emailIsDoplicate">The
-          email already exists</div>
       </div>
       <div id="spf" class="secondPartForm">
         <div @fade class="mb-3">
