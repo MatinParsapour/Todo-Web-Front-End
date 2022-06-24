@@ -41,9 +41,8 @@ export class LoginComponent implements OnInit {
     private socialAuthService: SocialAuthService
   ) {
     this.user = fb.group({
-      emailOrPhone: new FormControl('', [
+      userName: new FormControl('', [
         Validators.required,
-        Validators.minLength(5),
       ]),
       password: new FormControl('', [
         Validators.required,
@@ -103,10 +102,10 @@ export class LoginComponent implements OnInit {
   }
 
   getUsernameErrorMessages() {
-    if (this.emailOrPhone.hasError('minlength')) {
-      return 5 - this.emailOrPhone.value.length + ' more character(s)';
+    if (this.username.hasError('minlength')) {
+      return 5 - this.username.value.length + ' more character(s)';
     }
-    if (this.emailOrPhone.hasError('required')) {
+    if (this.username.hasError('required')) {
       return 'Username is required';
     }
     return null;
@@ -126,8 +125,8 @@ export class LoginComponent implements OnInit {
     this.dialog.open(ForgetPasswordComponent);
   }
 
-  get emailOrPhone(): any {
-    return this.user.get('emailOrPhone');
+  get username(): any {
+    return this.user.get('userName');
   }
   get password(): any {
     return this.user.get('password');
