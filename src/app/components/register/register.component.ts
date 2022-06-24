@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
           [Validators.required, Validators.email],
           this.emailValidator.validate
         ),
-        username: new FormControl(
+        userName: new FormControl(
           '',
           [Validators.required],
           this.usernameValidator.validate
@@ -75,17 +75,18 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  registerUser() {
-    if (!this.isSecondForm && this.email.value && this.firstName.value && this.lastName.value) {
-      var fpf = document.getElementById('fpf');
-      var spf = document.getElementById('spf');
+  nextForm() {
+    var fpf = document.getElementById('fpf');
+    var spf = document.getElementById('spf');
 
-      if (fpf != null && spf != null) {
-        spf.style.left = '35px';
-        fpf.style.left = '-450px';
-      }
-      this.isSecondForm = true;
-    } else {
+    if (fpf != null && spf != null) {
+      spf.style.left = '35px';
+      fpf.style.left = '-450px';
+    }
+    this.isSecondForm = true;
+  }
+
+  registerUser() {
       this.isLoading = true;
       this.registerService.create('add-user', this.user.value).subscribe(
         (response: any) => {
@@ -101,7 +102,6 @@ export class RegisterComponent implements OnInit {
           this.isLoading = false;
         }
       );
-    }
   }
 
   getFirstNameErrorMessages() {
