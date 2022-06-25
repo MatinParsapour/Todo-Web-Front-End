@@ -11,6 +11,7 @@ import { User } from 'src/app/classes/user';
 import { PhoneNumberComponent } from '../phone-number/phone-number.component';
 import { CodeValidatorComponent } from '../code-validator/code-validator.component';
 import { GetResetEmailComponent } from '../get-reset-email/get-reset-email.component';
+import { AccessLevel } from 'src/app/enum/access-level';
 
 @Component({
   selector: 'app-user',
@@ -147,6 +148,10 @@ export class UserComponent implements OnInit {
       );
   }
 
+  changeAccessLevel(value: any){
+    this.user.accessLevel = value.value
+  }
+
   updateUser() {
     let date = new Date(this.user.birthDay);
     let pipe: DatePipe = new DatePipe('en-US');
@@ -253,5 +258,17 @@ export class UserComponent implements OnInit {
 
   backToMain(){
     this.router.navigateByUrl('/main')
+  }
+
+  isPrivate(): boolean {
+    return this.user.accessLevel.toString() == AccessLevel[AccessLevel.PRIVATE]
+  }
+
+  isProtected(): boolean {
+    return this.user.accessLevel.toString() == AccessLevel[AccessLevel.PROTECTED]
+  }
+
+  isPublic(): boolean {
+    return this.user.accessLevel.toString() == AccessLevel[AccessLevel.PUBLIC]
   }
 }
