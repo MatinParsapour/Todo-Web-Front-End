@@ -1,3 +1,4 @@
+import { AccessLevel } from './../enum/access-level';
 export class User {
   id: number = 0;
   firstName: string = '';
@@ -14,5 +15,6 @@ export class User {
   registerDate: any;
   lastLoginDate: any;
   age: string = '';
+  accessLevel!: AccessLevel;
   profileImageUrl: string = '';
 }
