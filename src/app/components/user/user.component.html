@@ -13,6 +13,21 @@
 <div class="userDetails" [class.spinner]="isLoading">
   <div class="header">
     <div>
+      <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        <input type="radio" class="btn-check" value="PRIVATE" name="btnradio" id="btnradio1" (change)="changeAccessLevel($event.target)"
+          autocomplete="off" [checked]="isPrivate()">
+        <label class="btn btn-outline-primary" for="btnradio1">Private</label>
+
+        <input type="radio" class="btn-check" value="PROTECTED" name="btnradio" id="btnradio2"
+          (change)="changeAccessLevel($event.target)"
+          autocomplete="off" [checked]="isProtected()">
+        <label class="btn btn-outline-primary" for="btnradio2">Protected</label>
+
+        <input type="radio" class="btn-check" value="PUBLIC" name="btnradio" id="btnradio3"
+          (change)="changeAccessLevel($event.target)"
+          autocomplete="off" [checked]="isPublic()">
+        <label class="btn btn-outline-primary" for="btnradio3">Public</label>
+      </div>
       <img (click)="openFullScreen()" *ngIf="user.profileImageUrl" [src]="user.profileImageUrl" width="200px"
         height="200px">
       <progress max="100" [value]="uploaded" *ngIf="uploaded"></progress>
