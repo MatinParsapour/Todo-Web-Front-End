@@ -4,6 +4,7 @@ export class User {
   firstName: string = '';
   lastName: string = '';
   email: string = '';
+  userName: string = '';
   phoneNumber: number = 0;
   birthDay: any;
   role: any;
