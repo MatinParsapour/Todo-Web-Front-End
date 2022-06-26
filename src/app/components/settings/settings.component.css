@@ -1,0 +1,19 @@
+.list-group {
+  position: absolute;
+  top: 30px;
+  right: 70px;
+  height: 24em;
+}
+
+.list-group-item {
+  height: 86em;
+  width: 20em;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.list-group-item:hover {
+  cursor: pointer;
+}
