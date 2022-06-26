@@ -102,6 +102,7 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { CommentInputComponent } from './components/comment-input/comment-input.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { SettingsService } from './services/settings.service';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -248,6 +249,7 @@ const customNotifierOptions: NotifierOptions = {
     UserManagementService,
     SupportService,
     CommentService,
+    SettingsService,
     GuidedTourService,
     {
       provide: 'SocialAuthServiceConfig',
