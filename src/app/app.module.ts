@@ -101,6 +101,7 @@ import { CaptionComponent } from './components/caption/caption.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { CommentInputComponent } from './components/comment-input/comment-input.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -198,6 +199,7 @@ const customNotifierOptions: NotifierOptions = {
     CommentsComponent,
     CommentInputComponent,
     CommentComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
