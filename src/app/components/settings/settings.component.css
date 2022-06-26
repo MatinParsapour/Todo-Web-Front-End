@@ -1,12 +1,14 @@
 .list-group {
-  position: absolute;
-  top: 30px;
-  right: 70px;
-  height: 24em;
+    position: absolute;
+    top: 30px;
+    right: 70px;
+    height: auto;
+    box-shadow: -6px 0px 47px -20px;
+    z-index: 99;
 }
 
 .list-group-item {
-  height: 86em;
+  height: 80px;
   width: 20em;
   display: flex;
   align-items: center;
@@ -16,4 +18,14 @@
 
 .list-group-item:hover {
   cursor: pointer;
+}
+
+.settings {
+  width: 80em;
+  height: 60em;
+  position: absolute;
+  left: 218px;
+  top: 31px;
+  box-shadow: 7px 0px 47px -16px;
+  border-radius: 5px;
 }
