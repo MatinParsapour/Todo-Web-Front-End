@@ -5,5 +5,18 @@
   <a class="list-group-item list-group-item-action" [href]="'/' + userId + '/settings/account-info'">Account</a>
 </div>
 <div class="settings">
-    
+    <div class="personalInfo" *ngIf="isPersonalInfo()">
+      <div>{{user.firstName}}</div>
+      <div>{{user.lastName}}</div>
+      <div>{{user.birthDay}}</div>
+      <div>{{user.age}}</div>
+      <figure>
+      </figure>
+    </div>
+    <div class="securityInfo" *ngIf="isSecurityInfo()">
+
+    </div>
+    <div class="accountInfo" *ngIf="isAccountInfo()">
+
+    </div>
 </div>
