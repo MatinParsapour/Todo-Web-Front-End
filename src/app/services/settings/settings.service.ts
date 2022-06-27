@@ -16,9 +16,9 @@ export class SettingsService extends DataService {
     this.httpService = http;
   }
 
-  getUser(userId: any): Observable<User> {
+  getUser(userId: any, type: any): Observable<User> {
     return this.httpService.get<User>(
-      Constants.url + '/user/get-user/' + userId
+      Constants.url + '/settings/' + userId + '/' + type
     );
   }
 }
