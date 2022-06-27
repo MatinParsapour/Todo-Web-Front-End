@@ -13,6 +13,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 })
 export class SettingsComponent implements OnInit {
   userId: any;
+  settingsType: any;
   user!: User
   isLoading = false;
 
@@ -24,14 +25,15 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.activatedRoute.snapshot.params['userId']
+    this.settingsType = this.activatedRoute.snapshot.params['settingsType']
     this.getUser()
   }
 
   getUser(){
     this.isLoading = true
-    this.settingsService.getUser(this.userId).subscribe(
+    this.settingsService.getUser(this.userId, this.settingsType).subscribe(
       (response: any) => {
-        this.user = response;
+        this.user = response;        
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error)
@@ -42,4 +44,15 @@ export class SettingsComponent implements OnInit {
     )
   }
 
+  isPersonalInfo():boolean {
+    return this.settingsType == "personal-info";
+  }
+
+  isSecurityInfo():boolean {
+    return this.settingsType == "security-info";
+  }
+
+  isAccountInfo():boolean {
+    return this.settingsType == "account-info";
+  }
 }
