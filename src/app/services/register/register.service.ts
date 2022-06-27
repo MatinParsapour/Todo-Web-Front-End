@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { DataService } from './../data/data.service';
 import { Injectable } from '@angular/core';
+import { Constants } from '../constant';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RegisterService extends DataService {
   constructor(http: HttpClient) {
-    super('http://localhost:8080/user/', http);
+    super(Constants.url + '/user/', http);
     this.httpService = http;
   }
 
@@ -15,12 +16,12 @@ export class RegisterService extends DataService {
 
   isUsernameDoplicate(username: any) {
     return this.httpService.get(
-      'http://localhost:8080/user/check-username/' + username
+      Constants.url + '/user/check-username/' + username
     );
   }
   isEmailDoplicate(email: any) {
     return this.httpService.get(
-      'http://localhost:8080/user/check-email/' + email
+      Constants.url + '/user/check-email/' + email
     );
   }
 }

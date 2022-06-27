@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { DataService } from './../data/data.service';
 import { Injectable } from '@angular/core';
+import { Constants } from '../constant';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +11,15 @@ export class PhoneNumberService extends DataService{
   httpService: HttpClient
 
   constructor(http: HttpClient) {
-    super("http://localhost:8080",http)
+    super(Constants.url,http)
     this.httpService = http;
   }
 
   isCodeValid(uri: string){
-    return this.httpService.get("http://localhost:8080" + uri)
+    return this.httpService.get(Constants.url + uri)
   }
 
   resendCode(uri: string){
-    return this.httpService.get("http://localhost:8080" + uri)
+    return this.httpService.get(Constants.url + uri)
   }
 }

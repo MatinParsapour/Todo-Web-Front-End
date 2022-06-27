@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { DataService } from './../data/data.service';
 import { Injectable } from '@angular/core';
+import { Constants } from '../constant';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,6 @@ import { Injectable } from '@angular/core';
 export class CategoryService extends DataService{
 
   constructor(http: HttpClient) {
-    super("http://localhost:8080/",http)
+    super(Constants.url + "/",http)
    }
 }

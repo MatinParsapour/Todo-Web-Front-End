@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DataService } from './../data/data.service';
 import { Injectable } from '@angular/core';
+import { Constants } from '../constant';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,12 @@ export class ValidateEmailService extends DataService {
   httpService: HttpClient
   
   constructor(http: HttpClient) {
-    super("http://localhost:8080/email/", http);
+    super(Constants.url + "/email/", http);
     this.httpService = http
   }
 
   sendValidatedUserEmail(email: any, code: any){
-    return this.httpService.get('http://localhost:8080/email/verify-email/' + email + "/" + code)
+    return this.httpService.get(Constants.url + '/email/verify-email/' + email + "/" + code)
   }
 
   isEmailValid(url:string){
