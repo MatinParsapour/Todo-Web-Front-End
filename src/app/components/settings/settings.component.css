@@ -64,6 +64,11 @@
   width: 7.999em;
 }
 
+.personIcon {
+  width: 130px;
+  padding-left: 20px;
+}
+
 .secondLine {
   width: 99px;
 }
