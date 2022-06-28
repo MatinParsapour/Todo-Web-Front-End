@@ -12,10 +12,18 @@
       <div class="line secondLine"></div>
     </div>
     <figure class="userInfo">
+      <progress max="100" [value]="uploaded" *ngIf="uploaded"></progress>
       <img [src]="user.profileImageUrl" alt="" *ngIf="user.profileImageUrl">
       <img class="personIcon" *ngIf="!user.profileImageUrl"
         src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdevitt-forand.com%2Fwp-content%2Fuploads%2F2018%2F05%2Fperson-icon.png&f=1&nofb=1"
         alt="">
+      <button *ngIf="!user.profileImageUrl" mat-raised-button (click)="selectProfile()">Update profile image</button>
+      <button *ngIf="user.profileImageUrl" mat-raised-button (click)="selectProfile()">Change profile image</button>
+      <button *ngIf="user.profileImageUrl" mat-raised-button (click)="deleteProfile()">Delete profile image</button>
+      <form style="display:none">
+        <input type="file" (change)="changeProfileImage($event)" id="select-picture"
+          accept="image/x-png,image/gif,image/jpeg">
+      </form>
     </figure>
     <div class="separator">
       <div class="line firstLine"></div>
