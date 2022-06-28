@@ -21,10 +21,10 @@
 }
 
 .settings {
-  width: 80em;
+  width: 67%;
   height: 60em;
   position: absolute;
-  left: 218px;
+  right: 344px;
   top: 31px;
   box-shadow: 7px 0px 47px -16px;
   border-radius: 5px;
