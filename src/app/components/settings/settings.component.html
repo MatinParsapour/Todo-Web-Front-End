@@ -6,28 +6,38 @@
 </div>
 <div class="settings">
   <div class="personalInfo" *ngIf="isPersonalInfo()">
-    <div class="userInfo">{{user.firstName}}</div>
-    <div class="breakLine">
-      <hr>
-    </div>
-    <div class="userInfo">{{user.lastName}}</div>
-    <div class="breakLine">
-      <hr>
-    </div>
-    <div class="userInfo">{{user.birthDay}}</div>
-    <div class="breakLine">
-      <hr>
-    </div>
-    <div class="userInfo">{{user.age}}</div>
-    <div class="breakLine">
-      <hr>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="profileImageTitle title">Profile image</h2>
+      <div class="line secondLine"></div>
     </div>
     <figure class="userInfo">
       <img [src]="user.profileImageUrl" alt="">
     </figure>
-    <div class="breakLine">
-      <hr>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="firstNameTitle title">First name</h2>
+      <div class="line secondLine"></div>
     </div>
+    <div class="userInfo">{{user.firstName}}</div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="lastNameTitle title">Last name</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">{{user.lastName}}</div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="birthdayTitle title">Birthday</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">{{user.birthDay}}</div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="ageTitle title">Age</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">{{user.age}}</div>
   </div>
   <div class="securityInfo" *ngIf="isSecurityInfo()">
 
