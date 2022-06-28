@@ -28,12 +28,39 @@
   top: 31px;
   box-shadow: 7px 0px 47px -16px;
   border-radius: 5px;
+  overflow: auto;
 }
 
+
+.settings::-webkit-scrollbar-track {
+  border-radius: 20px;
+}
+
+.settings::-webkit-scrollbar {
+  width: 5px;
+}
+
+.settings::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  height: 20px;
+  background-color: #484866;
+}
 
 .userImage {
   width: 6.25em;
   height: 6.3em;
   border-radius: 50%;
   background-repeat: no-repeat;
+}
+
+.userInfo {
+  height: 10em;
+}
+
+.breakLine {
+  padding: 0 20px 0 20px;
+}
+
+.breakLine>hr {
+  height: 0.35em;
 }
