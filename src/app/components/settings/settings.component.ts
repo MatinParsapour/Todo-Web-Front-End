@@ -122,7 +122,8 @@ export class SettingsComponent implements OnInit {
 
   updateUser(){
     this.isLoading = true;
-    this.settingsService.update("/settings/update/" + this.settingsType, this.user).subscribe(
+    this.user.id = this.userId;
+    this.settingsService.update("settings/update/" + this.settingsType, this.user).subscribe(
       (response: any) => {
         this.notifier.notify(
           NotificationType.SUCCESS,
@@ -137,6 +138,7 @@ export class SettingsComponent implements OnInit {
       },
       () => {
         this.isLoading = false;
+        this.getUser();
       }
     )
   }
