@@ -4,6 +4,9 @@
   <a class="list-group-item list-group-item-action" [href]="'/' + userId + '/settings/security-info'">Security</a>
   <a class="list-group-item list-group-item-action" [href]="'/' + userId + '/settings/account-info'">Account</a>
 </div>
+<div class="settingsButton">
+  <button mat-raised-button color="primary">Update</button>
+</div>
 <div class="settings">
   <div class="personalInfo" *ngIf="isPersonalInfo()">
     <div class="separator">
@@ -15,8 +18,8 @@
       <div class="profileImageArea">
         <img class="profileImage" [src]="user.profileImageUrl" alt="" *ngIf="user.profileImageUrl">
         <img class="personIcon" *ngIf="!user.profileImageUrl"
-        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdevitt-forand.com%2Fwp-content%2Fuploads%2F2018%2F05%2Fperson-icon.png&f=1&nofb=1"
-        alt="">
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdevitt-forand.com%2Fwp-content%2Fuploads%2F2018%2F05%2Fperson-icon.png&f=1&nofb=1"
+          alt="">
         <progress max="100" [value]="uploaded" *ngIf="uploaded"></progress>
       </div>
       <div class="space"></div>
@@ -38,25 +41,33 @@
       <h2 class="firstNameTitle title">First name</h2>
       <div class="line secondLine"></div>
     </div>
-    <div class="userInfo">{{user.firstName}}</div>
+    <div class="userInfo">
+      <input class="info" type="text" [value]="user.firstName" [(ngModel)]="user.firstName">
+    </div>
     <div class="separator">
       <div class="line firstLine"></div>
       <h2 class="lastNameTitle title">Last name</h2>
       <div class="line secondLine"></div>
     </div>
-    <div class="userInfo">{{user.lastName}}</div>
+    <div class="userInfo">
+      <input class="info" type="text" [value]="user.lastName" [(ngModel)]="user.lastName">
+    </div>
     <div class="separator">
       <div class="line firstLine"></div>
       <h2 class="birthdayTitle title">Birthday</h2>
       <div class="line secondLine"></div>
     </div>
-    <div class="userInfo">{{user.birthDay}}</div>
+    <div class="userInfo">
+      <input class="info" type="date" [value]="user.birthDay" [(ngModel)]="user.birthDay">
+    </div>
     <div class="separator">
       <div class="line firstLine"></div>
       <h2 class="ageTitle title">Age</h2>
       <div class="line secondLine"></div>
     </div>
-    <div class="userInfo">{{user.age}}</div>
+    <div class="userInfo">
+      <input class="info" type="number" [value]="user.age" readonly>
+    </div>
   </div>
   <div class="securityInfo" *ngIf="isSecurityInfo()">
 
