@@ -1,11 +1,16 @@
 import { UserService } from './../../services/user/user.service';
-import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpEventType,
+} from '@angular/common/http';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { SettingsService } from './../../services/settings/settings.service';
 import { User } from 'src/app/classes/user';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
+import { AccessLevel } from 'src/app/enum/access-level';
 
 @Component({
   selector: 'app-settings',
@@ -120,27 +125,23 @@ export class SettingsComponent implements OnInit {
       );
   }
 
-  updateUser(){
+  updateUser() {
     this.isLoading = true;
     this.user.id = this.userId;
-    this.settingsService.update("settings/update/" + this.settingsType, this.user).subscribe(
-      (response: any) => {
-        this.notifier.notify(
-          NotificationType.SUCCESS,
-          'You data updated'
-        )
-      },
-      (error: HttpErrorResponse) => {
-        this.notifier.notify(
-          NotificationType.ERROR,
-          error.error
-        )
-      },
-      () => {
-        this.isLoading = false;
-        this.getUser();
-      }
-    )
+    this.settingsService
+      .update('settings/update/' + this.settingsType, this.user)
+      .subscribe(
+        (response: any) => {
+          this.notifier.notify(NotificationType.SUCCESS, 'You data updated');
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(NotificationType.ERROR, error.error);
+        },
+        () => {
+          this.isLoading = false;
+          this.getUser();
+        }
+      );
   }
 
   isPersonalInfo(): boolean {
@@ -153,5 +154,23 @@ export class SettingsComponent implements OnInit {
 
   isAccountInfo(): boolean {
     return this.settingsType == 'account-info';
+  }
+
+  changeAccessLevel(value: any) {
+    this.user.accessLevel = value.value;
+  }
+
+  isPrivate(): boolean {
+    return this.user.accessLevel.toString() == AccessLevel[AccessLevel.PRIVATE];
+  }
+
+  isProtected(): boolean {
+    return (
+      this.user.accessLevel.toString() == AccessLevel[AccessLevel.PROTECTED]
+    );
+  }
+
+  isPublic(): boolean {
+    return this.user.accessLevel.toString() == AccessLevel[AccessLevel.PUBLIC];
   }
 }
