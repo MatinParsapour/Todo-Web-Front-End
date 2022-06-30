@@ -70,7 +70,55 @@
     </div>
   </div>
   <div class="securityInfo" *ngIf="isSecurityInfo()">
-
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="firstNameTitle title">Email</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">
+      <input class="info" type="text" [value]="user.email" readonly>
+    </div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="firstNameTitle title">Registered at</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">
+      <span class="info" type="text" readonly> {{user.registerDate | date: 'short'}} </span>
+    </div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="firstNameTitle title">Last login</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">
+      <span class="info" type="text" readonly> {{user.lastLoginDate | date : 'short'}}
+        </span>
+    </div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="lastNameTitle title">Username</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">
+      <input class="info" type="text" [value]="user.userName" [(ngModel)]="user.userName">
+    </div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="birthdayTitle title">Phone number</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">
+      <input class="info" type="number" [value]="user.phoneNumber" readonly>
+    </div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="ageTitle title">Password</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">
+      <input class="info" type="password" [value]="user.password" readonly>
+    </div>
   </div>
   <div class="accountInfo" *ngIf="isAccountInfo()">
     <div class="separator">
