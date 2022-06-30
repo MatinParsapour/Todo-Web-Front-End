@@ -19,6 +19,7 @@ import { AccessLevel } from 'src/app/enum/access-level';
   styleUrls: ['./settings.component.css'],
 })
 export class SettingsComponent implements OnInit {
+  accessLevelInfo!: { type: string; info: string };
   accessLevelsInfo = [
     {
       type: 'Public',
