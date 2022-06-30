@@ -1,3 +1,4 @@
+import { slideToDown } from './../../animations';
 import { UserService } from './../../services/user/user.service';
 import {
   HttpErrorResponse,
@@ -18,6 +19,20 @@ import { AccessLevel } from 'src/app/enum/access-level';
   styleUrls: ['./settings.component.css'],
 })
 export class SettingsComponent implements OnInit {
+  accessLevelsInfo = [
+    {
+      type: 'Public',
+      info: 'By selecting this level of accessing, all of users around the world can see your ToDos',
+    },
+    {
+      type: 'Protected',
+      info: 'By selecting this level of accessing, only you and your followers can see your ToDos',
+    },
+    {
+      type: 'Private',
+      info: 'By selecting this level of accessing, only you can see your ToDos',
+    },
+  ];
   userId: any;
   settingsType: any;
   user!: User;
@@ -165,7 +180,9 @@ export class SettingsComponent implements OnInit {
   }
 
   isProtected(): boolean {
-    return this.user.accessLevel.toString() == AccessLevel[AccessLevel.PROTECTED]
+    return (
+      this.user.accessLevel.toString() == AccessLevel[AccessLevel.PROTECTED]
+    );
   }
 
   isPublic(): boolean {
