@@ -37,19 +37,19 @@
 }
 
 .firstLine {
-  width: 492px;
+  width: 637px;
 }
 
 .profileImageTitle {
-  padding: 0 21px 0 2rem;
+  padding: 0 17px 0 2rem;
 }
 
 .firstNameTitle {
-  padding: 0 49px 0 2rem;
+  padding: 0 43px 0 2rem;
 }
 
 .lastNameTitle {
-  padding: 0 51px 0 2rem;
+  padding: 0 44px 0 2rem;
 }
 
 .birthdayTitle {
@@ -61,11 +61,22 @@
 }
 
 .accessLevelTitle {
-  padding: 0 31px 0 2rem;
+  padding: 0 28px 0 2rem;
 }
 
 .title {
   width: 8.1em;
+}
+
+.btn-group {
+  margin-left: 20px;
+  width: 50%;
+}
+
+.btn {
+  font-size: 20px;
+  padding: 10px;
+  width: 33%;
 }
 
 .personIcon {
@@ -81,7 +92,7 @@
 }
 
 .secondLine {
-  width: 99px;
+  width: 137px;
 }
 
 .separator .line {
