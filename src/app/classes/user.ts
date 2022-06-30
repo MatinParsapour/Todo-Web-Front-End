@@ -2,6 +2,7 @@ import { AccessLevel } from './../enum/access-level';
 export class User {
   id: number = 0;
   firstName: string = '';
+  password: string= '';
   lastName: string = '';
   email: string = '';
   userName: string = '';
