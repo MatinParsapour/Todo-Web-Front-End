@@ -78,7 +78,11 @@ export class SettingsComponent implements OnInit {
       this.accessLevelInfo = this.accessLevelsInfo[0];
     }
   }
-  
+
+  hideAccessLevelInfo(){
+    this.accessLevelInfo = {type: "", info: ""}
+  }
+
   selectProfile() {
     this.clickButton('select-picture');
   }
