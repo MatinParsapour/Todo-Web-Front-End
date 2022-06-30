@@ -69,6 +69,16 @@ export class SettingsComponent implements OnInit {
     );
   }
 
+  displayAccessLevelInfo(value: any) {
+    if (value === 'PRIVATE') {
+      this.accessLevelInfo = this.accessLevelsInfo[2];
+    } else if (value === 'PROTECTED')
+    this.accessLevelInfo = this.accessLevelsInfo[1];
+    else if (value = 'PUBLIC') {
+      this.accessLevelInfo = this.accessLevelsInfo[0];
+    }
+  }
+  
   selectProfile() {
     this.clickButton('select-picture');
   }
