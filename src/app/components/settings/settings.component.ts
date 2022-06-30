@@ -165,9 +165,7 @@ export class SettingsComponent implements OnInit {
   }
 
   isProtected(): boolean {
-    return (
-      this.user.accessLevel.toString() == AccessLevel[AccessLevel.PROTECTED]
-    );
+    return this.user.accessLevel.toString() == AccessLevel[AccessLevel.PROTECTED]
   }
 
   isPublic(): boolean {
