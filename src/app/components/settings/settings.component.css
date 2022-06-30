@@ -64,6 +64,10 @@
   padding: 0 26px 0 2rem;
 }
 
+.changeEmailButton {
+  margin-left: 7px;
+}
+
 .accessLevelInfo {
   margin: 1em 0 0 1.5em;
   display: flex;
