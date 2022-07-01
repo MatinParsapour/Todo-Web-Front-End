@@ -77,7 +77,8 @@
     </div>
     <div class="userInfo">
       <input class="info" type="text" [value]="user.email" readonly>
-      <button mat-button color="primary" class="changeEmailButton">Change email</button>
+      <button mat-button color="primary" (click)="openGetResetEmailComponent()" class="changeEmailButton">Change
+        email</button>
     </div>
     <div class="separator">
       <div class="line firstLine"></div>
