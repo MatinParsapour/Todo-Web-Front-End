@@ -45,6 +45,7 @@ export class SettingsComponent implements OnInit {
   isLoading = false;
   public profileImage: any;
   uploaded = 0;
+  isVisible = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
