@@ -17,6 +17,7 @@ import { GetResetEmailComponent } from '../get-reset-email/get-reset-email.compo
 import { PhoneNumberComponent } from '../phone-number/phone-number.component';
 import { CodeValidatorComponent } from '../code-validator/code-validator.component';
 import { ForgetPasswordComponent } from '../forget-password/forget-password.component';
+import { AggreementComponent } from '../aggreement/aggreement.component';
 
 @Component({
   selector: 'app-settings',
@@ -92,6 +93,42 @@ export class SettingsComponent implements OnInit {
   logout() {
     localStorage.clear();
     this.router.navigateByUrl('/login');
+  }
+
+  openDeleteAccountAgreement() {
+    this.dialog
+      .open(AggreementComponent, {
+        data: { title: 'Are you sure you want to delete your account' },
+      })
+      .afterClosed()
+      .subscribe((response: any) => {
+        if (response === 'Yes') {
+          this.deleteAccount();
+        }
+      });
+  }
+
+  deleteAccount() {
+    this.userService
+      .delete('/user/delete-account/' + localStorage.getItem('username'))
+      .subscribe(
+        (response: any) => {
+          this.notifier.notify(
+            NotificationType.SUCCESS,
+            'Your account deleted successfully'
+          );
+          this.dialog.closeAll();
+          localStorage.clear();
+          this.router.navigateByUrl('/login');
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            "Something went wrong your account didn't delete"
+          );
+          console.log(error);
+        }
+      );
   }
 
   getUser() {
