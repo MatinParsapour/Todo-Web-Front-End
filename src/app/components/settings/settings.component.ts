@@ -14,6 +14,8 @@ import { Component, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { AccessLevel } from 'src/app/enum/access-level';
 import { GetResetEmailComponent } from '../get-reset-email/get-reset-email.component';
+import { PhoneNumberComponent } from '../phone-number/phone-number.component';
+import { CodeValidatorComponent } from '../code-validator/code-validator.component';
 
 @Component({
   selector: 'app-settings',
@@ -61,6 +63,25 @@ export class SettingsComponent implements OnInit {
     return this.dialog.open(GetResetEmailComponent);
   }
 
+  openPhoneNumberComponent() {
+    return this.dialog
+      .open(PhoneNumberComponent)
+      .afterClosed()
+      .subscribe((result) => {
+        if (result === 'send-code') {
+          this.openCodeValidatorComponent().subscribe(() => {
+            this.updateUser();
+          });
+        }
+      });
+  }
+
+  openCodeValidatorComponent() {
+    return this.dialog
+      .open(CodeValidatorComponent, { disableClose: true })
+      .afterClosed();
+  }
+  
   getUser() {
     this.isLoading = true;
     this.settingsService.getUser(this.userId, this.settingsType).subscribe(
@@ -80,8 +101,8 @@ export class SettingsComponent implements OnInit {
     if (value === 'PRIVATE') {
       this.accessLevelInfo = this.accessLevelsInfo[2];
     } else if (value === 'PROTECTED')
-    this.accessLevelInfo = this.accessLevelsInfo[1];
-    else if (value = 'PUBLIC') {
+      this.accessLevelInfo = this.accessLevelsInfo[1];
+    else if ((value = 'PUBLIC')) {
       this.accessLevelInfo = this.accessLevelsInfo[0];
     }
   }
