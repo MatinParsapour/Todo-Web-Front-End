@@ -16,6 +16,7 @@ import { AccessLevel } from 'src/app/enum/access-level';
 import { GetResetEmailComponent } from '../get-reset-email/get-reset-email.component';
 import { PhoneNumberComponent } from '../phone-number/phone-number.component';
 import { CodeValidatorComponent } from '../code-validator/code-validator.component';
+import { ForgetPasswordComponent } from '../forget-password/forget-password.component';
 
 @Component({
   selector: 'app-settings',
@@ -76,12 +77,16 @@ export class SettingsComponent implements OnInit {
       });
   }
 
+  openForgetPassword() {
+    this.dialog.open(ForgetPasswordComponent);
+  }
+
   openCodeValidatorComponent() {
     return this.dialog
       .open(CodeValidatorComponent, { disableClose: true })
       .afterClosed();
   }
-  
+
   getUser() {
     this.isLoading = true;
     this.settingsService.getUser(this.userId, this.settingsType).subscribe(
