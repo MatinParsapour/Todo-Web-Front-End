@@ -121,9 +121,10 @@
       <div class="line secondLine"></div>
     </div>
     <div class="userInfo">
-      <input class="info" type="password" [value]="user.password" readonly>
+      <input class="info" [type]="isVisible ? 'text' : 'password'" id="password" [value]="user.password" readonly>
       <button mat-button color="primary" (click)="openForgetPassword()" class="changeEmailButton">Change
         password</button>
+      <button mat-button color="primary" (click)="isVisible = !isVisible" class="changeEmailButton">Reveal password</button>
     </div>
   </div>
   <div class="accountInfo" *ngIf="isAccountInfo()">
