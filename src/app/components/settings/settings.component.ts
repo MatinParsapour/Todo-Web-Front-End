@@ -1,3 +1,4 @@
+import { MatDialog } from '@angular/material/dialog';
 import { slideToDown } from './../../animations';
 import { UserService } from './../../services/user/user.service';
 import {
@@ -12,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { AccessLevel } from 'src/app/enum/access-level';
+import { GetResetEmailComponent } from '../get-reset-email/get-reset-email.component';
 
 @Component({
   selector: 'app-settings',
@@ -45,13 +47,18 @@ export class SettingsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private settingsService: SettingsService,
     private userService: UserService,
-    private notifier: NotificationService
+    private notifier: NotificationService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.userId = this.activatedRoute.snapshot.params['userId'];
     this.settingsType = this.activatedRoute.snapshot.params['settingsType'];
     this.getUser();
+  }
+
+  openGetResetEmailComponent() {
+    return this.dialog.open(GetResetEmailComponent);
   }
 
   getUser() {
@@ -79,8 +86,8 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  hideAccessLevelInfo(){
-    this.accessLevelInfo = {type: "", info: ""}
+  hideAccessLevelInfo() {
+    this.accessLevelInfo = { type: '', info: '' };
   }
 
   selectProfile() {
