@@ -64,6 +64,14 @@
   padding: 0 26px 0 2rem;
 }
 
+.registeredAtTitle {
+  padding: 0 19px 0 2rem;
+}
+
+.phoneNumberTitle {
+  padding: 0 7px 0 2rem;
+}
+
 .eye {
   width: 33px;
 }
@@ -159,7 +167,7 @@
   position: absolute;
   top: 281px;
   right: 70px;
-  height: 6em;
+  height: 10em;
   display: flex;
   flex-direction: column;
   width: 20em;
