@@ -122,6 +122,8 @@
     </div>
     <div class="userInfo">
       <input class="info" type="password" [value]="user.password" readonly>
+      <button mat-button color="primary" (click)="openForgetPassword()" class="changeEmailButton">Change
+        password</button>
     </div>
   </div>
   <div class="accountInfo" *ngIf="isAccountInfo()">
