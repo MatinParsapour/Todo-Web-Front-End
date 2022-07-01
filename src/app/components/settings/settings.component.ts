@@ -9,7 +9,7 @@ import {
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { SettingsService } from './../../services/settings/settings.service';
 import { User } from 'src/app/classes/user';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { AccessLevel } from 'src/app/enum/access-level';
@@ -52,7 +52,8 @@ export class SettingsComponent implements OnInit {
     private settingsService: SettingsService,
     private userService: UserService,
     private notifier: NotificationService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -86,6 +87,11 @@ export class SettingsComponent implements OnInit {
     return this.dialog
       .open(CodeValidatorComponent, { disableClose: true })
       .afterClosed();
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
   }
 
   getUser() {
