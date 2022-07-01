@@ -106,7 +106,8 @@
       <div class="line secondLine"></div>
     </div>
     <div class="userInfo">
-      <input class="info" type="text" [value]="user.userName" [(ngModel)]="user.userName">
+      <input class="info" type="text" [value]="user.userName" readonly>
+      <button mat-button color="primary" class="changeEmailButton">Change username</button>
     </div>
     <div class="separator">
       <div class="line firstLine"></div>
