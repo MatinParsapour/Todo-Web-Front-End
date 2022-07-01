@@ -64,6 +64,10 @@
   padding: 0 26px 0 2rem;
 }
 
+.eye {
+  width: 33px;
+}
+
 .changeEmailButton {
   margin-left: 7px;
 }
