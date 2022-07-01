@@ -124,7 +124,14 @@
       <input class="info" [type]="isVisible ? 'text' : 'password'" id="password" [value]="user.password" readonly>
       <button mat-button color="primary" (click)="openForgetPassword()" class="changeEmailButton">Change
         password</button>
-      <button mat-button color="primary" (click)="isVisible = !isVisible" class="changeEmailButton">Reveal password</button>
+      <button mat-button color="primary" (click)="isVisible = !isVisible" class="changeEmailButton">
+        <img class="eye"
+          [src]="isVisible ?
+          'https://cdn-icons.flaticon.com/png/512/3945/premium/3945105.png?token=exp=1656671031~hmac=da77629883c68bdd57b5b98a587852aa'
+          :
+          'https://cdn-icons.flaticon.com/png/512/2874/premium/2874802.png?token=exp=1656671013~hmac=88b1333b9945ae3e32a5f3337217cd15'"
+          alt="">
+      </button>
     </div>
   </div>
   <div class="accountInfo" *ngIf="isAccountInfo()">
