@@ -6,6 +6,8 @@
 </div>
 <div class="settingsButton">
   <button mat-raised-button color="primary" (click)="updateUser()">Update</button>
+  <button mat-raised-button color="warn">Logout</button>
+  <button mat-raised-button color="warn">Delete account</button>
 </div>
 <div class="settings">
   <div class="personalInfo" *ngIf="isPersonalInfo()">
@@ -82,7 +84,7 @@
     </div>
     <div class="separator">
       <div class="line firstLine"></div>
-      <h2 class="firstNameTitle title">Registered at</h2>
+      <h2 class="registeredAtTitle title">Registered at</h2>
       <div class="line secondLine"></div>
     </div>
     <div class="userInfo">
@@ -107,7 +109,7 @@
     </div>
     <div class="separator">
       <div class="line firstLine"></div>
-      <h2 class="birthdayTitle title">Phone number</h2>
+      <h2 class="phoneNumberTitle title">Phone number</h2>
       <div class="line secondLine"></div>
     </div>
     <div class="userInfo">
