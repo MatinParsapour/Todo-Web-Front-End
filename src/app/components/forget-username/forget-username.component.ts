@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-forget-username',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forget-username.component.css']
 })
 export class ForgetUsernameComponent implements OnInit {
+  @Output('close') close = new EventEmitter()
 
   constructor() { }
 
