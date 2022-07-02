@@ -47,6 +47,7 @@ export class SettingsComponent implements OnInit {
   public profileImage: any;
   uploaded = 0;
   isVisible = false;
+  isForgetUsernameModalVisible = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
