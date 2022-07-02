@@ -1,3 +1,23 @@
-<div class="backGround" (click)="close.emit()">
-    <div class="container"></div>
+<div class="backGround">
+  <div class="container">
+    <mat-form-field appearance="outline">
+      <mat-label>Email or phone number</mat-label>
+      <input matInput autocomplete="off" type="password">
+      <mat-error></mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Code</mat-label>
+      <input matInput autocomplete="off" type="password">
+      <mat-error></mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>New username</mat-label>
+      <input matInput autocomplete="off" type="password">
+      <mat-error></mat-error>
+    </mat-form-field> 
+    <div class="buttons">
+      <button @fade mat-raised-button color="primary">Login</button>
+      <button @fade mat-raised-button color="warn" (click)="close.emit()">Close</button>
+    </div>
+  </div>
 </div>
