@@ -9,9 +9,19 @@
 .container {
   width: 40%;
   height: 87%;
-  background-color: #484848;
+  background-color: #ffffff;
   position: absolute;
   left: 29%;
   top: 6%;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 9em;
 }
