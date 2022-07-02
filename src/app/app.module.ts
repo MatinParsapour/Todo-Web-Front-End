@@ -103,6 +103,7 @@ import { CommentInputComponent } from './components/comment-input/comment-input.
 import { CommentComponent } from './components/comment/comment.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { SettingsService } from './services/settings/settings.service';
+import { ForgetUsernameComponent } from './components/forget-username/forget-username.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -201,6 +202,7 @@ const customNotifierOptions: NotifierOptions = {
     CommentInputComponent,
     CommentComponent,
     SettingsComponent,
+    ForgetUsernameComponent,
   ],
   imports: [
     BrowserModule,
