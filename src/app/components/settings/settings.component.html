@@ -107,7 +107,7 @@
     </div>
     <div class="userInfo">
       <input class="info" type="text" [value]="user.userName" readonly>
-      <button mat-button color="primary" class="changeEmailButton">Change username</button>
+      <button mat-button color="primary" (click)="isForgetUsernameModalVisible = !isForgetUsernameModalVisible" class="changeEmailButton">Change username</button>
     </div>
     <div class="separator">
       <div class="line firstLine"></div>
@@ -165,3 +165,5 @@
   </div>
 
 </div>
+
+<app-forget-username [hidden]="!isForgetUsernameModalVisible"></app-forget-username>
