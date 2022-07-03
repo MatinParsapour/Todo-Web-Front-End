@@ -63,6 +63,25 @@ export class ForgetUsernameComponent implements OnInit {
     )
   }
 
+  changeUsername(){
+    const formData = new FormData();
+    formData.append('emailOrPhoneNumber', this.emailOrPhone.value);
+    formData.append('newUsername', this.username.value);
+    this.isLoading = true;
+    this.userService.create('/user/change-username', formData).subscribe(
+      (response: any) => {
+        this.close.emit()
+        this.notifier.notify(NotificationType.SUCCESS, "Your username changed")
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error)
+      },
+      () => {
+        this.isLoading = false
+      }
+    )
+  }
+
   disableEmailOrPhoneNumberFormControl(){
     this.isEnterEmailOrPhoneEditable = false;
     this.emailOrPhone.disable();
