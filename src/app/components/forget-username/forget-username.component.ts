@@ -38,8 +38,12 @@ export class ForgetUsernameComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error)
-        console.log(error);
-        
+      },
+      () => {
+        this.isLoading = false;
+      }
+    )
+  }
   checkCode(){
     const formData = new FormData();
     formData.append('emailOrPhoneNumber', this.emailOrPhone.value)
