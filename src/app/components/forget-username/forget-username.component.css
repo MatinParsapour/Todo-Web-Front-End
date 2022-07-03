@@ -25,3 +25,7 @@
   justify-content: space-evenly;
   height: 9em;
 }
+
+mat-form-field {
+  font-size: 18px;
+}
