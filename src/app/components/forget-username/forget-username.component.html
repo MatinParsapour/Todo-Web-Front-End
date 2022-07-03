@@ -24,7 +24,7 @@
       <button (click)="checkCode()" [disabled]="code.invalid" *ngIf="isCheckCodeEditable && !isLoading" @fade mat-raised-button color="primary">
         <span>Check code</span>
       </button>
-      <button [disabled]="username.invalid" *ngIf="isUsernameInputEditable && !isLoading" @fade mat-raised-button color="primary">
+      <button (click)="changeUsername()" [disabled]="username.invalid" *ngIf="isUsernameInputEditable && !isLoading" @fade mat-raised-button color="primary">
         <span>Change username</span>
       </button>
       <button [hidden]="!isLoading" class="btn btn-primary" type="button" disabled>
