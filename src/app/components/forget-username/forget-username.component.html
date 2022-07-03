@@ -13,7 +13,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>New username</mat-label>
-      <input [disabled]="!isUsernameInputEditable" matInput autocomplete="off" type="password">
+      <input [formControl]="username" [disabled]="!isUsernameInputEditable" matInput autocomplete="off" type="text">
       <mat-error></mat-error>
     </mat-form-field>
     <div class="buttons">
