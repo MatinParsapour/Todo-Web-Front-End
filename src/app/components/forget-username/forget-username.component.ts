@@ -57,4 +57,9 @@ export class ForgetUsernameComponent implements OnInit {
     this.code.enable()
   }
 
+  disableCodeFormControl(){
+    this.isCheckCodeEditable = false;
+    this.code.disable();
+  }
+
 }
