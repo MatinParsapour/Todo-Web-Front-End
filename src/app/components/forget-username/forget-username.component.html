@@ -2,17 +2,17 @@
   <div class="container">
     <mat-form-field appearance="outline">
       <mat-label>Email or phone number</mat-label>
-      <input matInput autocomplete="off" type="password">
+      <input [disabled]="!isEnterEmailOrPhoneEditable" matInput autocomplete="off" type="password">
       <mat-error></mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Code</mat-label>
-      <input matInput autocomplete="off" type="password">
+      <input [disabled]="!isCheckCodeEditable" matInput autocomplete="off" type="password">
       <mat-error></mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>New username</mat-label>
-      <input matInput autocomplete="off" type="password">
+      <input [disabled]="!isUsernameInputEditable" matInput autocomplete="off" type="password">
       <mat-error></mat-error>
     </mat-form-field> 
     <div class="buttons">
