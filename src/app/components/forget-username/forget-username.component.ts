@@ -32,8 +32,8 @@ export class ForgetUsernameComponent implements OnInit {
     this.isLoading = true;
     this.userService.create("/user/forget-username",formData).subscribe(
       (response: any) => {
-        this.isEnterEmailOrPhoneEditable = false;
-        this.isCheckCodeEditable = true;
+        this.disableEmailOrPhoneNumberFormControl()
+        this.enableCodeFormControl()
         this.notifier.notify(NotificationType.SUCCESS, "Code has sent to " + this.emailOrPhone.value)
       },
       (error: HttpErrorResponse) => {
