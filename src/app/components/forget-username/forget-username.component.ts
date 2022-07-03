@@ -16,7 +16,9 @@ export class ForgetUsernameComponent implements OnInit {
   isEnterEmailOrPhoneEditable = true;
   isCheckCodeEditable = false;
   isUsernameInputEditable = false;
-  emailOrPhone = new FormControl('',[Validators.required, Validators.minLength(3)])
+  emailOrPhone = new FormControl({value: '', disabled: false},[Validators.required, Validators.minLength(3)])
+  code = new FormControl({value: '', disabled: true},[Validators.required,Validators.minLength(5), Validators.maxLength(5)])
+  username = new FormControl({value: "",disabled: true},[Validators.required])
 
   constructor(private userService: UserService,
               private notifier: NotificationService) { }
