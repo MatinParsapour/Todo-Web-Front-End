@@ -52,4 +52,9 @@ export class ForgetUsernameComponent implements OnInit {
     this.emailOrPhone.disable();
   }
 
+  enableCodeFormControl(){
+    this.isCheckCodeEditable = true;
+    this.code.enable()
+  }
+
 }
