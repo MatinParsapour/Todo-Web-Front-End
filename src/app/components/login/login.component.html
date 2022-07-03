@@ -9,7 +9,8 @@
           <input [formControl]="username" matInput autocomplete="off">
           <mat-error *ngIf="username.invalid">{{getUsernameErrorMessages()}}</mat-error>
         </mat-form-field>
-        <span @fade class="forget">Forget username?</span>
+        <span @fade class="forget" (click)="isForgetUsernameModalVisible = !isForgetUsernameModalVisible">Forget
+          username?</span>
       </div>
       <div class="input">
         <mat-form-field @fade appearance="outline">
