@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   socialUser!: SocialUser;
   isLoggedin!: boolean;
   displayPopup = false
+  isForgetUsernameModalVisible = false;
 
   constructor(
     fb: FormBuilder,
