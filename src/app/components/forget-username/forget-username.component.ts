@@ -7,6 +7,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ForgetUsernameComponent implements OnInit {
   @Output('close') close = new EventEmitter()
+  isEnterEmailOrPhoneEditable = true;
+  isCheckCodeEditable = false;
+  isUsernameInputEditable = false;
 
   constructor() { }
 
