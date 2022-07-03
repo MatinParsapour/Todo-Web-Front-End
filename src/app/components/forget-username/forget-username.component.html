@@ -21,7 +21,7 @@
         mat-raised-button color="primary">
         <span>Send code</span>
       </button>
-      <button *ngIf="isCheckCodeEditable && !isLoading" @fade mat-raised-button color="primary">
+      <button (click)="checkCode()" [disabled]="code.invalid" *ngIf="isCheckCodeEditable && !isLoading" @fade mat-raised-button color="primary">
         <span>Check code</span>
       </button>
       <button [disabled]="username.invalid" *ngIf="isUsernameInputEditable && !isLoading" @fade mat-raised-button color="primary">
