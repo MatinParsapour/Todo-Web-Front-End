@@ -40,6 +40,18 @@ export class ForgetUsernameComponent implements OnInit {
         this.notifier.notify(NotificationType.ERROR, error.error)
         console.log(error);
         
+  checkCode(){
+    const formData = new FormData();
+    formData.append('emailOrPhoneNumber', this.emailOrPhone.value)
+    formData.append('code', this.code.value)
+    this.isLoading = true;
+    this.userService.create('/user/forget-username-code', formData).subscribe(
+      (response: any) => {
+        this.disableCodeFormControl();
+        this.enableUsernameFormControl()
+        this.notifier.notify(NotificationType.SUCCESS, "The code was correct, change your username")
+      }, (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error)
       },
       () => {
         this.isLoading = false;
