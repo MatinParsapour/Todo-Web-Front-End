@@ -39,3 +39,6 @@
     <a href="mailto:matin.parsapour.iam@example.com">matin.parsapour.iam@gmail.com</a>
   </mat-card>
 </div>
+
+<app-forget-username [hidden]="!isForgetUsernameModalVisible" (close)="isForgetUsernameModalVisible = false">
+</app-forget-username>
