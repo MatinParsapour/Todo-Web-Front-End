@@ -62,4 +62,9 @@ export class ForgetUsernameComponent implements OnInit {
     this.code.disable();
   }
 
+  enableUsernameFormControl(){
+    this.isUsernameInputEditable = true;
+    this.username.enable();
+  }
+
 }
