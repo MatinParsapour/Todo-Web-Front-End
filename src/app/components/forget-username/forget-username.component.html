@@ -8,7 +8,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Code</mat-label>
-      <input [disabled]="!isCheckCodeEditable" matInput autocomplete="off" type="password">
+      <input [formControl]="code" [disabled]="!isCheckCodeEditable" matInput autocomplete="off" type="number">
       <mat-error></mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
