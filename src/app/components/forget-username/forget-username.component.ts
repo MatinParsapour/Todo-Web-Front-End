@@ -1,3 +1,4 @@
+import { FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -10,6 +11,7 @@ export class ForgetUsernameComponent implements OnInit {
   isEnterEmailOrPhoneEditable = true;
   isCheckCodeEditable = false;
   isUsernameInputEditable = false;
+  emailOrPhone = new FormControl('',[Validators.required, Validators.minLength(3)])
 
   constructor() { }
 
