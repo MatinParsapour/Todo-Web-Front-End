@@ -47,4 +47,9 @@ export class ForgetUsernameComponent implements OnInit {
     )
   }
 
+  disableEmailOrPhoneNumberFormControl(){
+    this.isEnterEmailOrPhoneEditable = false;
+    this.emailOrPhone.disable();
+  }
+
 }
