@@ -16,7 +16,11 @@
       <mat-error></mat-error>
     </mat-form-field> 
     <div class="buttons">
-      <button @fade mat-raised-button color="primary">Login</button>
+      <button @fade mat-raised-button color="primary">
+        <span *ngIf="isEnterEmailOrPhoneEditable">Send code</span>
+        <span *ngIf="isCheckCodeEditable">Check code</span>
+        <span *ngIf="isUsernameInputEditable">Change username</span>
+      </button>
       <button @fade mat-raised-button color="warn" (click)="close.emit()">Close</button>
     </div>
   </div>
