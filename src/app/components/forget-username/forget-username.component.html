@@ -2,7 +2,8 @@
   <div class="container">
     <mat-form-field appearance="outline">
       <mat-label>Email or phone number</mat-label>
-      <input [formControl]="emailOrPhone" [disabled]="!isEnterEmailOrPhoneEditable" matInput autocomplete="off" type="text">
+      <input [formControl]="emailOrPhone" [disabled]="!isEnterEmailOrPhoneEditable" matInput autocomplete="off"
+        type="text">
       <mat-error></mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -14,16 +15,21 @@
       <mat-label>New username</mat-label>
       <input [disabled]="!isUsernameInputEditable" matInput autocomplete="off" type="password">
       <mat-error></mat-error>
-    </mat-form-field> 
+    </mat-form-field>
     <div class="buttons">
-      <button [disabled]="emailOrPhone.invalid" *ngIf="isEnterEmailOrPhoneEditable" @fade mat-raised-button color="primary">
+      <button (click)="sendCode()" [disabled]="emailOrPhone.invalid" *ngIf="isEnterEmailOrPhoneEditable && !isLoading" @fade
+        mat-raised-button color="primary">
         <span>Send code</span>
       </button>
-      <button *ngIf="isCheckCodeEditable" @fade mat-raised-button color="primary">
+      <button *ngIf="isCheckCodeEditable && !isLoading" @fade mat-raised-button color="primary">
         <span>Check code</span>
       </button>
-      <button *ngIf="isUsernameInputEditable" @fade mat-raised-button color="primary">
+      <button *ngIf="isUsernameInputEditable && !isLoading" @fade mat-raised-button color="primary">
         <span>Change username</span>
+      </button>
+      <button [hidden]="!isLoading" class="btn btn-primary" type="button" disabled>
+        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+        Loading...
       </button>
       <button @fade mat-raised-button color="warn" (click)="close.emit()">Close</button>
     </div>
