@@ -22,6 +22,7 @@ textarea {
   margin: 0 10px 0 10px;
   border: none;
   font-size: 15px;
+  resize: none;
 }
 
 legend {
