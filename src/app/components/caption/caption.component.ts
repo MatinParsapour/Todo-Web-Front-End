@@ -45,7 +45,7 @@ export class CaptionComponent implements OnInit {
         this.update.emit()
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
+        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
       }
     );
   }
@@ -57,7 +57,7 @@ export class CaptionComponent implements OnInit {
         this.update.emit()
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
+        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
       }
     );
   }
