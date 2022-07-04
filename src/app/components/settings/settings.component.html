@@ -46,7 +46,7 @@
     </div>
     <div class="userInfo">
       <fieldset>
-        <legend>Bio</legend>
+        <legend [class]="bioLength < 0 ? 'wrong' :''">{{bioLength}}</legend>
         <textarea name="" id="" cols="30" rows="10" [value]="user.bio" [(ngModel)]="user.bio"></textarea>
       </fieldset>
     </div>
