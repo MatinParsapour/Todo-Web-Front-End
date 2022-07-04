@@ -76,7 +76,9 @@ export class FacebookSignInComponent implements OnInit {
         if (error.status === 403) {
           this.notifier.notify(
             NotificationType.ERROR,
-            error.error +
+            error.error.type +
+              ': ' +
+              error.error.message +
               ', you can contact support matin.parsapour.iam@gmail.com'
           );
         } else {

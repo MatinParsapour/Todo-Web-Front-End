@@ -144,7 +144,10 @@ export class SettingsComponent implements OnInit {
         this.user = response;
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
       },
       () => {
         this.isLoading = false;
@@ -248,7 +251,7 @@ export class SettingsComponent implements OnInit {
           this.notifier.notify(NotificationType.SUCCESS, 'You data updated');
         },
         (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, error.error);
+          this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
         },
         () => {
           this.isLoading = false;

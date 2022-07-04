@@ -54,7 +54,7 @@ export class FollowersFollowingsComponent implements OnInit {
         this.close()
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
+        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
       }
     );
   }
@@ -72,7 +72,7 @@ export class FollowersFollowingsComponent implements OnInit {
         this.close()
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
+        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
       }
     );
   }

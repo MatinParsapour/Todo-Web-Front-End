@@ -28,7 +28,10 @@ export class UsersRequestsComponent implements OnInit {
         this.requests = response
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error)
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
         console.log(error);
         
       },

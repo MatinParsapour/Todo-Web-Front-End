@@ -90,7 +90,10 @@ export class UserManagementUserDetailsComponent implements OnInit {
         this.getUser();
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
         console.log(error);
         this.isLoading = false;
       }

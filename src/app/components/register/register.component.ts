@@ -98,7 +98,10 @@ export class RegisterComponent implements OnInit {
           this.isLoading = false;
         },
         (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, error.error);
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.message
+          );
           this.isLoading = false;
         }
       );

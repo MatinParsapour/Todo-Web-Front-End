@@ -79,7 +79,10 @@ export class NewTopicComponent implements OnInit {
           this.notifier.notify(NotificationType.SUCCESS, 'The topic added');
         },
         (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, error.error);
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.message
+          );
         },
         () => {
           this.dialog.closeAll()

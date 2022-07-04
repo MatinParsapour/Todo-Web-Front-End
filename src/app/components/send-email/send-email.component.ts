@@ -101,7 +101,10 @@ export class SendEmailComponent implements OnInit {
           this.isSending = false;
         },
         (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, error.error);
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.message
+          );
           this.closeDialog();
           this.isSending = false;
         }

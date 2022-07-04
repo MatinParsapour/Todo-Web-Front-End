@@ -37,7 +37,7 @@ export class EmailDetailsComponent implements OnInit {
         },
         (error: HttpErrorResponse) => {
           console.log(error);
-          this.notifier.notify(NotificationType.ERROR, error.error)
+          this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message)
         }
       );
   }
@@ -61,7 +61,7 @@ export class EmailDetailsComponent implements OnInit {
         this.closeDialog()
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error)
+        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message)
       }
     )
     

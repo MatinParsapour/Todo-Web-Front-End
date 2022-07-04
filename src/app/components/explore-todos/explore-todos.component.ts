@@ -51,7 +51,7 @@ export class ExploreTodosComponent implements OnInit {
         this.user = response;
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
+        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
       }
     );
   }
@@ -63,7 +63,7 @@ export class ExploreTodosComponent implements OnInit {
         this.addToQueue();
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
+        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
       }
     );
   }
@@ -102,7 +102,7 @@ export class ExploreTodosComponent implements OnInit {
         );
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
+        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
       },
       () => {
         this.isAdding = false
@@ -128,7 +128,7 @@ export class ExploreTodosComponent implements OnInit {
         this.notifier.notify(NotificationType.SUCCESS, 'Saved to your saves');
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
+        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
       },
       () => {
         this.isSaving = false;

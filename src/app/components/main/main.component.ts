@@ -136,7 +136,7 @@ export class MainComponent implements OnInit {
             this.toggleInputDisplay();
           },
           (error: HttpErrorResponse) => {
-            this.notifier.notify(NotificationType.ERROR, error.error);
+            this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
             this.toggleInputDisplay();
           }
         );
@@ -178,7 +178,7 @@ export class MainComponent implements OnInit {
           this.checkToDosStatus()
         },
         (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, error.error);
+          this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
         }
       );
   }

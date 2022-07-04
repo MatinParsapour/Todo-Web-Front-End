@@ -37,7 +37,7 @@ export class ForgetUsernameComponent implements OnInit {
         this.notifier.notify(NotificationType.SUCCESS, "Code has sent to " + this.emailOrPhone.value)
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error)
+        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message)
       },
       () => {
         this.isLoading = false;
@@ -55,7 +55,7 @@ export class ForgetUsernameComponent implements OnInit {
         this.enableUsernameFormControl()
         this.notifier.notify(NotificationType.SUCCESS, "The code was correct, change your username")
       }, (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error)
+        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message)
       },
       () => {
         this.isLoading = false;
@@ -74,7 +74,7 @@ export class ForgetUsernameComponent implements OnInit {
         this.notifier.notify(NotificationType.SUCCESS, "Your username changed")
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error)
+        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message)
       },
       () => {
         this.isLoading = false

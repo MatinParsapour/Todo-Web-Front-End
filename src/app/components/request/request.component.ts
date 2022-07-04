@@ -23,7 +23,10 @@ export class RequestComponent implements OnInit {
         this.update.next('')
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
         console.log(error);
       },
       (this.request = null)

@@ -143,7 +143,10 @@ export class UserComponent implements OnInit {
         (error: HttpErrorResponse) => {
           console.log(error);
 
-          this.notifier.notify(NotificationType.ERROR, error.error);
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.message
+          );
         }
       );
   }

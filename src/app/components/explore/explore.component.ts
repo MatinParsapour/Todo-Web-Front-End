@@ -34,7 +34,10 @@ export class ExploreComponent implements OnInit {
         this.todos = response;
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error);
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
         console.log(error);
       }
     );

@@ -155,7 +155,10 @@ export class ToDoComponent implements OnInit {
           this.folders = response;
         },
         (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, error.error);
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.message
+          );
         }
       );
   }
@@ -190,7 +193,10 @@ export class ToDoComponent implements OnInit {
           );
         },
         (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, error.error);
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.messager
+          );
           console.log(error);
         }
       );

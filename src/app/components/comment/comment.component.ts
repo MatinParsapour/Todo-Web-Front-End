@@ -33,7 +33,10 @@ export class CommentComponent implements OnInit {
           );
         },
         (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, error.error);
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.message
+          );
           console.log(error);
         }
       );
@@ -58,7 +61,10 @@ export class CommentComponent implements OnInit {
           this.update.emit();
         },
         (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, error.error);
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.message
+          );
         }
       );
     }
