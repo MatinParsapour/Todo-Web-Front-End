@@ -16,6 +16,27 @@
   font-weight: 500;
 }
 
+textarea {
+  width: 97%;
+  height: 73%;
+  margin: 0 10px 0 10px;
+  border: none;
+  font-size: 15px;
+}
+
+legend {
+  width: 97%;
+  margin: 0 10px 0 10px;
+}
+
+fieldset {
+  height: 100%;
+}
+
+textarea:focus {
+  border: none;
+}
+
 .list-group-item:hover {
   cursor: pointer;
 }
