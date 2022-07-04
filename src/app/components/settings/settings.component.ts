@@ -48,6 +48,7 @@ export class SettingsComponent implements OnInit {
   uploaded = 0;
   isVisible = false;
   isForgetUsernameModalVisible = false;
+  bioLength = 300;
 
   constructor(
     private activatedRoute: ActivatedRoute,
