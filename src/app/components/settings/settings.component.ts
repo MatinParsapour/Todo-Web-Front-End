@@ -257,6 +257,11 @@ export class SettingsComponent implements OnInit {
       );
   }
 
+  bio(value: any) {
+    this.bioLength = 300 - value.value.length
+    this.user.bio = value.value
+  }
+
   isPersonalInfo(): boolean {
     return this.settingsType == 'personal-info';
   }
