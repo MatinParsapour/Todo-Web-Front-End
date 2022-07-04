@@ -222,3 +222,7 @@ figure {
   justify-content: center;
   align-items: center;
 }
+
+.wrong {
+  color: red;
+}
