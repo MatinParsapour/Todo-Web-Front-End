@@ -8,6 +8,7 @@ export class User {
   userName: string = '';
   phoneNumber: number = 0;
   birthDay: any;
+  bio!: string;
   role: any;
   authorities = [];
   followers = [];
