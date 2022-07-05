@@ -34,6 +34,7 @@ export class FacebookSignInComponent implements OnInit {
       firstName: new FormControl(''),
       lastName: new FormControl(''),
       userName: new FormControl(''),
+      provider: new FormControl(''),
       email: new FormControl(''),
       password: new FormControl(''),
     });
