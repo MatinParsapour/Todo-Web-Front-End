@@ -2,11 +2,7 @@ import { slideToDown } from './../../animations';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { LoginService } from './../../services/login/login.service';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup,} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {
   GoogleLoginProvider,
