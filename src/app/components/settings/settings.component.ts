@@ -298,4 +298,8 @@ export class SettingsComponent implements OnInit {
   isUserProviderGoogle(): boolean {
     return this.user.provider.toString() == Provider[Provider.GOOGLE]
   }
+
+  isUserProviderFacebook(): boolean {
+    return this.user.provider.toString() == Provider[Provider.FACEBOOK]
+  }
 }
