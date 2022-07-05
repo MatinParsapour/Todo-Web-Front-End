@@ -294,4 +294,8 @@ export class SettingsComponent implements OnInit {
   isPublic(): boolean {
     return this.user.accessLevel.toString() == AccessLevel[AccessLevel.PUBLIC];
   }
+
+  isUserProviderGoogle(): boolean {
+    return this.user.provider.toString() == Provider[Provider.GOOGLE]
+  }
 }
