@@ -68,6 +68,7 @@ export class GoogleSignInComponent implements OnInit {
     this.user.get('email')?.setValue(this.socialUser.email);
     this.user.get('password')?.setValue('MMmm11!!11');
     this.user.get('userName')?.setValue(this.socialUser.email);
+    this.user.get('provider')?.setValue(this.socialUser.provider);
   }
 
   updateLocalStorage(user: any) {
