@@ -16,6 +16,18 @@
   font-weight: 500;
 }
 
+.provider {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 20px;
+}
+
+.logo { 
+  width: 200px;
+}
+
 textarea {
   width: 97%;
   height: 73%;
