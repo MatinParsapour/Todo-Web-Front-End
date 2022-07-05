@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit {
     this.user = formBuilder.group(
       {
         firstName: new FormControl('', [Validators.required]),
+        provider: new FormControl('EMAIL', [Validators.required]),
         lastName: new FormControl('', [Validators.required]),
         recaptcha: ['', Validators.required],
         email: new FormControl(
