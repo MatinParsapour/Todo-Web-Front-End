@@ -1,3 +1,4 @@
+import { Provider } from './../enum/provider';
 import { AccessLevel } from './../enum/access-level';
 export class User {
   id: number = 0;
@@ -9,6 +10,7 @@ export class User {
   phoneNumber: number = 0;
   birthDay: any;
   bio!: string;
+  provider!: Provider;
   role: any;
   authorities = [];
   followers = [];
