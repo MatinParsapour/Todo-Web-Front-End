@@ -33,6 +33,7 @@ export class FacebookSignInComponent implements OnInit {
     this.user = fb.group({
       firstName: new FormControl(''),
       lastName: new FormControl(''),
+      userName: new FormControl(''),
       email: new FormControl(''),
       password: new FormControl(''),
     });
