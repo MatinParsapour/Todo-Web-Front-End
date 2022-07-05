@@ -18,6 +18,7 @@ import { PhoneNumberComponent } from '../phone-number/phone-number.component';
 import { CodeValidatorComponent } from '../code-validator/code-validator.component';
 import { ForgetPasswordComponent } from '../forget-password/forget-password.component';
 import { AggreementComponent } from '../aggreement/aggreement.component';
+import { Provider } from 'src/app/enum/provider';
 
 @Component({
   selector: 'app-settings',
