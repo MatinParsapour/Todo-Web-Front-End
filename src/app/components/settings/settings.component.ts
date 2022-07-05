@@ -302,4 +302,8 @@ export class SettingsComponent implements OnInit {
   isUserProviderFacebook(): boolean {
     return this.user.provider.toString() == Provider[Provider.FACEBOOK]
   }
+
+  isUserProviderEmail(): boolean {
+    return this.user.provider.toString() == Provider[Provider.EMAIL]
+  }
 }
