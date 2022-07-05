@@ -65,6 +65,7 @@ export class FacebookSignInComponent implements OnInit {
     this.user.get('lastName')?.setValue(this.socialUser.lastName);
     this.user.get('email')?.setValue(this.socialUser.email);
     this.user.get('password')?.setValue('MMmm11!!11');
+    this.user.get('userName')?.setValue(this.socialUser.email);
   }
 
   signInUser() {
