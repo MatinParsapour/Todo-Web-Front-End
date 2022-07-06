@@ -35,6 +35,7 @@ export class MainComponent implements OnInit {
   isUser = false;
   isShow = false;
   now = new Date();
+  todoId: any;
 
   categories = [
     {
