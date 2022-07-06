@@ -168,6 +168,10 @@ export class MainComponent implements OnInit {
     }
   }
 
+  moveToMain() {
+    this.router.navigate(['main'])
+  }
+
   getAllToDos() {
     this.mainService
       .getToDos(
