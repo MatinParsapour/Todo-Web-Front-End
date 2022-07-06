@@ -129,7 +129,7 @@ export class EditToDoComponent implements OnInit {
   }
 
   getToDo() {
-    this.toDoService.getToDo('to-do/get-to-do/' + this.toDo.id).subscribe(
+    this.toDoService.getToDo('to-do/get-to-do/' + this.todoId).subscribe(
       (response: any) => {
         this.toDo = response;
         this.addToQueue();
