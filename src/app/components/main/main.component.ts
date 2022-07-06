@@ -155,6 +155,10 @@ export class MainComponent implements OnInit {
     this.isMyDay = false;
   }
 
+  isToDoIdExists(){
+    return this.todoId == undefined
+  }
+
   toggleIsMyDay() {
     this.isMyDay = !this.isMyDay;
     if (this.isMyDay) {
