@@ -5,7 +5,7 @@ import { CategoryService } from './../../services/category/category.service';
 import { GetResetEmailComponent } from './../get-reset-email/get-reset-email.component';
 import { CodeValidatorComponent } from './../code-validator/code-validator.component';
 import { PhoneNumberComponent } from './../phone-number/phone-number.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { UserComponent } from './../user/user.component';
 import { slideToDown, showHide } from './../../animations';
 import { InsertListComponent } from './../insert-list/insert-list.component';
