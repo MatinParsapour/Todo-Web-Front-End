@@ -146,3 +146,6 @@
     </mat-card>
   </div>
 </mat-sidenav-container>
+
+
+<app-edit-to-do (close)="moveToMain()" *ngIf="!isToDoIdExists()" [todoId]="todoId"></app-edit-to-do>
