@@ -91,14 +91,12 @@
     </div>
     <div class="userInfo">
       <div class="provider">
-        <span>Your account is connected with 
-          <img *ngIf="isUserProviderGoogle()"
-            src="https://fontmeme.com/temporary/7f600a73bbbe1cba8a4ec9b82f71fece.png" alt="google logo">
-            <img class="logo" *ngIf="isUserProviderFacebook()"
-            src="https://www.freeiconspng.com/uploads/logo-facebook-png-hd-12.png"
-            alt="facebook logo">
-            <span *ngIf="isUserProviderEmail()">Your email</span>
-          </span>
+        <span>Your account is connected with
+          <img *ngIf="isUserProviderGoogle()" src="https://fontmeme.com/permalink/220706/7f600a73bbbe1cba8a4ec9b82f71fece.png" alt="google-font">
+          <img class="logo" *ngIf="isUserProviderFacebook()"
+            src="https://www.freeiconspng.com/uploads/logo-facebook-png-hd-12.png" alt="facebook logo">
+          <span *ngIf="isUserProviderEmail()">Your email</span>
+        </span>
       </div>
     </div>
     <div class="separator">
@@ -135,7 +133,8 @@
     </div>
     <div class="userInfo">
       <input class="info" type="text" [value]="user.userName" readonly>
-      <button mat-button color="primary" (click)="isForgetUsernameModalVisible = !isForgetUsernameModalVisible" class="changeEmailButton">Change username</button>
+      <button mat-button color="primary" (click)="isForgetUsernameModalVisible = !isForgetUsernameModalVisible"
+        class="changeEmailButton">Change username</button>
     </div>
     <div class="separator">
       <div class="line firstLine"></div>
@@ -194,4 +193,5 @@
 
 </div>
 
-<app-forget-username [hidden]="!isForgetUsernameModalVisible" (close)="isForgetUsernameModalVisible = false"></app-forget-username>
+<app-forget-username [hidden]="!isForgetUsernameModalVisible" (close)="isForgetUsernameModalVisible = false">
+</app-forget-username>
