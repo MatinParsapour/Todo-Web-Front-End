@@ -110,17 +110,7 @@ export class ToDoComponent implements OnInit {
   }
 
   openEditToDoDialog() {
-    this.dialog
-      .open(EditToDoComponent, { data: { todo: this.toDo } })
-      .afterClosed()
-      .subscribe((result) => {
-        this.getToDo();
-        if (result === 'delete') {
-          this.deleteToDo();
-        } else if (result === 'delete-picture') {
-          this.openToDoPictures();
-        }
-      });
+    this.router.navigate(['main',{todoId: this.toDo.id}])
   }
 
   openToDoPictures() {
