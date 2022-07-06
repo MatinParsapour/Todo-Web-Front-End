@@ -38,6 +38,19 @@
     width: 5em;
   }
 
+  .container {
+    position: fixed;
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+    box-shadow: 0 0 20px 0;
+    border-radius: 5px;
+    background-color: white;
+    padding: 10px;
+    z-index: 99;
+  }
+
   p {
     font-size: 0.5em;
     color: aquamarine;
