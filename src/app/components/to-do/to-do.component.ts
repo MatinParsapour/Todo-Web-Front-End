@@ -28,6 +28,7 @@ export class ToDoComponent implements OnInit {
     private toDoService: ToDoService,
     private notifier: NotificationService,
     private dialog: MatDialog,
+    private clipBoardService: ClipboardService,
     private router: Router
   ) {}
 
