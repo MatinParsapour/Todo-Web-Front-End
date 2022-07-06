@@ -34,11 +34,9 @@ export class EditToDoComponent implements OnInit {
   ];
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) data: any,
     private toDoService: ToDoService,
     private notifier: NotificationService
   ) {
-    this.toDo = data.todo;
   }
 
   ngOnInit(): void {
