@@ -25,6 +25,7 @@ export class EditToDoComponent implements OnInit {
   isLoading = false;
   uploaded = 0;
   @Input('todoId') todoId: any;
+  @Output('close') close = new EventEmitter()
 
   statuses = [
     { value: Status.CREATED, viewValue: 'Created' },
