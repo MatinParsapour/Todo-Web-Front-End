@@ -7,7 +7,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
 import { ToDoService } from './../../services/to-do/to-do.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToDo } from './../../classes/todo';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { Status } from 'src/app/enum/status-type';
