@@ -24,6 +24,7 @@ export class EditToDoComponent implements OnInit {
   slideShowImages: Array<Object> = [];
   isLoading = false;
   uploaded = 0;
+  @Input('todoId') todoId: any;
 
   statuses = [
     { value: Status.CREATED, viewValue: 'Created' },
