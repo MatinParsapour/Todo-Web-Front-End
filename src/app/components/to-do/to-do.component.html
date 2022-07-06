@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card (click)="openEditToDoDialog()">
   <div class="doneAndTask">
     <app-check-circle [status]="toDo.status" (click)="doneToDo()"></app-check-circle>
     <div class="toDo" [class.lineThrough]="isDone()" [innerHtml]="toDo.task | summaryPipes: 20 | marker : search"></div>
