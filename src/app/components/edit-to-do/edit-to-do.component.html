@@ -1,97 +1,100 @@
-<div class="todoDetails">
-
-  <ng-image-slider [class.displayNone]="slideShowImages.length === 0" [images]="slideShowImages"
-    [imageSize]="slideShowSize()">
-  </ng-image-slider>
-  <progress max="100" [value]="uploaded" *ngIf="uploaded"></progress>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <div>
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Task : </mat-label>
-        <input autocomplete="off" type="text" matInput required [(ngModel)]="toDo.task" [value]="toDo.task">
-      </mat-form-field>
-    </div>
-  </div>
-  <div>
-    <mat-form-field appearance="fill" class="example-form-field">
-      <mat-label>Due to date :</mat-label>
-      <input matInput [min]="minDate" [(ngModel)]="toDo.dateTime" [matDatepicker]="datepicker">
-      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-      <mat-datepicker #datepicker>
-        <mat-datepicker-actions>
-          <button mat-button matDatepickerCancel>Cancel</button>
-          <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
-        </mat-datepicker-actions>
-      </mat-datepicker>
-    </mat-form-field>
-  </div>
-  <div>
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Caption : </mat-label>
-        <textarea [value]="toDo.caption" [(ngModel)]="toDo.caption" matInput></textarea>
-      </mat-form-field>
-    </div>
-  </div>
-  <div>
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Note : </mat-label>
-        <textarea [value]="toDo.note" [(ngModel)]="toDo.note" matInput></textarea>
-      </mat-form-field>
-    </div>
-  </div>
-  <div>
-    <p>Todo status : {{toDo.status}} </p>
-    <mat-form-field appearance="fill">
-      <mat-label>Status</mat-label>
-      <mat-select [value]="toDo.status" [(ngModel)]="toDo.status">
-        <mat-option [value]="status.value" *ngFor="let status of statuses">{{ status.viewValue }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <input type="file" (change)="addPhoto($event)" accept="image/x-png,image/gif,image/jpeg" id="selectInput"
-    style="display: none;">
-
+<div class="background" (click)='close.emit()'>
 </div>
-<footer>
-  <div class="icons">
+<div class="container">
+  <div class="todoDetails">
+    <ng-image-slider [class.displayNone]="slideShowImages.length === 0" [images]="slideShowImages"
+      [imageSize]="slideShowSize()">
+    </ng-image-slider>
+    <progress max="100" [value]="uploaded" *ngIf="uploaded"></progress>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
     <div>
-      <button mat-icon-button (click)="toggleStar()">
-        <span *ngIf="toDo.isStarred" matTooltip="Starred">
-          <mat-icon>star</mat-icon>
-        </span>
-        <span *ngIf="!toDo.isStarred" matTooltip="Not starred">
-          <mat-icon>star_border</mat-icon>
-        </span>
-      </button>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Task : </mat-label>
+          <input autocomplete="off" type="text" matInput required [(ngModel)]="toDo.task" [value]="toDo.task">
+        </mat-form-field>
+      </div>
     </div>
     <div>
-      <button mat-icon-button (click)="toggleMyDay()">
-        <span [hidden]="!toDo.isMyDay" matTooltip="Myday">
-          <mat-icon>brightness_7</mat-icon>
-        </span>
-        <span [hidden]="toDo.isMyDay" matTooltip="Not Myday">
-          <mat-icon>brightness_5</mat-icon>
-        </span>
-      </button>
+      <mat-form-field appearance="fill" class="example-form-field">
+        <mat-label>Due to date :</mat-label>
+        <input matInput [min]="minDate" [(ngModel)]="toDo.dateTime" [matDatepicker]="datepicker">
+        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancel</button>
+            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
     </div>
     <div>
-      <button mat-icon-button (click)="selectPhoto()" matTooltip="Add picture">
-        <span class="material-icons">
-          add_a_photo
-        </span>
-      </button>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Caption : </mat-label>
+          <textarea [value]="toDo.caption" [(ngModel)]="toDo.caption" matInput></textarea>
+        </mat-form-field>
+      </div>
     </div>
     <div>
-      <button mat-icon-button mat-dialog-close="delete-picture" *ngIf="toDo.pictures.length > 0">
-        <span class="material-icons">no_photography</span>
-      </button>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Note : </mat-label>
+          <textarea [value]="toDo.note" [(ngModel)]="toDo.note" matInput></textarea>
+        </mat-form-field>
+      </div>
     </div>
+    <div>
+      <p>Todo status : {{toDo.status}} </p>
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select [value]="toDo.status" [(ngModel)]="toDo.status">
+          <mat-option [value]="status.value" *ngFor="let status of statuses">{{ status.viewValue }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <input type="file" (change)="addPhoto($event)" accept="image/x-png,image/gif,image/jpeg" id="selectInput"
+      style="display: none;">
+
   </div>
-  <div class="buttons">
-    <button mat-raised-button color="primary" (click)="updateToDo()">Update</button>
-    <button mat-raised-button color="warn" mat-dialog-close="delete">Delete</button>
-  </div>
-</footer>
+  <footer>
+    <div class="icons">
+      <div>
+        <button mat-icon-button (click)="toggleStar()">
+          <span *ngIf="toDo.isStarred" matTooltip="Starred">
+            <mat-icon>star</mat-icon>
+          </span>
+          <span *ngIf="!toDo.isStarred" matTooltip="Not starred">
+            <mat-icon>star_border</mat-icon>
+          </span>
+        </button>
+      </div>
+      <div>
+        <button mat-icon-button (click)="toggleMyDay()">
+          <span [hidden]="!toDo.isMyDay" matTooltip="Myday">
+            <mat-icon>brightness_7</mat-icon>
+          </span>
+          <span [hidden]="toDo.isMyDay" matTooltip="Not Myday">
+            <mat-icon>brightness_5</mat-icon>
+          </span>
+        </button>
+      </div>
+      <div>
+        <button mat-icon-button (click)="selectPhoto()" matTooltip="Add picture">
+          <span class="material-icons">
+            add_a_photo
+          </span>
+        </button>
+      </div>
+      <div>
+        <button mat-icon-button mat-dialog-close="delete-picture" *ngIf="toDo.pictures.length > 0">
+          <span class="material-icons">no_photography</span>
+        </button>
+      </div>
+    </div>
+    <div class="buttons">
+      <button mat-raised-button color="primary" (click)="updateToDo()">Update</button>
+      <button mat-raised-button color="warn" mat-dialog-close="delete">Delete</button>
+    </div>
+  </footer>
+</div>
