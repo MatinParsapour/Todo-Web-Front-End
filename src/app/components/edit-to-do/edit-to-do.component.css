@@ -45,6 +45,13 @@
   .displayFlex {
     display: flex;
   }
+
+  .footer {
+    position: fixed;
+    width: 39%;
+    bottom: 8em;
+  }
+
   }
 
   .container {
