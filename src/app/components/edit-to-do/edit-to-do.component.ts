@@ -160,6 +160,19 @@ export class EditToDoComponent implements OnInit {
       'Link copied to your clipboard'
     );
   }
+
+  starToDo() {
+    this.toDo.isStarred = !this.toDo.isStarred;
+    this.toDoService.update('to-do/update-to-do', this.toDo).subscribe(
+      (response: any) => {
+        this.notifier.notify(NotificationType.SUCCESS, 'Success');
+        this.getToDo();
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.message);
+      }
+    );
+  }
   getToDo() {
     this.toDoService.getToDo('to-do/get-to-do/' + this.todoId).subscribe(
       (response: any) => {
