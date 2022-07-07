@@ -89,8 +89,8 @@
           <mat-icon>add_a_photo</mat-icon>Add picture
         </button>
         <button mat-menu-item class="material-icons delete" mat-dialog-close="delete-picture"
-          *ngIf="toDo.pictures.length > 0"> Remove photo
-          <span class="material-icons">no_photography</span>
+          *ngIf="toDo.pictures.length > 0">
+          <mat-icon>no_photography</mat-icon> Remove photo
         </button>
         <button (mouseenter)="getFolders()" mat-menu-item [matMenuTriggerFor]="todoLists">
           <mat-icon>add</mat-icon> Add todo to folder
