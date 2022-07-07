@@ -4,6 +4,9 @@
     overflow: auto;
     height: 27em;
   }
+
+  .todoDetails::-webkit-scrollbar {
+    display: none;
   }
 
   footer {
