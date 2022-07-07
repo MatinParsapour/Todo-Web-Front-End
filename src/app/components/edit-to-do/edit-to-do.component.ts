@@ -186,6 +186,30 @@ export class EditToDoComponent implements OnInit {
         }
       });
   }
+
+  deleteToDo() {
+    this.toDoService
+      .delete(
+        'to-do/delete-to-do/' +
+          localStorage.getItem('username') +
+          '/' +
+          this.toDo.id
+      )
+      .subscribe(
+        (response: any) => {
+          this.notifier.notify(
+            NotificationType.SUCCESS,
+            'The to do successfully deleted'
+          );
+          this.getToDos.emit();
+          this.close.emit();
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error);
+        }
+      );
+  }
+
   getToDo() {
     this.toDoService.getToDo('to-do/get-to-do/' + this.todoId).subscribe(
       (response: any) => {
