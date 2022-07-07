@@ -4,7 +4,7 @@
   </span>
   <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible" (emojiSelect)="addEmoji($event)"
     title="Choose your emoji"></emoji-mart>
-  <textarea [formControl]="message" type="text"></textarea>
+  <textarea placeholder="Write comment ..." [formControl]="message" type="text"></textarea>
   <span class="centralize sendButton">
     <button mat-icon-button (click)="sendComment()">
       <mat-icon>send</mat-icon>
