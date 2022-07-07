@@ -227,4 +227,33 @@ export class EditToDoComponent implements OnInit {
   toggleMyDay() {
     this.toDo.isMyDay = !this.toDo.isMyDay;
   }
+
+  addToList(folderName: any, listName: any) {
+    this.toDoService
+      .addToDoToList(
+        'to-do/add-to-do/' +
+          this.toDo.id +
+          '/list/' +
+          listName +
+          '/folder/' +
+          folderName +
+          '/for/' +
+          localStorage.getItem('username')
+      )
+      .subscribe(
+        (response) => {
+          this.notifier.notify(
+            NotificationType.SUCCESS,
+            'Todo added to folder'
+          );
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.messager
+          );
+          console.log(error);
+        }
+      );
+  }
 }
