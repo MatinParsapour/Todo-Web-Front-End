@@ -173,6 +173,19 @@ export class EditToDoComponent implements OnInit {
       }
     );
   }
+
+  openAggreementDialog() {
+    this.dialog
+      .open(AggreementComponent, {
+        data: { title: 'Are you sure you want to delete this to do' },
+      })
+      .afterClosed()
+      .subscribe((result: any) => {
+        if (result === 'Yes') {
+          this.deleteToDo();
+        }
+      });
+  }
   getToDo() {
     this.toDoService.getToDo('to-do/get-to-do/' + this.todoId).subscribe(
       (response: any) => {
