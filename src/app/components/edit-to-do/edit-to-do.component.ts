@@ -1,3 +1,4 @@
+import { ClipboardService } from 'ngx-clipboard';
 import {
   HttpErrorResponse,
   HttpEvent,
