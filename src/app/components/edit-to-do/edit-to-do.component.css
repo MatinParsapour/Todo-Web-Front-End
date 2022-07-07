@@ -52,6 +52,9 @@
     bottom: 8em;
   }
 
+  .content {
+    flex-direction: column;
+  }
   }
 
   .container {
