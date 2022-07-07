@@ -51,9 +51,11 @@ export class EditToDoComponent implements OnInit {
 
   addToQueue() {
     this.slideShowImages = [];
-    this.toDo.pictures.forEach((element: any) => {
-      this.slideShowImages.push({ image: element, thumbImage: element });
-    });
+    if (this.toDo.pictures != undefined) {
+      this.toDo.pictures.forEach((element: any) => {
+        this.slideShowImages.push({ image: element, thumbImage: element });
+      });
+    }
     this.canExecute = false;
   }
 
