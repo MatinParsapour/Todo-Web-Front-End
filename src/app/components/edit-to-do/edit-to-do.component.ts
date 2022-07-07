@@ -39,7 +39,10 @@ export class EditToDoComponent implements OnInit {
 
   constructor(
     private toDoService: ToDoService,
+    private notifier: NotificationService,
     private dialog: MatDialog,
+    private clipBoardService: ClipboardService
+  ) {}
 
   ngOnInit(): void {
     this.getToDo();
