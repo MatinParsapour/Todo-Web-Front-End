@@ -1,12 +1,15 @@
 .commentInput {
   display: flex;
+  height: 7em;
+  box-shadow: 0 0 10px -3px;
 }
 
 .commentInput>textarea {
   border-radius: 2px;
-  background-color: #424242;
   width: 100%;
   resize: none;
+  border: none;
+  font-size: 16px;
 }
 
 .emoji-mart {
@@ -16,11 +19,6 @@
   right: 21%;
 }
 
-.emojiContainer {
-  background: #343333;
-  border-radius: 50px 0 0 50px;
-}
-
 .commentInput>textarea:focus {
   outline: none;
 }
@@ -28,9 +26,4 @@
 .centralize {
   display: flex;
   align-items: center;
-}
-
-.sendButton {
-  background: #343333;
-  border-radius: 0 50px 50px 0;
 }
