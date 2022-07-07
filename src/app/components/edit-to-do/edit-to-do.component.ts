@@ -20,6 +20,7 @@ import { AggreementComponent } from '../aggreement/aggreement.component';
   styleUrls: ['./edit-to-do.component.css'],
 })
 export class EditToDoComponent implements OnInit {
+  folders: any;
   toDo: ToDo = new ToDo();
   minDate = new Date();
   canExecute = false;
