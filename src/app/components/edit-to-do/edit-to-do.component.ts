@@ -135,6 +135,21 @@ export class EditToDoComponent implements OnInit {
     }
   }
 
+  getFolders() {
+    this.toDoService
+      .getAll('folder/get-todo-folders/' + localStorage.getItem('username'))
+      .subscribe(
+        (response) => {
+          this.folders = response;
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.message
+          );
+        }
+      );
+  }
   getToDo() {
     this.toDoService.getToDo('to-do/get-to-do/' + this.todoId).subscribe(
       (response: any) => {
