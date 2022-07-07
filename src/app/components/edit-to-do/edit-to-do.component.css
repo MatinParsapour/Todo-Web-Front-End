@@ -55,6 +55,9 @@
   .content {
     flex-direction: column;
   }
+
+  .justifyContentSpaceBetween {
+    justify-content: space-between;
   }
 
   .container {
