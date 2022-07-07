@@ -150,6 +150,16 @@ export class EditToDoComponent implements OnInit {
         }
       );
   }
+
+  shareToDo() {
+    this.clipBoardService.copy(
+      'http://localhost:4200/to-do?todoId=' + this.toDo.id
+    );
+    this.notifier.notify(
+      NotificationType.SUCCESS,
+      'Link copied to your clipboard'
+    );
+  }
   getToDo() {
     this.toDoService.getToDo('to-do/get-to-do/' + this.todoId).subscribe(
       (response: any) => {
