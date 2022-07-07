@@ -64,44 +64,48 @@
       style="display: none;">
 
   </div>
-  <footer>
-    <div class="icons">
-      <div>
-        <button mat-icon-button (click)="toggleStar()">
-          <span *ngIf="toDo.isStarred" matTooltip="Starred">
-            <mat-icon>star</mat-icon>
-          </span>
-          <span *ngIf="!toDo.isStarred" matTooltip="Not starred">
-            <mat-icon>star_border</mat-icon>
-          </span>
+  <div class="content sidebar displayFlex justifyContentSpaceBetween">
+    <div class="displayFlex justifyContentSpaceBetween">
+      <button mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu class="menu" #normalMenu="matMenu">
+        <app-star (click)="starToDo()" [isStarred]="toDo.isStarred"></app-star>
+        <button (click)="openAggreementDialog()" mat-menu-item class="material-icons delete" matTooltip="Delete todo">
+          <mat-icon>delete</mat-icon> Delete todo
         </button>
-      </div>
-      <div>
-        <button mat-icon-button (click)="toggleMyDay()">
+        <button (click)="shareToDo()" mat-menu-item class="material-icons delete" matTooltip="Delete todo">
+          <mat-icon>share</mat-icon> Share todo
+        </button>
+        <button mat-menu-item class="material-icons delete" (click)="toggleMyDay()">
           <span [hidden]="!toDo.isMyDay" matTooltip="Myday">
-            <mat-icon>brightness_7</mat-icon>
+            <mat-icon>brightness_7</mat-icon> Not MyDay
           </span>
           <span [hidden]="toDo.isMyDay" matTooltip="Not Myday">
-            <mat-icon>brightness_5</mat-icon>
+            <mat-icon>brightness_5</mat-icon> MyDay
           </span>
         </button>
-      </div>
-      <div>
-        <button mat-icon-button (click)="selectPhoto()" matTooltip="Add picture">
-          <span class="material-icons">
-            add_a_photo
-          </span>
+        <button mat-menu-item class="material-icons delete" (click)="selectPhoto()" matTooltip="Add picture">
+          <mat-icon>add_a_photo</mat-icon>Add picture
         </button>
-      </div>
-      <div>
-        <button mat-icon-button mat-dialog-close="delete-picture" *ngIf="toDo.pictures.length > 0">
+        <button mat-menu-item class="material-icons delete" mat-dialog-close="delete-picture"
+          *ngIf="toDo.pictures.length > 0"> Remove photo
           <span class="material-icons">no_photography</span>
         </button>
-      </div>
+        <button (mouseenter)="getFolders()" mat-menu-item [matMenuTriggerFor]="todoLists">
+          <mat-icon>add</mat-icon> Add todo to folder
+        </button>
+      </mat-menu>
+      <app-caption (update)="getToDo()" [todo]="toDo"></app-caption>
     </div>
+    <div class="footer">
+      <app-comments [todo]="toDo" (update)="getToDo()"></app-comments>
+      <app-comment-input [todo]="toDo" (update)="getToDo()"></app-comment-input>
+    </div>
+  </div>
+  <footer>
     <div class="buttons">
       <button mat-raised-button color="primary" (click)="updateToDo()">Update</button>
-      <button mat-raised-button color="warn" mat-dialog-close="delete">Delete</button>
     </div>
   </footer>
 </div>
