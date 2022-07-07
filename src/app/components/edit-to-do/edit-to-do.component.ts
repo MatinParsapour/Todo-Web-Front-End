@@ -6,7 +6,7 @@ import {
 } from '@angular/common/http';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ToDoService } from './../../services/to-do/to-do.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {  MatDialog } from '@angular/material/dialog';
 import { ToDo } from './../../classes/todo';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
