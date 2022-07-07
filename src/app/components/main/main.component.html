@@ -148,4 +148,4 @@
 </mat-sidenav-container>
 
 
-<app-edit-to-do (close)="moveToMain()" *ngIf="!isToDoIdExists()" [todoId]="todoId"></app-edit-to-do>
+<app-edit-to-do (close)="moveToMain()" (getToDos)="loadCategory('tasks')" *ngIf="!isToDoIdExists()" [todoId]="todoId"></app-edit-to-do>
