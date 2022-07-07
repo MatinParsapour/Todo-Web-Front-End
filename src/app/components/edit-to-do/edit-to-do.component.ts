@@ -12,6 +12,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { Status } from 'src/app/enum/status-type';
+import { AggreementComponent } from '../aggreement/aggreement.component';
 
 @Component({
   selector: 'app-edit-to-do',
