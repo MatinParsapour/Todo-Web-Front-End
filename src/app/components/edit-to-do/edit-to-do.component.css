@@ -42,6 +42,9 @@
     width: 36em;
   }
 
+  .displayFlex {
+    display: flex;
+  }
   }
 
   .container {
