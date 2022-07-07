@@ -28,6 +28,7 @@ export class EditToDoComponent implements OnInit {
   isLoading = false;
   uploaded = 0;
   @Input('todoId') todoId: any;
+  @Output('close') close = new EventEmitter();
   @Output('getToDos') getToDos = new EventEmitter();
 
   statuses = [
