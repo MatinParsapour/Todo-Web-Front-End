@@ -71,6 +71,10 @@
     background-color: white;
     padding: 10px;
     z-index: 99;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0px;
+    column-gap: 20px;
   }
 
   p {
