@@ -4,28 +4,7 @@
     <div class="toDo" [class.lineThrough]="isDone()" [innerHtml]="toDo.task | summaryPipes: 20 | marker : search"></div>
   </div>
   <div>
-    <button mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu class="menu" #normalMenu="matMenu">
-      <app-star (click)="starToDo()" [isStarred]="toDo.isStarred"></app-star>
-      <button (click)="openAggreementDialog()" mat-menu-item class="material-icons delete" matTooltip="Delete todo">
-        <mat-icon>delete</mat-icon> Delete todo
-      </button>
-      <button (click)="shareToDo()" mat-menu-item class="material-icons delete" matTooltip="Delete todo">
-        <mat-icon>share</mat-icon> Share todo
-      </button>
-      <button (mouseenter)="getFolders()" mat-menu-item [matMenuTriggerFor]="todoLists">
-        <mat-icon>add</mat-icon> Add todo to folder
-      </button>
-    </mat-menu>
-
-    <mat-menu #todoLists="matMenu">
-      <div *ngFor="let folder of folders"> 
-        <button mat-menu-item *ngFor="let list of folder.toDoLists" (click)="addToList(folder.name, list.name)">
-          <span>{{folder.name}} --> {{list.name}}</span>
-        </button>
-      </div>
-    </mat-menu>
+    <img [hidden]="toDo.pinned" src="https://img.icons8.com/ios/25/000000/pin--v1.png" />
+    <img [hidden]="!toDo.pinned" src="https://img.icons8.com/ios-filled/25/000000/pin--v1.png" />
   </div>
 </mat-card>
