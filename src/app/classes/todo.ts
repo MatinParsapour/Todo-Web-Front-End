@@ -10,7 +10,7 @@ export class ToDo {
   task: string = '';
   category = Category.TASKS
   pictures: any;
-  isPinned!: boolean;
+  pinned!: boolean;
   createdAt: any;
   likes = []
   comments = []
