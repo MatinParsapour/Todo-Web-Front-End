@@ -67,13 +67,6 @@ export class GoogleSignInComponent implements OnInit {
     this.user.get('provider')?.setValue(this.socialUser.provider);
   }
 
-  updateLocalStorage(user: any) {
-    localStorage.setItem('username', user.id);
-    localStorage.setItem('firstName', user.firstName);
-    localStorage.setItem('lastName', user.lastName);
-    localStorage.setItem('role', user.role);
-  }
-
   signInUser() {
     this.loginService.create('/sign-in', this.user.value).subscribe(
       (response: any) => {
