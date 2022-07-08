@@ -54,7 +54,7 @@
         <mat-icon class="list" id="openSideNav" (click)="sidenav.open()" matTooltip="Open sidebar">list</mat-icon>
       </div>
       <div>
-        <button *ngIf="isUser" [routerLink]="'/support'" [queryParams]="{userId: userId}" class="fancyButton support"
+        <button *ngIf="isUser" [routerLink]="'/support'" [queryParams]="{userId: username}" class="fancyButton support"
           mat-raised-button color="primary">
           Support
           <span class="material-icons">
