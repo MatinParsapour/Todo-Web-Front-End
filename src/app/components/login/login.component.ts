@@ -70,8 +70,7 @@ export class LoginComponent implements OnInit {
       (response: any) => {
         if (response !== null) {
           this.notifier.notify(NotificationType.SUCCESS, 'You are logged in');
-          this.updateLocalStorage(response);
-          this.router.navigateByUrl('/main');
+          this.router.navigateByUrl('/' + response.userName);
         } else {
           this.notifier.notify(
             NotificationType.ERROR,
