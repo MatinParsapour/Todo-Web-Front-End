@@ -64,13 +64,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  updateLocalStorage(user: any) {
-    localStorage.setItem('username', user.id);
-    localStorage.setItem('firstName', user.firstName);
-    localStorage.setItem('lastName', user.lastName);
-    localStorage.setItem('role', user.role);
-  }
-
   login() {
     this.isLoading = true;
     this.loginService.create('/log-in', this.user.value).subscribe(
