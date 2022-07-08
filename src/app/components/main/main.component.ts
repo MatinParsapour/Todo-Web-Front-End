@@ -170,6 +170,7 @@ export class MainComponent implements OnInit {
 
   moveToMain() {
     this.router.navigate(['main'])
+    this.loadCategory('tasks')
   }
 
   getAllToDos() {
