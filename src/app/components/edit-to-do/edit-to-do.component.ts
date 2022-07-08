@@ -13,6 +13,7 @@ import { DatePipe } from '@angular/common';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { Status } from 'src/app/enum/status-type';
 import { AggreementComponent } from '../aggreement/aggreement.component';
+import { ToDoPicturesComponent } from '../to-do-pictures/to-do-pictures.component';
 
 @Component({
   selector: 'app-edit-to-do',
@@ -111,6 +112,14 @@ export class EditToDoComponent implements OnInit {
       }
     );
   }
+
+  openToDoPictures() {
+    this.dialog
+      .open(ToDoPicturesComponent, {
+        data: { pictures: this.toDo.pictures, toDoId: this.toDo.id },
+      })
+  }
+
   reportUploadProgress(event: HttpEvent<any>) {
     switch (event.type) {
       case HttpEventType.UploadProgress:
