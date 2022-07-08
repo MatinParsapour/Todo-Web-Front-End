@@ -74,8 +74,7 @@ export class GoogleSignInComponent implements OnInit {
           NotificationType.SUCCESS,
           'You logged in successfully'
         );
-        this.router.navigateByUrl('/main');
-        this.updateLocalStorage(response);
+        this.router.navigateByUrl('/' + response.userName);
       },
       (error: HttpErrorResponse) => {
         if (error.status === 403) {
