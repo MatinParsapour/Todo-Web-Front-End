@@ -88,7 +88,7 @@
         <button mat-menu-item class="material-icons delete" (click)="selectPhoto()" matTooltip="Add picture">
           <mat-icon>add_a_photo</mat-icon>Add picture
         </button>
-        <button mat-menu-item class="material-icons delete" mat-dialog-close="delete-picture"
+        <button mat-menu-item class="material-icons delete" (click)="openToDoPictures()"
           *ngIf="toDo.pictures.length > 0">
           <mat-icon>no_photography</mat-icon> Remove photo
         </button>
