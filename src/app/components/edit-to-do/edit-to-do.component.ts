@@ -120,6 +120,11 @@ export class EditToDoComponent implements OnInit {
       })
   }
 
+  pinOrUnpinToDo(){
+    this.toDo.pinned = !this.toDo.pinned;
+    this.updateToDo()
+  }
+
   reportUploadProgress(event: HttpEvent<any>) {
     switch (event.type) {
       case HttpEventType.UploadProgress:
