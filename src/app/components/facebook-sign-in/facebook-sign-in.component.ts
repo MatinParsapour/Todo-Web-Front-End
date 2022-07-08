@@ -73,8 +73,7 @@ export class FacebookSignInComponent implements OnInit {
     this.loginSerivce.create('/sign-in', this.user.value).subscribe(
       (response: any) => {
         this.notifier.notify(NotificationType.SUCCESS, 'You are logged in');
-        this.updateLocalStorage(response);
-        this.router.navigateByUrl('/main');
+        this.router.navigateByUrl('/' + response.userName);
       },
       (error: HttpErrorResponse) => {
         if (error.status === 403) {
