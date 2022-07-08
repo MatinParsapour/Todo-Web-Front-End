@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'validate-email', component: ValidateEmailComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
-  {path: 'main', component: MainComponent},
+  {path: ':username', component: MainComponent},
   {path: 'reset-email', component: ResetEmailComponent},
   {path: 'inbox', component: InboxComponent},
   {path: 'outbox', component: OutboxComponent},
