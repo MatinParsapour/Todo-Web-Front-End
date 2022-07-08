@@ -1,5 +1,5 @@
 .comments {
-  height: 13em;
+  height: 27em;
   overflow: auto;
   width: 100%;
   display: flex;
@@ -20,12 +20,14 @@
   border-radius: 5px;
   border-color: #02020224;
   padding: 7px;
+  margin-bottom: 2%;
 }
 
 .captionSection {
   position: sticky;
   background-color: #2c243870;
   padding: 2%;
+  font-size: 15px;
 }
 
 .caption {
