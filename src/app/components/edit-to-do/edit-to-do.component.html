@@ -74,6 +74,18 @@
         <button (click)="openAggreementDialog()" mat-menu-item class="material-icons delete" matTooltip="Delete todo">
           <mat-icon>delete</mat-icon> Delete todo
         </button>
+        <button (click)="pinOrUnpinToDo()" mat-menu-item class="material-icons" matTooltip="Pin todo">
+            <div class="pin" [hidden]="toDo.pinned">
+              <img src="https://img.icons8.com/ios/25/000000/pin--v1.png" />
+              <span class="pinText">Pin todo</span>
+            </div>
+            <div class="pin" [hidden]="!toDo.pinned">
+              <img src="https://img.icons8.com/ios-filled/25/000000/pin--v1.png" />
+              <div class="pinText">
+                <span>Unpin todo</span>
+              </div>
+            </div>
+        </button>
         <button (click)="shareToDo()" mat-menu-item class="material-icons delete" matTooltip="Delete todo">
           <mat-icon>share</mat-icon> Share todo
         </button>
