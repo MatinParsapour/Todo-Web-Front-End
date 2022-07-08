@@ -71,13 +71,7 @@ export class MainComponent implements OnInit {
     this.guidedService.startTour(this.mainTour);
   }
 
-  ngOnInit(): void {
-    this.user =
-      localStorage.getItem('firstName') +
-      ' ' +
-      localStorage.getItem('lastName');
-    this.getAllToDoFolders();
-    this.loadCategory('tasks');
+          this.checkUserRole();
     this.checkUserRole();
     this.todoId = this.route.snapshot.params['todoId'];
     this.route.params.subscribe((params: Params) => {
