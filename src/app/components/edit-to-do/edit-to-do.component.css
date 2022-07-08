@@ -15,6 +15,16 @@
     right: 16em;
   }
 
+  .pin {
+    display: flex;
+    align-items: center;
+  }
+
+  .pinText {
+    position: fixed;
+    left: 15%;
+  }
+
   .menuButton {
     transform: rotate(90deg);
   }
