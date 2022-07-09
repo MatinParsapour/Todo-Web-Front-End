@@ -27,7 +27,7 @@ import { GuidedTour, GuidedTourService, Orientation } from 'ngx-guided-tour';
 })
 export class MainComponent implements OnInit {
   toDoFolders: any;
-  toDos: any;
+  toDos: Array<ToDo> = [];
   completedToDos: Array<ToDo> = [];
   isMyDay = false;
   user: any;
