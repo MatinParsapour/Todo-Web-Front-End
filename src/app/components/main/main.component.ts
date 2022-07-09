@@ -123,10 +123,7 @@ export class MainComponent implements OnInit {
   addAndUpdateToDos() {
     if (this.toDo.task.trim() !== '') {
       this.mainService
-        .create(
-          '/to-do/add-to-do/' + localStorage.getItem('username'),
-          this.toDo
-        )
+        .create('/to-do/add-to-do/' + this.user.userName, this.toDo)
         .subscribe(
           (response: any) => {
             this.notifier.notify(
