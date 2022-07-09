@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToDoPicturesComponent } from './../to-do-pictures/to-do-pictures.component';
 import { ToDo } from './../../classes/todo';
 import { EditToDoComponent } from './../edit-to-do/edit-to-do.component';
