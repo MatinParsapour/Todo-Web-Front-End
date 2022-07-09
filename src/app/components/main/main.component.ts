@@ -199,7 +199,7 @@ export class MainComponent implements OnInit {
 
   getAllToDoFolders() {
     this.mainService
-      .getAll('/folder/get-todo-folders/' + localStorage.getItem('username'))
+      .getAll('/folder/get-todo-folders/' + this.user.userName)
       .subscribe(
         (response: any) => {
           this.toDoFolders = response;
