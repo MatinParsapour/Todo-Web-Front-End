@@ -41,7 +41,7 @@ export class SettingsComponent implements OnInit {
       info: 'By selecting this level of accessing, only you can see your ToDos',
     },
   ];
-  userId: any;
+  username: any;
   settingsType: any;
   user!: User;
   isLoading = false;
