@@ -244,7 +244,6 @@ export class SettingsComponent implements OnInit {
 
   updateUser() {
     this.isLoading = true;
-    this.user.id = this.username;
     this.settingsService
       .update('settings/update/' + this.settingsType, this.user)
       .subscribe(
