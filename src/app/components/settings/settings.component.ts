@@ -61,7 +61,7 @@ export class SettingsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userId = this.activatedRoute.snapshot.params['userId'];
+    this.username = this.activatedRoute.snapshot.params['username'];
     this.settingsType = this.activatedRoute.snapshot.params['settingsType'];
     this.getUser();
   }
