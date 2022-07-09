@@ -181,7 +181,7 @@ export class SettingsComponent implements OnInit {
   changeProfileImage(event: any) {
     this.profileImage = event.target.files[0];
     const formData = new FormData();
-    formData.append('userId', this.userId);
+    formData.append('userId', this.username);
     formData.append('profileImage', this.profileImage);
     this.userService.updateProfileImage(formData).subscribe(
       (event: HttpEvent<any>) => {
