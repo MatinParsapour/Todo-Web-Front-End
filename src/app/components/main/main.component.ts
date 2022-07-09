@@ -189,7 +189,10 @@ export class MainComponent implements OnInit {
           this.checkToDosStatus()
         },
         (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.message
+          );
         }
       );
   }
