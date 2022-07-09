@@ -16,7 +16,8 @@ export class CaptionComponent implements OnInit {
   @Output('update') update = new EventEmitter()
 
   constructor(private todoService: ToDoService,
-              private notifier: NotificationService) {}
+              private notifier: NotificationService,
+              private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.isLiked()
