@@ -31,6 +31,8 @@ export class MainComponent implements OnInit {
   completedToDos: Array<ToDo> = [];
   isMyDay = false;
   user: any;
+  name = '';
+  username = '';
   isUser = false;
   isShow = false;
   now = new Date();
