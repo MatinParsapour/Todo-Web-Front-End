@@ -306,4 +306,18 @@ export class MainComponent implements OnInit {
   explore(){
     this.router.navigateByUrl('/explore')
   }
+
+  getPinnedToDos(){
+    this.pinnedToDos = []
+    this.toDos.forEach((element: any) => {
+      if (element.pinned = true) {
+        this.pinnedToDos.push(element);
+        for (var i = 0; i < this.toDos.length; i++) {
+          if (this.toDos[i] == element) {
+            this.toDos.splice(i, 1)
+          }
+        }
+      }
+    });
+  }
 }
