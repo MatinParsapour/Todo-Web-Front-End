@@ -177,7 +177,7 @@ export class MainComponent implements OnInit {
           '/' +
           localStorage.getItem('folder') +
           '/' +
-          localStorage.getItem('username')
+          this.user.userName
       )
       .subscribe(
         (response: any) => {
