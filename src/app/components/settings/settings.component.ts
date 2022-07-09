@@ -140,7 +140,7 @@ export class SettingsComponent implements OnInit {
 
   getUser() {
     this.isLoading = true;
-    this.settingsService.getUser(this.userId, this.settingsType).subscribe(
+    this.settingsService.getUser(this.username, this.settingsType).subscribe(
       (response: any) => {
         this.user = response;
       },
