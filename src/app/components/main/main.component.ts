@@ -63,9 +63,7 @@ export class MainComponent implements OnInit {
     this.getUser();
   }
 
-  restartTour() {
-    this.guidedService.startTour(this.mainTour);
-  }
+  ngOnInit(): void {}
 
           this.checkUserRole();
     this.checkUserRole();
