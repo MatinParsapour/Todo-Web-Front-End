@@ -58,7 +58,6 @@ export class MainComponent implements OnInit {
     private dialog: MatDialog,
     private notifier: NotificationService,
     private router: Router,
-    private guidedService: GuidedTourService,
     private route: ActivatedRoute
   ) {
     this.getUserId();
