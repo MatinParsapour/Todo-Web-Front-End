@@ -29,7 +29,8 @@ export class ToDoComponent implements OnInit {
     private notifier: NotificationService,
     private dialog: MatDialog,
     private clipBoardService: ClipboardService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {}
