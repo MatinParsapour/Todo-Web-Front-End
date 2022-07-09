@@ -290,7 +290,7 @@ export class MainComponent implements OnInit {
 
   getStarredToDos() {
     this.mainService
-      .getToDos('/to-do/get-starred-todos/' + localStorage.getItem('username'))
+      .getToDos('/to-do/get-starred-todos/' + this.user.userName)
       .subscribe(
         (response) => {
           this.toDos = response;
