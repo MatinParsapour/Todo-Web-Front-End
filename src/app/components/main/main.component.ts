@@ -254,10 +254,7 @@ export class MainComponent implements OnInit {
   loadCategory(category: string) {
     this.categoryService
       .getAll(
-        'category/get-category-to-dos/' +
-          category +
-          '/' +
-          localStorage.getItem('username')
+        'category/get-category-to-dos/' + category + '/' + this.user.userName
       )
       .subscribe(
         (response: any) => {
