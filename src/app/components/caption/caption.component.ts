@@ -66,9 +66,9 @@ export class CaptionComponent implements OnInit {
 
   createFormData(): FormData {
     const formData = new FormData();
-    let userId = localStorage.getItem('username');
-    if (userId) {
-      formData.append('userId', userId);
+    let username = this.route.snapshot.params['username'];
+    if (username) {
+      formData.append('username', username);
     }
     formData.append('todoId', this.todo.id);
     return formData;
