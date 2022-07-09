@@ -29,6 +29,7 @@ export class MainComponent implements OnInit {
   toDoFolders: any;
   toDos: Array<ToDo> = [];
   completedToDos: Array<ToDo> = [];
+  pinnedToDos: Array<ToDo> = [];
   isMyDay = false;
   user: any;
   name = '';
