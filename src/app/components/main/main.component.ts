@@ -271,15 +271,6 @@ export class MainComponent implements OnInit {
     this.dialog.open(SendEmailComponent, { width: '50em' });
   }
 
-  checkUserRole(): any {
-    const role = localStorage.getItem('role');
-    if (role === 'ROLE_USER') {
-      this.isUser = true;
-    } else {
-      this.isUser = false;
-    }
-  }
-
   getIsMyDay() {
     return this.isMyDay;
   }
