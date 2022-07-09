@@ -292,7 +292,7 @@ export class MainComponent implements OnInit {
     this.mainService
       .getToDos('/to-do/get-starred-todos/' + this.user.userName)
       .subscribe(
-        (response) => {
+        (response: any) => {
           this.toDos = response;
           this.checkToDosStatus();
         },
