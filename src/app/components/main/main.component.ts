@@ -78,8 +78,6 @@ export class MainComponent implements OnInit {
           this.todoId = this.route.snapshot.params['todoId'];
           this.route.params.subscribe((params: Params) => {
             this.todoId = params['todoId'];
-      this.todoId = params['todoId']; 
-            this.todoId = params['todoId'];
           });
         },
         (error: HttpErrorResponse) => {
