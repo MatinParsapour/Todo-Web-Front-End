@@ -165,7 +165,7 @@ export class MainComponent implements OnInit {
   }
 
   moveToMain() {
-    this.router.navigate(['main'])
+    this.router.navigate([this.route.snapshot.params['username']]);
     this.loadCategory('tasks')
   }
 
