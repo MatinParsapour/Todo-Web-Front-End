@@ -110,7 +110,10 @@ export class ToDoComponent implements OnInit {
   }
 
   openEditToDoDialog() {
-    this.router.navigate(['main',{todoId: this.toDo.id}])
+    this.router.navigate([
+      this.route.snapshot.params['username'],
+      { todoId: this.toDo.id },
+    ]);
   }
 
   openToDoPictures() {
