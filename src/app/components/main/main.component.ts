@@ -65,28 +65,30 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  getUser() {
+    this.mainService
+      .getAll('/user/get-user/' + this.route.snapshot.params['username'])
+      .subscribe(
+        (response) => {
+          this.user = response;
+          this.name = this.user.firstName + ' ' + this.user.lastName;
           this.checkUserRole();
-    this.checkUserRole();
-    this.todoId = this.route.snapshot.params['todoId'];
-    this.route.params.subscribe((params: Params) => {
+          this.getAllToDoFolders();
+          this.loadCategory('tasks');
+          this.todoId = this.route.snapshot.params['todoId'];
+          this.route.params.subscribe((params: Params) => {
+            this.todoId = params['todoId'];
       this.todoId = params['todoId']; 
-    });
-  }
-
-  getUserId() {
-    const userId = localStorage.getItem('username');
-    if (userId !== null) {
-      this.userId = userId;
-    }
-  }
-
-  userVisitedGuide() {
-    localStorage.setItem('Visited guide', this.userId);
-  }
-
-  isUserVisitedGuide() {
-    const userId = localStorage.getItem('Visited guide');
-    return userId === this.userId;
+            this.todoId = params['todoId'];
+          });
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.message
+          );
+        }
+      );
   }
 
   isDone(toDo: any) {
