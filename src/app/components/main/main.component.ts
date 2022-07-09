@@ -30,8 +30,7 @@ export class MainComponent implements OnInit {
   toDos: any;
   completedToDos: Array<ToDo> = [];
   isMyDay = false;
-  user = '';
-  userId = '';
+  user: any;
   isUser = false;
   isShow = false;
   now = new Date();
