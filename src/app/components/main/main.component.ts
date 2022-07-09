@@ -60,11 +60,7 @@ export class MainComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.getUserId();
-    this.checkUserRole();
-    if (this.isUser && !this.isUserVisitedGuide()) {
-      this.guidedService.startTour(this.mainTour);
-    }
+    this.getUser();
   }
 
   restartTour() {
