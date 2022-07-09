@@ -134,6 +134,7 @@ export class MainComponent implements OnInit {
             this.loadCategory('tasks');
             this.clearToDo();
             this.toggleInputDisplay();
+            this.getPinnedToDos()
           },
           (error: HttpErrorResponse) => {
             this.notifier.notify(
@@ -188,6 +189,7 @@ export class MainComponent implements OnInit {
             });
           });
           this.checkToDosStatus()
+          this.getPinnedToDos();
         },
         (error: HttpErrorResponse) => {
           this.notifier.notify(
@@ -261,6 +263,7 @@ export class MainComponent implements OnInit {
         (response: any) => {
           this.toDos = response;
           this.checkToDosStatus();
+          this.getPinnedToDos()
         },
         (error: HttpErrorResponse) => {
           console.log(error);
@@ -296,6 +299,7 @@ export class MainComponent implements OnInit {
         (response: any) => {
           this.toDos = response;
           this.checkToDosStatus();
+          this.getPinnedToDos()
         },
         (error: HttpErrorResponse) => {
           console.log(error);
