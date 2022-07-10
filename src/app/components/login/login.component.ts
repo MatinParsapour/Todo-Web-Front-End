@@ -98,6 +98,13 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  isUserRemembered(): boolean {
+    if (this.cookieUsername == '') {
+      return false;
+    }
+    return true;
+  }
+
   getUser() {
     this.cookieUsername = this.cookieService.get('username');
   }
