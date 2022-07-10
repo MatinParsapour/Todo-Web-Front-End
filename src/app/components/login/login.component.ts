@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private notifier: NotificationService,
     private router: Router,
-    private socialAuthService: SocialAuthService
+    private cookieService: CookieService
   ) {
     this.user = fb.group({
       userName: new FormControl('', [Validators.required]),
