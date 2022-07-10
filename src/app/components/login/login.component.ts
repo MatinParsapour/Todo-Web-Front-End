@@ -97,6 +97,10 @@ export class LoginComponent implements OnInit {
       this.cookieService.set('username', this.user.get('userName')?.value);
     }
   }
+
+  getUser() {
+    this.cookieUsername = this.cookieService.get('username');
+  }
   }
 
   getUsernameErrorMessages() {
