@@ -58,7 +58,8 @@ export class SettingsComponent implements OnInit {
     private userService: UserService,
     private notifier: NotificationService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private cookiesService: CookieService
   ) {}
 
   ngOnInit(): void {
