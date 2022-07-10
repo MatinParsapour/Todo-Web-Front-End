@@ -1,5 +1,4 @@
 import { MatDialog } from '@angular/material/dialog';
-import { AggreementComponent } from './../aggreement/aggreement.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NotificationService } from './../../services/notification/notification.service';
 import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
