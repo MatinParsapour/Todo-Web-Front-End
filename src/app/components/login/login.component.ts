@@ -92,9 +92,11 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  showPopup(){
-    this.displayPopup = true
-    setTimeout(() => this.displayPopup = false, 5000)
+  saveUser() {
+    if (this.user.get('rememberMe')?.value == true) {
+      this.cookieService.set('username', this.user.get('userName')?.value);
+    }
+  }
   }
 
   getUsernameErrorMessages() {
