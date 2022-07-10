@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { NotificationService } from './../../services/notification/notification.service';
 import { LoginService } from './../../services/login/login.service';
