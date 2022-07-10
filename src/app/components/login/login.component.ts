@@ -66,6 +66,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.isLoading = true;
+    this.saveUser()
     this.loginService.create('/log-in', this.user.value).subscribe(
       (response: any) => {
         if (response !== null) {
