@@ -23,7 +23,7 @@ export class UserComponent implements OnInit {
   isLoading: boolean = false;
   public profileImage: any;
   fullScreen = false;
-  userId: any;
+  observable: any;
   now = new Date();
   uploaded = 0;
   requests: any;
