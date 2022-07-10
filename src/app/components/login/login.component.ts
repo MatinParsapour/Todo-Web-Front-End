@@ -98,6 +98,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  canNavigateToMain() {
+    if (this.isUserRemembered()) {
+      this.router.navigateByUrl(this.cookieUsername);
+    }
+  }
+
   isUserRemembered(): boolean {
     if (this.cookieUsername == '') {
       return false;
