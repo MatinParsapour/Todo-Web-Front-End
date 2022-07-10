@@ -88,6 +88,10 @@
     top: 0;
   }
 
+  .check-box-container {
+    width: 95%;
+  }
+
   .input {
     display: flex;
     flex-direction: column;
