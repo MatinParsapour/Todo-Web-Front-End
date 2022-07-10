@@ -31,7 +31,7 @@ const routes: Routes = [
   {path: 'support', component: SupportComponent},
   {path: 'to-do', component: SharedToDoComponent},
   {path: 'explore', component: ExploreComponent},
-  {path: 'user/:id', component: UserComponent},
+  {path: 'user/:observer/:observable', component: UserComponent},
   {path: ':username/settings/:settingsType', component: SettingsComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: '**', component: NotFoundComponent},
