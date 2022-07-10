@@ -1,52 +1,19 @@
 <nav>
-  <button class="back" mat-icon-button (click)="backToMain()" matTooltip="Back"><mat-icon>arrow_back</mat-icon></button>
-  <button class="logout" mat-icon-button color="" matTooltip="logout" (click)="logout()">
-    <mat-icon>logout</mat-icon>
-  </button>
-  <button class="logout" mat-icon-button matTooltip="Delete account" (click)="openDeleteAccountAggreement()">
-    <mat-icon>delete_account</mat-icon>
+  <button class="back" mat-icon-button (click)="backToMain()" matTooltip="Back">
+    <mat-icon>arrow_back</mat-icon>
   </button>
 </nav>
-<app-image-viewer [imageUrl]="user.profileImageUrl" [open]="fullScreen" (click)="closeFullScreen()"
-  (delete)="deleteProfile()">
-</app-image-viewer>
 <div class="userDetails" [class.spinner]="isLoading">
   <div class="header">
     <div>
-      <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" value="PRIVATE" name="btnradio" id="btnradio1" (change)="changeAccessLevel($event.target)"
-          autocomplete="off" [checked]="isPrivate()">
-        <label class="btn btn-outline-primary" for="btnradio1">Private</label>
-
-        <input type="radio" class="btn-check" value="PROTECTED" name="btnradio" id="btnradio2"
-          (change)="changeAccessLevel($event.target)"
-          autocomplete="off" [checked]="isProtected()">
-        <label class="btn btn-outline-primary" for="btnradio2">Protected</label>
-
-        <input type="radio" class="btn-check" value="PUBLIC" name="btnradio" id="btnradio3"
-          (change)="changeAccessLevel($event.target)"
-          autocomplete="off" [checked]="isPublic()">
-        <label class="btn btn-outline-primary" for="btnradio3">Public</label>
+      <div class="img-username">
+        <img *ngIf="user.profileImageUrl" [src]="user.profileImageUrl" width="200px" height="200px">
+        <span>{{user.userName}}</span>
       </div>
-      <img (click)="openFullScreen()" *ngIf="user.profileImageUrl" [src]="user.profileImageUrl" width="200px"
-        height="200px">
-      <progress max="100" [value]="uploaded" *ngIf="uploaded"></progress>
-      <button class="deleteButton" (click)="deleteProfile()">Delete</button>
-      <mat-icon (click)="selectProfile()" class="personIcon" *ngIf="!user.profileImageUrl">person</mat-icon>
-      <button mat-button (click)="selectProfile()" *ngIf="user.profileImageUrl" class="changeProfileImage">Change
-        profile</button>
-      <form style="display:none">
-        <input type="file" (change)="changeProfileImage($event)" id="select-picture"
-          accept="image/x-png,image/gif,image/jpeg">
-      </form>
     </div>
     <div class="fnln" [class.margintop]="!user.profileImageUrl">
       <div class="fnlninner">
         <div>
-          <p> First name : <span #fName (blur)="user.firstName = fName.innerText" [contentEditable]="true">
-              {{user.firstName}}</span></p>
-          <p> Last name : <span #lName (blur)="user.lastName = lName.innerText" [contentEditable]="true">
-              {{user.lastName}} </span> </p>
           <div class="follows">
             <span>Followers</span>
             <button (click)="follows.open(user.followers, 'followers')" mat-button>{{user.followers.length}}</button>
@@ -55,10 +22,10 @@
             <span>Followings</span>
             <button (click)="follows.open(user.followings, 'followings')" mat-button>{{user.followings.length}}</button>
           </div>
-          <div class="follows">
-            <span>Requests</span>
-            <button mat-button>{{requests.length}}</button>
-          </div>
+          <article>
+            <h4>bio</h4>
+            <p>{{user.bio}}</p>
+          </article>
         </div>
       </div>
     </div>
@@ -67,57 +34,12 @@
   </div>
   <div>
     <div>
-      <span> Age : </span>
-      <mat-form-field appearance="fill">
-        <mat-label>age</mat-label>
-        <input autocomplete="off" type="text" matInput placeholder="age" required [(ngModel)]="user.age"
-          [value]="user.age">
-      </mat-form-field>
+      <a class="link" [href]="'tel:' + user.phoneNumber">Phone number</a>
     </div>
     <div class="secondElement">
-      <span> Birthday: </span>
-      <mat-form-field appearance="fill" class="example-form-field">
-        <mat-label>Choose a date</mat-label>
-        <input [max]="now" [(ngModel)]="user.birthDay" [value]="user.birthDay" matInput [matDatepicker]="datepicker">
-        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-        <mat-datepicker #datepicker>
-          <mat-datepicker-actions>
-            <button mat-button matDatepickerCancel>Cancel</button>
-            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
-          </mat-datepicker-actions>
-        </mat-datepicker>
-      </mat-form-field>
+      <a class="link" [href]="'mailto:' + user.email">Email</a>
     </div>
   </div>
-  <div>
-    <div>
-      <span> Phone number : </span>
-      <mat-form-field appearance="fill">
-        <mat-label>phoneNumber</mat-label>
-        <input disabled autocomplete="off" type="text" matInput placeholder="password" required
-          [(ngModel)]="user.phoneNumber" [value]="user.phoneNumber">
-      </mat-form-field>
-      <button (click)="openPhoneNumberComponent()" mat-dialog-close="open-phone-dialog" mat-raised-button
-        color="primary">
-        {{user.phoneNumber ? "Change phone number" : "Add phone number"}} <mat-icon>phone_number</mat-icon>
-      </button>
-    </div>
-    <div class="secondElement">
-      <span> Email : </span>
-      <mat-form-field appearance="fill">
-        <mat-label>email</mat-label>
-        <input disabled autocomplete="off" type="text" matInput placeholder="password" required [(ngModel)]="user.email"
-          [value]="user.email">
-      </mat-form-field>
-      <button (click)="openGetResetEmailComponent()" mat-dialog-close="reset-email" mat-raised-button
-        color="primary">Change email <mat-icon>email
-        </mat-icon></button>
-    </div>
-  </div>
-  <footer>
-    <button mat-raised-button color="primary" [disabled]="isLoading" (click)="updateUser()">Save <mat-icon>save
-      </mat-icon></button>
-  </footer>
 </div>
 
-<app-followers-followings #follows (update)="updateUser()"></app-followers-followings>
+<app-followers-followings #follows></app-followers-followings>
