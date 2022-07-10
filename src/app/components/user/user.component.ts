@@ -36,7 +36,6 @@ export class UserComponent implements OnInit {
       this.activatedRouter.snapshot.params['observable'];
     this.observer = this.activatedRouter.snapshot.params['observer'];
     this.getUser();
-    this.getRequests();
   }
 
   getUser() {
