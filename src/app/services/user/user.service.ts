@@ -18,7 +18,7 @@ export class UserService extends DataService {
 
   getUser(username: any){
     return this.httpService.get(
-      Constants.url + '/user/get-user-for-user-management/' + username
+      Constants.url + '/user/get-user/' + username
     );
   }
 
