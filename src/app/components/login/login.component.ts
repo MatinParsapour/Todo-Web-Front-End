@@ -55,6 +55,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.redirectToMainIfUserSignedIn();
+    this.getUser()
+    this.canNavigateToMain()
   }
 
   redirectToMainIfUserSignedIn() {
