@@ -40,7 +40,7 @@ export class UserComponent implements OnInit {
 
   getUser() {
     this.isLoading = true;
-    this.userService.getUser(this.userId).subscribe(
+    this.userService.getUser(this.observable).subscribe(
       (response: any) => {
         this.user = response;
         this.isLoading = false;
