@@ -5,6 +5,15 @@
     column-gap: 2px;
   }
 
+  .link {
+    background-color: #252562;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+  }
+
   .userDetails {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(43em, 1fr));
@@ -12,7 +21,7 @@
     margin-left: 22%;
   }
 
-  .back:hover{
+  .back:hover {
     color: #02022a;
   }
 
@@ -35,6 +44,13 @@
   .userDetails>div>div {
     display: flex;
     flex-direction: column;
+    width: 37%;
+  }
+
+  .img-username {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .secondElement {
