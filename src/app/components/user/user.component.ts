@@ -6,12 +6,7 @@ import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/htt
 import { Component, Inject, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { NotificationType } from 'src/app/enum/notification-type';
-import { DatePipe } from '@angular/common';
 import { User } from 'src/app/classes/user';
-import { PhoneNumberComponent } from '../phone-number/phone-number.component';
-import { CodeValidatorComponent } from '../code-validator/code-validator.component';
-import { GetResetEmailComponent } from '../get-reset-email/get-reset-email.component';
-import { AccessLevel } from 'src/app/enum/access-level';
 
 @Component({
   selector: 'app-user',
