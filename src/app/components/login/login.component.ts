@@ -42,9 +42,7 @@ export class LoginComponent implements OnInit {
     private socialAuthService: SocialAuthService
   ) {
     this.user = fb.group({
-      userName: new FormControl('', [
-        Validators.required,
-      ]),
+      userName: new FormControl('', [Validators.required]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(10),
