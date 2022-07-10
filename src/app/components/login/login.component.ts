@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
   isLoggedin!: boolean;
   displayPopup = false
   isForgetUsernameModalVisible = false;
+  cookieUsername = '';
 
   constructor(
     fb: FormBuilder,
