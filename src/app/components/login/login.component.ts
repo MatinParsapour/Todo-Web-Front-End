@@ -114,6 +114,10 @@ export class LoginComponent implements OnInit {
   getUser() {
     this.cookieUsername = this.cookieService.get('username');
   }
+
+  showPopup() {
+    this.displayPopup = true;
+    setTimeout(() => (this.displayPopup = false), 5000);
   }
 
   getUsernameErrorMessages() {
