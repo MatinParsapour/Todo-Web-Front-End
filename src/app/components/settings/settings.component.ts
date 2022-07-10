@@ -96,7 +96,7 @@ export class SettingsComponent implements OnInit {
   }
 
   logout() {
-    localStorage.clear();
+    this.cookiesService.deleteAll()
     this.router.navigateByUrl('/login');
   }
 
