@@ -27,6 +27,7 @@ export class UserComponent implements OnInit {
   now = new Date();
   uploaded = 0;
   requests: any;
+  observer = ''
 
   constructor(
     private userService: UserService,
