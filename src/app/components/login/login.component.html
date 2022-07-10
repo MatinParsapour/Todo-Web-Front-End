@@ -20,6 +20,14 @@
         </mat-form-field>
         <span @fade class="forget" (click)="openForgetPassword()">Forget password?</span>
       </div>
+      <div @fade class="check-box-container">
+        <div class="form-check">
+          <input [formControl]="rememberMe" class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+          <label class="form-check-label" for="flexCheckChecked">
+            Remember me
+          </label>
+        </div>
+      </div>
       <ngx-recaptcha2 @fade #captchaElem [siteKey]="siteKey" [formControl]="recaptcha">
       </ngx-recaptcha2>
       <button @fade [disabled]="user.invalid || isLoading" [class.spinner]="isLoading" (click)="login()"
