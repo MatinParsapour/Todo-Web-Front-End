@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { MatDialog } from '@angular/material/dialog';
 import { slideToDown } from './../../animations';
 import { UserService } from './../../services/user/user.service';
