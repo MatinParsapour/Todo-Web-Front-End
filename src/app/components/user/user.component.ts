@@ -49,6 +49,12 @@ export class UserComponent implements OnInit {
     this.getToDos();
   }
 
+  closeModal() {
+    this.router.navigate([
+      'user/' + this.observer + '/' + this.observable,
+    ]);
+  }
+
   getUser() {
     this.isLoading = true;
     this.userService.getUser(this.observable).subscribe(
