@@ -29,7 +29,6 @@ export class ExploreTodosComponent implements OnInit {
   isAdding = false;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) data: any,
     private todoService: ToDoService,
     private userService: UserService,
     private notifier: NotificationService,
