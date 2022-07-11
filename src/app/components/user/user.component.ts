@@ -39,6 +39,10 @@ export class UserComponent implements OnInit {
     this.observable =
       this.activatedRouter.snapshot.params['observable'];
     this.observer = this.activatedRouter.snapshot.params['observer'];
+    this.todoId = this.activatedRouter.snapshot.params['todoId'];
+    this.activatedRouter.params.subscribe((params: Params) => {
+      this.todoId = params['todoId'];
+    });
     this.getUser();
     this.getToDos();
   }
