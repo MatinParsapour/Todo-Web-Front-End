@@ -41,5 +41,16 @@
     </div>
   </div>
 </div>
+<hr>
+<div class="todo-container">
+  <div class="container" *ngFor="let todo of todos">
+    <section class="todo">
+      <article>
+        <h3>{{todo.task}}</h3>
+        <p>{{todo.note}}</p>
+      </article>
+    </section>
+  </div>
+</div>
 
 <app-followers-followings #follows></app-followers-followings>
