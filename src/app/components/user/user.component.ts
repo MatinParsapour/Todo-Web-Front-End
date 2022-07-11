@@ -18,6 +18,7 @@ export class UserComponent implements OnInit {
   user!: User;
   todos: Array<ToDo> = [];
   isLoading: boolean = false;
+  todoId = '';
   public profileImage: any;
   fullScreen = false;
   observable: any;
