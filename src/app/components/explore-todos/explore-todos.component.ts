@@ -36,7 +36,6 @@ export class ExploreTodosComponent implements OnInit {
     private commentService: CommentService,
     private clipboardService: ClipboardService
   ) {
-    this.id = data.id;
   }
 
   ngOnInit(): void {
