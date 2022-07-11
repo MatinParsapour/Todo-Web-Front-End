@@ -21,7 +21,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
   styleUrls: ['./explore-todos.component.css'],
 })
 export class ExploreTodosComponent implements OnInit {
-  id: any;
+  @Input('id') id: any;
   user: any;
   todo: any;
   slideShowImages: Array<Object> = [];
