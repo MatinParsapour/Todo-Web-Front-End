@@ -18,7 +18,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(43em, 1fr));
     font-size: 17px;
-    margin-left: 22%;
+    margin-left: 15%;
   }
 
   .back:hover {
@@ -45,6 +45,36 @@
     display: flex;
     flex-direction: column;
     width: 37%;
+  }
+
+  .todo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+  }
+
+  .todo {
+    background-color: #6e6a64;
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 2%;
+    color: #ffb657;
+  }
+
+  .container {
+    width: 80%;
+  }
+
+  .todo:hover {
+    background-color: #3a3a3a;
+    cursor: pointer;
+  }
+
+  .todo:active {
+    transform: scale(0.99);
   }
 
   .img-username {
