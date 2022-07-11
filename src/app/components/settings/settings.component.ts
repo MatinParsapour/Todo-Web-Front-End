@@ -114,7 +114,7 @@ export class SettingsComponent implements OnInit {
   }
 
   backToMain() {
-    this.router.navigateByUrl('/main');
+    this.router.navigateByUrl(this.username);
   }
 
   deleteAccount() {
