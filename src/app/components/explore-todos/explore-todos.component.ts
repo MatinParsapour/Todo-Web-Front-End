@@ -22,6 +22,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 })
 export class ExploreTodosComponent implements OnInit {
   @Input('id') id: any;
+  @Output('close') close = new EventEmitter()
   user: any;
   todo: any;
   slideShowImages: Array<Object> = [];
