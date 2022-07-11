@@ -2,7 +2,9 @@ import { ToDoService } from './../../services/to-do/to-do.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NotificationService } from './../../services/notification/notification.service';
-import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+} from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { NotificationType } from 'src/app/enum/notification-type';
