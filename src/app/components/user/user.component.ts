@@ -16,6 +16,7 @@ import { ToDo } from 'src/app/classes/todo';
 })
 export class UserComponent implements OnInit {
   user!: User;
+  todos: Array<ToDo> = [];
   isLoading: boolean = false;
   public profileImage: any;
   fullScreen = false;
