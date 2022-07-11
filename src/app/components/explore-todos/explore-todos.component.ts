@@ -11,7 +11,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from 'src/app/services/user/user.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/classes/user';
 import { NotificationType } from 'src/app/enum/notification-type';
 
