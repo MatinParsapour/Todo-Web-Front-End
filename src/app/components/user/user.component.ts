@@ -1,6 +1,6 @@
 import { ToDoService } from './../../services/to-do/to-do.service';
 import { MatDialog } from '@angular/material/dialog';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NotificationService } from './../../services/notification/notification.service';
 import {
   HttpErrorResponse,
