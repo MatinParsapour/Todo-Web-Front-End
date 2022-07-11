@@ -1,7 +1,10 @@
 .commentInput {
-  display: flex;
-  height: 7em;
-  box-shadow: 0 0 10px -3px;
+    display: flex;
+    box-shadow: 0 0 10px -3px;
+    height: 8%;
+    position: fixed;
+    width: 34%;
+    bottom: 13%;
 }
 
 .commentInput>textarea {
