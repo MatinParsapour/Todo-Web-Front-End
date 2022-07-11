@@ -44,7 +44,7 @@
 <hr>
 <div class="todo-container">
   <div class="container" *ngFor="let todo of todos">
-    <section class="todo">
+    <section (click)="openToDoModal(todo.id)" class="todo">
       <article>
         <h3>{{todo.task}}</h3>
         <p>{{todo.note}}</p>
