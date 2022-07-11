@@ -77,7 +77,11 @@ export class UserComponent implements OnInit {
         console.error(error);
         this.notifier.notify(NotificationType.ERROR, error.error.message)
       }
-    )
+  openToDoModal(id: any) {
+    this.router.navigate([
+      'user/' + this.observer + '/' + this.observable,
+      { todoId: id },
+    ]);
   }
 
   clickButton(tagId: any) {
