@@ -68,15 +68,20 @@ export class UserComponent implements OnInit {
     );
   }
 
-  getToDos(){
-    this.todoService.getAll("to-do/get-user-todos/" + this.observable).subscribe(
-      (response: any) => {
-        this.todos = response
-      },
-      (error: HttpErrorResponse) => {
-        console.error(error);
-        this.notifier.notify(NotificationType.ERROR, error.error.message)
-      }
+  getToDos() {
+    this.todoService
+      .getAll('to-do/get-user-todos/' + this.observable)
+      .subscribe(
+        (response: any) => {
+          this.todos = response;
+        },
+        (error: HttpErrorResponse) => {
+          console.error(error);
+          this.notifier.notify(NotificationType.ERROR, error.error.message);
+        }
+      );
+  }
+
   openToDoModal(id: any) {
     this.router.navigate([
       'user/' + this.observer + '/' + this.observable,
