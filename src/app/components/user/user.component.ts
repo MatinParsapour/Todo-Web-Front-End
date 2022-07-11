@@ -6,6 +6,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { User } from 'src/app/classes/user';
+import { ToDo } from 'src/app/classes/todo';
 
 @Component({
   selector: 'app-user',
