@@ -28,6 +28,7 @@ export class UserComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private todoService: ToDoService,
     private notifier: NotificationService,
     private router: Router,
     private activatedRouter: ActivatedRoute,
