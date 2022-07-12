@@ -145,6 +145,10 @@ export class SettingsComponent implements OnInit {
     this.user.phoneVisible = !this.user.phoneVisible;
   }
 
+  changeEmailVisibility() {
+    this.user.emailVisible = !this.user.emailVisible;
+  }
+
   getUser() {
     this.isLoading = true;
     this.settingsService.getUser(this.username, this.settingsType).subscribe(
