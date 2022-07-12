@@ -271,6 +271,14 @@ export class MainComponent implements OnInit {
       );
   }
 
+  isUserToDosEmpty(){
+    if (this.toDos.length > 0) {
+      this.isToDosEmpty = false;
+    } else {
+      this.isToDosEmpty = true;
+    }
+  }
+
   openSendEmailDialog() {
     this.dialog.open(SendEmailComponent, { width: '50em' });
   }
