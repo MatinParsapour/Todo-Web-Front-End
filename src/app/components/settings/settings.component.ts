@@ -74,7 +74,7 @@ export class SettingsComponent implements OnInit {
 
   openPhoneNumberComponent() {
     return this.dialog
-      .open(PhoneNumberComponent)
+      .open(PhoneNumberComponent, {data: {username: this.username}})
       .afterClosed()
       .subscribe((result) => {
         if (result === 'send-code') {
