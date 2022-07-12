@@ -74,13 +74,31 @@ export class PhoneNumberComponent implements OnInit {
         }
       );
   }
-  }
 
-  get phoneNumberDigits(): string {return this.phoneNumberControl.value.replace(/\D/g, '');}
-  get phoneNumber(): PhoneNumber {return new PhoneNumber(this.phoneNumberDigits,this.phoneCountryControl.value);}
-  get phoneHint(): string {return PhoneNumber.getExample(this.phoneCountryControl.value).getNumber('national');}
-  get phoneE164(): string {return this.phoneNumber.getNumber('e164');}
-  get phoneGroup(): any {return this.profileForm.get('phone');}
-  get phoneCountryControl(): any {return this.profileForm.get('phone.country');}
-  get phoneNumberControl(): any {return this.profileForm.get('phone.number');}
+  get phoneNumberDigits(): string {
+    return this.phoneNumberControl.value.replace(/\D/g, '');
+  }
+  get phoneNumber(): PhoneNumber {
+    return new PhoneNumber(
+      this.phoneNumberDigits,
+      this.phoneCountryControl.value
+    );
+  }
+  get phoneHint(): string {
+    return PhoneNumber.getExample(this.phoneCountryControl.value).getNumber(
+      'national'
+    );
+  }
+  get phoneE164(): string {
+    return this.phoneNumber.getNumber('e164');
+  }
+  get phoneGroup(): any {
+    return this.profileForm.get('phone');
+  }
+  get phoneCountryControl(): any {
+    return this.profileForm.get('phone.country');
+  }
+  get phoneNumberControl(): any {
+    return this.profileForm.get('phone.number');
+  }
 }
