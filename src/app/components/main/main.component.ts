@@ -38,6 +38,7 @@ export class MainComponent implements OnInit {
   isShow = false;
   now = new Date();
   todoId: any;
+  isToDosEmpty!: boolean
 
   categories = [
     {
