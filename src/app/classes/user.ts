@@ -6,8 +6,10 @@ export class User {
   password: string= '';
   lastName: string = '';
   email: string = '';
+  emailVisible!: boolean;
   userName: string = '';
   phoneNumber: number = 0;
+  phoneVisible!: boolean;
   birthDay: any;
   bio!: string;
   provider!: Provider;
