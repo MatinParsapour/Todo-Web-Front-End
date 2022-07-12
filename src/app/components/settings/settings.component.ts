@@ -236,6 +236,13 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  closeForgetUsernameModal(value: any) {
+    this.isForgetUsernameModalVisible = false;
+    this.username = value;
+    this.user.userName = value;
+    this.router.navigate(['/' + value + '/settings/' + this.settingsType])
+  }
+
   deleteProfile() {
     this.userService
       .delete('/user/delete-profile-image/' + localStorage.getItem('username'))
