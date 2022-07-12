@@ -1,12 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from './../../services/notification/notification.service';
 import { PhoneNumberService } from './../../services/phone-number/phone-number.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PhoneErrorMatcher } from './phone-error-matcher';
 import { ISO_3166_1_CODES } from './iso-phone-number-codes';
 import { PhoneValidator } from './phone-number.validator';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import PhoneNumber from 'awesome-phonenumber';
 import { NotificationType } from 'src/app/enum/notification-type';
 
@@ -18,6 +18,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 export class PhoneNumberComponent implements OnInit {
   countyCodes = ISO_3166_1_CODES;
   isLoading: boolean = false;
+  username = '';
   profileForm = this.fb.group({
     phone: this.fb.group(
       {
@@ -32,7 +33,15 @@ export class PhoneNumberComponent implements OnInit {
 
   phoneErrorMatcher = new PhoneErrorMatcher();
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog, private phoneNumberService: PhoneNumberService, private notifier: NotificationService) {}
+  constructor(
+    private fb: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) data: any,
+    private dialog: MatDialog,
+    private phoneNumberService: PhoneNumberService,
+    private notifier: NotificationService
+  ) {
+    this.username = data.username
+  }
 
   ngOnInit(): void {}
 
