@@ -147,6 +147,10 @@
     border-radius: 5px;
   }
 
+  .no-to-do {
+    font-size: 30px;
+  }
+
   mat-icon {
     cursor: pointer;
     border-radius: 50%;
