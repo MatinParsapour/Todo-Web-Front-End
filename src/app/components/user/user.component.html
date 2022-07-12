@@ -43,6 +43,9 @@
 </div>
 <hr>
 <div class="todo-container">
+  <div *ngIf="todos.length == 0">
+    <p class="no-to-do">No todo yet</p>
+  </div>
   <div class="container" *ngFor="let todo of todos">
     <section (click)="openToDoModal(todo.id)" class="todo">
       <article>
