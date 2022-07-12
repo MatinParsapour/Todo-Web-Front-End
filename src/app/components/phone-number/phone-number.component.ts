@@ -50,25 +50,30 @@ export class PhoneNumberComponent implements OnInit {
     this.phoneNumberControl.setValue(natNum ? natNum : this.phoneNumberDigits);
   }
 
-  updatePhoneNumber(){
+  updatePhoneNumber() {
     this.isLoading = true;
-    const formData = new FormData()
+    const formData = new FormData();
     formData.append('phoneNumber', this.phoneNumberControl.value);
-    let username = localStorage.getItem("username")
-    if(username !== null){
-      formData.append("userId", username)
+    let username = this.username;
+    if (username !== null) {
+      formData.append('userId', username);
     }
-    this.phoneNumberService.update("/phone/update-phone-number",formData).subscribe(
-      (response: any) => {
-        this.notifier.notify(NotificationType.SUCCESS, "Code sent to your phone number")
-        this.isLoading = false;
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error);
-        this.isLoading = false;
-      }
-    )
-    
+    this.phoneNumberService
+      .update('/phone/update-phone-number', formData)
+      .subscribe(
+        (response: any) => {
+          this.notifier.notify(
+            NotificationType.SUCCESS,
+            'Code sent to your phone number'
+          );
+          this.isLoading = false;
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error);
+          this.isLoading = false;
+        }
+      );
+  }
   }
 
   get phoneNumberDigits(): string {return this.phoneNumberControl.value.replace(/\D/g, '');}
