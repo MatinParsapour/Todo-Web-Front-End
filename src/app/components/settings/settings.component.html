@@ -148,6 +148,9 @@
       <input class="info" type="number" [value]="user.phoneNumber" readonly>
       <button mat-button color="primary" (click)="openPhoneNumberComponent()"
         class="changeEmailButton">{{user.phoneNumber ? "Change phone number" : "Add phone number"}}</button>
+      <button *ngIf="user.phoneNumber != undefined" mat-button [color]="user.phoneVisible ? 'primary' : 'warn'" (click)="changePhoneVisibility()">
+        <span>Is phone number visible: {{user.phoneVisible ? 'Yes' : 'No'}}</span>
+      </button>
     </div>
     <div class="separator">
       <div class="line firstLine"></div>
