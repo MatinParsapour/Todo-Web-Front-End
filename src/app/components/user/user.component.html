@@ -36,7 +36,7 @@
     <div *ngIf="user.phoneVisible">
       <a class="link" [href]="'tel:' + user.phoneNumber">Phone number</a>
     </div>
-    <div class="secondElement">
+    <div class="secondElement" *ngIf="user.emailVisible">
       <a class="link" [href]="'mailto:' + user.email">Email</a>
     </div>
   </div>
