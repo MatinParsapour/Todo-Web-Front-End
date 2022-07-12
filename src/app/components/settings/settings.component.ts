@@ -109,6 +109,7 @@ export class SettingsComponent implements OnInit {
       .subscribe((response: any) => {
         if (response === 'Yes') {
           this.deleteAccount();
+          this.cookiesService.deleteAll();
         }
       });
   }
