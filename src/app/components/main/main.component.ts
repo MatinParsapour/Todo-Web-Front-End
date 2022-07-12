@@ -262,6 +262,7 @@ export class MainComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.toDos = response;
+          this.isUserToDosEmpty()
           this.checkToDosStatus();
           this.getPinnedToDos()
         },
