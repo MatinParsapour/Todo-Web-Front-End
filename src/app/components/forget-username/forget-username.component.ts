@@ -70,7 +70,7 @@ export class ForgetUsernameComponent implements OnInit {
     this.isLoading = true;
     this.userService.create('/user/change-username', formData).subscribe(
       (response: any) => {
-        this.close.emit()
+        this.close.emit(this.username.value)
         this.notifier.notify(NotificationType.SUCCESS, "Your username changed")
       },
       (error: HttpErrorResponse) => {
