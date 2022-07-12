@@ -33,7 +33,7 @@
   <div>
   </div>
   <div>
-    <div>
+    <div *ngIf="user.phoneVisible">
       <a class="link" [href]="'tel:' + user.phoneNumber">Phone number</a>
     </div>
     <div class="secondElement">
