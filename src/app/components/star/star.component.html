@@ -1,8 +1,10 @@
 <button mat-menu-item class="material-icons delete" matTooltip="Star todo">
-  <span *ngIf="isStarred">
+  <span *ngIf="isStarred; else isNotStarred">
     <mat-icon>star</mat-icon> Unstar todo
   </span>
-  <span *ngIf="!isStarred">
-    <mat-icon>star_border</mat-icon> Star todo
-  </span>
+  <ng-template #isNotStarred>
+    <span>
+      <mat-icon>star_border</mat-icon> Star todo
+    </span>
+  </ng-template>
 </button>
