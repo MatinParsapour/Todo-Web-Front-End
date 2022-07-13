@@ -1,8 +1,5 @@
 import { CommentService } from './services/comment/comment.service';
 import { GuidedTourModule, GuidedTourService } from 'ngx-guided-tour';
-import { EmailDetailsService } from './services/emai-details/email-details.service';
-import { OutboxService } from './services/email-service/outbox/outbox.service';
-import { InboxService } from './services/email-service/inbox/inbox.service';
 import { SendEmailService } from './services/send-email/send-email.service';
 import { PhoneNumberService } from './services/phone-number/phone-number.service';
 import { UserService } from './services/user/user.service';
@@ -75,16 +72,9 @@ import { GoogleSignInComponent } from './components/google-sign-in/google-sign-i
 import { FacebookSignInComponent } from './components/facebook-sign-in/facebook-sign-in.component';
 import { StarComponent } from './components/star/star.component';
 import { CheckCircleComponent } from './components/check-circle/check-circle.component';
-import { SendEmailComponent } from './components/send-email/send-email.component';
-import { InboxComponent } from './components/inbox/inbox.component';
-import { OutboxComponent } from './components/outbox/outbox.component';
-import { EmailDetailsComponent } from './components/email-details/email-details.component';
 import { CutterPipe } from './pipes/cutter.pipe';
 import { ReplacerPipe } from './pipes/replacer.pipe';
-import { NewTopicComponent } from './components/new-topic/new-topic.component';
 import { MessageComponent } from './components/message/message.component';
-import { RequestComponent } from './components/request/request.component';
-import { RequestHeaderComponent } from './components/request-header/request-header.component';
 import { SharedToDoComponent } from './components/shared-to-do/shared-to-do.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { FollowersFollowingsComponent } from './components/followers-followings/followers-followings.component';
