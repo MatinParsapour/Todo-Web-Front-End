@@ -279,11 +279,7 @@ export class MainComponent implements OnInit {
       this.isToDosEmpty = true;
     }
   }
-
-  openSendEmailDialog() {
-    this.dialog.open(SendEmailComponent, { width: '50em' });
-  }
-
+  
   getIsMyDay() {
     return this.isMyDay;
   }
