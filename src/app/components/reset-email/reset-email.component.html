@@ -1,11 +1,13 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
-<div class="invalid" *ngIf="!isPageValid">
+<div class="invalid" *ngIf="!isPageValid; else isNotPageValid">
   <h1>Invalid</h1>
   <p>You can't reset your email because {{error}} </p>
 </div>
-<div class="container" *ngIf="isPageValid">
-  <h1>Reset</h1>
-  <h6><i><b>{{email}}</b></i> has been reset</h6>
-  <h5>Now click on the below button to main</h5>
-  <button mat-raised-button color="primary" (click)="goToMainPage()">Go to Main</button>
-</div>
+<ng-template #isNotPageValid>
+  <div class="container">
+    <h1>Reset</h1>
+    <h6><i><b>{{email}}</b></i> has been reset</h6>
+    <h5>Now click on the below button to main</h5>
+    <button mat-raised-button color="primary" (click)="goToMainPage()">Go to Main</button>
+  </div>
+</ng-template>
