@@ -49,28 +49,6 @@
       <div>
         <mat-icon class="list" id="openSideNav" (click)="sidenav.open()" matTooltip="Open sidebar">list</mat-icon>
       </div>
-      <div>
-        <button *ngIf="isUser" [routerLink]="'/support'" [queryParams]="{userId: username}" class="fancyButton support"
-          mat-raised-button color="primary">
-          Support
-          <span class="material-icons">
-            support_agent
-          </span>
-        </button>
-        <button *ngIf="!isUser" [routerLink]="'/user-management'" class="fancyButton support" mat-raised-button
-          color="primary">
-          User management
-          <span class="material-icons">
-            people
-          </span>
-        </button>
-        <button (click)="openSendEmailDialog()" class="marginLeft2 fancyButton email" mat-raised-button color="primary">
-          Email
-          <span class="material-icons">
-            email
-          </span>
-        </button>
-      </div>
     </div>
     <div class="toDos">
       <div class="noToDoErrorContainer">
