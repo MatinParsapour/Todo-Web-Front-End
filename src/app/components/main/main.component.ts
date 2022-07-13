@@ -1,6 +1,5 @@
 import { ToDo } from './../../classes/todo';
 import { Category } from './../../enum/category-type';
-import { SendEmailComponent } from './../send-email/send-email.component';
 import { CategoryService } from './../../services/category/category.service';
 import { GetResetEmailComponent } from './../get-reset-email/get-reset-email.component';
 import { CodeValidatorComponent } from './../code-validator/code-validator.component';
