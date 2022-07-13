@@ -79,17 +79,12 @@ import { SendEmailComponent } from './components/send-email/send-email.component
 import { InboxComponent } from './components/inbox/inbox.component';
 import { OutboxComponent } from './components/outbox/outbox.component';
 import { EmailDetailsComponent } from './components/email-details/email-details.component';
-import { UserManangementComponent } from './components/user-manangement/user-manangement.component';
-import { UsersComponent } from './components/users/users.component';
-import { UserManagementUserDetailsComponent } from './components/user-management-user-details/user-management-user-details.component';
 import { CutterPipe } from './pipes/cutter.pipe';
 import { ReplacerPipe } from './pipes/replacer.pipe';
-import { SupportComponent } from './components/support/support.component';
 import { NewTopicComponent } from './components/new-topic/new-topic.component';
 import { MessageComponent } from './components/message/message.component';
 import { RequestComponent } from './components/request/request.component';
 import { RequestHeaderComponent } from './components/request-header/request-header.component';
-import { UsersRequestsComponent } from './components/users-requests/users-requests.component';
 import { SharedToDoComponent } from './components/shared-to-do/shared-to-do.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { FollowersFollowingsComponent } from './components/followers-followings/followers-followings.component';
