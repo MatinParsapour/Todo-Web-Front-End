@@ -5,11 +5,12 @@
   <div class="todo content">
     <div class="userToDo">
       <div class="user">
-        <a [routerLink]="'#'" matDialogClose> <img [src]="user.profileImageUrl" *ngIf="user.profileImageUrl"
+        <a [routerLink]="'#'" matDialogClose> <img [src]="user.profileImageUrl" *ngIf="user.profileImageUrl; else notProfile"
             [routerLink]="'#'" alt="">
         </a>
-        <a [routerLink]="'#'" matDialogClose><img src="https://img.icons8.com/fluency/48/000000/user-male-circle.png"
-            *ngIf="!user.profileImageUrl"></a>
+        <ng-template #notProfile>
+          <a [routerLink]="'#'" matDialogClose><img src="https://img.icons8.com/fluency/48/000000/user-male-circle.png"></a>
+        </ng-template>
         <p class="systemMessage"> <a [routerLink]="'#'" matDialogClose>{{user.firstName}} {{user.lastName}}</a>
           wants to
         </p>
@@ -35,12 +36,16 @@
         <mat-icon>share</mat-icon>
       </button>
       <button [disabled]="isSaving" mat-menu-item class="menuItem" (click)="saveToDo()">Save
-        <div class="loading" *ngIf="isSaving">Loading&#8230;</div>
-        <mat-icon *ngIf="!isSaving">save</mat-icon>
+        <div class="loading" *ngIf="isSaving; else isNotSaving">Loading&#8230;</div>
+        <ng-template #isNotSaving>
+          <mat-icon>save</mat-icon>
+        </ng-template>
       </button>
       <button [disabled]="isAdding" mat-menu-item class="menuItem" (click)="addToUserToDos()">Add to your to dos
-        <div class="loading" *ngIf="isAdding">Loading&#8230;</div>
-        <mat-icon *ngIf="!isAdding">add</mat-icon>
+        <div class="loading" *ngIf="isAdding; else isNotAdding">Loading&#8230;</div>
+        <ng-template #isNotAdding>
+          <mat-icon>add</mat-icon>
+        </ng-template>
       </button>
     </mat-menu>
   </div>
