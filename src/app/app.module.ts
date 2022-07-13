@@ -237,8 +237,6 @@ const customNotifierOptions: NotifierOptions = {
     InboxService,
     OutboxService,
     EmailDetailsService,
-    UserManagementService,
-    SupportService,
     CommentService,
     SettingsService,
     CookieService,
