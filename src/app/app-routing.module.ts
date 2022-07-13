@@ -19,8 +19,6 @@ const routes: Routes = [
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: ':username', component: MainComponent},
   {path: 'reset-email', component: ResetEmailComponent},
-  {path: 'inbox', component: InboxComponent},
-  {path: 'outbox', component: OutboxComponent},
   {path: 'to-do', component: SharedToDoComponent},
   {path: 'explore', component: ExploreComponent},
   {path: 'user/:observer/:observable', component: UserComponent},
