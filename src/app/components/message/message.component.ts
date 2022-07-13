@@ -1,5 +1,5 @@
+import { UserService } from 'src/app/services/user/user.service';
 import { NotificationService } from './../../services/notification/notification.service';
-import { SupportService } from './../../services/support/support.service';
 import { Component, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -17,7 +17,7 @@ export class MessageComponent implements OnInit {
   menuTopLeftPosition = { x: '0', y: '0' };
   isEditable = false
 
-  constructor(private supportService: SupportService,
+  constructor(private userService: UserService,
     private notifier: NotificationService) {}
 
   ngOnInit(): void {}
@@ -43,7 +43,7 @@ export class MessageComponent implements OnInit {
   }
 
   deleteMessage(messageId: any) {
-    this.supportService.delete('message/delete-message/' + messageId).subscribe(
+    this.userService.delete('message/delete-message/' + messageId).subscribe(
       (response: any) => {
         this.update.next('')
       },
@@ -67,7 +67,7 @@ export class MessageComponent implements OnInit {
   editMessage(target: any, event: any){
     event.preventDefault()
     this.message.message = target.innerText
-    this.supportService.update("message/update-message", this.message).subscribe(
+    this.userService.update("message/update-message", this.message).subscribe(
       resposne => {
         this.update.next('')
       },
