@@ -1,7 +1,8 @@
+import { UserService } from 'src/app/services/user/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from 'src/app/services/notification/notification.service';
-import { SupportService } from './../../services/support/support.service';
+
 import {
   FormGroup,
   FormBuilder,
@@ -22,7 +23,7 @@ export class NewTopicComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private supportService: SupportService,
+    private userService: UserService,
     private notifier: NotificationService,
     private dialog: MatDialog
   ) {
@@ -72,7 +73,7 @@ export class NewTopicComponent implements OnInit {
 
   sendAddTopicRequest() {
     this.isLoading = true
-    this.supportService
+    this.userService
       .create('request/start-new-request', this.request.value)
       .subscribe(
         (response: any) => {
