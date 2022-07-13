@@ -19,10 +19,12 @@
     </div>
     <figure class="userInfo">
       <div class="profileImageArea">
-        <img class="profileImage" [src]="user.profileImageUrl" alt="" *ngIf="user.profileImageUrl">
-        <img class="personIcon" *ngIf="!user.profileImageUrl"
-          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdevitt-forand.com%2Fwp-content%2Fuploads%2F2018%2F05%2Fperson-icon.png&f=1&nofb=1"
-          alt="">
+        <img class="profileImage" [src]="user.profileImageUrl" alt="" *ngIf="user.profileImageUrl; else notProfile">
+        <ng-template #notProfile>
+          <img class="personIcon"
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdevitt-forand.com%2Fwp-content%2Fuploads%2F2018%2F05%2Fperson-icon.png&f=1&nofb=1"
+            alt="">
+        </ng-template>
         <progress max="100" [value]="uploaded" *ngIf="uploaded"></progress>
       </div>
       <div class="space"></div>
