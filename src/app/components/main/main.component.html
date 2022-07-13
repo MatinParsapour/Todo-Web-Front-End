@@ -98,8 +98,10 @@
         <div>
           <div>
             <button mat-icon-button matTooltip="My day" (click)="toggleIsMyDay()">
-              <mat-icon *ngIf="getIsMyDay()">brightness_7</mat-icon>
-              <mat-icon *ngIf="!getIsMyDay()">brightness_5</mat-icon>
+              <mat-icon *ngIf="getIsMyDay(); else isNotMyDay">brightness_7</mat-icon>
+              <ng-template #isNotMyDay>
+                <mat-icon>brightness_5</mat-icon>
+              </ng-template>
             </button>
             <mat-form-field [class.displayNone]="!toDo.dateTime" appearance="fill" class="example-form-field">
               <mat-label>Choose a date</mat-label>
