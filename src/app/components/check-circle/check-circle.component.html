@@ -1,8 +1,10 @@
 <div class="doneAndUndone" mat-fab color="">
-  <span class="material-icons" *ngIf="!isDone()">
+  <span class="material-icons" *ngIf="!isDone(); else isNotDone">
     radio_button_unchecked
   </span>
-  <span class="material-icons" *ngIf="isDone()">
-    check_circle
-  </span>
+  <ng-template #isNotDone>
+      <span class="material-icons">
+        check_circle
+      </span>
+  </ng-template>
 </div>
