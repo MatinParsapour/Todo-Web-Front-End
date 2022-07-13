@@ -6,10 +6,10 @@
   </button>
   <div class="follows">
     <div *ngFor="let follow of list" class="follow">
-      <img [src]="follow.profileImageUrl" *ngIf="follow.profileImageUrl" class="profileImage" alt="">
-      <img
-        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_405941.png&f=1&nofb=1"
-        *ngIf="!follow.profileImageUrl" class="profileImage" alt="">
+      <img [src]="follow.profileImageUrl" *ngIf="follow.profileImageUrl; else notProfile" class="profileImage" alt="">
+      <ng-template #notProfile>
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_405941.png&f=1&nofb=1"class="profileImage" alt="">
+      </ng-template>
       <div>
         <p>{{follow.firstName}} {{follow.lastName}}</p>
       </div>
