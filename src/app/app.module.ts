@@ -1,7 +1,5 @@
 import { CommentService } from './services/comment/comment.service';
 import { GuidedTourModule, GuidedTourService } from 'ngx-guided-tour';
-import { SupportService } from './services/support/support.service';
-import { UserManagementService } from './services/user-management/user-management.service';
 import { EmailDetailsService } from './services/emai-details/email-details.service';
 import { OutboxService } from './services/email-service/outbox/outbox.service';
 import { InboxService } from './services/email-service/inbox/inbox.service';
