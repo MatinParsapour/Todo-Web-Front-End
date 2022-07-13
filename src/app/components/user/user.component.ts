@@ -26,7 +26,6 @@ export class UserComponent implements OnInit {
   observable: any;
   now = new Date();
   uploaded = 0;
-  requests: any;
   observer = ''
 
   constructor(
