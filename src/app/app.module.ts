@@ -163,7 +163,6 @@ const customNotifierOptions: NotifierOptions = {
     CheckCircleComponent,
     CutterPipe,
     ReplacerPipe,
-    MessageComponent,
     SharedToDoComponent,
     FollowersFollowingsComponent,
     ExploreComponent,
