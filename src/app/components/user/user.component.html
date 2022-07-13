@@ -7,10 +7,12 @@
   <div class="header">
     <div>
       <div class="img-username">
-        <img *ngIf="user.profileImageUrl" [src]="user.profileImageUrl" width="200px" height="200px">
-        <img *ngIf="!user.profileImageUrl"
+        <img *ngIf="user.profileImageUrl; else notProfile" [src]="user.profileImageUrl" width="200px" height="200px">
+        <ng-template #notProfile>
+        <img
           src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwebstockreview.net%2Fimages%2Fperson-icon-png-2.png&f=1&nofb=1"
           width="200px" height="200px">
+        </ng-template>
         <span>{{user.userName}}</span>
       </div>
     </div>
