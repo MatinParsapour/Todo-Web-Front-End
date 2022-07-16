@@ -10,7 +10,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { InsertListComponent } from '../insert-list/insert-list.component';
 
@@ -27,17 +27,17 @@ export class ToDoFoldersComponent implements OnInit {
   @Output('updateData') updateData = new EventEmitter();
   @Output('getToDos') getToDos = new EventEmitter();
 
-  listDTO = new FormGroup({
-    userId: new FormControl(''),
-    oldListName: new FormControl(''),
-    newListName: new FormControl(''),
-    folderName: new FormControl(''),
+  listDTO = new UntypedFormGroup({
+    userId: new UntypedFormControl(''),
+    oldListName: new UntypedFormControl(''),
+    newListName: new UntypedFormControl(''),
+    folderName: new UntypedFormControl(''),
   });
 
-  folderDTO = new FormGroup({
-    userId: new FormControl(''),
-    oldName: new FormControl(''),
-    newName: new FormControl(''),
+  folderDTO = new UntypedFormGroup({
+    userId: new UntypedFormControl(''),
+    oldName: new UntypedFormControl(''),
+    newName: new UntypedFormControl(''),
   });
 
   constructor(

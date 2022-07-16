@@ -7,9 +7,9 @@ import { slideToDown } from './../../animations';
 import { FormValidator } from './FormValidator';
 import { Component, OnInit } from '@angular/core';
 import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -23,13 +23,13 @@ import { NotificationType } from 'src/app/enum/notification-type';
 })
 export class RegisterComponent implements OnInit {
   isLoading = false;
-  user: FormGroup;
+  user: UntypedFormGroup;
   siteKey: string = '6Lc7ct0eAAAAAD0Jqa_1Eih2MiucxWAGsDpRpOVn';
   onSignIn = 'onSignIn';
   isSecondForm = false;
 
   constructor(
-    formBuilder: FormBuilder,
+    formBuilder: UntypedFormBuilder,
     private emailValidator: EmailValidator,
     private usernameValidator: UsernameValidator,
     private router: Router,
@@ -38,26 +38,26 @@ export class RegisterComponent implements OnInit {
   ) {
     this.user = formBuilder.group(
       {
-        firstName: new FormControl('', [Validators.required]),
-        provider: new FormControl('EMAIL', [Validators.required]),
-        lastName: new FormControl('', [Validators.required]),
+        firstName: new UntypedFormControl('', [Validators.required]),
+        provider: new UntypedFormControl('EMAIL', [Validators.required]),
+        lastName: new UntypedFormControl('', [Validators.required]),
         recaptcha: ['', Validators.required],
-        email: new FormControl(
+        email: new UntypedFormControl(
           '',
           [Validators.required, Validators.email],
           this.emailValidator.validate
         ),
-        userName: new FormControl(
+        userName: new UntypedFormControl(
           '',
           [Validators.required],
           this.usernameValidator.validate
         ),
-        password: new FormControl('', [
+        password: new UntypedFormControl('', [
           Validators.required,
           Validators.minLength(10),
           FormValidator.passwordIsWeak,
         ]),
-        reTypePassword: new FormControl('', [Validators.required]),
+        reTypePassword: new UntypedFormControl('', [Validators.required]),
       },
       {
         validator: FormValidator.passwordsDoNotMatch,

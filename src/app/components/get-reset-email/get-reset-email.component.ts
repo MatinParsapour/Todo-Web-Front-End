@@ -2,7 +2,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from './../../services/notification/notification.service';
 import { ForgetPasswordService } from './../../services/forget-password/forget-password.service';
 import { IsEmailExists } from './is-email-exists.validator';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationType } from 'src/app/enum/notification-type';
@@ -13,16 +13,16 @@ import { NotificationType } from 'src/app/enum/notification-type';
   styleUrls: ['./get-reset-email.component.css'],
 })
 export class GetResetEmailComponent implements OnInit {
-  field: FormGroup;
+  field: UntypedFormGroup;
   isLoading: boolean = false;
 
-  constructor(fb: FormBuilder, 
+  constructor(fb: UntypedFormBuilder, 
     private isEmailExists: IsEmailExists,
     private dialog: MatDialog,
     private forgetPasswordService: ForgetPasswordService,
     private notifier: NotificationService) {
     this.field = fb.group({
-      email: new FormControl(
+      email: new UntypedFormControl(
         '',
         [Validators.required, Validators.email],
         this.isEmailExists.validate

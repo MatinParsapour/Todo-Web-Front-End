@@ -3,10 +3,10 @@ import { ForgetPasswordService } from './../../services/forget-password/forget-p
 import { ForgetPasswordEmailValidator } from './forget-password-email-validator';
 import { MatDialog } from '@angular/material/dialog';
 import {
-  FormControl,
+  UntypedFormControl,
   Validators,
-  FormBuilder,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormGroup,
 } from '@angular/forms';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { Component, OnInit } from '@angular/core';
@@ -19,17 +19,17 @@ import { NotificationType } from 'src/app/enum/notification-type';
 })
 export class ForgetPasswordComponent implements OnInit {
   isLoading = false;
-  field: FormGroup;
+  field: UntypedFormGroup;
 
   constructor(
     private notifier: NotificationService,
     private dialog: MatDialog,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private forgetPasswordValidator: ForgetPasswordEmailValidator,
     private forgetPasswordService: ForgetPasswordService
   ) {
     this.field = fb.group({
-      email: new FormControl(
+      email: new UntypedFormControl(
         '',
         [Validators.required, Validators.email],
         this.forgetPasswordValidator.validate

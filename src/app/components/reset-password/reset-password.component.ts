@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { slideToDown } from './../../animations';
 import { FormValidator } from './../register/FormValidator';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { ResetPasswordService } from 'src/app/services/reset-password/reset-password.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationType } from 'src/app/enum/notification-type';
@@ -15,22 +15,22 @@ import { NotificationType } from 'src/app/enum/notification-type';
   animations: [slideToDown]
 })
 export class ResetPasswordComponent implements OnInit {
-  resetPassword: FormGroup
+  resetPassword: UntypedFormGroup
   email: any;
   code: any;
   isPageValid!: boolean;
   error!: HttpErrorResponse
   isLoading: boolean = false;
 
-  constructor(fb : FormBuilder, 
+  constructor(fb : UntypedFormBuilder, 
     private route: ActivatedRoute,
     private resetPasswordService: ResetPasswordService,
     private notifier: NotificationService,
     private router: Router) {
     this.resetPassword = fb.group({
-      email: new FormControl(),
-      password: new FormControl('',[Validators.required, FormValidator.passwordIsWeak]),
-      reTypePassword: new FormControl('',[Validators.required])
+      email: new UntypedFormControl(),
+      password: new UntypedFormControl('',[Validators.required, FormValidator.passwordIsWeak]),
+      reTypePassword: new UntypedFormControl('',[Validators.required])
     }, 
     {
       validator: FormValidator.passwordsDoNotMatch

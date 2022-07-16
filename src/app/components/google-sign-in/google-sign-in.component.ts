@@ -2,7 +2,7 @@ import { slideToDown } from './../../animations';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { LoginService } from './../../services/login/login.service';
-import { FormBuilder, FormControl, FormGroup,} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup,} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {
   GoogleLoginProvider,
@@ -19,24 +19,24 @@ import { NotificationType } from 'src/app/enum/notification-type';
   animations: [slideToDown],
 })
 export class GoogleSignInComponent implements OnInit {
-  user: FormGroup;
+  user: UntypedFormGroup;
   socialUser!: SocialUser;
   isLoggedin!: boolean;
 
   constructor(
     private socialAuthService: SocialAuthService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private loginService: LoginService,
     private notifier: NotificationService,
     private router: Router
   ) {
     this.user = fb.group({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      userName: new FormControl(''),
-      provider: new FormControl(''),
-      email: new FormControl(''),
-      password: new FormControl(''),
+      firstName: new UntypedFormControl(''),
+      lastName: new UntypedFormControl(''),
+      userName: new UntypedFormControl(''),
+      provider: new UntypedFormControl(''),
+      email: new UntypedFormControl(''),
+      password: new UntypedFormControl(''),
     });
   }
 

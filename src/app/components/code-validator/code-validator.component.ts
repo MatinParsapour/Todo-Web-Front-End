@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from './../../services/notification/notification.service';
 import { PhoneNumberService } from './../../services/phone-number/phone-number.service';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import {
   AfterViewInit,
   Component,
@@ -70,7 +70,7 @@ export class CodeValidatorComponent implements OnInit, AfterViewInit {
     this.code.setValue(charCode);
   }
 
-  code = new FormControl('', [
+  code = new UntypedFormControl('', [
     Validators.required,
     Validators.min(10000),
     Validators.max(99999),

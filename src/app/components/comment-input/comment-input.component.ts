@@ -1,9 +1,9 @@
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { CommentService } from './../../services/comment/comment.service';
 import {
-  FormGroup,
-  FormBuilder,
-  FormControl,
+  UntypedFormGroup,
+  UntypedFormBuilder,
+  UntypedFormControl,
   Validators,
 } from '@angular/forms';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
@@ -16,20 +16,20 @@ import { NotificationType } from 'src/app/enum/notification-type';
   styleUrls: ['./comment-input.component.css'],
 })
 export class CommentInputComponent implements OnInit {
-  comment: FormGroup;
+  comment: UntypedFormGroup;
   isEmojiPickerVisible = false;
   @Input('todo') todo: any;
   @Output('update') update = new EventEmitter();
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private commentService: CommentService,
     private notifier: NotificationService
   ) {
     this.comment = fb.group({
-      userId: new FormControl('', Validators.required),
-      message: new FormControl('', Validators.required),
-      todoId: new FormControl('', Validators.required),
+      userId: new UntypedFormControl('', Validators.required),
+      message: new UntypedFormControl('', Validators.required),
+      todoId: new UntypedFormControl('', Validators.required),
     });
   }
 

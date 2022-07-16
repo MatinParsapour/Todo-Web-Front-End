@@ -2,7 +2,7 @@ import { FolderNameValidator } from './folder-name.validator';
 import { NotificationService } from './../../services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { InsertFolderService } from './../../services/insert-folder/insert-folder.service';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormControl, Validators, UntypedFormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
@@ -22,12 +22,12 @@ export class InsertFolderComponent implements OnInit {
     private folderNameValidator: FolderNameValidator
   ) {}
 
-  insertFolder = new FormGroup({
-    folderName: new FormControl('', [
+  insertFolder = new UntypedFormGroup({
+    folderName: new UntypedFormControl('', [
       Validators.required,
       Validators.minLength(3),
     ], this.folderNameValidator.validate),
-    userId: new FormControl(''),
+    userId: new UntypedFormControl(''),
   });
 
   ngOnInit(): void {}

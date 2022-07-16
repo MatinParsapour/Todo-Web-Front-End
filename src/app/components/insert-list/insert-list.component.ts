@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from './../../services/notification/notification.service';
 import { InsertListService } from './../../services/insert-list/insert-list.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormControl, Validators, UntypedFormGroup } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 
@@ -16,10 +16,10 @@ export class InsertListComponent implements OnInit {
   isLoading: boolean = false
   folderName: any;
 
-  listDTO = new FormGroup({
-    userId: new FormControl(),
-    folderName: new FormControl(),
-    listName: new FormControl('',[Validators.required, Validators.minLength(3)])
+  listDTO = new UntypedFormGroup({
+    userId: new UntypedFormControl(),
+    folderName: new UntypedFormControl(),
+    listName: new UntypedFormControl('',[Validators.required, Validators.minLength(3)])
   })
 
   constructor(@Inject(MAT_DIALOG_DATA) data: any,private dialog: MatDialog,

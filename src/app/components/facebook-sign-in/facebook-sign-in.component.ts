@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoginService } from './../../services/login/login.service';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 import {
   FacebookLoginProvider,
   SocialAuthService,
@@ -19,24 +19,24 @@ import { NotificationType } from 'src/app/enum/notification-type';
   animations: [slideToDown],
 })
 export class FacebookSignInComponent implements OnInit {
-  user: FormGroup;
+  user: UntypedFormGroup;
   socialUser!: SocialUser;
   isLoggedin!: boolean;
 
   constructor(
     private socialAuthService: SocialAuthService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private loginSerivce: LoginService,
     private notifier: NotificationService,
     private router: Router
   ) {
     this.user = fb.group({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      userName: new FormControl(''),
-      provider: new FormControl(''),
-      email: new FormControl(''),
-      password: new FormControl(''),
+      firstName: new UntypedFormControl(''),
+      lastName: new UntypedFormControl(''),
+      userName: new UntypedFormControl(''),
+      provider: new UntypedFormControl(''),
+      email: new UntypedFormControl(''),
+      password: new UntypedFormControl(''),
     });
   }
 

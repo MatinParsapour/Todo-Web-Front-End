@@ -5,7 +5,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PhoneErrorMatcher } from './phone-error-matcher';
 import { ISO_3166_1_CODES } from './iso-phone-number-codes';
 import { PhoneValidator } from './phone-number.validator';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, FormGroup } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import PhoneNumber from 'awesome-phonenumber';
 import { NotificationType } from 'src/app/enum/notification-type';
@@ -34,7 +34,7 @@ export class PhoneNumberComponent implements OnInit {
   phoneErrorMatcher = new PhoneErrorMatcher();
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     @Inject(MAT_DIALOG_DATA) data: any,
     private dialog: MatDialog,
     private phoneNumberService: PhoneNumberService,

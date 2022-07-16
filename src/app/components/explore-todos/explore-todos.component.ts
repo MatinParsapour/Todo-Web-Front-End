@@ -2,7 +2,7 @@ import { ClipboardService } from 'ngx-clipboard';
 import { CommentService } from './../../services/comment/comment.service';
 import {
   FormGroup,
-  FormBuilder,
+  UntypedFormBuilder,
   FormControl,
   Validators,
 } from '@angular/forms';
@@ -33,7 +33,7 @@ export class ExploreTodosComponent implements OnInit {
     private todoService: ToDoService,
     private userService: UserService,
     private notifier: NotificationService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private commentService: CommentService,
     private clipboardService: ClipboardService
   ) {

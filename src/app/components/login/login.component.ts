@@ -6,10 +6,10 @@ import { ForgetPasswordComponent } from './../forget-password/forget-password.co
 import { slideToDown } from './../../animations';
 import { Component, OnInit } from '@angular/core';
 import {
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
-  FormBuilder,
+  UntypedFormBuilder,
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -24,7 +24,7 @@ import { SocialUser } from 'angularx-social-login';
 })
 export class LoginComponent implements OnInit {
   isLoading = false;
-  user: FormGroup;
+  user: UntypedFormGroup;
   siteKey: string = '6Lc7ct0eAAAAAD0Jqa_1Eih2MiucxWAGsDpRpOVn';
   socialUser!: SocialUser;
   isLoggedin!: boolean;
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   cookieUsername = '';
 
   constructor(
-    fb: FormBuilder,
+    fb: UntypedFormBuilder,
     private dialog: MatDialog,
     private loginService: LoginService,
     private notifier: NotificationService,
@@ -41,8 +41,8 @@ export class LoginComponent implements OnInit {
     private cookieService: CookieService
   ) {
     this.user = fb.group({
-      userName: new FormControl('', [Validators.required]),
-      password: new FormControl('', [
+      userName: new UntypedFormControl('', [Validators.required]),
+      password: new UntypedFormControl('', [
         Validators.required,
         Validators.minLength(10),
       ]),
