@@ -61,6 +61,7 @@ import { SummaryPipesPipe } from './pipes/summary-pipes.pipe';
 import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
 import { CategoryComponent } from './components/category/category.component';
 import { MarkerPipe } from './pipes/marker.pipe';
+import { CookieModule } from 'ngx-cookie';
 import {
   FacebookLoginProvider,
   GoogleLoginProvider,
@@ -201,7 +202,8 @@ const customNotifierOptions: NotifierOptions = {
     MatTabsModule,
     NgImageSliderModule,
     GuidedTourModule,
-    PickerModule
+    PickerModule,
+    CookieModule.withOptions()
   ],
   providers: [
     RegisterService,
