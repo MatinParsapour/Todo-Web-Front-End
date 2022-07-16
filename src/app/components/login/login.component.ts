@@ -1,4 +1,4 @@
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie';
 import { Router } from '@angular/router';
 import { NotificationService } from './../../services/notification/notification.service';
 import { LoginService } from './../../services/login/login.service';
@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit {
 
   saveUser() {
     if (this.user.get('rememberMe')?.value == true) {
-      this.cookieService.set('username', this.user.get('userName')?.value);
+      this.cookieService.put('username', this.user.get('userName')?.value);
     }
   }
 
@@ -113,7 +113,10 @@ export class LoginComponent implements OnInit {
   }
 
   getUser() {
-    this.cookieUsername = this.cookieService.get('username');
+    var username = this.cookieService.get('username');
+    if (username != undefined) {
+      this.cookieUsername = username;
+    }
   }
 
   showPopup() {
