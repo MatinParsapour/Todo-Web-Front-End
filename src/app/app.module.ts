@@ -88,6 +88,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { SettingsService } from './services/settings/settings.service';
 import { ForgetUsernameComponent } from './components/forget-username/forget-username.component';
 import { CookieService } from 'ngx-cookie-service';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -174,6 +175,7 @@ const customNotifierOptions: NotifierOptions = {
     CommentComponent,
     SettingsComponent,
     ForgetUsernameComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,
