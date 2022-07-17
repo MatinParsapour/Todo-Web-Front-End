@@ -1,14 +1,20 @@
+import { CookieService } from 'ngx-cookie';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
+  username = '';
 
-  constructor() { }
+  constructor(private cookieService: CookieService) {}
 
-  ngOnInit(): void {}
-
+  ngOnInit(): void {
+    var username = this.cookieService.get('username');
+    if (username != undefined) {
+      this.username = username;
+    }
+  }
 }
