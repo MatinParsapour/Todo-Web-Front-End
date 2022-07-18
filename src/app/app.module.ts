@@ -1,3 +1,4 @@
+import { SearchService } from './services/search/search.service';
 import { CommentService } from './services/comment/comment.service';
 import { GuidedTourModule, GuidedTourService } from 'ngx-guided-tour';
 import { SendEmailService } from './services/send-email/send-email.service';
@@ -222,6 +223,7 @@ const customNotifierOptions: NotifierOptions = {
     CommentService,
     SettingsService,
     CookieService,
+    SearchService,
     GuidedTourService,
     {
       provide: 'SocialAuthServiceConfig',
