@@ -154,8 +154,4 @@ export class LoginComponent implements OnInit {
   get recaptcha(): any {
     return this.user.get('recaptcha');
   }
-
-  get rememberMe(): any {
-    return this.user.get('rememberMe');
-  }
 }
