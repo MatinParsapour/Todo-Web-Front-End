@@ -3,7 +3,15 @@
     <a [routerLink]="'/' + username">𝓣𝓸𝓓𝓸</a>
     <div class="search">
       <form class="searchform cf">
-        <input type="text" placeholder="Search ...">
+        <input list="search" (keyup)="search($event.target)" type="text" placeholder="Search ...">
+        <datalist id="search">
+          <div *ngFor="let result of results">
+            <option *ngIf="result.name == undefined; else itIsTag" [value]="result.userName"></option>
+            <ng-template #itIsTag>
+              <option [value]="result.name"></option>
+            </ng-template>
+          </div>
+        </datalist>
       </form>
     </div>
     <div>
