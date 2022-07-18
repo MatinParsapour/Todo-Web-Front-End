@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
         Validators.minLength(10),
       ]),
       recaptcha: ['', Validators.required],
-      rememberMe: [],
     });
   }
 
