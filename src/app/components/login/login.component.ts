@@ -94,7 +94,6 @@ export class LoginComponent implements OnInit {
 
   saveUser() {
     this.cookieService.put('username', this.user.get('userName')?.value);
-    }
   }
 
   canNavigateToMain() {
