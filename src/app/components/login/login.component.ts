@@ -103,7 +103,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  isUserRemembered(): boolean {
+  isUserExists(): boolean {
     if (this.cookieUsername == '') {
       return false;
     }
