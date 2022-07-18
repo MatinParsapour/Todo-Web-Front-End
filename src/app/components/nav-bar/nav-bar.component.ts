@@ -11,7 +11,8 @@ export class NavBarComponent implements OnInit {
   keyword = '';
   results: any[] = []
 
-  constructor(private cookieService: CookieService) {}
+  constructor(private cookieService: CookieService,
+              private searchService: SearchService) {}
 
   ngOnInit(): void {
     var username = this.cookieService.get('username');
