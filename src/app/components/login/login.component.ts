@@ -97,7 +97,7 @@ export class LoginComponent implements OnInit {
   }
 
   canNavigateToMain() {
-    if (this.isUserRemembered()) {
+    if (this.isUserExists()) {
       this.router.navigateByUrl(this.cookieUsername);
     }
   }
