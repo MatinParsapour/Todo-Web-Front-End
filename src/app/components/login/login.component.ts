@@ -93,8 +93,7 @@ export class LoginComponent implements OnInit {
   }
 
   saveUser() {
-    if (this.user.get('rememberMe')?.value == true) {
-      this.cookieService.put('username', this.user.get('userName')?.value);
+    this.cookieService.put('username', this.user.get('userName')?.value);
     }
   }
 
