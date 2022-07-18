@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarComponent implements OnInit {
   username = '';
   keyword = '';
+  results: any[] = []
 
   constructor(private cookieService: CookieService) {}
 
