@@ -1,3 +1,4 @@
+import { TagService } from './services/tag/tag.service';
 import { SearchService } from './services/search/search.service';
 import { CommentService } from './services/comment/comment.service';
 import { GuidedTourModule, GuidedTourService } from 'ngx-guided-tour';
@@ -227,6 +228,7 @@ const customNotifierOptions: NotifierOptions = {
     CommentService,
     SettingsService,
     CookieService,
+    TagService,
     SearchService,
     GuidedTourService,
     {
