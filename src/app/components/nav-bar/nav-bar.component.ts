@@ -10,11 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
   username = '';
-  keyword = '';
-  results: any[] = []
 
-  constructor(private cookieService: CookieService,
-              private searchService: SearchService) {}
+  constructor(private cookieService: CookieService,) {}
 
   ngOnInit(): void {
     var username = this.cookieService.get('username');
@@ -23,19 +20,4 @@ export class NavBarComponent implements OnInit {
     }
   }
 
-  search(element: any) {
-    if (element.value == '') {
-      this.results = []
-      return;
-    }
-
-    this.searchService.getAll(element.value).subscribe(
-      (response: any) => {
-        this.results = response;
-      },
-      (error: HttpErrorResponse) =>{
-        console.log(error);   
-      }
-    )
-  }
 }
