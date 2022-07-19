@@ -30,7 +30,12 @@ export class SearchComponent implements OnInit {
     );
   }
 
-  open(id: string) {
-    console.log(id);
+  open(object: any) {
+    this.results = []
+    if (object.name == undefined) {
+      this.keyword = object.userName
+    } else {
+      this.keyword = object.name
+    }
   }
 }
