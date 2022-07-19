@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie';
 import { ToDoService } from './../../services/to-do/to-do.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -34,12 +35,16 @@ export class UserComponent implements OnInit {
     private notifier: NotificationService,
     private router: Router,
     private activatedRouter: ActivatedRoute,
+    private cookieService: CookieService,
     private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.observable = this.activatedRouter.snapshot.params['observable'];
-    this.observer = this.activatedRouter.snapshot.params['observer'];
+    var username = this.cookieService.get('username')
+    if (username) {
+      this.observer = username
+    }
     this.todoId = this.activatedRouter.snapshot.params['todoId'];
     this.activatedRouter.params.subscribe((params: Params) => {
       this.todoId = params['todoId'];
