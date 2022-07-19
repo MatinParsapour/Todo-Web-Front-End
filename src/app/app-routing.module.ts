@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'reset-email', component: ResetEmailComponent},
   {path: 'to-do', component: SharedToDoComponent},
   {path: 'explore', component: ExploreComponent},
-  {path: 'user/:observer/:observable', component: UserComponent},
+  {path: 'user/:observable', component: UserComponent},
   {path: ':username/settings/:settingsType', component: SettingsComponent},
   {path: 'tag/:name', component: TagComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
