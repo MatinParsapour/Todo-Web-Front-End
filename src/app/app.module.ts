@@ -91,6 +91,7 @@ import { ForgetUsernameComponent } from './components/forget-username/forget-use
 import { CookieService } from 'ngx-cookie-service';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { SearchComponent } from './components/search/search.component';
+import { TagComponent } from './components/tag/tag.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -179,6 +180,7 @@ const customNotifierOptions: NotifierOptions = {
     ForgetUsernameComponent,
     NavBarComponent,
     SearchComponent,
+    TagComponent,
   ],
   imports: [
     BrowserModule,
