@@ -119,6 +119,10 @@
     justify-content: center;
   }
 
+  img {
+    border-radius: 50%;
+  }
+
   .fnlninner {
     margin-left: 10em;
     height: 12em;
