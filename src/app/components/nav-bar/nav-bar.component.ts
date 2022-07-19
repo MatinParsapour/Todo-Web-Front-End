@@ -25,6 +25,7 @@ export class NavBarComponent implements OnInit {
 
   search(element: any) {
     if (element.value == '') {
+      this.results = []
       return;
     }
 
