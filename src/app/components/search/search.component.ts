@@ -39,6 +39,7 @@ export class SearchComponent implements OnInit {
       this.router.navigate(['/user/' + object.userName])
     } else {
       this.keyword = object.name
+      this.router.navigate(['/tag/' + object.name])
     }
   }
 }
