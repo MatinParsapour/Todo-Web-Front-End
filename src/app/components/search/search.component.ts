@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/services/search/search.service';
@@ -10,7 +11,8 @@ import { SearchService } from 'src/app/services/search/search.service';
 export class SearchComponent implements OnInit {
   keyword = '';
   results: any[] = [];
-  constructor(private searchService: SearchService) {}
+  constructor(private searchService: SearchService,
+              private router: Router) {}
 
   ngOnInit(): void {}
 
