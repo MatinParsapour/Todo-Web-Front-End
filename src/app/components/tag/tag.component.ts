@@ -15,7 +15,10 @@ export class TagComponent implements OnInit {
   tagName = ''
   tag!: Tag
 
-  constructor() { }
+  constructor(private tagService: TagService,
+              private activatedRoute: ActivatedRoute,
+              private notifier: NotificationService) {
+              }
 
   ngOnInit(): void {
   }
