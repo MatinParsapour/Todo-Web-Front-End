@@ -1,3 +1,4 @@
+import { TagComponent } from './components/tag/tag.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { UserComponent } from './components/user/user.component';
 import { ExploreComponent } from './components/explore/explore.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'explore', component: ExploreComponent},
   {path: 'user/:observer/:observable', component: UserComponent},
   {path: ':username/settings/:settingsType', component: SettingsComponent},
+  {path: 'tag/:name', component: TagComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: '**', component: NotFoundComponent},
 ];
