@@ -1,8 +1,9 @@
 <div class="search">
   <form class="searchform cf">
-    <input (keyup)="search($event.target)" type="text" placeholder="Search ...">
+    <input [(ngModel)]="keyword" [ngModelOptions]="{standalone: true}" (keyup)="search($event.target)" type="text"
+      placeholder="Search ...">
     <div class="results">
-      <button class="result" *ngFor="let result of results" (click)="open(result.id)">
+      <button class="result" *ngFor="let result of results" (click)="open(result)">
         <span *ngIf="result.name == undefined; else itIsTag">{{result.userName}}</span>
         <ng-template #itIsTag>
           <span>{{result.name}}</span>
