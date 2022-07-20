@@ -22,8 +22,10 @@ export class TagComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private notifier: NotificationService,
               private userService: UserService,
-              private cookieService: CookieService) {
-              }
+
+  ngAfterViewInit(): void {
+    this.isTagFollowed();
+  }
 
   ngOnInit(): void {
     this.tagName = this.activatedRoute.snapshot.params['name'];
