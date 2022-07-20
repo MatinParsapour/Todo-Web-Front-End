@@ -45,4 +45,11 @@ export class TagComponent implements OnInit {
       );
   }
 
+  getUsername(){
+    var username = this.cookieService.get('username')
+    if (username) {
+      this.username = username
+    }
+  }
+
 }
