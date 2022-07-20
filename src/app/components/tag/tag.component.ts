@@ -78,9 +78,23 @@ export class TagComponent implements OnInit, AfterViewInit {
       }
     );
   }
+
+  unFollow() {
+    const formData = new FormData();
+    formData.append('username', this.username);
+    formData.append('tagName', this.tag.name);
+    this.userService.update('/user/un-follow-tag', formData).subscribe(
+      (response: any) => {
+        this.notifier.notify(
+          NotificationType.SUCCESS,
+          'You successfully Unfollowed tag'
+        );
+      },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error)
+        this.notifier.notify(NotificationType.ERROR, error.error);
       }
+    );
+  }
 
   isTagFollowed() {
     this.userService
