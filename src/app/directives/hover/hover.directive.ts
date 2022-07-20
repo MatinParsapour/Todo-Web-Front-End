@@ -8,6 +8,8 @@ export class HoverDirective {
   @Input('default') default: string = '#a1d3d5';
   @Input('highlight') highlight: string = '#526f70';
 
-  constructor() { }
+  constructor() {
+    this.backgroundColor = this.default;
+  }
 
 }
