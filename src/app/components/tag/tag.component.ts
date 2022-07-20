@@ -17,7 +17,8 @@ export class TagComponent implements OnInit {
 
   constructor(private tagService: TagService,
               private activatedRoute: ActivatedRoute,
-              private notifier: NotificationService) {
+              private notifier: NotificationService,
+              private cookieService: CookieService) {
               }
 
   ngOnInit(): void {
