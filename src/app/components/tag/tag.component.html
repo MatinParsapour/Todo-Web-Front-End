@@ -4,7 +4,12 @@
       <img src="https://www.humanz.com/wp-content/uploads/2020/06/1590223323392_IMG_3301.jpg" alt="">
       <div class="info">
         <p>{{tag.name}}</p>
-        <button (click)="follow()" *ngIf="username" appHover class="follow-btn">Follow</button>
+        <button (click)="toggleFollow()" *ngIf="username" appHover class="follow-btn">
+          <span *ngIf="!isTagFollowedByUser; else notFollowed">Follow</span>
+          <ng-template #notFollowed>
+            <span>Unfollow</span>
+          </ng-template>
+        </button>
       </div>
     </div>
     <hr>
