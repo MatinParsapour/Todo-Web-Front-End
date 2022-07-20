@@ -21,6 +21,7 @@ export class ToDoComponent implements OnInit {
   folders: any;
   @Input('toDo') toDo: ToDo = new ToDo();
   @Input('search') search = '';
+  @Input('ownerSees') ownerSees : boolean = false
   @Output('getToDos') getToDos = new EventEmitter();
   displayDatePicker: boolean = false;
 
