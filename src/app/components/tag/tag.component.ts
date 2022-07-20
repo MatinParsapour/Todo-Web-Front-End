@@ -67,7 +67,17 @@ export class TagComponent implements OnInit {
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error)
       }
-    )
-  }
 
+  isTagFollowed() {
+    this.userService
+      .getAll(
+        '/user/is-tag-followed/' +
+          this.username +
+          '/' +
+          encodeURIComponent(this.tag.name)
+      )
+      .subscribe((response: any) => {
+        this.isTagFollowedByUser = response;
+      });
+  }
 }
