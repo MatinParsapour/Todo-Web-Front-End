@@ -12,4 +12,7 @@ export class HoverDirective {
     this.backgroundColor = this.default;
   }
 
+  @HostListener('mouseenter') mouseEnter(){
+    this.backgroundColor = this.highlight;
+  }
 }
