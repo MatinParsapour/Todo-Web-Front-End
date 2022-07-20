@@ -72,6 +72,7 @@ export class TagComponent implements OnInit, AfterViewInit {
           NotificationType.SUCCESS,
           'You successfully followed tag'
         );
+        this.isTagFollowed()
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error);
@@ -97,6 +98,7 @@ export class TagComponent implements OnInit, AfterViewInit {
           NotificationType.SUCCESS,
           'You successfully Unfollowed tag'
         );
+        this.isTagFollowed()
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error);
