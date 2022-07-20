@@ -13,10 +13,11 @@ import { NotificationType } from 'src/app/enum/notification-type';
   templateUrl: './tag.component.html',
   styleUrls: ['./tag.component.css']
 })
-export class TagComponent implements OnInit {
-  tagName = ''
-  tag!: Tag
-  username!: string
+export class TagComponent implements OnInit, AfterViewInit {
+  tagName = '';
+  tag!: Tag;
+  username!: string;
+  isTagFollowedByUser = false;
 
   constructor(
     private tagService: TagService,
