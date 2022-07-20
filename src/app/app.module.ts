@@ -93,6 +93,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { SearchComponent } from './components/search/search.component';
 import { TagComponent } from './components/tag/tag.component';
+import { HoverDirective } from './directives/hover/hover.directive';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -182,6 +183,7 @@ const customNotifierOptions: NotifierOptions = {
     NavBarComponent,
     SearchComponent,
     TagComponent,
+    HoverDirective,
   ],
   imports: [
     BrowserModule,
