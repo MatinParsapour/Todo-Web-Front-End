@@ -56,4 +56,18 @@ export class TagComponent implements OnInit {
     }
   }
 
+  follow(){
+    const formData = new FormData();
+    formData.append('username', this.username);
+    formData.append('tagName', this.tag.name)
+    this.userService.update('/user/follow-tag', formData).subscribe(
+      (response: any) => {
+        this.notifier.notify(NotificationType.SUCCESS, "You successfully followed tag")
+      }, 
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error)
+      }
+    )
+  }
+
 }
