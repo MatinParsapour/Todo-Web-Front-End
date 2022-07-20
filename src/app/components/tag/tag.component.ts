@@ -18,10 +18,13 @@ export class TagComponent implements OnInit {
   tag!: Tag
   username!: string
 
-  constructor(private tagService: TagService,
-              private activatedRoute: ActivatedRoute,
-              private notifier: NotificationService,
-              private userService: UserService,
+  constructor(
+    private tagService: TagService,
+    private activatedRoute: ActivatedRoute,
+    private notifier: NotificationService,
+    private userService: UserService,
+    private cookieService: CookieService
+  ) {}
 
   ngAfterViewInit(): void {
     this.isTagFollowed();
