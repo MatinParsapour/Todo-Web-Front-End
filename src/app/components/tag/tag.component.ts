@@ -25,6 +25,7 @@ export class TagComponent implements OnInit {
   ngOnInit(): void {
     this.tagName = this.activatedRoute.snapshot.params['name'];
     this.getTag()
+    this.getUsername()
   }
 
   getTag(){
