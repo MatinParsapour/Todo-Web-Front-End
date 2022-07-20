@@ -79,6 +79,14 @@ export class TagComponent implements OnInit, AfterViewInit {
     );
   }
 
+  toggleFollow() {
+    if (this.isTagFollowedByUser) {
+      this.unFollow();
+    } else {
+      this.follow();
+    }
+  }
+
   unFollow() {
     const formData = new FormData();
     formData.append('username', this.username);
