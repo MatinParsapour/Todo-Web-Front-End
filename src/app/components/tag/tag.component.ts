@@ -14,6 +14,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 export class TagComponent implements OnInit {
   tagName = ''
   tag!: Tag
+  username!: string
 
   constructor(private tagService: TagService,
               private activatedRoute: ActivatedRoute,
