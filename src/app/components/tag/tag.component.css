@@ -1,6 +1,30 @@
 img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    box-shadow: 0 0 10px 1px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 1px;
+}
+
+.col-xs-12 {
+  display: flex;
+  justify-content: center;
+  padding-top: 120px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 37%;
+}
+
+.info {
+  font-size: 20px;
+}
+
+.follow-btn {
+  width: 100%;
+  border: none;
+  /* background-color: #526f70; */
+  border-radius: 5px;
+  color: black;
 }
