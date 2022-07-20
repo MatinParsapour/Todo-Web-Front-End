@@ -4,6 +4,7 @@ import { Directive } from '@angular/core';
   selector: '[appHover]'
 })
 export class HoverDirective {
+  @HostBinding('style.backgroundColor') backgroundColor!: string;
 
   constructor() { }
 
