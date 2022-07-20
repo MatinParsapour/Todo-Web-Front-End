@@ -15,4 +15,8 @@ export class HoverDirective {
   @HostListener('mouseenter') mouseEnter(){
     this.backgroundColor = this.highlight;
   }
+
+  @HostListener('mouseleave') mouseLeave(){
+    this.backgroundColor = this.default
+  }
 }
