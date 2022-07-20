@@ -1,7 +1,7 @@
-import { Directive } from '@angular/core';
+import { Directive, HostBinding, HostListener, Input } from '@angular/core';
 
 @Directive({
-  selector: '[appHover]'
+  selector: '[appHover]',
 })
 export class HoverDirective {
   @HostBinding('style.backgroundColor') backgroundColor!: string;
