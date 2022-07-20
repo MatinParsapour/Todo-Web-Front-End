@@ -63,7 +63,7 @@
         <label for="search-box"><span class="glyphicon glyphicon-search search-icon"></span></label>
       </form>
       <div *ngFor="let toDo of pinnedToDos">
-        <app-to-do [toDo]="toDo" *ngIf="!isDone(toDo)" [search]="searchInput.value" (getToDos)="loadCategory('tasks')">
+        <app-to-do [ownerSees]="true" [toDo]="toDo" *ngIf="!isDone(toDo)" [search]="searchInput.value" (getToDos)="loadCategory('tasks')">
         </app-to-do>
       </div>
       <div *ngFor="let toDo of toDos">
