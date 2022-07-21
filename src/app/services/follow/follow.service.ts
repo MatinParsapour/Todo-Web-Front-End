@@ -7,6 +7,7 @@ import { Constants } from '../constant';
   providedIn: 'root'
 })
 export class FollowService extends DataService {
+  httpService: HttpClient
 
   constructor() { }
 }
