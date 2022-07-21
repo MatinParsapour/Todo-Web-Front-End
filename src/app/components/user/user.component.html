@@ -32,6 +32,8 @@
             <p>{{user.bio}}</p>
           </article>
           <button [disabled]="isNotClickable()" (click)="request()" appHover [default]="'rgb(168 169 169)'" [highlight]="'rgb(106 108 108)'"
+            class="follow-btn">
+            <span *ngIf="resultForRequest">{{resultForRequest | titlecase}}</span>
         </div>
       </div>
     </div>
