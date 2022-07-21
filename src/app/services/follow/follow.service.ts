@@ -9,5 +9,8 @@ import { Constants } from '../constant';
 export class FollowService extends DataService {
   httpService: HttpClient
 
-  constructor() { }
+  constructor(http: HttpClient) {
+    super(Constants.url + '/follow-request/', http);
+    this.httpService = http;
+  }
 }
