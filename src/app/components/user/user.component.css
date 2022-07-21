@@ -241,6 +241,21 @@
     font-size: 15px;
   }
 
+  .perdonal-info {
+    width: 100%;
+    margin-left: -29%;
+  }
+
+  .info {
+    margin-left: unset !important;
+    width: 100% !important;
+  }
+
+  .info > a {
+    width: 100%;
+    margin-top: 1%;
+  }
+
   .margintop {
     margin-top: 150px;
   }
