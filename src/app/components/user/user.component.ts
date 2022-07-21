@@ -42,6 +42,10 @@ export class UserComponent implements OnInit, AfterViewInit {
     private dialog: MatDialog
   ) {}
 
+  ngAfterViewInit(): void {
+    this.resultOfRequest()
+  }
+
   ngOnInit(): void {
     this.observable = this.activatedRouter.snapshot.params['observable'];
     var username = this.cookieService.get('username')
