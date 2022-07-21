@@ -29,6 +29,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   now = new Date();
   uploaded = 0;
   observer = ''
+  resultForRequest = ''
 
   constructor(
     private userService: UserService,
