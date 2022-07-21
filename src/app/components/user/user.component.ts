@@ -110,6 +110,15 @@ export class UserComponent implements OnInit, AfterViewInit {
       }
     )
   }
+
+  isNotClickable() {
+    return (
+      this.resultForRequest == 'UNSPECIFIED' ||
+      this.resultForRequest == 'REJECTED' ||
+      this.resultForRequest == 'ACCEPTED'
+    );
+  }
+
   getToDos() {
     this.todoService
       .getAll('to-do/get-user-todos/' + this.observable)
