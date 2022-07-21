@@ -31,6 +31,7 @@
             <h4>bio</h4>
             <p>{{user.bio}}</p>
           </article>
+          <button [disabled]="isNotClickable()" (click)="request()" appHover [default]="'rgb(168 169 169)'" [highlight]="'rgb(106 108 108)'"
         </div>
       </div>
     </div>
