@@ -6,7 +6,7 @@ import { NotificationService } from './../../services/notification/notification.
 import {
   HttpErrorResponse,
 } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, AfterViewInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { User } from 'src/app/classes/user';
