@@ -1,3 +1,4 @@
+import { FollowService } from './../../services/follow/follow.service';
 import { CookieService } from 'ngx-cookie';
 import { ToDoService } from './../../services/to-do/to-do.service';
 import { MatDialog } from '@angular/material/dialog';
