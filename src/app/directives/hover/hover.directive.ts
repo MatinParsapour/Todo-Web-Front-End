@@ -9,6 +9,8 @@ export class HoverDirective implements OnInit {
   @Input('highlight') highlight: string = '#526f70';
 
   constructor() {
+  }
+  ngOnInit(): void {
     this.backgroundColor = this.default;
   }
 
