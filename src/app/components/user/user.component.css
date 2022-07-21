@@ -5,6 +5,12 @@
     column-gap: 2px;
   }
 
+  .follow-btn {
+    border: none;
+    height: 3em;
+    border-radius: 5px;
+  }
+
   .link {
     background-color: #252562;
     padding: 20px;
