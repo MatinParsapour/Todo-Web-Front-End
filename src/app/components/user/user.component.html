@@ -37,11 +37,11 @@
   </div>
   <div>
   </div>
-  <div>
-    <div *ngIf="user.phoneVisible">
+  <div class="perdonal-info">
+    <div *ngIf="user.phoneVisible" class="info">
       <a class="link" [href]="'tel:' + user.phoneNumber">Phone number</a>
     </div>
-    <div class="secondElement" *ngIf="user.emailVisible">
+    <div class="secondElement" *ngIf="user.emailVisible" class="info">
       <a class="link" [href]="'mailto:' + user.email">Email</a>
     </div>
   </div>
