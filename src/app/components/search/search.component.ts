@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
       return;
     }
 
-    this.searchService.getAll(element.value).subscribe(
+    this.searchService.getAll(encodeURIComponent(element.value)).subscribe(
       (response: any) => {
         this.results = response;
       },
