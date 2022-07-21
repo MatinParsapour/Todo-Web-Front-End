@@ -17,7 +17,7 @@ import { ToDo } from 'src/app/classes/todo';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, AfterViewInit {
   user!: User;
   todos: Array<ToDo> = [];
   isLoading: boolean = false;
