@@ -6,7 +6,7 @@ import { Constants } from '../constant';
 @Injectable({
   providedIn: 'root'
 })
-export class FollowService {
+export class FollowService extends DataService {
 
   constructor() { }
 }
