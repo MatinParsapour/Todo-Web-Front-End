@@ -99,6 +99,17 @@ export class UserComponent implements OnInit, AfterViewInit {
       }
     )
   }
+
+  resultOfRequest(){
+    this.followService.getAll('get-result-of-request/' + this.observable + "/" + this.observer).subscribe(
+      (response: any) => {
+        this.resultForRequest = response;
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error.type + " " + error.error.message)
+      }
+    )
+  }
   getToDos() {
     this.todoService
       .getAll('to-do/get-user-todos/' + this.observable)
