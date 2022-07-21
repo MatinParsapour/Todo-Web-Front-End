@@ -38,6 +38,7 @@ export class UserComponent implements OnInit, AfterViewInit {
     private router: Router,
     private activatedRouter: ActivatedRoute,
     private cookieService: CookieService,
+    private followService: FollowService,
     private dialog: MatDialog
   ) {}
 
