@@ -3,7 +3,7 @@ import { Directive, HostBinding, HostListener, Input } from '@angular/core';
 @Directive({
   selector: '[appHover]',
 })
-export class HoverDirective {
+export class HoverDirective implements OnInit {
   @HostBinding('style.backgroundColor') backgroundColor!: string;
   @Input('default') default: string = '#a1d3d5';
   @Input('highlight') highlight: string = '#526f70';
