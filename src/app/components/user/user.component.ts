@@ -85,6 +85,20 @@ export class UserComponent implements OnInit, AfterViewInit {
     );
   }
 
+  request(){
+    const formData = new FormData();
+    formData.append('applicantUsername', this.observer);
+    formData.append('responderUsername', this.observable);
+    this.followService.create('send-follow-request', formData).subscribe(
+      (response: any) => {
+        this.notifier.notify(NotificationType.SUCCESS, "Your request sent to user, wait for the response")
+        this.resultOfRequest()
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(NotificationType.ERROR, error.error.type + " " + error.error.message)
+      }
+    )
+  }
   getToDos() {
     this.todoService
       .getAll('to-do/get-user-todos/' + this.observable)
