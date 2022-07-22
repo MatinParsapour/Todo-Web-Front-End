@@ -17,4 +17,16 @@ export class ProfileDropDownComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getUser() {
+    if (!this.username) {
+      return;
+    }
+    this.userService.getUser(this.username).subscribe(
+      (response: any) => {
+        this.user = response;
+      },
+      (error: HttpErrorResponse) => {
+      }
+    );
+  }
 }
