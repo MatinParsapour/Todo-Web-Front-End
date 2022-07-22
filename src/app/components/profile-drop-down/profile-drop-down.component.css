@@ -1,0 +1,21 @@
+.profile {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+.profile:hover {
+  cursor: pointer;
+}
+
+.btn-group {
+  position: fixed;
+  top: 0.5%;
+  left: 6px;
+}
+
+.caret {
+  top: 34px;
+  position: fixed;
+  left: 36px;
+}
