@@ -10,6 +10,11 @@ export class DropDownDirective {
               private renderer: Renderer2) { }
 
   @HostListener('document:click', ['$event']) click(event: Event) {
-    this.isOpen = this.elementRef.nativeElement.contains(event.target) ? !this.isOpen : false
+    var bindClass = this.elementRef.nativeElement.contains(event.target) ? this.class : ''
+    if (bindClass) {
+      this.renderer.addClass(this.elementRef.nativeElement, bindClass)
+    } else {
+      this.renderer.removeClass(this.elementRef.nativeElement, this.class)
+    }
   }
 }
