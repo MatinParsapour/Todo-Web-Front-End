@@ -10,6 +10,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ProfileDropDownComponent implements OnInit {
   @Input('username') username!: string;
+  user!: User
 
   constructor() { }
 
