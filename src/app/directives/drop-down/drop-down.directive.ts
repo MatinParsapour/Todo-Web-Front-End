@@ -6,7 +6,8 @@ import { Directive, HostBinding, ElementRef, HostListener } from '@angular/core'
 export class DropDownDirective {
   @Input('selectedClass') class: any
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef,
+              private renderer: Renderer2) { }
 
   @HostListener('document:click', ['$event']) click(event: Event) {
     this.isOpen = this.elementRef.nativeElement.contains(event.target) ? !this.isOpen : false
