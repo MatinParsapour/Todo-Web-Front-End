@@ -95,6 +95,7 @@ import { SearchComponent } from './components/search/search.component';
 import { TagComponent } from './components/tag/tag.component';
 import { HoverDirective } from './directives/hover/hover.directive';
 import { DropDownDirective } from './directives/drop-down/drop-down.directive';
+import { ProfileDropDownComponent } from './components/profile-drop-down/profile-drop-down.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -186,6 +187,7 @@ const customNotifierOptions: NotifierOptions = {
     TagComponent,
     HoverDirective,
     DropDownDirective,
+    ProfileDropDownComponent,
   ],
   imports: [
     BrowserModule,
