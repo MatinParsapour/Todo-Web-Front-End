@@ -12,7 +12,7 @@ export class ProfileDropDownComponent implements OnInit {
   @Input('username') username!: string;
   user!: User
 
-  constructor() { }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
   }
