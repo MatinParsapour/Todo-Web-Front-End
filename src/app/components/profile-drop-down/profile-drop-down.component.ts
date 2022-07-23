@@ -32,4 +32,8 @@ export class ProfileDropDownComponent implements OnInit {
       }
     );
   }
+
+  navigate(uri: string) {
+    this.router.navigate([uri])
+  }
 }
