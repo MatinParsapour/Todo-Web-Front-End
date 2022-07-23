@@ -74,4 +74,16 @@ export class SecurityComponent implements OnInit {
   }
 
   openPhoneNumberComponent() {
+    return this.dialog
+      .open(PhoneNumberComponent, { data: { username: this.username } })
+      .afterClosed()
+      .subscribe((result) => {
+        if (result === 'send-code') {
+          this.openCodeValidatorComponent().subscribe(() => {
+            this.updateUser();
+          });
+        }
+      });
+  }
+
 }
