@@ -10,6 +10,7 @@ import { Constants } from '../constant';
 })
 export class SettingsService extends DataService {
   private httpService: HttpClient;
+  private username!: string
 
   constructor(http: HttpClient) {
     super(Constants.url + '/', http);
