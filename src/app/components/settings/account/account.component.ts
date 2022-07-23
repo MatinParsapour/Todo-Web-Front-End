@@ -71,4 +71,19 @@ export class AccountComponent implements OnInit {
     return this.user.accessLevel.toString() == AccessLevel[AccessLevel.PUBLIC];
   }
 
+  getUser() {
+    this.settingsService.getUser(this.username, 'account-info').subscribe(
+      (response: any) => {
+        this.user = response;
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
+        console.log(error);
+      }
+    );
+  }
+
 }
