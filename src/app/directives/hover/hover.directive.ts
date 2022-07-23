@@ -16,6 +16,7 @@ export class HoverDirective implements OnInit {
 
   @HostListener('mouseenter') mouseEnter(){
     this.backgroundColor = this.highlight;
+    this.renderer.setStyle(this.elementRef.nativeElement, 'cursor', 'pointer')
   }
 
   @HostListener('mouseleave') mouseLeave(){
