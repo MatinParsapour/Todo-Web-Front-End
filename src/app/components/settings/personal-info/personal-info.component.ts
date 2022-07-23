@@ -12,6 +12,11 @@ import { NotificationType } from 'src/app/enum/notification-type';
   styleUrls: ['./personal-info.component.css']
 })
 export class PersonalInfoComponent implements OnInit {
+  username!: string;
+  user!: User;
+  profileImage: any;
+  uploaded!: number;
+  bioLength = 300;
 
   constructor() { }
 
