@@ -32,6 +32,8 @@ export class SecurityComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = this.settingsService.getUsername()
+    this.getUser()
+  }
 
   isUserProviderGoogle(): boolean {
     return this.user.provider.toString() == Provider[Provider.GOOGLE];
