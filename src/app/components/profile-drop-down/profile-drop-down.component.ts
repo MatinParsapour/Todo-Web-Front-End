@@ -12,7 +12,8 @@ export class ProfileDropDownComponent implements OnInit {
   @Input('username') username!: string;
   user!: User
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.getUser();
