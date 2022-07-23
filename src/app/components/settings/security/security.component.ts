@@ -69,4 +69,9 @@ export class SecurityComponent implements OnInit {
     this.user.emailVisible = !this.user.emailVisible;
   }
 
+  openGetResetEmailComponent() {
+    return this.dialog.open(GetResetEmailComponent);
+  }
+
+  openPhoneNumberComponent() {
 }
