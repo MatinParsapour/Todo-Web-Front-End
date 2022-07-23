@@ -26,6 +26,22 @@ export class PersonalInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = this.settingsService.getUsername()
+  changeProfileImage(event: any) {
+    this.profileImage = event.target.files[0];
+    const formData = new FormData();
+    formData.append('userId', this.username);
+    formData.append('profileImage', this.profileImage);
+    this.userService.updateProfileImage(formData).subscribe(
+      (event: HttpEvent<any>) => {
+        this.reportUploadProgress(event);
+        this.getUser();
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    );
+  }
+
   }
 
 }
