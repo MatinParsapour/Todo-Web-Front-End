@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { User } from './../../classes/user';
 import { Component, Input, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
