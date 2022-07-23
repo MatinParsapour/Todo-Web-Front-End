@@ -23,7 +23,12 @@ export class SecurityComponent implements OnInit {
   isVisible = false;
   isForgetUsernameModalVisible = false;
 
-  constructor() { }
+  constructor(
+    private settingsService: SettingsService,
+    private notifier: NotificationService,
+    private dialog: MatDialog,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
   }
