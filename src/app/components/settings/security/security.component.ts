@@ -115,3 +115,12 @@ export class SecurityComponent implements OnInit {
     this.dialog.open(ForgetPasswordComponent);
   }
 
+  closeForgetUsernameModal(value: any) {
+    this.isForgetUsernameModalVisible = false;
+    this.username = value;
+    this.user.userName = value;
+    this.router.navigate(['/' + value + '/settings/security-info']);
+    this.getUser()
+  }
+}
+
