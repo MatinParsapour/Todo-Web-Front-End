@@ -1,1 +1,25 @@
-<p>account works!</p>
+<div class="accountInfo">
+  <div class="separator">
+    <div class="line firstLine"></div>
+    <h2 class="accessLevelTitle title">Access level</h2>
+    <div class="line secondLine"></div>
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+    <input type="radio" class="btn-check" value="PRIVATE" name="btnradio" id="btnradio1"
+      (change)="changeAccessLevel($event.target)" autocomplete="off" [checked]="isPrivate()">
+    <label class="btn btn-outline-primary" (mouseleave)="hideAccessLevelInfo()"
+      (mouseenter)="displayAccessLevelInfo('PRIVATE')" for="btnradio1">Private</label>
+    <input type="radio" class="btn-check" value="PROTECTED" name="btnradio" id="btnradio2"
+      (change)="changeAccessLevel($event.target)" autocomplete="off" [checked]="isProtected()">
+    <label class="btn btn-outline-primary" (mouseleave)="hideAccessLevelInfo()"
+      (mouseenter)="displayAccessLevelInfo('PROTECTED')" for="btnradio2">Protected</label>
+    <input type="radio" class="btn-check" value="PUBLIC" name="btnradio" id="btnradio3"
+      (change)="changeAccessLevel($event.target)" autocomplete="off" [checked]="isPublic()">
+    <label class="btn btn-outline-primary" (mouseleave)="hideAccessLevelInfo()"
+      (mouseenter)="displayAccessLevelInfo('PUBLIC')" for="btnradio3">Public</label>
+  </div>
+  <div class="accessLevelInfo">
+    <span>{{accessLevelInfo.type}}</span>
+    <span>{{accessLevelInfo.info}}</span>
+  </div>
+</div>
