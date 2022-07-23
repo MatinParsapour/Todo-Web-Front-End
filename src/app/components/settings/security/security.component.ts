@@ -110,3 +110,8 @@ export class SecurityComponent implements OnInit {
       .open(CodeValidatorComponent, { disableClose: true })
       .afterClosed();
   }
+
+  openForgetPassword() {
+    this.dialog.open(ForgetPasswordComponent);
+  }
+
