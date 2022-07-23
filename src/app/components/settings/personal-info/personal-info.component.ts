@@ -89,4 +89,12 @@ export class PersonalInfoComponent implements OnInit {
     }
   }
 
+  selectProfile() {
+    this.clickButton('select-picture');
+  }
+
+  clickButton(tagId: any) {
+    document.getElementById(tagId)?.click();
+  }
+
 }
