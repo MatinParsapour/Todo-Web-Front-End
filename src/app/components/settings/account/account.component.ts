@@ -30,7 +30,10 @@ export class AccountComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  constructor(
+    private settingsService: SettingsService,
+    private notifier: NotificationService
+  ) {}
 
   ngOnInit(): void {
   }
