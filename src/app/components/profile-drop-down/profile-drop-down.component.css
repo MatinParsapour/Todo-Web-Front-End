@@ -19,3 +19,12 @@
   position: fixed;
   left: 36px;
 }
+
+ul {
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+option {
+  padding: 7px;
+}
