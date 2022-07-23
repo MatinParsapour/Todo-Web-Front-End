@@ -1,1 +1,92 @@
-<p>security works!</p>
+  <div class="securityInfo">
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="firstNameTitle title">Provider</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">
+      <div class="provider">
+        <span>Your account is connected with
+          <img *ngIf="isUserProviderGoogle()"
+            src="https://fontmeme.com/permalink/220706/7f600a73bbbe1cba8a4ec9b82f71fece.png" alt="google-font">
+          <img class="logo" *ngIf="isUserProviderFacebook()"
+            src="https://www.freeiconspng.com/uploads/logo-facebook-png-hd-12.png" alt="facebook logo">
+          <span *ngIf="isUserProviderEmail()">Your email</span>
+        </span>
+      </div>
+    </div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="firstNameTitle title">Email</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">
+      <input class="info" type="text" [value]="user.email" readonly>
+      <button mat-button color="primary" (click)="openGetResetEmailComponent()" class="changeEmailButton">Change
+        email</button>
+      <button mat-button [color]="user.emailVisible ? 'primary' : 'warn'" (click)="changeEmailVisibility()">
+        <span>Is email visible: {{user.emailVisible ? 'Yes' : 'No'}}</span>
+      </button>
+    </div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="registeredAtTitle title">Registered at</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">
+      <span class="info" type="text" readonly> {{user.registerDate | date: 'short'}} </span>
+    </div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="firstNameTitle title">Last login</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">
+      <span class="info" type="text" readonly> {{user.lastLoginDate | date : 'short'}}
+      </span>
+    </div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="lastNameTitle title">Username</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">
+      <input class="info" type="text" [value]="user.userName" readonly>
+      <button mat-button color="primary" (click)="isForgetUsernameModalVisible = !isForgetUsernameModalVisible"
+        class="changeEmailButton">Change username</button>
+    </div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="phoneNumberTitle title">Phone number</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">
+      <input class="info" type="number" [value]="user.phoneNumber" readonly>
+      <button mat-button color="primary" (click)="openPhoneNumberComponent()"
+        class="changeEmailButton">{{user.phoneNumber ? "Change phone number" : "Add phone number"}}</button>
+      <button *ngIf="user.phoneNumber != undefined" mat-button [color]="user.phoneVisible ? 'primary' : 'warn'"
+        (click)="changePhoneVisibility()">
+        <span>Is phone number visible: {{user.phoneVisible ? 'Yes' : 'No'}}</span>
+      </button>
+    </div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="ageTitle title">Password</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">
+      <input class="info" [type]="isVisible ? 'text' : 'password'" id="password" [value]="user.password" readonly>
+      <button mat-button color="primary" (click)="openForgetPassword()" class="changeEmailButton">Change
+        password</button>
+      <button mat-button color="primary" (click)="isVisible = !isVisible" class="changeEmailButton">
+        <img class="eye"
+          [src]="isVisible ?
+          'https://cdn-icons.flaticon.com/png/512/3945/premium/3945105.png?token=exp=1656671031~hmac=da77629883c68bdd57b5b98a587852aa'
+          :
+          'https://cdn-icons.flaticon.com/png/512/2874/premium/2874802.png?token=exp=1656671013~hmac=88b1333b9945ae3e32a5f3337217cd15'"
+          alt="">
+      </button>
+    </div>
+  </div>
+  <app-forget-username [hidden]="!isForgetUsernameModalVisible" (close)="closeForgetUsernameModal($event)">
+  </app-forget-username>
