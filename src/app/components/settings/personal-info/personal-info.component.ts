@@ -18,7 +18,11 @@ export class PersonalInfoComponent implements OnInit {
   uploaded!: number;
   bioLength = 300;
 
-  constructor() { }
+  constructor(
+    private userService: UserService,
+    private settingsService: SettingsService,
+    private notifier: NotificationService
+  ) {}
 
   ngOnInit(): void {
   }
