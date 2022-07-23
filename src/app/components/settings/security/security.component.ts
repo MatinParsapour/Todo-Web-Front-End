@@ -105,4 +105,8 @@ export class SecurityComponent implements OnInit {
       );
   }
 
-}
+  openCodeValidatorComponent() {
+    return this.dialog
+      .open(CodeValidatorComponent, { disableClose: true })
+      .afterClosed();
+  }
