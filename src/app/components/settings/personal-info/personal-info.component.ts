@@ -42,6 +42,20 @@ export class PersonalInfoComponent implements OnInit {
     );
   }
 
+  getUser() {
+    this.settingsService.getUser(this.username, 'personal-info').subscribe(
+      (response: any) => {
+        this.user = response;
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
+        console.log(error);
+        
+      }
+    );
   }
 
 }
