@@ -45,6 +45,20 @@ export class SecurityComponent implements OnInit {
     return this.user.provider.toString() == Provider[Provider.EMAIL];
   }
 
+  getUser() {
+    this.settingsService.getUser(this.username, 'security-info').subscribe(
+      (response: any) => {
+        this.user = response;
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
+      },
+    );
+  }
+
   }
 
 }
