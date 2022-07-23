@@ -58,4 +58,35 @@ export class PersonalInfoComponent implements OnInit {
     );
   }
 
+  reportUploadProgress(event: HttpEvent<any>) {
+    switch (event.type) {
+      case HttpEventType.UploadProgress:
+        if (event.total) {
+          this.uploaded = (100 * event.loaded) / event.total;
+        }
+        break;
+      case HttpEventType.Response:
+        if (event.status === 200) {
+          this.user.profileImageUrl = '';
+          this.user.profileImageUrl = `${event.body.profileImageUrl}`;
+          this.user.profileImageUrl = `${
+            event.body.profileImageUrl
+          }?time=${new Date().getTime()}`;
+          this.notifier.notify(
+            NotificationType.SUCCESS,
+            'Profile image updated'
+          );
+        } else {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            'Unable to upload image'
+          );
+          console.log(event);
+        }
+        break;
+      default:
+        this.uploaded = 0;
+    }
+  }
+
 }
