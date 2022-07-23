@@ -36,6 +36,7 @@ export class AccountComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.username = this.settingsService.getUsername();
   }
 
 }
