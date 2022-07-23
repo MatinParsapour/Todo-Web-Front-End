@@ -8,8 +8,8 @@ export class HoverDirective implements OnInit {
   @Input('default') default: string = '#a1d3d5';
   @Input('highlight') highlight: string = '#526f70';
 
-  constructor() {
-  }
+  constructor(private elementRef: ElementRef,
+              private renderer: Renderer2) {}
   ngOnInit(): void {
     this.backgroundColor = this.default;
   }
