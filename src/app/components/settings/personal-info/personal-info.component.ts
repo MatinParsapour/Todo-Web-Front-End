@@ -114,4 +114,8 @@ export class PersonalInfoComponent implements OnInit {
       );
   }
 
+  bio(value: any) {
+    this.bioLength = 300 - value.value.length;
+    this.user.bio = value.value;
+  }
 }
