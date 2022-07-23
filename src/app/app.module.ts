@@ -96,6 +96,9 @@ import { TagComponent } from './components/tag/tag.component';
 import { HoverDirective } from './directives/hover/hover.directive';
 import { DropDownDirective } from './directives/drop-down/drop-down.directive';
 import { ProfileDropDownComponent } from './components/profile-drop-down/profile-drop-down.component';
+import { PersonalInfoComponent } from './components/settings/personal-info/personal-info.component';
+import { SecurityComponent } from './components/settings/security/security.component';
+import { AccountComponent } from './components/settings/account/account.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -188,6 +191,9 @@ const customNotifierOptions: NotifierOptions = {
     HoverDirective,
     DropDownDirective,
     ProfileDropDownComponent,
+    PersonalInfoComponent,
+    SecurityComponent,
+    AccountComponent,
   ],
   imports: [
     BrowserModule,
