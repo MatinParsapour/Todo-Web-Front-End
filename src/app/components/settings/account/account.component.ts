@@ -57,6 +57,18 @@ export class AccountComponent implements OnInit {
     this.accessLevelInfo = { type: '', info: '' };
   }
 
+  isPrivate(): boolean {
+    return this.user.accessLevel.toString() == AccessLevel[AccessLevel.PRIVATE];
+  }
+
+  isProtected(): boolean {
+    return (
+      this.user.accessLevel.toString() == AccessLevel[AccessLevel.PROTECTED]
+    );
+  }
+
+  isPublic(): boolean {
+    return this.user.accessLevel.toString() == AccessLevel[AccessLevel.PUBLIC];
   }
 
 }
