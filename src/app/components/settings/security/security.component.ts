@@ -18,6 +18,10 @@ import { ForgetPasswordComponent } from '../../forget-password/forget-password.c
   styleUrls: ['./security.component.css'],
 })
 export class SecurityComponent implements OnInit {
+  username!: string;
+  user!: User;
+  isVisible = false;
+  isForgetUsernameModalVisible = false;
 
   constructor() { }
 
