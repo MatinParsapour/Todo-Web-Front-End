@@ -25,6 +25,7 @@ export class PersonalInfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.username = this.settingsService.getUsername()
   }
 
 }
