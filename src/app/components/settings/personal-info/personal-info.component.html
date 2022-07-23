@@ -1,1 +1,74 @@
-<p>personal-info works!</p>
+<div class="personalInfo">
+  <div class="separator">
+    <div class="line firstLine"></div>
+    <h2 class="profileImageTitle title">Profile image</h2>
+    <div class="line secondLine"></div>
+  </div>
+  <figure class="userInfo">
+    <div class="profileImageArea">
+      <img class="profileImage" [src]="user.profileImageUrl" alt="" *ngIf="user.profileImageUrl; else notProfile">
+      <ng-template #notProfile>
+        <img class="personIcon"
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdevitt-forand.com%2Fwp-content%2Fuploads%2F2018%2F05%2Fperson-icon.png&f=1&nofb=1"
+          alt="">
+      </ng-template>
+      <progress max="100" [value]="uploaded" *ngIf="uploaded"></progress>
+    </div>
+    <div class="space"></div>
+    <div class="buttons">
+      <button color="primary" *ngIf="!user.profileImageUrl" mat-raised-button (click)="selectProfile()">Add profile
+        image</button>
+      <button color="primary" *ngIf="user.profileImageUrl" mat-raised-button (click)="selectProfile()">Change profile
+        image</button>
+      <button color="warn" *ngIf="user.profileImageUrl" mat-raised-button (click)="deleteProfile()">Delete profile
+        image</button>
+    </div>
+    <form style="display:none">
+      <input type="file" (change)="changeProfileImage($event)" id="select-picture"
+        accept="image/x-png,image/gif,image/jpeg">
+    </form>
+  </figure>
+  <div class="separator">
+    <div class="line firstLine"></div>
+    <h2 class="firstNameTitle title">Bio</h2>
+    <div class="line secondLine"></div>
+  </div>
+  <div class="userInfo">
+    <fieldset>
+      <legend [class]="bioLength < 0 ? 'wrong' :''">{{bioLength}}</legend>
+      <textarea (keyup)="bio($event.target)" cols="30" rows="10" value="user.bio" [(ngModel)]="user.bio"></textarea>
+    </fieldset>
+  </div>
+  <div class="separator">
+    <div class="line firstLine"></div>
+    <h2 class="firstNameTitle title">First name</h2>
+    <div class="line secondLine"></div>
+  </div>
+  <div class="userInfo">
+    <input class="info" type="text" [value]="user.firstName" [(ngModel)]="user.firstName">
+  </div>
+  <div class="separator">
+    <div class="line firstLine"></div>
+    <h2 class="lastNameTitle title">Last name</h2>
+    <div class="line secondLine"></div>
+  </div>
+  <div class="userInfo">
+    <input class="info" type="text" [value]="user.lastName" [(ngModel)]="user.lastName">
+  </div>
+  <div class="separator">
+    <div class="line firstLine"></div>
+    <h2 class="birthdayTitle title">Birthday</h2>
+    <div class="line secondLine"></div>
+  </div>
+  <div class="userInfo">
+    <input class="info" type="date" [value]="user.birthDay" [(ngModel)]="user.birthDay">
+  </div>
+  <div class="separator">
+    <div class="line firstLine"></div>
+    <h2 class="ageTitle title">Age</h2>
+    <div class="line secondLine"></div>
+  </div>
+  <div class="userInfo">
+    <input class="info" type="number" [value]="user.age" readonly>
+  </div>
+</div>
