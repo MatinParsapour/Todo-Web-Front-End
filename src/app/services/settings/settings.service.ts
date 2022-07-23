@@ -22,4 +22,12 @@ export class SettingsService extends DataService {
       Constants.url + '/settings/' + userId + '/' + type
     );
   }
+
+  setUsername(username: string) {
+    this.username = username;
+  }
+
+  getUsername(){
+    return this.username;
+  }
 }
