@@ -86,4 +86,22 @@ export class AccountComponent implements OnInit {
     );
   }
 
+  updateUser() {
+    this.settingsService
+      .update('settings/update/account-info' , this.user)
+      .subscribe(
+        (response: any) => {
+          this.notifier.notify(NotificationType.SUCCESS, 'You data updated');
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.message
+          );
+        },
+        () => {
+          this.getUser();
+        }
+      );
+  }
 }
