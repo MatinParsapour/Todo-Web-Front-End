@@ -86,4 +86,23 @@ export class SecurityComponent implements OnInit {
       });
   }
 
+  updateUser() {
+    this.settingsService
+      .update('settings/update/' + 'security-info', this.user)
+      .subscribe(
+        (response: any) => {
+          this.notifier.notify(NotificationType.SUCCESS, 'You data updated');
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.message
+          );
+        },
+        () => {
+          this.getUser();
+        }
+      );
+  }
+
 }
