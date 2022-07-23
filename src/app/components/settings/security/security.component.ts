@@ -61,6 +61,12 @@ export class SecurityComponent implements OnInit {
     );
   }
 
+  changePhoneVisibility() {
+    this.user.phoneVisible = !this.user.phoneVisible;
+  }
+
+  changeEmailVisibility() {
+    this.user.emailVisible = !this.user.emailVisible;
   }
 
 }
