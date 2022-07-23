@@ -1,3 +1,5 @@
+import { AccountComponent } from './components/settings/account/account.component';
+import { SecurityComponent } from './components/settings/security/security.component';
 import { TagComponent } from './components/tag/tag.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { UserComponent } from './components/user/user.component';
@@ -12,6 +14,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PersonalInfoComponent } from './components/settings/personal-info/personal-info.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,7 +26,12 @@ const routes: Routes = [
   {path: 'to-do', component: SharedToDoComponent},
   {path: 'explore', component: ExploreComponent},
   {path: 'user/:observable', component: UserComponent},
-  {path: ':username/settings/:settingsType', component: SettingsComponent},
+  {path: ':username/settings', component: SettingsComponent, children: [
+    {path: 'personal-info', component: PersonalInfoComponent},
+    {path: 'security-info', component: SecurityComponent},
+    {path: 'account-info', component: AccountComponent},
+
+  ]},
   {path: 'tag/:name', component: TagComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: '**', component: NotFoundComponent},
