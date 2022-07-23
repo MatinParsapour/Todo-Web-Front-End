@@ -15,7 +15,7 @@ import { ForgetPasswordComponent } from '../../forget-password/forget-password.c
 @Component({
   selector: 'app-security',
   templateUrl: './security.component.html',
-  styleUrls: ['./security.component.css']
+  styleUrls: ['./security.component.css'],
 })
 export class SecurityComponent implements OnInit {
 
