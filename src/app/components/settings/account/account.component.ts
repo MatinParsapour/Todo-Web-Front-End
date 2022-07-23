@@ -43,6 +43,16 @@ export class AccountComponent implements OnInit {
     this.updateUser()
   }
 
+  displayAccessLevelInfo(value: any) {
+    if (value === 'PRIVATE') {
+      this.accessLevelInfo = this.accessLevelsInfo[2];
+    } else if (value === 'PROTECTED')
+      this.accessLevelInfo = this.accessLevelsInfo[1];
+    else if ((value = 'PUBLIC')) {
+      this.accessLevelInfo = this.accessLevelsInfo[0];
+    }
+  }
+
   }
 
 }
