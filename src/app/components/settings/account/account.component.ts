@@ -53,6 +53,10 @@ export class AccountComponent implements OnInit {
     }
   }
 
+  hideAccessLevelInfo() {
+    this.accessLevelInfo = { type: '', info: '' };
+  }
+
   }
 
 }
