@@ -97,4 +97,21 @@ export class PersonalInfoComponent implements OnInit {
     document.getElementById(tagId)?.click();
   }
 
+  deleteProfile() {
+    this.userService
+      .delete('/user/delete-profile-image/' + localStorage.getItem('username'))
+      .subscribe(
+        (response: any) => {
+          this.notifier.notify(
+            NotificationType.SUCCESS,
+            'Your profile successfully deleted'
+          );
+          this.getUser();
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error);
+        }
+      );
+  }
+
 }
