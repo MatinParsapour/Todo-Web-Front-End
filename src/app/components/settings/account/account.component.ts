@@ -37,6 +37,8 @@ export class AccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = this.settingsService.getUsername();
+    this.getUser();
+  }
 
   changeAccessLevel(value: any) {
     this.user.accessLevel = value.value;
