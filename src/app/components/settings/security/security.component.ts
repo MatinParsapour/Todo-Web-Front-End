@@ -146,3 +146,27 @@ export class SecurityComponent implements OnInit {
         }
       });
   }
+
+  deleteAccount() {
+    this.userService
+      .delete('/user/delete-account/' + localStorage.getItem('username'))
+      .subscribe(
+        (response: any) => {
+          this.notifier.notify(
+            NotificationType.SUCCESS,
+            'Your account deleted successfully'
+          );
+          this.dialog.closeAll();
+          localStorage.clear();
+          this.router.navigateByUrl('/login');
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            "Something went wrong your account didn't delete"
+          );
+          console.log(error);
+        }
+      );
+  }
+}
