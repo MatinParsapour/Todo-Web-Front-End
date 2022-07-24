@@ -87,6 +87,22 @@
           alt="">
       </button>
     </div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="ageTitle title">Logout</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo ml-5">
+      <button class="btn btn-danger ml-3" (click)="logout()">Logout</button>
+    </div>
+    <div class="separator">
+      <div class="line firstLine"></div>
+      <h2 class="ageTitle title">Delete account</h2>
+      <div class="line secondLine"></div>
+    </div>
+    <div class="userInfo">
+      <button class="btn btn-danger ml-5 mb-3" (click)="openDeleteAccountAgreement()">Delete account</button>
+    </div>
   </div>
   <app-forget-username [hidden]="!isForgetUsernameModalVisible" (close)="closeForgetUsernameModal($event)">
   </app-forget-username>
