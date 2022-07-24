@@ -4,10 +4,6 @@
   <a class="list-group-item list-group-item-action" [routerLink]="['../settings/security-info']">Security</a>
   <a class="list-group-item list-group-item-action" [routerLink]="['../settings/account-info']">Account</a>
 </div>
-<div class="settingsButton">
-  <button mat-raised-button color="warn" (click)="logout()">Logout</button>
-  <button mat-raised-button color="warn" (click)="openDeleteAccountAgreement()">Delete account</button>
-</div>
 <div class="settings">
   <router-outlet></router-outlet>
 </div>
