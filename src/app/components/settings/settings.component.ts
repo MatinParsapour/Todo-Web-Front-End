@@ -28,67 +28,14 @@ import { Provider } from 'src/app/enum/provider';
 })
 export class SettingsComponent implements OnInit {
   username: any;
-  settingsType: any;
-  user!: User;
-  isLoading = false;
-  public profileImage: any;
-  uploaded = 0;
-
-
+  
   constructor(
     private activatedRoute: ActivatedRoute,
     private settingsService: SettingsService,
-    private userService: UserService,
-    private notifier: NotificationService,
-    private dialog: MatDialog,
-    private router: Router,
-    private cookiesService: CookieService
   ) {}
 
   ngOnInit(): void {
     this.username = this.activatedRoute.snapshot.params['username'];
     this.settingsService.setUsername(this.username);
-  }
-
-  logout() {
-    this.cookiesService.deleteAll()
-    this.router.navigateByUrl('/login');
-  }
-
-  openDeleteAccountAgreement() {
-    this.dialog
-      .open(AggreementComponent, {
-        data: { title: 'Are you sure you want to delete your account' },
-      })
-      .afterClosed()
-      .subscribe((response: any) => {
-        if (response === 'Yes') {
-          this.deleteAccount();
-          this.cookiesService.deleteAll();
-        }
-      });
-  }
-
-  deleteAccount() {
-    this.userService
-      .delete('/user/delete-account/' + localStorage.getItem('username'))
-      .subscribe(
-        (response: any) => {
-          this.notifier.notify(
-            NotificationType.SUCCESS,
-            'Your account deleted successfully'
-          );
-          this.dialog.closeAll();
-          localStorage.clear();
-          this.router.navigateByUrl('/login');
-        },
-        (error: HttpErrorResponse) => {
-          this.notifier.notify(
-            NotificationType.ERROR,
-            "Something went wrong your account didn't delete"
-          );
-          console.log(error);
-        }
-      );
   }
 }
