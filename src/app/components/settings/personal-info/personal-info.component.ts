@@ -9,7 +9,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 @Component({
   selector: 'app-personal-info',
   templateUrl: './personal-info.component.html',
-  styleUrls: ['./personal-info.component.css']
+  styleUrls: ['./personal-info.component.css'],
 })
 export class PersonalInfoComponent implements OnInit {
   username!: string;
@@ -25,8 +25,8 @@ export class PersonalInfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.username = this.settingsService.getUsername()
-    this.getUser()
+    this.username = this.settingsService.getUsername();
+    this.getUser();
   }
 
   changeProfileImage(event: any) {
@@ -45,6 +45,26 @@ export class PersonalInfoComponent implements OnInit {
     );
   }
 
+  updateUser() {
+    this.settingsService
+      .update('settings/update/personal-info', this.user)
+      .subscribe(
+        (response: any) => {
+          this.notifier.notify(NotificationType.SUCCESS, 'You data updated');
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.message
+          );
+        },
+        () => {
+
+          this.getUser();
+        }
+      );
+  }
+
   getUser() {
     this.settingsService.getUser(this.username, 'personal-info').subscribe(
       (response: any) => {
@@ -56,7 +76,6 @@ export class PersonalInfoComponent implements OnInit {
           error.error.type + ': ' + error.error.message
         );
         console.log(error);
-        
       }
     );
   }
