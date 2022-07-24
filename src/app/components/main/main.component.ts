@@ -38,7 +38,7 @@ export class MainComponent implements OnInit {
   isShow = false;
   now = new Date();
   todoId: any;
-  isToDosEmpty!: boolean
+  isToDosEmpty!: boolean;
 
   categories = [
     {
@@ -142,7 +142,7 @@ export class MainComponent implements OnInit {
             this.loadCategory('tasks');
             this.clearToDo();
             this.toggleInputDisplay();
-            this.getPinnedToDos()
+            this.getPinnedToDos();
           },
           (error: HttpErrorResponse) => {
             this.notifier.notify(
@@ -162,8 +162,8 @@ export class MainComponent implements OnInit {
     this.isMyDay = false;
   }
 
-  isToDoIdExists(){
-    return this.todoId == undefined
+  isToDoIdExists() {
+    return this.todoId == undefined;
   }
 
   toggleIsMyDay() {
@@ -177,7 +177,7 @@ export class MainComponent implements OnInit {
 
   moveToMain() {
     this.router.navigate([this.route.snapshot.params['username']]);
-    this.loadCategory('tasks')
+    this.loadCategory('tasks');
   }
 
   getAllToDos() {
@@ -197,7 +197,7 @@ export class MainComponent implements OnInit {
               this.toDos = list.toDos;
             });
           });
-          this.checkToDosStatus()
+          this.checkToDosStatus();
           this.getPinnedToDos();
         },
         (error: HttpErrorResponse) => {
@@ -271,9 +271,9 @@ export class MainComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.toDos = response;
-          this.isUserToDosEmpty()
+          this.isUserToDosEmpty();
           this.checkToDosStatus();
-          this.getPinnedToDos()
+          this.getPinnedToDos();
         },
         (error: HttpErrorResponse) => {
           console.log(error);
@@ -281,14 +281,14 @@ export class MainComponent implements OnInit {
       );
   }
 
-  isUserToDosEmpty(){
+  isUserToDosEmpty() {
     if (this.toDos.length > 0) {
       this.isToDosEmpty = false;
     } else {
       this.isToDosEmpty = true;
     }
   }
-  
+
   getIsMyDay() {
     return this.isMyDay;
   }
@@ -313,7 +313,7 @@ export class MainComponent implements OnInit {
         (response: any) => {
           this.toDos = response;
           this.checkToDosStatus();
-          this.getPinnedToDos()
+          this.getPinnedToDos();
         },
         (error: HttpErrorResponse) => {
           console.log(error);
@@ -321,18 +321,18 @@ export class MainComponent implements OnInit {
       );
   }
 
-  explore(){
-    this.router.navigateByUrl('/explore')
+  explore() {
+    this.router.navigateByUrl('/explore');
   }
 
-  getPinnedToDos(){
-    this.pinnedToDos = []
+  getPinnedToDos() {
+    this.pinnedToDos = [];
     this.toDos.forEach((element: any) => {
-      if (element.pinned = true) {
+      if ((element.pinned = true)) {
         this.pinnedToDos.push(element);
         for (var i = 0; i < this.toDos.length; i++) {
           if (this.toDos[i] == element) {
-            this.toDos.splice(i, 1)
+            this.toDos.splice(i, 1);
           }
         }
       }
