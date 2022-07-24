@@ -48,8 +48,6 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
     this.username = this.activatedRoute.snapshot.params['username'];
     this.settingsService.setUsername(this.username);
-    this.settingsType = this.activatedRoute.snapshot.params['settingsType'];
-    // this.getUser();
   }
 
   loadComponent(component: any) {
