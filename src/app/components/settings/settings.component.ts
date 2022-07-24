@@ -50,10 +50,6 @@ export class SettingsComponent implements OnInit {
     this.settingsService.setUsername(this.username);
   }
 
-  loadComponent(component: any) {
-    component.node = this.username;
-  }
-
   logout() {
     this.cookiesService.deleteAll()
     this.router.navigateByUrl('/login');
