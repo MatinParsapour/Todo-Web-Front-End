@@ -57,6 +57,7 @@ export class MainComponent implements OnInit {
   constructor(
     private mainService: MainService,
     private categoryService: CategoryService,
+    private todoDataService: ToDoDataService,
     private dialog: MatDialog,
     private notifier: NotificationService,
     private router: Router,
