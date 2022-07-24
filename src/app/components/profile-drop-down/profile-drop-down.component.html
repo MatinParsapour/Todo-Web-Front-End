@@ -11,9 +11,11 @@
       <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="home" (click)="navigate('/' + user.userName)">Home</option>
     </optgroup>
     <optgroup label="categories">
-      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="MYDAY">MyDay</option>
-      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="PLANNED">Planned</option>
-      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="TASKS">Tasks</option>
+      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="MYDAY" (click)="loadCategory($event.target)">
+        MyDay</option>
+      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="PLANNED" (click)="loadCategory($event.target)">Planned</option>
+      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="TASKS" (click)="loadCategory($event.target)">
+        Tasks</option>
     </optgroup>
     <optgroup label="folders">
       <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="folders">folders</option>
