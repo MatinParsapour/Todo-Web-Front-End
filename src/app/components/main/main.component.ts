@@ -64,6 +64,12 @@ export class MainComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.getUser();
+    todoDataService.changed.subscribe((status: boolean) => {
+      this.toDos = todoDataService.getToDos();
+      this.isUserToDosEmpty();
+      this.checkToDosStatus();
+      this.getPinnedToDos();
+    });
   }
 
   ngOnInit(): void {}
