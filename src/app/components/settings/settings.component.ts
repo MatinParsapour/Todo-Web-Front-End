@@ -116,25 +116,4 @@ export class SettingsComponent implements OnInit {
   //     }
   //   );
   // }
-
-  updateUser() {
-    this.isLoading = true;
-    this.settingsService
-      .update('settings/update/' + this.settingsType, this.user)
-      .subscribe(
-        (response: any) => {
-          this.notifier.notify(NotificationType.SUCCESS, 'You data updated');
-        },
-        (error: HttpErrorResponse) => {
-          this.notifier.notify(
-            NotificationType.ERROR,
-            error.error.type + ': ' + error.error.message
-          );
-        },
-        () => {
-          this.isLoading = false;
-          // this.getUser();
-        }
-      );
-  }
 }
