@@ -133,3 +133,16 @@ export class SecurityComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
+  openDeleteAccountAgreement() {
+    this.dialog
+      .open(AggreementComponent, {
+        data: { title: 'Are you sure you want to delete your account' },
+      })
+      .afterClosed()
+      .subscribe((response: any) => {
+        if (response === 'Yes') {
+          this.deleteAccount();
+          this.cookiesService.removeAll();
+        }
+      });
+  }
