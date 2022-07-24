@@ -1,3 +1,5 @@
+import { UserService } from './../../../services/user/user.service';
+import { CookieService } from 'ngx-cookie';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from './../../../classes/user';
@@ -11,6 +13,7 @@ import { GetResetEmailComponent } from '../../get-reset-email/get-reset-email.co
 import { PhoneNumberComponent } from '../../phone-number/phone-number.component';
 import { CodeValidatorComponent } from '../../code-validator/code-validator.component';
 import { ForgetPasswordComponent } from '../../forget-password/forget-password.component';
+import { AggreementComponent } from '../../aggreement/aggreement.component';
 
 @Component({
   selector: 'app-security',
