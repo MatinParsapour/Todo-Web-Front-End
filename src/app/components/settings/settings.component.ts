@@ -97,23 +97,4 @@ export class SettingsComponent implements OnInit {
         }
       );
   }
-  //ToDo: Update getUser method and updateUser method for all components
-
-  // getUser() {
-  //   this.isLoading = true;
-  //   this.settingsService.getUser(this.username, this.settingsType).subscribe(
-  //     (response: any) => {
-  //       this.user = response;
-  //     },
-  //     (error: HttpErrorResponse) => {
-  //       this.notifier.notify(
-  //         NotificationType.ERROR,
-  //         error.error.type + ': ' + error.error.message
-  //       );
-  //     },
-  //     () => {
-  //       this.isLoading = false;
-  //     }
-  //   );
-  // }
 }
