@@ -75,10 +75,6 @@ export class SettingsComponent implements OnInit {
       });
   }
 
-  backToMain() {
-    this.router.navigateByUrl(this.username);
-  }
-
   deleteAccount() {
     this.userService
       .delete('/user/delete-account/' + localStorage.getItem('username'))
