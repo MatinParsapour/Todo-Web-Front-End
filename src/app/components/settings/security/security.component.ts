@@ -127,5 +127,9 @@ export class SecurityComponent implements OnInit {
     this.router.navigate(['/' + value + '/settings/security-info']);
     this.getUser()
   }
-}
+
+  logout() {
+    this.cookiesService.removeAll();
+    this.router.navigateByUrl('/login');
+  }
 
