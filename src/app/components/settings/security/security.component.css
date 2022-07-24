@@ -69,3 +69,9 @@ app-forget-username {
   left: 0;
   z-index: 99;
 }
+
+.btn {
+  width: 27%;
+  height: 3em;
+  font-size: 20px;
+}
