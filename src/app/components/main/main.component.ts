@@ -158,6 +158,7 @@ export class MainComponent implements OnInit {
   clearToDo() {
     this.toDo.task = '';
     this.toDo.dateTime = '';
+    this.toDo.caption = '';
     this.isMyDay = false;
   }
 
