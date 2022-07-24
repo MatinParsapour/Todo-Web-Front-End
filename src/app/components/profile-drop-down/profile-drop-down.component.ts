@@ -37,4 +37,8 @@ export class ProfileDropDownComponent implements OnInit {
   navigate(uri: string) {
     this.router.navigate([uri])
   }
+
+  loadCategory(category: any) {
+    this.todoDataService.loadCategory(category.value)
+  }
 }
