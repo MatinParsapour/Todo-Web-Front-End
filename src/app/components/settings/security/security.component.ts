@@ -28,6 +28,8 @@ export class SecurityComponent implements OnInit {
 
   constructor(
     private settingsService: SettingsService,
+    private cookiesService: CookieService,
+    private userService: UserService,
     private notifier: NotificationService,
     private dialog: MatDialog,
     private router: Router
