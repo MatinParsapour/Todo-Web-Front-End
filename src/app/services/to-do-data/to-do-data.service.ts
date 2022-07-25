@@ -1,18 +1,19 @@
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ToDoService } from './../to-do/to-do.service';
 import { Category } from './../../enum/category-type';
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ToDo } from 'src/app/classes/todo';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie';
 import { NotificationType } from 'src/app/enum/notification-type';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToDoDataService {
   private toDos: ToDo[] = [];
-  changed = new EventEmitter<boolean>();
+  changed = new Subject<boolean>();
 
   constructor(
     private todoService: ToDoService,
@@ -31,7 +32,7 @@ export class ToDoDataService {
       .subscribe(
         (response: any) => {
           this.toDos = response;
-          this.changed.emit();
+          this.changed.next(true);
         },
         (error: HttpErrorResponse) => {
           console.log(error);
@@ -56,7 +57,7 @@ export class ToDoDataService {
               this.toDos = list.toDos;
             });
           });
-          this.changed.emit();
+          this.changed.next(true);
         },
         (error: HttpErrorResponse) => {
           this.notifier.notify(
@@ -73,7 +74,7 @@ export class ToDoDataService {
       .subscribe(
         (response: any) => {
           this.toDos = response;
-          this.changed.emit();
+          this.changed.next(true);
         },
         (error: HttpErrorResponse) => {
           console.log(error);
