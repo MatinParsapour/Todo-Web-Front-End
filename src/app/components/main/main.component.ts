@@ -105,9 +105,6 @@ export class MainComponent implements OnInit {
       }
     }
     this.toDos = result;
-    if (!searchInputValue) {
-      this.getAllToDos();
-    }
   }
 
   addAndUpdateToDos() {
@@ -120,7 +117,6 @@ export class MainComponent implements OnInit {
               NotificationType.SUCCESS,
               'Your to do successfully added'
             );
-            this.loadCategory('tasks');
             this.clearToDo();
             this.toggleInputDisplay();
             this.getPinnedToDos();
@@ -158,108 +154,6 @@ export class MainComponent implements OnInit {
 
   moveToMain() {
     this.router.navigate([this.route.snapshot.params['username']]);
-    this.loadCategory('tasks');
-  }
-
-  getAllToDos() {
-    this.mainService
-      .getToDos(
-        '/user/get-to-dos/' +
-          localStorage.getItem('list') +
-          '/' +
-          localStorage.getItem('folder') +
-          '/' +
-          this.user.userName
-      )
-      .subscribe(
-        (response: any) => {
-          response.toDoFolders.forEach((folder: any) => {
-            folder.toDoLists.forEach((list: any) => {
-              this.toDos = list.toDos;
-            });
-          });
-          this.checkToDosStatus();
-          this.getPinnedToDos();
-        },
-        (error: HttpErrorResponse) => {
-          this.notifier.notify(
-            NotificationType.ERROR,
-            error.error.type + ': ' + error.error.message
-          );
-        }
-      );
-  }
-
-  getAllToDoFolders() {
-    this.mainService
-      .getAll('/folder/get-todo-folders/' + this.user.userName)
-      .subscribe(
-        (response: any) => {
-          this.toDoFolders = response;
-        },
-        (error: HttpErrorResponse) => {
-          console.log(error);
-        }
-      );
-  }
-
-  openAddListDialog(folderName: any) {
-    this.dialog
-      .open(InsertListComponent, { data: { folderName: folderName } })
-      .afterClosed()
-      .subscribe(() => this.getAllToDoFolders());
-  }
-
-  openCreateFolderDialog() {
-    this.dialog
-      .open(InsertFolderComponent)
-      .afterClosed()
-      .subscribe(() => {
-        this.getAllToDoFolders();
-      });
-  }
-
-  deleteList(folderName: any, listName: any) {
-    this.mainService
-      .delete(
-        '/list/delete-list/' +
-          listName +
-          '/' +
-          folderName +
-          '/' +
-          this.user.userName
-      )
-      .subscribe(
-        (response: any) => {
-          this.notifier.notify(
-            NotificationType.SUCCESS,
-            'The list successfully deleted'
-          );
-          this.getAllToDoFolders();
-        },
-        (error: HttpErrorResponse) => {
-          this.notifier.notify(NotificationType.ERROR, error.message);
-          this.getAllToDoFolders();
-        }
-      );
-  }
-
-  loadCategory(category: string) {
-    this.categoryService
-      .getAll(
-        'category/get-category-to-dos/' + category + '/' + this.user.userName
-      )
-      .subscribe(
-        (response: any) => {
-          this.toDos = response;
-          this.isUserToDosEmpty();
-          this.checkToDosStatus();
-          this.getPinnedToDos();
-        },
-        (error: HttpErrorResponse) => {
-          console.log(error);
-        }
-      );
   }
 
   isUserToDosEmpty() {
@@ -285,25 +179,6 @@ export class MainComponent implements OnInit {
         this.completedToDos.push(element);
       }
     });
-  }
-
-  getStarredToDos() {
-    this.mainService
-      .getToDos('/to-do/get-starred-todos/' + this.user.userName)
-      .subscribe(
-        (response: any) => {
-          this.toDos = response;
-          this.checkToDosStatus();
-          this.getPinnedToDos();
-        },
-        (error: HttpErrorResponse) => {
-          console.log(error);
-        }
-      );
-  }
-
-  explore() {
-    this.router.navigateByUrl('/explore');
   }
 
   getPinnedToDos() {
