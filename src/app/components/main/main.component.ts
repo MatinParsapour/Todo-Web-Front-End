@@ -2,22 +2,15 @@ import { ToDoDataService } from './../../services/to-do-data/to-do-data.service'
 import { ToDo } from './../../classes/todo';
 import { Category } from './../../enum/category-type';
 import { CategoryService } from './../../services/category/category.service';
-import { GetResetEmailComponent } from './../get-reset-email/get-reset-email.component';
-import { CodeValidatorComponent } from './../code-validator/code-validator.component';
-import { PhoneNumberComponent } from './../phone-number/phone-number.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { UserComponent } from './../user/user.component';
 import { slideToDown, showHide } from './../../animations';
-import { InsertListComponent } from './../insert-list/insert-list.component';
 import { NotificationService } from './../../services/notification/notification.service';
-import { InsertFolderComponent } from './../insert-folder/insert-folder.component';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { MainService } from './../../services/main/main.service';
 import { Component, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { Status } from 'src/app/enum/status-type';
-import { GuidedTour, GuidedTourService, Orientation } from 'ngx-guided-tour';
 
 @Component({
   selector: 'app-main',
