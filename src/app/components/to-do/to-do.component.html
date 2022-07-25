@@ -1,7 +1,7 @@
 <mat-card (click)="openEditToDoDialog()">
   <div class="doneAndTask">
     <app-check-circle *ngIf="ownerSees" [status]="toDo.status" (click)="doneToDo()"></app-check-circle>
-    <div class="toDo" [class.lineThrough]="isDone()" [innerHtml]="toDo.task | summaryPipes: 20 | marker : search"></div>
+    <div class="toDo" [class.lineThrough]="isDone()"> {{toDo.task}}</div>
   </div>
   <div *ngIf="ownerSees">
     <img [hidden]="toDo.pinned" src="https://img.icons8.com/ios/25/000000/pin--v1.png" />
