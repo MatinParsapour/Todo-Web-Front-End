@@ -96,7 +96,6 @@ export class ToDoComponent implements OnInit {
             NotificationType.SUCCESS,
             'The to do successfully deleted'
           );
-          this.getToDos.emit();
         },
         (error: HttpErrorResponse) => {
           console.log(error);
