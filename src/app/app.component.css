@@ -2,4 +2,5 @@ app-nav-bar {
     position: fixed;
     z-index: 80;
     width: 100%;
+    top: 0;
 }
