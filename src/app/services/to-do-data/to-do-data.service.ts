@@ -66,6 +66,18 @@ export class ToDoDataService {
       );
   }
 
+  loadStarredToDos(username: string) {
+    this.todoService
+      .getAll('/to-do/get-starred-todos/' + username)
+      .subscribe(
+        (response: any) => {
+          this.toDos = response;
+          this.changed.emit();
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error);
+        }
+      );
   }
 
   getToDos() {
