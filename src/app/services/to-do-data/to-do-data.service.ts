@@ -38,8 +38,34 @@ export class ToDoDataService {
       );
   }
 
-  loadList(folderName: string, listName: string) {
-    this.changed.emit();
+  loadList(folderName: string, listName: string, username: string) {
+    this.todoService
+      .getAll(
+        '/user/get-to-dos/' +
+          localStorage.getItem('list') +
+          '/' +
+          localStorage.getItem('folder') +
+          '/' +
+          username
+      )
+      .subscribe(
+        (response: any) => {
+          response.toDoFolders.forEach((folder: any) => {
+            folder.toDoLists.forEach((list: any) => {
+              this.toDos = list.toDos;
+            });
+          });
+          this.changed.emit();
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.message
+          );
+        }
+      );
+  }
+
   }
 
   getToDos() {
