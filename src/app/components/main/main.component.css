@@ -6,6 +6,12 @@
     border: 1px solid rgba(0, 0, 0, 0.5);
   }
 
+  .main {
+    position: fixed;
+    top: 5%;
+    width: 100%;
+  }
+
   .buttons {
     display: flex;
     justify-content: space-between;
