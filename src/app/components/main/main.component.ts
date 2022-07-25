@@ -95,14 +95,6 @@ export class MainComponent implements OnInit {
     this.isShow = !this.isShow;
   }
 
-  checkUserRole(): any {
-    const role = this.user.role;
-    if (role === 'ROLE_USER') {
-      this.isUser = true;
-    } else {
-      this.isUser = false;
-    }
-  }
   search(searchInputValue: any) {
     const result = [];
     for (const toDo of this.toDos) {
