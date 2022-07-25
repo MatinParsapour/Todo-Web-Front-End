@@ -20,6 +20,7 @@ export class ProfileDropDownComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+    document.getElementById('tasks')?.click();
   }
 
   getUser() {
