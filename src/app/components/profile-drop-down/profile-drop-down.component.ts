@@ -1,9 +1,10 @@
 import { ToDoDataService } from './../../services/to-do-data/to-do-data.service';
 import { Router } from '@angular/router';
 import { User } from './../../classes/user';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-profile-drop-down',
