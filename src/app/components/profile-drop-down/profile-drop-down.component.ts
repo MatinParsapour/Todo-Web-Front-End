@@ -23,6 +23,10 @@ export class ProfileDropDownComponent implements OnInit {
     document.getElementById('tasks')?.click();
   }
 
+  openMenuFunc(){
+    this.openMenu.openMenu()
+  }
+
   getUser() {
     if (!this.username) {
       return;
