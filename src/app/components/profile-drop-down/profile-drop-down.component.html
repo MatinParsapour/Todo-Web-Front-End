@@ -7,18 +7,23 @@
       <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="followings">Followings</option>
       <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="requests">Requests</option>
       <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="home_feed">Home feed</option>
-      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="settings" (click)="navigate('/' + user.userName + '/settings/personal-info')">Settings</option>
-      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="home" (click)="navigate('/' + user.userName)">Home</option>
+      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="settings"
+        (click)="navigate('/' + user.userName + '/settings/personal-info')">Settings</option>
+      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="home" (click)="navigate('/' + user.userName)">
+        Home</option>
     </optgroup>
     <optgroup label="categories">
       <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="MYDAY" (click)="loadCategory($event.target)">
         MyDay</option>
-      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="PLANNED" (click)="loadCategory($event.target)">Planned</option>
-      <option id="tasks" appHover [default]="'white'" [highlight]="'#d5d3d3'" value="TASKS" (click)="loadCategory($event.target)">
+      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="PLANNED"
+        (click)="loadCategory($event.target)">Planned</option>
+      <option id="tasks" appHover [default]="'white'" [highlight]="'#d5d3d3'" value="TASKS"
+        (click)="loadCategory($event.target)">
         Tasks</option>
     </optgroup>
     <optgroup label="folders">
-      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="folders">folders</option>
+      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" [matMenuTriggerFor]="foldersAndLists"
+        #openMenu="matMenuTrigger" (mouseenter)="openMenuFunc()">Folders</option>
     </optgroup>
   </ul>
 </div>
