@@ -81,6 +81,6 @@ export class ToDoDataService {
   }
 
   getToDos() {
-    return this.todos.slice();
+    return this.toDos.slice();
   }
 }
