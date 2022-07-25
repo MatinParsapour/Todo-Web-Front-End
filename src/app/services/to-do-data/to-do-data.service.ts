@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie';
   providedIn: 'root',
 })
 export class ToDoDataService {
-  private todos: ToDo[] = [];
+  private toDos: ToDo[] = [];
   changed = new EventEmitter<boolean>();
 
   constructor(
