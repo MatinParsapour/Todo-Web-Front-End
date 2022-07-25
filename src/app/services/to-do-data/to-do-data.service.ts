@@ -29,7 +29,7 @@ export class ToDoDataService {
       )
       .subscribe(
         (response: any) => {
-          this.todos = response;
+          this.toDos = response;
           this.changed.emit();
         },
         (error: HttpErrorResponse) => {
