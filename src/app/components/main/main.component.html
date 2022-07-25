@@ -1,55 +1,4 @@
-<mat-sidenav-container class="example-container" fullscreen>
-  <mat-sidenav #sidenav class="example-sidenav">
-    <div class="navBarHeader">
-      <button class="createNewFolder" (click)="openCreateFolderDialog()" mat-icon-button color="">
-        <mat-icon matTooltip="Add folder">create_new_folder</mat-icon>
-      </button>
-      <button id="moreButton" mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu class="menu" #normalMenu="matMenu">
-        <button mat-menu-item class="starToDos item" (click)="getStarredToDos()">
-          <mat-icon>star</mat-icon>
-          <p>Starred todos</p>
-          </button>
-        <button mat-menu-item class="item" (click)="explore(); sidenav.close()">
-          <mat-icon>explore</mat-icon>
-          <p>Explore</p>
-          </button>
-      </mat-menu>
-    </div>
-    <br>
-    <br>
-    <hr>
-    <div class="categories" *ngFor="let category of categories">
-      <app-category [name]="category.name" (click)="loadCategory(category.name)"></app-category>
-    </div>
-    <hr class="fancyLine" *ngIf="toDoFolders.length >=1">
-    <div class="folders">
-      <app-to-do-folders *ngFor="let toDoFolder of toDoFolders" [toDoFolder]="toDoFolder"
-        (updateData)="getAllToDoFolders()" (getToDos)="getAllToDos()">
-      </app-to-do-folders>
-    </div>
-    <mat-menu #mainMenu>
-      <button mat-menu-item class="item">
-        <mat-icon>home</mat-icon>
-        <p>Home feed</p>
-      </button>
-      <button [routerLink]="'/' + user.userName + '/settings/personal-info'" mat-menu-item class="item">
-        <mat-icon>settings</mat-icon>
-        <p>Settings</p>
-      </button>
-    </mat-menu>
-    <button [matMenuTriggerFor]="mainMenu" class="user" mat-menu-item>
-      <span class="material-icons">person</span>
-      {{name}} </button>
-  </mat-sidenav>
-  <div class="example-sidenav-content">
-    <div class="buttons">
-      <div>
-        <mat-icon class="list" id="openSideNav" (click)="sidenav.open()" matTooltip="Open sidebar">list</mat-icon>
-      </div>
-    </div>
+  <div class="main">
     <div class="toDos">
       <div class="noToDoErrorContainer">
         <div class="noToDoError" *ngIf="isToDosEmpty">
@@ -57,23 +6,18 @@
           <h5>You have no todo</h5>
         </div>
       </div>
-      <form class="search-container" action="//llamaswill.tumblr.com/search">
-        <input #searchInput ngModel autocomplete="off" (ngModelChange)="search(searchInput.value)" id="search-box"
-          type="text" class="search-box" name="q" />
-        <label for="search-box"><span class="glyphicon glyphicon-search search-icon"></span></label>
-      </form>
       <div *ngFor="let toDo of pinnedToDos">
-        <app-to-do [ownerSees]="true" [toDo]="toDo" *ngIf="!isDone(toDo)" [search]="searchInput.value" (getToDos)="loadCategory('tasks')">
+        <app-to-do [ownerSees]="true" [toDo]="toDo" *ngIf="!isDone(toDo)">
         </app-to-do>
       </div>
       <div *ngFor="let toDo of toDos">
-        <app-to-do [toDo]="toDo" *ngIf="!isDone(toDo)" [search]="searchInput.value" (getToDos)="loadCategory('tasks')">
+        <app-to-do [ownerSees]="true" [toDo]="toDo" *ngIf="!isDone(toDo)">
         </app-to-do>
       </div>
       <details>
         <summary>Completed {{completedToDos.length}} </summary>
         <div *ngFor="let toDo of completedToDos">
-          <app-to-do [toDo]="toDo" [search]="searchInput.value" (getToDos)="loadCategory('tasks')"></app-to-do>
+          <app-to-do [ownerSees]="true" [toDo]="toDo"></app-to-do>
         </div>
       </details>
     </div>
@@ -85,13 +29,11 @@
       <div class="inputs">
         <mat-form-field class="input" appearance="outline">
           <mat-label>ToDo</mat-label>
-          <input [(ngModel)]="toDo.task" matInput
-            autocomplete="off" type="text">
+          <input [(ngModel)]="toDo.task" matInput autocomplete="off" type="text">
         </mat-form-field>
         <mat-form-field class="input" appearance="outline">
           <mat-label>Caption</mat-label>
-          <input [(ngModel)]="toDo.caption" matInput
-            autocomplete="off" type="text">
+          <input [(ngModel)]="toDo.caption" matInput autocomplete="off" type="text">
         </mat-form-field>
       </div>
       <div class="toDoMenu">
@@ -117,7 +59,7 @@
             <button mat-icon-button (click)="datepicker.open()" matTooltip="Select date">
               <mat-icon>event</mat-icon>
             </button>
-            <button mat-icon-button (click)="addAndUpdateToDos(); searchInput.value = ''" matTooltip="Add todo">
+            <button mat-icon-button (click)="addAndUpdateToDos()" matTooltip="Add todo">
               <mat-icon>send</mat-icon>
             </button>
           </div>
@@ -125,7 +67,7 @@
       </div>
     </mat-card>
   </div>
-</mat-sidenav-container>
 
 
-<app-edit-to-do (close)="moveToMain()" (getToDos)="loadCategory('tasks')" *ngIf="!isToDoIdExists()" [todoId]="todoId"></app-edit-to-do>
+
+  <app-edit-to-do (close)="moveToMain()" *ngIf="!isToDoIdExists()" [todoId]="todoId"></app-edit-to-do>
