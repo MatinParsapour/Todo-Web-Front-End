@@ -43,7 +43,6 @@ export class ToDoComponent implements OnInit {
     }
     this.toDoService.update('to-do/update-to-do', this.toDo).subscribe(
       (response: any) => {
-        this.getToDos.emit();
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.message);
