@@ -73,10 +73,6 @@ export class MainComponent implements OnInit {
       .subscribe(
         (response) => {
           this.user = response;
-          this.name = this.user.firstName + ' ' + this.user.lastName;
-          this.checkUserRole();
-          this.getAllToDoFolders();
-          this.loadCategory('tasks');
           this.todoId = this.route.snapshot.params['todoId'];
           this.route.params.subscribe((params: Params) => {
             this.todoId = params['todoId'];
