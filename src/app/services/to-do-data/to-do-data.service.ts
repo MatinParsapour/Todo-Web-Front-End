@@ -14,7 +14,8 @@ export class ToDoDataService {
 
   constructor(
     private todoService: ToDoService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private notifier: NotificationService
   ) {}
 
   loadCategory(category: Category) {
