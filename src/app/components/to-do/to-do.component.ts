@@ -20,9 +20,7 @@ import { Status } from 'src/app/enum/status-type';
 export class ToDoComponent implements OnInit {
   folders: any;
   @Input('toDo') toDo: ToDo = new ToDo();
-  @Input('search') search = '';
   @Input('ownerSees') ownerSees : boolean = false
-  @Output('getToDos') getToDos = new EventEmitter();
   displayDatePicker: boolean = false;
 
   constructor(
