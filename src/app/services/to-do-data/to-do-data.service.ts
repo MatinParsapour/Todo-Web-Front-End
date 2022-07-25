@@ -4,6 +4,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { ToDo } from 'src/app/classes/todo';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie';
+import { NotificationType } from 'src/app/enum/notification-type';
 
 @Injectable({
   providedIn: 'root',
