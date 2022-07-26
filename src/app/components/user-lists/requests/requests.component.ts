@@ -41,6 +41,8 @@ export class RequestsComponent implements OnInit {
     this.changeRequestStatus(RequestStatus.ACCEPTED, id);
   }
 
+  rejectRequest(id: string) {
+    this.changeRequestStatus(RequestStatus.REJECTED, id);
   }
 
 }
