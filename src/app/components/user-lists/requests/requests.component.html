@@ -1,1 +1,12 @@
-<p>requests works!</p>
+<div class="card">
+  <div class="card-body" *ngFor="let request of requests">
+    <div class="user">
+      <img [src]="request.applicant.profileImageUrl" [alt]="request.applicant.userName + ' profile image'">
+      <span>{{request.applicant.userName}}</span>
+    </div>
+    <div class="buttons">
+      <button class="btn btn-primary" (click)="acceptRequest(request.id)">Accept</button>
+      <button class="btn btn-outline-danger" (click)="rejectRequest(request.id)">Reject</button>
+    </div>
+  </div>
+</div>
