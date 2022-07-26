@@ -13,7 +13,8 @@ export class RequestsComponent implements OnInit {
   username = ''
   requests = []
 
-  constructor() { }
+  constructor(private followService: FollowService,
+              private notifier: NotificationService) { }
 
   ngOnInit(): void {
   }
