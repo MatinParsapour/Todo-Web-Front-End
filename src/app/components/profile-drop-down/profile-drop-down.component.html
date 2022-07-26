@@ -3,10 +3,14 @@
   <span class="caret"></span>
   <ul class="dropdown-menu">
     <optgroup [label]="user.userName">
-      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="followers">Followers</option>
-      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="followings">Followings</option>
-      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="requests">Requests</option>
-      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="tags">Tags</option>
+      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="followers"
+       (click)="navigate('/' + user.userName + '/followers')">Followers</option>
+      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="followings"
+      (click)="navigate('/' + user.userName + '/followings')">Followings</option>
+      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="requests"
+      (click)="navigate('/' + user.userName + '/requests')">Requests</option>
+      <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="tags"
+      (click)="navigate('/' + user.userName + '/tags')">Tags</option>
       <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="home_feed">Home feed</option>
       <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="settings"
         (click)="navigate('/' + user.userName + '/settings/personal-info')">Settings</option>
