@@ -10,8 +10,8 @@ import { NotificationType } from 'src/app/enum/notification-type';
   styleUrls: ['./requests.component.css']
 })
 export class RequestsComponent implements OnInit {
-  username = ''
-  requests = []
+  username = '';
+  requests: any[] = [];
 
   constructor(
     private followService: FollowService,
