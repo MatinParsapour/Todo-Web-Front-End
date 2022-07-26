@@ -18,6 +18,9 @@ export class RequestsComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = this.followService.getUsername()
+    this.getUserRequests()
+  }
+
   getUserRequests(){
     this.followService.getAll('get-all-user-requests/' + this.username).subscribe(
       (response: any) => {
