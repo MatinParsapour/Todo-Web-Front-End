@@ -7,61 +7,64 @@
         <div @fade class="mb-3">
           <input [readonly]="isLoading" autocomplete="off" type="text" [formControl]="firstName" required
             class="form-control" placeholder="First name">
-            <div @fade class="alert alert-danger" *ngIf="firstName.invalid && firstName.touched">Please enter your first
-              name</div>
+          <div @fade class="alert alert-danger" *ngIf="firstName.invalid && firstName.touched">Please enter your first
+            name</div>
         </div>
         <div @fade class="mb-3">
           <input [readonly]="isLoading" autocomplete="off" type="text" [formControl]="lastName" required
             class="form-control" placeholder="Last name">
-            <div [@fade]="lastName.invalid && lastName.touched" class="alert alert-danger"
-              *ngIf="lastName.invalid && lastName.touched">Please enter your last name</div>
+          <div [@fade]="lastName.invalid && lastName.touched" class="alert alert-danger"
+            *ngIf="lastName.invalid && lastName.touched">Please enter your last name</div>
         </div>
         <div @fade class="mb-3">
           <input [readonly]="isLoading" autocomplete="off" type="email" [formControl]="email" required
             class="form-control" placeholder="Email">
-            <div @fade class="alert alert-danger" *ngIf="email.touched && email.invalid && email.errors.required">Please enter
-              your email</div>
-            <div @fade class="alert alert-danger" *ngIf="email.touched && email.invalid && email.errors.emailIsDoplicate">The
-              email already exists</div>
+          <div @fade class="alert alert-danger" *ngIf="email.touched && email.invalid && email.errors.required">Please
+            enter
+            your email</div>
+          <div @fade class="alert alert-danger" *ngIf="email.touched && email.invalid && email.errors.emailIsDoplicate">
+            The
+            email already exists</div>
         </div>
       </div>
       <div id="spf" class="secondPartForm">
         <div @fade class="mb-3">
           <input [readonly]="isLoading" autocomplete="off" type="text" [formControl]="username" required
             class="form-control" placeholder="Username">
-            <div class="alert alert-danger" *ngIf="username.touched && username.invalid && username.errors.required">Please
-              enter
-              your username</div>
-            <div @fade class="alert alert-danger"
-              *ngIf="username.touched && username.invalid && username.errors.usernameisDoplicate">The
-              username already exists</div>
+          <div class="alert alert-danger" *ngIf="username.touched && username.invalid && username.errors.required">
+            Please
+            enter
+            your username</div>
+          <div @fade class="alert alert-danger"
+            *ngIf="username.touched && username.invalid && username.errors.usernameisDoplicate">The
+            username already exists</div>
         </div>
         <div @fade class="mb-3">
           <input [readonly]="isLoading" autocomplete="off" type="password" [formControl]="password" required
             class="form-control" placeholder="Password">
-            <div @fade class="alert alert-danger" *ngIf="password.invalid && password.touched && password.errors.required">Please enter your
-              password</div>
+          <div @fade class="alert alert-danger"
+            *ngIf="password.invalid && password.touched && password.errors.required">Please enter your
+            password</div>
         </div>
-          <div @fade class="mb-3">
-            <input [readonly]="isLoading" autocomplete="off" type="password" [formControl]="reTypePassword" required
+        <div @fade class="mb-3">
+          <input [readonly]="isLoading" autocomplete="off" type="password" [formControl]="reTypePassword" required
             class="form-control" placeholder="Retype password">
-            <div @fade class="alert alert-danger" *ngIf="reTypePassword.invalid && reTypePassword.touched">Please enter your
-              password</div>
-              <div @fade class="alert alert-danger"
-                *ngIf="reTypePassword.valid && user.invalid && user.errors?.['passwordsDoNotMatch']">Passwords don't
-                match</div>
-          </div>
+          <div @fade class="alert alert-danger" *ngIf="reTypePassword.invalid && reTypePassword.touched">Please enter
+            your
+            password</div>
+          <div @fade class="alert alert-danger"
+            *ngIf="reTypePassword.valid && user.invalid && user.errors?.['passwordsDoNotMatch']">Passwords don't
+            match</div>
+        </div>
       </div>
       <ngx-recaptcha2 @fade [siteKey]="siteKey" [formControl]="recaptcha">
       </ngx-recaptcha2>
-      <button *ngIf="!isSecondForm; else isSecondForm" class="submit-btn" @fade type="button" mat-raised-button color="primary"
+      <button *ngIf="!isSecondForm" class="submit-btn" @fade type="button" mat-raised-button color="primary"
         [disabled]="email.invalid || firstName.invalid || lastName.invalid" (click)="nextForm()">Next
       </button>
-      <ng-template #isSecondForm>
-        <button class="submit-btn" @fade type="submit" [class.spinner]="isLoading" mat-raised-button color="primary"
-        [disabled]="isLoading || user.invalid" (click)="registerUser()">Sign up
+      <button *ngIf="isSecondForm" class="submit-btn" @fade type="submit" [class.spinner]="isLoading" mat-raised-button
+        color="primary" [disabled]="isLoading || user.invalid" (click)="registerUser()">Sign up
       </button>
-      </ng-template>
     </form>
     <div @fade class="d-flex justify-content-center links">
       Already have an account? <a routerLink="/login">log in</a>
