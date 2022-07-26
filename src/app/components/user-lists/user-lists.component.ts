@@ -9,7 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserListsComponent implements OnInit {
   constructor(private route: ActivatedRoute,
-              private followService: FollowService) {}
+              private followService: FollowService,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.followService.setUsername(this.route.snapshot.params['username']);
