@@ -1,3 +1,8 @@
+import { TagsComponent } from './components/user-lists/tags/tags.component';
+import { RequestsComponent } from './components/user-lists/requests/requests.component';
+import { FollowingsComponent } from './components/user-lists/followings/followings.component';
+import { FollowersComponent } from './components/user-lists/followers/followers.component';
+import { UserListsComponent } from './components/user-lists/user-lists.component';
 import { AccountComponent } from './components/settings/account/account.component';
 import { SecurityComponent } from './components/settings/security/security.component';
 import { TagComponent } from './components/tag/tag.component';
@@ -31,6 +36,12 @@ const routes: Routes = [
     {path: 'security-info', component: SecurityComponent},
     {path: 'account-info', component: AccountComponent},
 
+  ]},
+  { path: ':username', component: UserListsComponent, children: [
+    { path: 'followers', component: FollowersComponent},
+    { path: 'followings', component: FollowingsComponent},
+    { path: 'requests', component: RequestsComponent},
+    { path: 'tags', component: TagsComponent},
   ]},
   {path: 'tag/:name', component: TagComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
