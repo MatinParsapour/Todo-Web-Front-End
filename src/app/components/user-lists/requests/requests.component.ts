@@ -37,7 +37,10 @@ export class RequestsComponent implements OnInit {
       );
   }
 
-    )
+  acceptRequest(id: string) {
+    this.changeRequestStatus(RequestStatus.ACCEPTED, id);
+  }
+
   }
 
 }
