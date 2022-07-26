@@ -16,4 +16,7 @@ export class UserListsComponent implements OnInit {
     this.followService.setUsername(this.route.snapshot.params['username']);
   }
 
+  close(){
+    this.router.navigate([this.route.snapshot.params['username']]);
+  }
 }
