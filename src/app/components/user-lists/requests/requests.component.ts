@@ -64,4 +64,10 @@ export class RequestsComponent implements OnInit {
       );
   }
 
+  createFormData(status: RequestStatus, id: string): FormData {
+    const formData = new FormData();
+    formData.append('status', RequestStatus[status]);
+    formData.append('requestId', id);
+    return formData;
+  }
 }
