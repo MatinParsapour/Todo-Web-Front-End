@@ -12,6 +12,7 @@ export class UserListsComponent implements OnInit {
               private followService: FollowService) {}
 
   ngOnInit(): void {
+    this.followService.setUsername(this.route.snapshot.params['username']);
   }
 
 }
