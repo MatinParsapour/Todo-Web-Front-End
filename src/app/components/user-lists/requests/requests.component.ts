@@ -13,8 +13,10 @@ export class RequestsComponent implements OnInit {
   username = ''
   requests = []
 
-  constructor(private followService: FollowService,
-              private notifier: NotificationService) { }
+  constructor(
+    private followService: FollowService,
+    private notifier: NotificationService
+  ) {}
 
   ngOnInit(): void {
     this.username = this.followService.getUsername();
