@@ -21,14 +21,22 @@ export class RequestsComponent implements OnInit {
     this.getUserRequests()
   }
 
-  getUserRequests(){
-    this.followService.getAll('get-all-user-requests/' + this.username).subscribe(
-      (response: any) => {
-        this.requests = response;
-      },
-      (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error.type + " " + error.error.message)
-      }
+  getUserRequests() {
+    this.followService
+      .getAll('get-all-user-requests/' + this.username)
+      .subscribe(
+        (response: any) => {
+          this.requests = response;
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ' ' + error.error.message
+          );
+        }
+      );
+  }
+
     )
   }
 
