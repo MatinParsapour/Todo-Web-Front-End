@@ -1,0 +1,39 @@
+.card {
+  margin: 10px;
+  padding: 10px;
+  font-size: 17px;
+}
+
+img {
+  width: 50px;
+  border-radius: 50%;
+  height: 50px;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 15em;
+}
+
+.btn {
+  font-size: 17px;
+  width: 45%;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 20%;
+}
+
+.user>span {
+    font-size: 30px;
+}
