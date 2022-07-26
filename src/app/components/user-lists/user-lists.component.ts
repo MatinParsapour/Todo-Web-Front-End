@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-lists.component.css']
 })
 export class UserListsComponent implements OnInit {
-
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+              private followService: FollowService) {}
 
   ngOnInit(): void {
   }
