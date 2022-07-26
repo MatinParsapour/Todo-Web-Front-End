@@ -45,4 +45,23 @@ export class RequestsComponent implements OnInit {
     this.changeRequestStatus(RequestStatus.REJECTED, id);
   }
 
+  changeRequestStatus(status: RequestStatus, id: string) {
+    const formData = this.createFormData(status, id);
+    console.log(formData.get('status'));
+    
+    this.followService
+      .update('change-follow-request-status', formData)
+      .subscribe(
+        (response: any) => {
+          this.getUserRequests();
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ' ' + error.error.message
+          );
+        }
+      );
+  }
+
 }
