@@ -17,8 +17,8 @@ export class RequestsComponent implements OnInit {
               private notifier: NotificationService) { }
 
   ngOnInit(): void {
-    this.username = this.followService.getUsername()
-    this.getUserRequests()
+    this.username = this.followService.getUsername();
+    this.getUserRequests();
   }
 
   getUserRequests() {
