@@ -1,3 +1,4 @@
+import { RequestStatus } from './../../../enum/request-status-type';
 import { NotificationService } from './../../../services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FollowService } from './../../../services/follow/follow.service';
