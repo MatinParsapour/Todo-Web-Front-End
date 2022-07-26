@@ -1,4 +1,9 @@
+import { NotificationService } from './../../../services/notification/notification.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { FollowService } from './../../../services/follow/follow.service';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { NotificationType } from 'src/app/enum/notification-type';
 
 @Component({
   selector: 'app-requests',
