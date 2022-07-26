@@ -99,6 +99,11 @@ import { ProfileDropDownComponent } from './components/profile-drop-down/profile
 import { PersonalInfoComponent } from './components/settings/personal-info/personal-info.component';
 import { SecurityComponent } from './components/settings/security/security.component';
 import { AccountComponent } from './components/settings/account/account.component';
+import { UserListsComponent } from './components/user-lists/user-lists.component';
+import { FollowersComponent } from './components/user-lists/followers/followers.component';
+import { FollowingsComponent } from './components/user-lists/followings/followings.component';
+import { TagsComponent } from './components/user-lists/tags/tags.component';
+import { RequestsComponent } from './components/user-lists/requests/requests.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -194,6 +199,11 @@ const customNotifierOptions: NotifierOptions = {
     PersonalInfoComponent,
     SecurityComponent,
     AccountComponent,
+    UserListsComponent,
+    FollowersComponent,
+    FollowingsComponent,
+    TagsComponent,
+    RequestsComponent,
   ],
   imports: [
     BrowserModule,
