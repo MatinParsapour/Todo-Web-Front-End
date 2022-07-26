@@ -12,6 +12,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 })
 export class RequestsComponent implements OnInit {
   username = ''
+  requests = []
 
   constructor() { }
 
