@@ -42,6 +42,10 @@ export class RequestsComponent implements OnInit {
       );
   }
 
+  seeUser(username: string) {
+    this.router.navigate(['/user', username])
+  }
+
   acceptRequest(id: string) {
     this.changeRequestStatus(RequestStatus.ACCEPTED, id);
   }
