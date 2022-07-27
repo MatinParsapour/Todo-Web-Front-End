@@ -38,7 +38,13 @@ export class UserComponent implements OnInit, AfterViewInit {
     private cookieService: CookieService,
     private followService: FollowService,
     private dialog: MatDialog
-  ) {}
+  ) {
+    this.activatedRouter.params.subscribe((params: Params) => {
+      this.observable = params['observable'];
+      this.getUser();
+      this.getToDos()
+    });
+  }
 
   ngAfterViewInit(): void {
     this.resultOfRequest()
