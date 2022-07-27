@@ -24,6 +24,8 @@ export class FollowingsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.username = this.followService.getUsername();
+    this.getFollowings();
   }
 
   getFollowings() {
