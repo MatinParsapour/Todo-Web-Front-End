@@ -48,7 +48,7 @@ export class FollowersComponent implements OnInit {
     this.router.navigate(['/user', username]);
   }
 
-  unFollowUser(username: string) {
+  request(username: string) {
     console.log(username);
     
   }
