@@ -26,8 +26,8 @@ export class UserComponent implements OnInit, AfterViewInit {
   observable: any;
   now = new Date();
   uploaded = 0;
-  observer = ''
-  resultForRequest = ''
+  observer = '';
+  resultForRequest = '';
 
   constructor(
     private userService: UserService,
@@ -47,14 +47,14 @@ export class UserComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.resultOfRequest()
+    this.resultOfRequest();
   }
 
   ngOnInit(): void {
     this.observable = this.activatedRouter.snapshot.params['observable'];
-    var username = this.cookieService.get('username')
+    var username = this.cookieService.get('username');
     if (username) {
-      this.observer = username
+      this.observer = username;
     }
     this.todoId = this.activatedRouter.snapshot.params['todoId'];
     this.activatedRouter.params.subscribe((params: Params) => {
@@ -65,9 +65,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   }
 
   closeModal() {
-    this.router.navigate([
-      'user/' + this.observer + '/' + this.observable,
-    ]);
+    this.router.navigate(['user/' + this.observer + '/' + this.observable]);
   }
 
   getUser() {
@@ -89,30 +87,41 @@ export class UserComponent implements OnInit, AfterViewInit {
     );
   }
 
-  request(){
+  request() {
     const formData = new FormData();
     formData.append('applicantUsername', this.observer);
     formData.append('responderUsername', this.observable);
     this.followService.create('send-follow-request', formData).subscribe(
       (response: any) => {
-        this.notifier.notify(NotificationType.SUCCESS, "Your request sent to user, wait for the response")
-        this.resultOfRequest()
+        this.notifier.notify(
+          NotificationType.SUCCESS,
+          'Your request sent to user, wait for the response'
+        );
+        this.resultOfRequest();
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error.type + " " + error.error.message)
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ' ' + error.error.message
+        );
       }
-    )
+    );
   }
 
-  resultOfRequest(){
-    this.followService.getAll('get-result-of-request/' + this.observable + "/" + this.observer).subscribe(
-      (response: any) => {
-        this.resultForRequest = response;
-      },
-      (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error.type + " " + error.error.message)
-      }
-    )
+  resultOfRequest() {
+    this.followService
+      .getAll('get-result-of-request/' + this.observable + '/' + this.observer)
+      .subscribe(
+        (response: any) => {
+          this.resultForRequest = response;
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ' ' + error.error.message
+          );
+        }
+      );
   }
 
   isNotClickable() {
@@ -148,7 +157,7 @@ export class UserComponent implements OnInit, AfterViewInit {
     document.getElementById(tagId)?.click();
   }
 
-  backToMain(){
-    this.router.navigateByUrl(this.observer)
+  backToMain() {
+    this.router.navigateByUrl(this.observer);
   }
 }
