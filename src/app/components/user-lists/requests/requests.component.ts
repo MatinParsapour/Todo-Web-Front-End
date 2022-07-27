@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { RequestStatus } from './../../../enum/request-status-type';
 import { NotificationService } from './../../../services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -16,7 +17,8 @@ export class RequestsComponent implements OnInit {
 
   constructor(
     private followService: FollowService,
-    private notifier: NotificationService
+    private notifier: NotificationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
