@@ -26,4 +26,19 @@ export class FollowingsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getFollowings() {
+    this.userService.getAll('/user/get-followings/' + this.username).subscribe(
+      (response: any) => {
+        this.followings = response;
+        console.log(this.followings);
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
+      }
+    );
+  }
+
 }
