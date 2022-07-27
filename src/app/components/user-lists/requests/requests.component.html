@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngIf="requests.length > 0; else noRequest">
   <div class="card-body" *ngFor="let request of requests">
     <div class="user" appHover [default]="'whtie'" [highlight]="'white'" (click)="seeUser(request.applicant.userName)">
       <img *ngIf="request.applicant.profileImageUrl; else notProfile" [src]="request.applicant.profileImageUrl"
@@ -16,3 +16,6 @@
     </div>
   </div>
 </div>
+<ng-template #noRequest>
+  <span class="no-request">You have no request</span>
+</ng-template>
