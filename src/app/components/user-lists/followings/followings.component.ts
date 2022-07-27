@@ -16,7 +16,12 @@ export class FollowingsComponent implements OnInit {
   username = '';
   followings: User[] = [];
 
-  constructor() { }
+  constructor(
+    private followService: FollowService,
+    private userService: UserService,
+    private notifier: NotificationService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
   }
