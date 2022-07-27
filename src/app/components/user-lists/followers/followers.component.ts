@@ -13,6 +13,8 @@ import { NotificationType } from 'src/app/enum/notification-type';
   styleUrls: ['./followers.component.css']
 })
 export class FollowersComponent implements OnInit {
+  followers: User[] = [];
+  username = '';
 
   constructor() { }
 
