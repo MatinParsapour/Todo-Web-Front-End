@@ -1,1 +1,20 @@
-<p>followings works!</p>
+<div class="card" *ngIf="followings.length > 0; else noFollowings">
+  <div class="card-body" *ngFor="let following of followings">
+    <div class="user" appHover [default]="'whtie'" [highlight]="'white'" (click)="seeUser(following.userName)">
+      <img *ngIf="following.profileImageUrl; else notProfile" [src]="following.profileImageUrl"
+        [alt]="following.userName + ' profile image'">
+      <ng-template #notProfile>
+        <img
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwebstockreview.net%2Fimages%2Fperson-icon-png-2.png&f=1&nofb=1"
+          width="200px" height="200px">
+      </ng-template>
+      <span>{{following.userName}}</span>
+    </div>
+    <div class="buttons">
+      <button class="btn btn-outline-danger" (click)="unFollow(following.userName)">UnFollow</button>
+    </div>
+  </div>
+</div>
+<ng-template #noFollowings>
+  <span class="no-followeings">You have no followers</span>
+</ng-template>
