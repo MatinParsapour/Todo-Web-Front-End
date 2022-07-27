@@ -24,6 +24,9 @@ export class FollowersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.username = this.followService.getUsername();
+    this.getFollowers();
+  }
 
   getFollowers() {
     this.userService.getAll('/user/get-followers/' + this.username).subscribe(
