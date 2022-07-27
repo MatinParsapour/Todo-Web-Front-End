@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-body" *ngFor="let request of requests">
-    <div class="user">
+    <div class="user" appHover [default]="'whtie'" [highlight]="'white'" (click)="seeUser(request.applicant.userName)">
       <img [src]="request.applicant.profileImageUrl" [alt]="request.applicant.userName + ' profile image'">
       <span>{{request.applicant.userName}}</span>
     </div>
