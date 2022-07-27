@@ -41,4 +41,8 @@ export class FollowingsComponent implements OnInit {
     );
   }
 
+  seeUser(username: string) {
+    this.router.navigate(['/user', username]);
+  }
+
 }
