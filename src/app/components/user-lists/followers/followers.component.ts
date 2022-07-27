@@ -16,7 +16,12 @@ export class FollowersComponent implements OnInit {
   followers: User[] = [];
   username = '';
 
-  constructor() { }
+  constructor(
+    private userService: UserService,
+    private followService: FollowService,
+    private notifier: NotificationService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
   }
