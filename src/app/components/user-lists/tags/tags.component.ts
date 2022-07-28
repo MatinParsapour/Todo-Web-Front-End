@@ -12,6 +12,8 @@ import { NotificationType } from 'src/app/enum/notification-type';
   styleUrls: ['./tags.component.css']
 })
 export class TagsComponent implements OnInit {
+  username = '';
+  tags: any[] = [];
 
   constructor() { }
 
