@@ -15,7 +15,12 @@ export class TagsComponent implements OnInit {
   username = '';
   tags: any[] = [];
 
-  constructor() { }
+  constructor(
+    private followService: FollowService,
+    private userService: UserService,
+    private notifier: NotificationService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
   }
