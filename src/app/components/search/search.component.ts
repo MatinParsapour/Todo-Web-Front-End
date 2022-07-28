@@ -1,7 +1,9 @@
+import { NotificationService } from './../../services/notification/notification.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/services/search/search.service';
+import { NotificationType } from 'src/app/enum/notification-type';
 
 @Component({
   selector: 'app-search',
@@ -12,7 +14,8 @@ export class SearchComponent implements OnInit {
   keyword = '';
   results: any[] = [];
   constructor(private searchService: SearchService,
-              private router: Router) {}
+              private router: Router,
+              private notifier: NotificationService) {}
 
   ngOnInit(): void {}
 
@@ -27,7 +30,10 @@ export class SearchComponent implements OnInit {
         this.results = response;
       },
       (error: HttpErrorResponse) => {
-        console.log(error);
+        this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.message
+          );
       }
     );
   }

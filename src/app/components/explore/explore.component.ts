@@ -38,7 +38,6 @@ export class ExploreComponent implements OnInit {
           NotificationType.ERROR,
           error.error.type + ': ' + error.error.message
         );
-        console.log(error);
       }
     );
   }

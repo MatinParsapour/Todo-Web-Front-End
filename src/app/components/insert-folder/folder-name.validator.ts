@@ -18,9 +18,6 @@ export class FolderNameValidator implements AsyncValidator{
                     return {folderNameIsDoplicate: true}
                 } 
                 return null
-            },
-            (error: HttpErrorResponse) => {
-                console.log(error.message);
             })
         )
     }

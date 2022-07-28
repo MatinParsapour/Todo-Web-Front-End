@@ -26,24 +26,29 @@ export class ToDoPictureComponent implements OnInit {
   }
 
   removePicture() {
-    this.toDoService.delete('to-do/delete-photo/' + this.toDoId + "/" + this.pictureName).subscribe(
-      (repsonse: any) => {
-        this.notifier.notify(
-          NotificationType.SUCCESS,
-          'Picture successfully deleted, you may need to refresh page'
-        );
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error);
-      }
-    );
+    this.toDoService
+      .delete('to-do/delete-photo/' + this.toDoId + '/' + this.pictureName)
+      .subscribe(
+        (repsonse: any) => {
+          this.notifier.notify(
+            NotificationType.SUCCESS,
+            'Picture successfully deleted, you may need to refresh page'
+          );
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.messager
+          );
+        }
+      );
   }
 
-  openFullScreen(){
-    this.fullScreen = true
+  openFullScreen() {
+    this.fullScreen = true;
   }
 
-  closeFullScreen(){
-    this.fullScreen = false
+  closeFullScreen() {
+    this.fullScreen = false;
   }
 }

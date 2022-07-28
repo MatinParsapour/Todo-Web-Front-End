@@ -19,11 +19,7 @@ export class IsEmailExists implements AsyncValidator {
                 return { emailExists: true };
               }
               return null;
-            },
-            (error: HttpErrorResponse) => {
-              console.log(error);
             }
-          )
         );
     }
     

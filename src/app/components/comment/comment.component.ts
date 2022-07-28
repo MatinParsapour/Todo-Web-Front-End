@@ -37,7 +37,6 @@ export class CommentComponent implements OnInit {
             NotificationType.ERROR,
             error.error.type + ': ' + error.error.message
           );
-          console.log(error);
         }
       );
   }

@@ -69,7 +69,6 @@ export class PhoneNumberComponent implements OnInit {
           this.isLoading = false;
         },
         (error: HttpErrorResponse) => {
-          console.log(error);
           this.isLoading = false;
         }
       );

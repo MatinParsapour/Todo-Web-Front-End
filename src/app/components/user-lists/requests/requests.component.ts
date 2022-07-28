@@ -56,8 +56,6 @@ export class RequestsComponent implements OnInit {
 
   changeRequestStatus(status: RequestStatus, id: string) {
     const formData = this.createFormData(status, id);
-    console.log(formData.get('status'));
-
     this.followService
       .update('change-follow-request-status', formData)
       .subscribe(

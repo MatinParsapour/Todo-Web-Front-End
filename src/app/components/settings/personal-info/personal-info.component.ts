@@ -3,7 +3,11 @@ import { SettingsService } from './../../../services/settings/settings.service';
 import { UserService } from './../../../services/user/user.service';
 import { User } from './../../../classes/user';
 import { Component, Input, OnInit } from '@angular/core';
-import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpEventType,
+} from '@angular/common/http';
 import { NotificationType } from 'src/app/enum/notification-type';
 
 @Component({
@@ -40,7 +44,10 @@ export class PersonalInfoComponent implements OnInit {
         this.getUser();
       },
       (error: HttpErrorResponse) => {
-        console.log(error);
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.messager
+        );
       }
     );
   }
@@ -59,7 +66,6 @@ export class PersonalInfoComponent implements OnInit {
           );
         },
         () => {
-
           this.getUser();
         }
       );
@@ -75,7 +81,6 @@ export class PersonalInfoComponent implements OnInit {
           NotificationType.ERROR,
           error.error.type + ': ' + error.error.message
         );
-        console.log(error);
       }
     );
   }
@@ -103,7 +108,6 @@ export class PersonalInfoComponent implements OnInit {
             NotificationType.ERROR,
             'Unable to upload image'
           );
-          console.log(event);
         }
         break;
       default:
@@ -131,7 +135,10 @@ export class PersonalInfoComponent implements OnInit {
           this.getUser();
         },
         (error: HttpErrorResponse) => {
-          console.log(error);
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.messager
+          );
         }
       );
   }

@@ -56,7 +56,6 @@ export class GetResetEmailComponent implements OnInit {
           .sendResetEmail(formData)
           .subscribe(
             (response: any) => {
-              console.log(response);
               this.isLoading = false;
               this.notifier.notify(
                 NotificationType.SUCCESS,
@@ -65,7 +64,6 @@ export class GetResetEmailComponent implements OnInit {
               this.closeDialog();
             },
             (error: HttpErrorResponse) => {
-              console.log(error);
               this.isLoading = false;
               this.notifier.notify(NotificationType.ERROR, error.message);
             }

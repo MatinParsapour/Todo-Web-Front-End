@@ -83,7 +83,6 @@ export class AccountComponent implements OnInit {
           NotificationType.ERROR,
           error.error.type + ': ' + error.error.message
         );
-        console.log(error);
       }
     );
   }

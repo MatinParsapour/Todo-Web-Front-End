@@ -19,9 +19,6 @@ export class UsernameValidator implements AsyncValidator {
             return {usernameisDoplicate: true}
         }
         return null;
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error.message);
       }
     ));
   };

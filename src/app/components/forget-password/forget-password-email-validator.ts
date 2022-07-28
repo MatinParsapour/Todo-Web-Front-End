@@ -13,14 +13,10 @@ export class ForgetPasswordEmailValidator implements AsyncValidator {
     return this.registerService.isEmailDoplicate(control.value).pipe(
       map(
         (response: any) => {
-          console.log(response);
           if (response === false) {
             return { emailIsNotAvailable: true };
           }
           return null;
-        },
-        (error: HttpErrorResponse) => {
-          console.log(error);
         }
       )
     );

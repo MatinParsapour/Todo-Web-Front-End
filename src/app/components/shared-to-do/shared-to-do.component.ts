@@ -1,8 +1,10 @@
+import { NotificationService } from './../../services/notification/notification.service';
 import { ToDo } from './../../classes/todo';
 import { ToDoService } from './../../services/to-do/to-do.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationType } from 'src/app/enum/notification-type';
 
 @Component({
   selector: 'app-shared-to-do',
@@ -17,7 +19,8 @@ export class SharedToDoComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private toDoService: ToDoService
+    private toDoService: ToDoService,
+    private notifier: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -34,15 +37,18 @@ export class SharedToDoComponent implements OnInit {
   getToDo() {
     this.toDoService.getToDo('to-do/get-to-do/' + this.toDoId).subscribe(
       (response: any) => {
-        if (response){
+        if (response) {
           this.toDo = response;
           this.addToQueue();
         } else {
-          this.toDo.id = null
+          this.toDo.id = null;
         }
       },
       (error: HttpErrorResponse) => {
-        console.log(error);
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.messager
+        );
       }
     );
   }

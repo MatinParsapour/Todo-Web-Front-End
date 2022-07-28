@@ -35,7 +35,10 @@ export class ToDoDataService {
           this.changed.next(true);
         },
         (error: HttpErrorResponse) => {
-          console.log(error);
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.messager
+          );
         }
       );
   }
@@ -69,17 +72,18 @@ export class ToDoDataService {
   }
 
   loadStarredToDos(username: string) {
-    this.todoService
-      .getAll('/to-do/get-starred-todos/' + username)
-      .subscribe(
-        (response: any) => {
-          this.toDos = response;
-          this.changed.next(true);
-        },
-        (error: HttpErrorResponse) => {
-          console.log(error);
-        }
-      );
+    this.todoService.getAll('/to-do/get-starred-todos/' + username).subscribe(
+      (response: any) => {
+        this.toDos = response;
+        this.changed.next(true);
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.messager
+        );
+      }
+    );
   }
 
   getToDos() {

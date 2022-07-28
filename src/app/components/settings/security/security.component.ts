@@ -165,7 +165,6 @@ export class SecurityComponent implements OnInit {
             NotificationType.ERROR,
             "Something went wrong your account didn't delete"
           );
-          console.log(error);
         }
       );
   }

@@ -31,7 +31,6 @@ export class TagsComponent implements OnInit {
     this.userService.getAll('/user/get-tags/' + this.username).subscribe(
       (response: any) => {
         this.tags = response;
-        console.log(this.tags);
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(

@@ -59,7 +59,6 @@ export class ForgetPasswordComponent implements OnInit {
       .sendForgetPasswordEmail(this.email.value)
       .subscribe(
         (response: any) => {
-          console.log(response);
           this.isLoading = false;
           this.notifier.notify(
             NotificationType.SUCCESS,
@@ -68,7 +67,6 @@ export class ForgetPasswordComponent implements OnInit {
           this.closeDialog();
         },
         (error: HttpErrorResponse) => {
-          console.log(error);
           this.isLoading = false;
           this.notifier.notify(
             NotificationType.ERROR,

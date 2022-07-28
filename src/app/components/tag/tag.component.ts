@@ -45,8 +45,6 @@ export class TagComponent implements OnInit, AfterViewInit {
           this.tag = response;
         },
         (error: HttpErrorResponse) => {
-          console.log(error);
-
           this.notifier.notify(
             NotificationType.ERROR,
             error.error.type + ': ' + error.error.message

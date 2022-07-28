@@ -21,9 +21,6 @@ export class EmailValidator implements AsyncValidator {
             return { emailIsDoplicate: true };
           }
           return null;
-        },
-        (error: HttpErrorResponse) => {
-          console.log(error.message);
         }
       )
     );

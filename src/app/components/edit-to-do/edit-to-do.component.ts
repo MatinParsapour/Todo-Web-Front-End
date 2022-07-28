@@ -6,7 +6,7 @@ import {
 } from '@angular/common/http';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ToDoService } from './../../services/to-do/to-do.service';
-import {  MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ToDo } from './../../classes/todo';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
@@ -81,8 +81,6 @@ export class EditToDoComponent implements OnInit {
           this.getToDo();
         },
         (error: HttpErrorResponse) => {
-          console.log(error);
-
           this.notifier.notify(NotificationType.ERROR, error.message);
         }
       );
@@ -104,7 +102,10 @@ export class EditToDoComponent implements OnInit {
         this.reportUploadProgress(event);
       },
       (error: HttpErrorResponse) => {
-        console.log(error);
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.messager
+        );
       },
       () => {
         this.isLoading = false;
@@ -114,15 +115,14 @@ export class EditToDoComponent implements OnInit {
   }
 
   openToDoPictures() {
-    this.dialog
-      .open(ToDoPicturesComponent, {
-        data: { pictures: this.toDo.pictures, toDoId: this.toDo.id },
-      })
+    this.dialog.open(ToDoPicturesComponent, {
+      data: { pictures: this.toDo.pictures, toDoId: this.toDo.id },
+    });
   }
 
-  pinOrUnpinToDo(){
+  pinOrUnpinToDo() {
     this.toDo.pinned = !this.toDo.pinned;
-    this.updateToDo()
+    this.updateToDo();
   }
 
   reportUploadProgress(event: HttpEvent<any>) {
@@ -219,7 +219,10 @@ export class EditToDoComponent implements OnInit {
           this.close.emit();
         },
         (error: HttpErrorResponse) => {
-          console.log(error);
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.messager
+          );
         }
       );
   }
@@ -231,7 +234,10 @@ export class EditToDoComponent implements OnInit {
         this.addToQueue();
       },
       (error: HttpErrorResponse) => {
-        console.log(error);
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.messager
+        );
       }
     );
   }
@@ -266,7 +272,6 @@ export class EditToDoComponent implements OnInit {
             NotificationType.ERROR,
             error.error.type + ': ' + error.error.messager
           );
-          console.log(error);
         }
       );
   }

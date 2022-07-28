@@ -32,7 +32,6 @@ export class FollowingsComponent implements OnInit {
     this.userService.getAll('/user/get-followings/' + this.username).subscribe(
       (response: any) => {
         this.followings = response;
-        console.log(this.followings);
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(

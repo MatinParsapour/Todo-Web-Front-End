@@ -86,7 +86,6 @@ export class FacebookSignInComponent implements OnInit {
           );
         } else {
           this.notifier.notify(NotificationType.ERROR, 'Something went wrong');
-          console.log(error);
         }
       }
     );

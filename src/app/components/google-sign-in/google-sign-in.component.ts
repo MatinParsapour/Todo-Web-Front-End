@@ -87,7 +87,6 @@ export class GoogleSignInComponent implements OnInit {
           );
         } else {
           this.notifier.notify(NotificationType.ERROR, 'Something went wrong');
-          console.log(error);
         }
       }
     );

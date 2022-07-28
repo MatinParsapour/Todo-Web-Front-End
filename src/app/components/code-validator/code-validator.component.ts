@@ -59,7 +59,6 @@ export class CodeValidatorComponent implements OnInit, AfterViewInit {
             }
           }, 10);
         }
-        console.log(this.code.value);
       });
     });
   }
@@ -131,8 +130,6 @@ export class CodeValidatorComponent implements OnInit, AfterViewInit {
               NotificationType.ERROR,
               error.error.type + ': ' + error.error.message
             );
-          } else {
-            console.log(error);
           }
           this.isLoading = false;
         }
@@ -151,7 +148,6 @@ export class CodeValidatorComponent implements OnInit, AfterViewInit {
         this.isLoading = false;
       },
       (error: HttpErrorResponse) => {
-        console.log(error);
         this.isLoading = false;
       }
     );

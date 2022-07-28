@@ -42,7 +42,7 @@ export class UserComponent implements OnInit, AfterViewInit {
     this.activatedRouter.params.subscribe((params: Params) => {
       this.observable = params['observable'];
       this.getUser();
-      this.getToDos()
+      this.getToDos();
     });
   }
 
@@ -76,9 +76,7 @@ export class UserComponent implements OnInit, AfterViewInit {
         this.isLoading = false;
       },
       (error: HttpErrorResponse) => {
-        console.log(error);
         this.isLoading = false;
-
         this.notifier.notify(
           NotificationType.ERROR,
           'Something went wrong by getting data, try again later'
@@ -140,7 +138,6 @@ export class UserComponent implements OnInit, AfterViewInit {
           this.todos = response;
         },
         (error: HttpErrorResponse) => {
-          console.error(error);
           this.notifier.notify(NotificationType.ERROR, error.error.message);
         }
       );

@@ -20,7 +20,7 @@ import { Status } from 'src/app/enum/status-type';
 export class ToDoComponent implements OnInit {
   folders: any;
   @Input('toDo') toDo: ToDo = new ToDo();
-  @Input('ownerSees') ownerSees : boolean = false
+  @Input('ownerSees') ownerSees: boolean = false;
   displayDatePicker: boolean = false;
 
   constructor(
@@ -42,8 +42,7 @@ export class ToDoComponent implements OnInit {
       this.toDo.status = Status.IN_PROGRESS;
     }
     this.toDoService.update('to-do/update-to-do', this.toDo).subscribe(
-      (response: any) => {
-      },
+      (response: any) => {},
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.message);
       }
@@ -98,7 +97,10 @@ export class ToDoComponent implements OnInit {
           );
         },
         (error: HttpErrorResponse) => {
-          console.log(error);
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ': ' + error.error.messager
+          );
         }
       );
   }
@@ -135,7 +137,10 @@ export class ToDoComponent implements OnInit {
         this.toDo = response;
       },
       (error: HttpErrorResponse) => {
-        console.log(error);
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.messager
+        );
       }
     );
   }
@@ -190,7 +195,6 @@ export class ToDoComponent implements OnInit {
             NotificationType.ERROR,
             error.error.type + ': ' + error.error.messager
           );
-          console.log(error);
         }
       );
   }
