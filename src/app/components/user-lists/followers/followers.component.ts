@@ -49,7 +49,25 @@ export class FollowersComponent implements OnInit {
   }
 
   request(username: string) {
-    console.log(username);
-    
+    const formData = new FormData();
+    formData.append('applicantUsername', this.username);
+    formData.append('responderUsername', username);
+    this.followService.create('send-follow-request', formData).subscribe(
+      (response: any) => {
+        this.notifier.notify(
+          NotificationType.SUCCESS,
+          'Your request sent to user, wait for the response'
+        );
+        this.resultOfRequest(username, this.username);
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ' ' + error.error.message
+        );
+      }
+    );
+  }
+
   }
 }
