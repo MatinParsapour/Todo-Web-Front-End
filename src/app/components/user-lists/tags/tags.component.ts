@@ -23,6 +23,21 @@ export class TagsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+  getTags() {
+    this.userService.getAll('/user/get-tags/' + this.username).subscribe(
+      (response: any) => {
+        this.tags = response;
+        console.log(this.tags);
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ' ' + error.error.message
+        );
+      }
+    );
+  }
+
   }
 
 }
