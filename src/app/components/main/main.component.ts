@@ -8,9 +8,10 @@ import { NotificationService } from './../../services/notification/notification.
 import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { MainService } from './../../services/main/main.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { Status } from 'src/app/enum/status-type';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -18,7 +19,7 @@ import { Status } from 'src/app/enum/status-type';
   styleUrls: ['./main.component.css', './main.component.scss'],
   animations: [slideToDown, showHide],
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
   toDoFolders: any;
   toDos: Array<ToDo> = [];
   completedToDos: Array<ToDo> = [];
@@ -32,6 +33,7 @@ export class MainComponent implements OnInit {
   now = new Date();
   todoId: any;
   isToDosEmpty!: boolean;
+  subscription!: Subscription
 
   categories = [
     {
@@ -57,12 +59,16 @@ export class MainComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.getUser();
-    todoDataService.changed.subscribe((status: boolean) => {
+    this.subscription = todoDataService.changed.subscribe((status: boolean) => {
       this.toDos = todoDataService.getToDos();
       this.isUserToDosEmpty();
       this.checkToDosStatus();
       this.getPinnedToDos();
     });
+  }
+  
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 
   ngOnInit(): void {}
