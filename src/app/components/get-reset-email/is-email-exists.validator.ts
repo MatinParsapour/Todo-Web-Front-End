@@ -20,7 +20,7 @@ export class IsEmailExists implements AsyncValidator {
               }
               return null;
             }
-        );
+        ));
     }
     
 }
