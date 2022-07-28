@@ -153,8 +153,4 @@ export class UserComponent implements OnInit, AfterViewInit {
   clickButton(tagId: any) {
     document.getElementById(tagId)?.click();
   }
-
-  backToMain() {
-    this.router.navigateByUrl(this.observer);
-  }
 }
