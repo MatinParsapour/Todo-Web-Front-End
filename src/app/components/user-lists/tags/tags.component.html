@@ -1,1 +1,18 @@
-<p>tags works!</p>
+<div class="card" *ngIf="tags.length > 0; else noFollowings">
+  <div class="card-body" *ngFor="let tag of tags">
+    <div class="user" appHover [default]="'whtie'" [highlight]="'white'" (click)="seeTag(tag.name)">
+      <img
+        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwebstockreview.net%2Fimages%2Fperson-icon-png-2.png&f=1&nofb=1"
+        width="200px" height="200px">
+      <ng-template #notProfile>
+      </ng-template>
+      <span>{{tag.name}}</span>
+    </div>
+    <div class="buttons">
+      <button class="btn btn-outline-danger" (click)="unFollow(tag.name)">UnFollow</button>
+    </div>
+  </div>
+</div>
+<ng-template #noFollowings>
+  <span class="no-followeings">You have no tags</span>
+</ng-template>
