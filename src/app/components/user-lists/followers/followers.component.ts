@@ -69,5 +69,19 @@ export class FollowersComponent implements OnInit {
     );
   }
 
+  resultOfRequest(observable:any, observer:any) {
+    this.followService
+      .getAll('get-result-of-request/' + observable + '/' + observer)
+      .subscribe(
+        (response: any) => {
+          this.resultForRequest = response;
+        },
+        (error: HttpErrorResponse) => {
+          this.notifier.notify(
+            NotificationType.ERROR,
+            error.error.type + ' ' + error.error.message
+          );
+        }
+      );
   }
 }
