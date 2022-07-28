@@ -23,6 +23,10 @@ export class TagsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.username = this.followService.getUsername();
+    this.getTags();
+  }
+
   getTags() {
     this.userService.getAll('/user/get-tags/' + this.username).subscribe(
       (response: any) => {
