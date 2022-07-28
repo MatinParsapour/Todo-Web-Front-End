@@ -10,7 +10,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 @Component({
   selector: 'app-followers',
   templateUrl: './followers.component.html',
-  styleUrls: ['./followers.component.css']
+  styleUrls: ['./followers.component.css'],
 })
 export class FollowersComponent implements OnInit {
   followers: User[] = [];
