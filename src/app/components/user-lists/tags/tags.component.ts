@@ -38,6 +38,8 @@ export class TagsComponent implements OnInit {
     );
   }
 
+  seeTag(tagName: string) {
+    this.router.navigate(['/tag', tagName]);
   }
 
   unFollow(tag: any) {
