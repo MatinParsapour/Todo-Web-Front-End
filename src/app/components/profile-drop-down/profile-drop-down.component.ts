@@ -49,5 +49,6 @@ export class ProfileDropDownComponent implements OnInit {
 
   loadCategory(category: any) {
     this.todoDataService.loadCategory(category.value)
+    this.navigate(this.username)
   }
 }
