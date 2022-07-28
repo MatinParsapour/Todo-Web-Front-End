@@ -9,7 +9,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 @Component({
   selector: 'app-tags',
   templateUrl: './tags.component.html',
-  styleUrls: ['./tags.component.css']
+  styleUrls: ['./tags.component.css'],
 })
 export class TagsComponent implements OnInit {
   username = '';
