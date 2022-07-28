@@ -9,7 +9,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 @Component({
   selector: 'app-requests',
   templateUrl: './requests.component.html',
-  styleUrls: ['./requests.component.css']
+  styleUrls: ['./requests.component.css'],
 })
 export class RequestsComponent implements OnInit {
   username = '';
@@ -43,7 +43,7 @@ export class RequestsComponent implements OnInit {
   }
 
   seeUser(username: string) {
-    this.router.navigate(['/user', username])
+    this.router.navigate(['/user', username]);
   }
 
   acceptRequest(id: string) {
@@ -57,7 +57,7 @@ export class RequestsComponent implements OnInit {
   changeRequestStatus(status: RequestStatus, id: string) {
     const formData = this.createFormData(status, id);
     console.log(formData.get('status'));
-    
+
     this.followService
       .update('change-follow-request-status', formData)
       .subscribe(
