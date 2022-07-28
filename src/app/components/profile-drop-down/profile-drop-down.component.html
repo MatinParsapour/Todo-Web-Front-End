@@ -1,16 +1,21 @@
 <div class="btn-group" appDropDown [selectedClass]="'open'">
-  <img class="profile dropdown-toggle" [src]="user.profileImageUrl" alt="">
+  <img *ngIf="user.profileImageUrl; else notProfile" class="profile dropdown-toggle" [src]="user.profileImageUrl" [alt]="user.userName + ' profile image`'">
+  <ng-template #notProfile>
+    <img
+      src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwebstockreview.net%2Fimages%2Fperson-icon-png-2.png&f=1&nofb=1"
+      class="profile dropdown-toggle">
+  </ng-template>
   <span class="caret"></span>
   <ul class="dropdown-menu">
     <optgroup [label]="user.userName">
       <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="followers"
-       (click)="navigate('/' + user.userName + '/followers')">Followers</option>
+        (click)="navigate('/' + user.userName + '/followers')">Followers</option>
       <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="followings"
-      (click)="navigate('/' + user.userName + '/followings')">Followings</option>
+        (click)="navigate('/' + user.userName + '/followings')">Followings</option>
       <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="requests"
-      (click)="navigate('/' + user.userName + '/requests')">Requests</option>
+        (click)="navigate('/' + user.userName + '/requests')">Requests</option>
       <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="tags"
-      (click)="navigate('/' + user.userName + '/tags')">Tags</option>
+        (click)="navigate('/' + user.userName + '/tags')">Tags</option>
       <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="home_feed">Home feed</option>
       <option appHover [default]="'white'" [highlight]="'#d5d3d3'" value="settings"
         (click)="navigate('/' + user.userName + '/settings/personal-info')">Settings</option>
