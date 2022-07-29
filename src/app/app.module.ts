@@ -79,7 +79,6 @@ import { CutterPipe } from './pipes/cutter.pipe';
 import { ReplacerPipe } from './pipes/replacer.pipe';
 import { SharedToDoComponent } from './components/shared-to-do/shared-to-do.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
-import { FollowersFollowingsComponent } from './components/followers-followings/followers-followings.component';
 import { ExploreComponent } from './components/explore/explore.component';
 import { ExploreTodosComponent } from './components/explore-todos/explore-todos.component';
 import { CaptionComponent } from './components/caption/caption.component';
@@ -181,7 +180,6 @@ const customNotifierOptions: NotifierOptions = {
     CutterPipe,
     ReplacerPipe,
     SharedToDoComponent,
-    FollowersFollowingsComponent,
     ExploreComponent,
     ExploreTodosComponent,
     CaptionComponent,
