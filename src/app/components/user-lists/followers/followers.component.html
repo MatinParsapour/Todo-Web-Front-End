@@ -9,11 +9,6 @@
       </ng-template>
       <span>{{follower.userName}}</span>
     </div>
-    <div class="buttons">
-      <button class="btn btn-outline-danger" (click)="request(follower.userName)"> <span
-          *ngIf="resultForRequest">{{resultForRequest | titlecase}}</span>
-        <span *ngIf="!resultForRequest">Request</span></button>
-    </div>
   </div>
 </div>
 <ng-template #noFollowers>
