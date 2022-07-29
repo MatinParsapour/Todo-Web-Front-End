@@ -29,8 +29,8 @@
           </article>
           <button [disabled]="isNotClickable()" (click)="request()" appHover [default]="'rgb(168 169 169)'" [highlight]="'rgb(106 108 108)'"
             class="follow-btn">
-            <span *ngIf="resultForRequest">{{resultForRequest | titlecase}}</span>
-            <span *ngIf="!resultForRequest">Request</span>
+            <span *ngIf="resultForRequest === 'UNSPECIFIED'">{{resultForRequest === 'UNSPECIFIED' ? 'Requested' : ''  | titlecase}}</span>
+            <span *ngIf="resultForRequest !== 'UNSPECIFIED'">Request</span>
           </button>
         </div>
       </div>
