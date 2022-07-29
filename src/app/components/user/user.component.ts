@@ -124,9 +124,7 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   isNotClickable() {
     return (
-      this.resultForRequest == 'UNSPECIFIED' ||
-      this.resultForRequest == 'REJECTED' ||
-      this.resultForRequest == 'ACCEPTED'
+      this.resultForRequest == 'UNSPECIFIED'
     );
   }
 
