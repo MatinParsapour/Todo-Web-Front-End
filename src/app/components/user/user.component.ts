@@ -28,6 +28,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   uploaded = 0;
   observer = '';
   resultForRequest = '';
+  isItOwner = false
 
   constructor(
     private userService: UserService,
@@ -62,6 +63,7 @@ export class UserComponent implements OnInit, AfterViewInit {
     });
     this.getUser();
     this.getToDos();
+    this.isOwnerSees()
   }
 
   closeModal() {
@@ -154,5 +156,9 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   navigate(uri: string) {
     this.router.navigate([uri])
+  }
+
+  isOwnerSees(){
+    this.isItOwner = this.observable === this.observer; 
   }
 }
