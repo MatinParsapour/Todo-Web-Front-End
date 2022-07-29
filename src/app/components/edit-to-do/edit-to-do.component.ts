@@ -14,6 +14,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 import { Status } from 'src/app/enum/status-type';
 import { AggreementComponent } from '../aggreement/aggreement.component';
 import { ToDoPicturesComponent } from '../to-do-pictures/to-do-pictures.component';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
   selector: 'app-edit-to-do',
@@ -28,6 +29,7 @@ export class EditToDoComponent implements OnInit {
   slideShowImages: Array<Object> = [];
   isLoading = false;
   uploaded = 0;
+  username = ''
   @Input('todoId') todoId: any;
   @Output('close') close = new EventEmitter();
   @Output('getToDos') getToDos = new EventEmitter();
@@ -42,12 +44,17 @@ export class EditToDoComponent implements OnInit {
     private toDoService: ToDoService,
     private notifier: NotificationService,
     private dialog: MatDialog,
-    private clipBoardService: ClipboardService
+    private clipBoardService: ClipboardService,
+    private cookieService: CookieService
   ) {}
 
   ngOnInit(): void {
     this.getToDo();
     this.addToQueue();
+    let username = this.cookieService.get('username')
+    if (username) {
+      this.username = username
+    }
   }
 
   addToQueue() {
@@ -151,7 +158,7 @@ export class EditToDoComponent implements OnInit {
 
   getFolders() {
     this.toDoService
-      .getAll('folder/get-todo-folders/' + localStorage.getItem('username'))
+      .getAll('folder/get-todo-folders/' + this.username)
       .subscribe(
         (response) => {
           this.folders = response;
@@ -205,7 +212,7 @@ export class EditToDoComponent implements OnInit {
     this.toDoService
       .delete(
         'to-do/delete-to-do/' +
-          localStorage.getItem('username') +
+          this.username +
           '/' +
           this.toDo.id
       )
@@ -221,7 +228,7 @@ export class EditToDoComponent implements OnInit {
         (error: HttpErrorResponse) => {
           this.notifier.notify(
             NotificationType.ERROR,
-            error.error.type + ': ' + error.error.messager
+            error.error.type + ': ' + error.error.message
           );
         }
       );
