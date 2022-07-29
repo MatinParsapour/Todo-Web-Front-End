@@ -153,4 +153,8 @@ export class UserComponent implements OnInit, AfterViewInit {
   clickButton(tagId: any) {
     document.getElementById(tagId)?.click();
   }
+
+  navigate(uri: string) {
+    this.router.navigate([uri])
+  }
 }
