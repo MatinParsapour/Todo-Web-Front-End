@@ -47,6 +47,23 @@ export class FollowingsComponent implements OnInit {
   }
 
   unFollow(username: string) {
+    const formData = this.createFormData(username);
+    this.userService.update('/user/un-follow-user' , formData).subscribe(
+      (response: any) => {
+        this.getFollowings()
+        this.notifier.notify(
+          NotificationType.ERROR,
+          'You successfully unfollowed user'
+        );
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
+      }
+    );
+  }
 
   createFormData(username: string): FormData {
     const formData = new FormData()
