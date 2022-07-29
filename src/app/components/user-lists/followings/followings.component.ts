@@ -47,7 +47,11 @@ export class FollowingsComponent implements OnInit {
   }
 
   unFollow(username: string) {
-    console.log(username);
-    
+
+  createFormData(username: string): FormData {
+    const formData = new FormData()
+    formData.append('followingUsername', username);
+    formData.append('username', this.username)
+    return formData;
   }
 }
