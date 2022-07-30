@@ -17,14 +17,16 @@
       <mat-error>Enter a valid username</mat-error>
     </mat-form-field>
     <div class="buttons">
-      <button (click)="sendCode()" [disabled]="emailOrPhone.invalid" *ngIf="isEnterEmailOrPhoneEditable && !isLoading" @fade
-        mat-raised-button color="primary">
+      <button (click)="sendCode()" [disabled]="emailOrPhone.invalid" *ngIf="isEnterEmailOrPhoneEditable && !isLoading"
+        @fade mat-raised-button color="primary">
         <span>Send code</span>
       </button>
-      <button (click)="checkCode()" [disabled]="code.invalid" *ngIf="isCheckCodeEditable && !isLoading" @fade mat-raised-button color="primary">
+      <button (click)="checkCode()" [disabled]="code.invalid" *ngIf="isCheckCodeEditable && !isLoading" @fade
+        mat-raised-button color="primary">
         <span>Check code</span>
       </button>
-      <button (click)="changeUsername()" [disabled]="username.invalid" *ngIf="isUsernameInputEditable && !isLoading" @fade mat-raised-button color="primary">
+      <button (click)="changeUsername()" [disabled]="username.invalid" *ngIf="isUsernameInputEditable && !isLoading"
+        @fade mat-raised-button color="primary">
         <span>Change username</span>
       </button>
       <button [hidden]="!isLoading" class="btn btn-primary" type="button" disabled>
