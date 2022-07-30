@@ -1,5 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { SearchService } from './../../services/search/search.service';
 import { CookieService } from 'ngx-cookie';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarComponent implements OnInit {
   username = '';
 
-  constructor(private cookieService: CookieService,) {}
+  constructor(private cookieService: CookieService) {}
 
   ngOnInit(): void {
     var username = this.cookieService.get('username');
@@ -19,5 +17,4 @@ export class NavBarComponent implements OnInit {
       this.username = username;
     }
   }
-
 }
