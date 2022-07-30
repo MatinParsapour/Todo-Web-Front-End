@@ -1,5 +1,6 @@
 <div class="btn-group" appDropDown [selectedClass]="'open'">
-  <img *ngIf="user.profileImageUrl; else notProfile" class="profile dropdown-toggle" [src]="user.profileImageUrl" [alt]="user.userName + ' profile image`'">
+  <img *ngIf="user.profileImageUrl; else notProfile" class="profile dropdown-toggle" [src]="user.profileImageUrl"
+    [alt]="user.userName + ' profile image`'">
   <ng-template #notProfile>
     <img
       src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwebstockreview.net%2Fimages%2Fperson-icon-png-2.png&f=1&nofb=1"

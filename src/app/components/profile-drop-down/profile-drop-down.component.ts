@@ -13,21 +13,23 @@ import { MatMenuTrigger } from '@angular/material/menu';
 })
 export class ProfileDropDownComponent implements OnInit {
   @Input('username') username!: string;
-  @ViewChild('openMenu') openMenu!: MatMenuTrigger
-  folders: any
-  user!: User
+  @ViewChild('openMenu') openMenu!: MatMenuTrigger;
+  folders: any;
+  user!: User;
 
-  constructor(private userService: UserService,
-              private router: Router,
-              private todoDataService: ToDoDataService) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private todoDataService: ToDoDataService
+  ) {}
 
   ngOnInit(): void {
     this.getUser();
     document.getElementById('tasks')?.click();
   }
 
-  openMenuFunc(){
-    this.openMenu.openMenu()
+  openMenuFunc() {
+    this.openMenu.openMenu();
   }
 
   getUser() {
@@ -38,17 +40,16 @@ export class ProfileDropDownComponent implements OnInit {
       (response: any) => {
         this.user = response;
       },
-      (error: HttpErrorResponse) => {
-      }
+      (error: HttpErrorResponse) => {}
     );
   }
 
   navigate(uri: string) {
-    this.router.navigate([uri])
+    this.router.navigate([uri]);
   }
 
   loadCategory(category: any) {
-    this.todoDataService.loadCategory(category.value)
-    this.navigate(this.username)
+    this.todoDataService.loadCategory(category.value);
+    this.navigate(this.username);
   }
 }
