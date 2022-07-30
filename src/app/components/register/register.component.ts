@@ -88,24 +88,24 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
-      this.isLoading = true;
-      this.registerService.create('add-user', this.user.value).subscribe(
-        (response: any) => {
-          this.notifier.notify(
-            NotificationType.SUCCESS,
-            'A verificaiton email sent to your email'
-          );
-          this.router.navigateByUrl('/login');
-          this.isLoading = false;
-        },
-        (error: HttpErrorResponse) => {
-          this.notifier.notify(
-            NotificationType.ERROR,
-            error.error.type + ': ' + error.error.message
-          );
-          this.isLoading = false;
-        }
-      );
+    this.isLoading = true;
+    this.registerService.create('add-user', this.user.value).subscribe(
+      (response: any) => {
+        this.notifier.notify(
+          NotificationType.SUCCESS,
+          'A verificaiton email sent to your email'
+        );
+        this.router.navigateByUrl('/login');
+        this.isLoading = false;
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
+        this.isLoading = false;
+      }
+    );
   }
 
   get firstName(): any {

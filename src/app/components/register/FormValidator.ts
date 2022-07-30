@@ -1,14 +1,13 @@
 import { AbstractControl } from '@angular/forms';
 
 export class FormValidator {
-    static isMinimum: boolean = false;
-    static hasLowerCase: boolean = false;
-    static hasUpperCase: boolean = false;
-    static hasNumber: boolean = false;
-    static hasSpecialCharacters: boolean = false;
+  static isMinimum: boolean = false;
+  static hasLowerCase: boolean = false;
+  static hasUpperCase: boolean = false;
+  static hasNumber: boolean = false;
+  static hasSpecialCharacters: boolean = false;
 
-    
-    static passwordsDoNotMatch(control: AbstractControl) {
+  static passwordsDoNotMatch(control: AbstractControl) {
     const typePassword = control.get('password');
     const reTypePassword = control.get('reTypePassword');
     if (typePassword?.value !== reTypePassword?.value) {
@@ -19,17 +18,18 @@ export class FormValidator {
 
   static passwordIsWeak(control: AbstractControl) {
     const password = control.value;
-    FormValidator.hasMinimumLength(password)
-    FormValidator.hasTwoUpperCase(password)
-    FormValidator.hasTwoLowerCase(password)
-    FormValidator.hasTwoNumber(password)
-    FormValidator.hasTwoSpecialCharacter(password)
+    FormValidator.hasMinimumLength(password);
+    FormValidator.hasTwoUpperCase(password);
+    FormValidator.hasTwoLowerCase(password);
+    FormValidator.hasTwoNumber(password);
+    FormValidator.hasTwoSpecialCharacter(password);
     if (
-        FormValidator.isMinimum && 
-        FormValidator.hasUpperCase && 
-        FormValidator.hasLowerCase && 
-        FormValidator.hasNumber && 
-        FormValidator.hasSpecialCharacters) {
+      FormValidator.isMinimum &&
+      FormValidator.hasUpperCase &&
+      FormValidator.hasLowerCase &&
+      FormValidator.hasNumber &&
+      FormValidator.hasSpecialCharacters
+    ) {
       return null;
     }
     return { passwordIsWeak: true };
@@ -38,9 +38,9 @@ export class FormValidator {
   private static hasMinimumLength(password: any) {
     let minLength = 10;
     if (password.length >= minLength) {
-        FormValidator.isMinimum = true;
+      FormValidator.isMinimum = true;
     } else {
-        FormValidator.isMinimum = false;
+      FormValidator.isMinimum = false;
     }
   }
 
@@ -49,9 +49,9 @@ export class FormValidator {
     const LOWER_REGEX = /([a-z])/g;
     let lowerMatch = password.match(LOWER_REGEX) ?? [];
     if (lowerMatch.length >= lowerMinCount) {
-        FormValidator.hasLowerCase = true;
+      FormValidator.hasLowerCase = true;
     } else {
-        FormValidator.hasLowerCase = false;
+      FormValidator.hasLowerCase = false;
     }
   }
 
@@ -60,11 +60,10 @@ export class FormValidator {
     const UPPER_REGEX = /([A-Z])/g;
     let upperMatch = password.match(UPPER_REGEX) ?? [];
     if (upperMatch.length >= upperMinCount) {
-        FormValidator.hasUpperCase = true;
+      FormValidator.hasUpperCase = true;
     } else {
-        FormValidator.hasUpperCase = false;
+      FormValidator.hasUpperCase = false;
     }
-
   }
 
   private static hasTwoNumber(password: any) {
@@ -72,20 +71,20 @@ export class FormValidator {
     const NUM_REGEX = /([\d])/g;
     let numMatch = password.match(NUM_REGEX) ?? [];
     if (numMatch.length >= numMinCount) {
-        FormValidator.hasNumber = true;
+      FormValidator.hasNumber = true;
     } else {
-        FormValidator.hasNumber = false;
+      FormValidator.hasNumber = false;
     }
   }
 
-  private static hasTwoSpecialCharacter(password: any){
+  private static hasTwoSpecialCharacter(password: any) {
     let specialMinCount = 2;
     const SPECIAL_REGEX = /([$&+,:;=?@#|'<>.^*()%!-])/g;
     let specialMatch = password.match(SPECIAL_REGEX) ?? [];
     if (specialMatch.length >= specialMinCount) {
-        FormValidator.hasSpecialCharacters = true;
+      FormValidator.hasSpecialCharacters = true;
     } else {
-        FormValidator.hasSpecialCharacters = false;
+      FormValidator.hasSpecialCharacters = false;
     }
   }
 }
