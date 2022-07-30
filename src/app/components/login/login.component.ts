@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   siteKey: string = '6Lc7ct0eAAAAAD0Jqa_1Eih2MiucxWAGsDpRpOVn';
   socialUser!: SocialUser;
   isLoggedin!: boolean;
-  displayPopup = false
+  displayPopup = false;
   isForgetUsernameModalVisible = false;
   cookieUsername = '';
 
@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.redirectToMainIfUserSignedIn();
-    this.getUser()
-    this.canNavigateToMain()
+    this.getUser();
+    this.canNavigateToMain();
   }
 
   redirectToMainIfUserSignedIn() {
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.isLoading = true;
-    this.saveUser()
+    this.saveUser();
     this.loginService.create('/log-in', this.user.value).subscribe(
       (response: any) => {
         if (response !== null) {
@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
         );
         this.isLoading = false;
         if (error.status === 403) {
-          this.showPopup()
+          this.showPopup();
         }
       }
     );
