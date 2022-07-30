@@ -1,7 +1,14 @@
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommentService } from './../../services/comment/comment.service';
-import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  HostListener,
+} from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 
 @Component({
@@ -45,10 +52,10 @@ export class CommentComponent implements OnInit {
     this.isEditable = !this.isEditable;
   }
 
-  @HostListener('window:keydown',['$event'])
-  refuseGoToNextLine(event: KeyboardEvent){
-    if (event.key === 'Enter'){
-      event.preventDefault()
+  @HostListener('window:keydown', ['$event'])
+  refuseGoToNextLine(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
     }
   }
 
@@ -76,8 +83,8 @@ export class CommentComponent implements OnInit {
     return formData;
   }
 
-  isSender(): boolean{
-    const userId = localStorage.getItem("username");
-    return this.comment.user.id === userId 
+  isSender(): boolean {
+    const userId = localStorage.getItem('username');
+    return this.comment.user.id === userId;
   }
 }
