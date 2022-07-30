@@ -6,7 +6,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { slideToDown, showHide } from './../../animations';
 import { NotificationService } from './../../services/notification/notification.service';
 import { MatDialog } from '@angular/material/dialog';
-import { HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { MainService } from './../../services/main/main.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
@@ -33,7 +33,7 @@ export class MainComponent implements OnInit, OnDestroy {
   now = new Date();
   todoId: any;
   isToDosEmpty!: boolean;
-  subscription!: Subscription
+  subscription!: Subscription;
 
   categories = [
     {
@@ -66,9 +66,9 @@ export class MainComponent implements OnInit, OnDestroy {
       this.getPinnedToDos();
     });
   }
-  
+
   ngOnDestroy(): void {
-    this.subscription.unsubscribe()
+    this.subscription.unsubscribe();
   }
 
   ngOnInit(): void {}
