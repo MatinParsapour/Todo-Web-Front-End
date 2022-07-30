@@ -68,10 +68,7 @@ export class ForgetPasswordComponent implements OnInit {
         },
         (error: HttpErrorResponse) => {
           this.isLoading = false;
-          this.notifier.notify(
-            NotificationType.ERROR,
-            error.message
-          );
+          this.notifier.notify(NotificationType.ERROR, error.message);
         }
       );
   }
