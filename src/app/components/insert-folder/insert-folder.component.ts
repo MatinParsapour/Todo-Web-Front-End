@@ -2,7 +2,11 @@ import { FolderNameValidator } from './folder-name.validator';
 import { NotificationService } from './../../services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { InsertFolderService } from './../../services/insert-folder/insert-folder.service';
-import { UntypedFormControl, Validators, UntypedFormGroup } from '@angular/forms';
+import {
+  UntypedFormControl,
+  Validators,
+  UntypedFormGroup,
+} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
@@ -23,10 +27,11 @@ export class InsertFolderComponent implements OnInit {
   ) {}
 
   insertFolder = new UntypedFormGroup({
-    folderName: new UntypedFormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-    ], this.folderNameValidator.validate),
+    folderName: new UntypedFormControl(
+      '',
+      [Validators.required, Validators.minLength(3)],
+      this.folderNameValidator.validate
+    ),
     userId: new UntypedFormControl(''),
   });
 
@@ -47,12 +52,15 @@ export class InsertFolderComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.isLoading = false;
-          this.notifier.notify(NotificationType.SUCCESS,this.folderName.value + ' successfully added')
+          this.notifier.notify(
+            NotificationType.SUCCESS,
+            this.folderName.value + ' successfully added'
+          );
           this.dialog.closeAll();
         },
         (error: HttpErrorResponse) => {
           this.isLoading = false;
-          this.notifier.notify(NotificationType.ERROR,error.message);
+          this.notifier.notify(NotificationType.ERROR, error.message);
         }
       );
   }
@@ -62,7 +70,7 @@ export class InsertFolderComponent implements OnInit {
       return 'Please select a name for your folder';
     }
     if (this.folderName.hasError('folderNameIsDoplicate')) {
-      return "A folder with same name already exists"
+      return 'A folder with same name already exists';
     }
     return 3 - this.folderName.value.length + ' more character';
   }

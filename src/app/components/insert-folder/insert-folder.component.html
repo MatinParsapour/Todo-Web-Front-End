@@ -5,7 +5,7 @@
     <input [formControl]="folderName" [readonly]="isLoading" matInput autocomplete="off">
     <mat-error *ngIf="folderName.invalid"> {{getFolderNameErrorMessages()}} </mat-error>
   </mat-form-field>
-  <button [disabled]="isLoading || folderName.invalid" (click)="addFolder()" type="submit"
-    mat-raised-button color="primary">Create folder</button>
-    <button type="button" mat-raised-button color="warn" (click)="closeDialog()">Close</button>
+  <button [disabled]="isLoading || folderName.invalid" (click)="addFolder()" type="submit" mat-raised-button
+    color="primary">Create folder</button>
+  <button type="button" mat-raised-button color="warn" (click)="closeDialog()">Close</button>
 </form>

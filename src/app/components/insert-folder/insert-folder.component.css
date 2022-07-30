@@ -8,9 +8,10 @@ mat-form-field {
   font-size: 16px;
 }
 
-span{
+span {
   font-size: 13px;
 }
+
 .createFolder>button {
   margin-bottom: 2%;
 }
