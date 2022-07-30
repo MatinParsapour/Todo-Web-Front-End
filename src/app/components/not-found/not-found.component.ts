@@ -4,16 +4,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-not-found',
   templateUrl: './not-found.component.html',
-  styleUrls: ['./not-found.component.css']
+  styleUrls: ['./not-found.component.css'],
 })
 export class NotFoundComponent implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor(private router: Router) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  goHome(){
-    this.router.navigateByUrl("/login")
+  goHome() {
+    this.router.navigateByUrl('/login');
   }
 }
