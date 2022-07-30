@@ -13,9 +13,11 @@ import { NotificationType } from 'src/app/enum/notification-type';
 export class SearchComponent implements OnInit {
   keyword = '';
   results: any[] = [];
-  constructor(private searchService: SearchService,
-              private router: Router,
-              private notifier: NotificationService) {}
+  constructor(
+    private searchService: SearchService,
+    private router: Router,
+    private notifier: NotificationService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -31,21 +33,21 @@ export class SearchComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(
-            NotificationType.ERROR,
-            error.error.type + ': ' + error.error.message
-          );
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
       }
     );
   }
 
   open(object: any) {
-    this.results = []
+    this.results = [];
     if (object.name == undefined) {
-      this.keyword = object.userName
-      this.router.navigate(['/user/' + object.userName])
+      this.keyword = object.userName;
+      this.router.navigate(['/user/' + object.userName]);
     } else {
-      this.keyword = object.name
-      this.router.navigate(['/tag/' + object.name])
+      this.keyword = object.name;
+      this.router.navigate(['/tag/' + object.name]);
     }
   }
 }
