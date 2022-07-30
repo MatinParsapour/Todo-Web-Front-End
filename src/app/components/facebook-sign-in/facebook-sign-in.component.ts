@@ -3,7 +3,11 @@ import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoginService } from './../../services/login/login.service';
-import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
+import {
+  UntypedFormGroup,
+  UntypedFormBuilder,
+  UntypedFormControl,
+} from '@angular/forms';
 import {
   FacebookLoginProvider,
   SocialAuthService,
