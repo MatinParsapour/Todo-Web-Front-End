@@ -8,98 +8,124 @@ import { NotificationType } from 'src/app/enum/notification-type';
 @Component({
   selector: 'app-forget-username',
   templateUrl: './forget-username.component.html',
-  styleUrls: ['./forget-username.component.css']
+  styleUrls: ['./forget-username.component.css'],
 })
 export class ForgetUsernameComponent implements OnInit {
-  @Output('close') close = new EventEmitter()
+  @Output('close') close = new EventEmitter();
   isLoading = false;
   isEnterEmailOrPhoneEditable = true;
   isCheckCodeEditable = false;
   isUsernameInputEditable = false;
-  emailOrPhone = new UntypedFormControl({value: '', disabled: false},[Validators.required, Validators.minLength(3)])
-  code = new UntypedFormControl({value: '', disabled: true},[Validators.required,Validators.minLength(5), Validators.maxLength(5)])
-  username = new UntypedFormControl({value: "",disabled: true},[Validators.required, Validators.minLength(5)])
+  emailOrPhone = new UntypedFormControl({ value: '', disabled: false }, [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
+  code = new UntypedFormControl({ value: '', disabled: true }, [
+    Validators.required,
+    Validators.minLength(5),
+    Validators.maxLength(5),
+  ]);
+  username = new UntypedFormControl({ value: '', disabled: true }, [
+    Validators.required,
+    Validators.minLength(5),
+  ]);
 
-  constructor(private userService: UserService,
-              private notifier: NotificationService) { }
+  constructor(
+    private userService: UserService,
+    private notifier: NotificationService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  sendCode(){
+  sendCode() {
     const formData = new FormData();
-    formData.append("emailOrPhoneNumber",this.emailOrPhone.value); 
+    formData.append('emailOrPhoneNumber', this.emailOrPhone.value);
     this.isLoading = true;
-    this.userService.create("/user/forget-username",formData).subscribe(
+    this.userService.create('/user/forget-username', formData).subscribe(
       (response: any) => {
-        this.disableEmailOrPhoneNumberFormControl()
-        this.enableCodeFormControl()
-        this.notifier.notify(NotificationType.SUCCESS, "Code has sent to " + this.emailOrPhone.value)
+        this.disableEmailOrPhoneNumberFormControl();
+        this.enableCodeFormControl();
+        this.notifier.notify(
+          NotificationType.SUCCESS,
+          'Code has sent to ' + this.emailOrPhone.value
+        );
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message)
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
       },
       () => {
         this.isLoading = false;
       }
-    )
+    );
   }
-  checkCode(){
+  checkCode() {
     const formData = new FormData();
-    formData.append('emailOrPhoneNumber', this.emailOrPhone.value)
-    formData.append('code', this.code.value)
+    formData.append('emailOrPhoneNumber', this.emailOrPhone.value);
+    formData.append('code', this.code.value);
     this.isLoading = true;
     this.userService.create('/user/forget-username-code', formData).subscribe(
       (response: any) => {
         this.disableCodeFormControl();
-        this.enableUsernameFormControl()
-        this.notifier.notify(NotificationType.SUCCESS, "The code was correct, change your username")
-      }, (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message)
+        this.enableUsernameFormControl();
+        this.notifier.notify(
+          NotificationType.SUCCESS,
+          'The code was correct, change your username'
+        );
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
       },
       () => {
         this.isLoading = false;
       }
-    )
+    );
   }
 
-  changeUsername(){
+  changeUsername() {
     const formData = new FormData();
     formData.append('emailOrPhoneNumber', this.emailOrPhone.value);
     formData.append('newUsername', this.username.value);
     this.isLoading = true;
     this.userService.create('/user/change-username', formData).subscribe(
       (response: any) => {
-        this.close.emit(this.username.value)
-        this.notifier.notify(NotificationType.SUCCESS, "Your username changed")
+        this.close.emit(this.username.value);
+        this.notifier.notify(NotificationType.SUCCESS, 'Your username changed');
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message)
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
       },
       () => {
-        this.isLoading = false
+        this.isLoading = false;
       }
-    )
+    );
   }
 
-  disableEmailOrPhoneNumberFormControl(){
+  disableEmailOrPhoneNumberFormControl() {
     this.isEnterEmailOrPhoneEditable = false;
     this.emailOrPhone.disable();
   }
 
-  enableCodeFormControl(){
+  enableCodeFormControl() {
     this.isCheckCodeEditable = true;
-    this.code.enable()
+    this.code.enable();
   }
 
-  disableCodeFormControl(){
+  disableCodeFormControl() {
     this.isCheckCodeEditable = false;
     this.code.disable();
   }
 
-  enableUsernameFormControl(){
+  enableUsernameFormControl() {
     this.isUsernameInputEditable = true;
     this.username.enable();
   }
-
 }
