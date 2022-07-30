@@ -29,7 +29,7 @@ export class EditToDoComponent implements OnInit {
   slideShowImages: Array<Object> = [];
   isLoading = false;
   uploaded = 0;
-  username = ''
+  username = '';
   @Input('todoId') todoId: any;
   @Output('close') close = new EventEmitter();
   @Output('getToDos') getToDos = new EventEmitter();
@@ -51,9 +51,9 @@ export class EditToDoComponent implements OnInit {
   ngOnInit(): void {
     this.getToDo();
     this.addToQueue();
-    let username = this.cookieService.get('username')
+    let username = this.cookieService.get('username');
     if (username) {
-      this.username = username
+      this.username = username;
     }
   }
 
@@ -210,12 +210,7 @@ export class EditToDoComponent implements OnInit {
 
   deleteToDo() {
     this.toDoService
-      .delete(
-        'to-do/delete-to-do/' +
-          this.username +
-          '/' +
-          this.toDo.id
-      )
+      .delete('to-do/delete-to-do/' + this.username + '/' + this.toDo.id)
       .subscribe(
         (response: any) => {
           this.notifier.notify(
