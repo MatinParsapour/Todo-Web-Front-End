@@ -5,11 +5,12 @@
   <div class="todo content">
     <div class="userToDo">
       <div class="user">
-        <a [routerLink]="'#'" matDialogClose> <img [src]="user.profileImageUrl" *ngIf="user.profileImageUrl; else notProfile"
-            [routerLink]="'#'" alt="">
+        <a [routerLink]="'#'" matDialogClose> <img [src]="user.profileImageUrl"
+            *ngIf="user.profileImageUrl; else notProfile" [routerLink]="'#'" alt="">
         </a>
         <ng-template #notProfile>
-          <a [routerLink]="'#'" matDialogClose><img src="https://img.icons8.com/fluency/48/000000/user-male-circle.png"></a>
+          <a [routerLink]="'#'" matDialogClose><img
+              src="https://img.icons8.com/fluency/48/000000/user-male-circle.png"></a>
         </ng-template>
         <p class="systemMessage"> <a [routerLink]="'#'" matDialogClose>{{user.firstName}} {{user.lastName}}</a>
           wants to

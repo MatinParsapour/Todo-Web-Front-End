@@ -1,18 +1,19 @@
 import { ClipboardService } from 'ngx-clipboard';
 import { CommentService } from './../../services/comment/comment.service';
 import {
-  FormGroup,
   UntypedFormBuilder,
-  FormControl,
-  Validators,
 } from '@angular/forms';
 import { ToDoService } from './../../services/to-do/to-do.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from 'src/app/services/user/user.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Component, Inject, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { User } from 'src/app/classes/user';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 
 @Component({
@@ -22,7 +23,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 })
 export class ExploreTodosComponent implements OnInit {
   @Input('id') id: any;
-  @Output('close') close = new EventEmitter()
+  @Output('close') close = new EventEmitter();
   user: any;
   todo: any;
   slideShowImages: Array<Object> = [];
@@ -36,8 +37,7 @@ export class ExploreTodosComponent implements OnInit {
     private fb: UntypedFormBuilder,
     private commentService: CommentService,
     private clipboardService: ClipboardService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getUser();
@@ -50,7 +50,10 @@ export class ExploreTodosComponent implements OnInit {
         this.user = response;
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
       }
     );
   }
@@ -62,7 +65,10 @@ export class ExploreTodosComponent implements OnInit {
         this.addToQueue();
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
       }
     );
   }
@@ -91,7 +97,7 @@ export class ExploreTodosComponent implements OnInit {
   }
 
   addToUserToDos() {
-    this.isAdding = true
+    this.isAdding = true;
     const data = this.createFormData();
     this.todoService.update('to-do/add-todo-to-user-todos', data).subscribe(
       (response) => {
@@ -101,10 +107,13 @@ export class ExploreTodosComponent implements OnInit {
         );
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
       },
       () => {
-        this.isAdding = false
+        this.isAdding = false;
       }
     );
   }
@@ -127,7 +136,10 @@ export class ExploreTodosComponent implements OnInit {
         this.notifier.notify(NotificationType.SUCCESS, 'Saved to your saves');
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
       },
       () => {
         this.isSaving = false;
