@@ -12,16 +12,17 @@
         </mat-form-field>
         <mat-form-field appearance="standard" class="phone_number">
           <mat-label>Phone Number</mat-label>
-          <input [readonly]="isLoading" formControlName="number" type="tel" required placeholder="Telephone" (input)="formatNumber()"
-            [errorStateMatcher]="phoneErrorMatcher" matInput>
+          <input [readonly]="isLoading" formControlName="number" type="tel" required placeholder="Telephone"
+            (input)="formatNumber()" [errorStateMatcher]="phoneErrorMatcher" matInput>
           <mat-error *ngIf="!phoneGroup.valid">
             Valid Phone Number: {{phoneHint}}
           </mat-error>
           <mat-hint>{{phoneHint}}</mat-hint>
         </mat-form-field>
       </div>
-      <button type="submit" mat-dialog-close="send-code" (click)="updatePhoneNumber()" [class.spinner]="isLoading" mat-raised-button
-        color="primary" [disabled]="profileForm.invalid || isLoading">Update your phone number</button>
+      <button type="submit" mat-dialog-close="send-code" (click)="updatePhoneNumber()" [class.spinner]="isLoading"
+        mat-raised-button color="primary" [disabled]="profileForm.invalid || isLoading">Update your phone
+        number</button>
     </form>
   </mat-card-content>
 </mat-card>

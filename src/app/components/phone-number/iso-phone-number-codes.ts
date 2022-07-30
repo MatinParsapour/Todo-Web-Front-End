@@ -1,4 +1,4 @@
-import { CountryCodes } from "./country-codes";
+import { CountryCodes } from './country-codes';
 
 export const ISO_3166_1_CODES: CountryCodes[] = [
   { code: 'AF', country: 'Afghanistan' },

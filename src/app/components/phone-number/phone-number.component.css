@@ -5,7 +5,7 @@ mat-card {
   align-items: center;
 }
 
-form{
+form {
   display: flex;
   flex-direction: column;
 }

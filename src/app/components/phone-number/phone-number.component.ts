@@ -40,12 +40,12 @@ export class PhoneNumberComponent implements OnInit {
     private phoneNumberService: PhoneNumberService,
     private notifier: NotificationService
   ) {
-    this.username = data.username
+    this.username = data.username;
   }
 
   ngOnInit(): void {}
 
-  formatNumber(){
+  formatNumber() {
     const natNum = this.phoneNumber.getNumber('national');
     this.phoneNumberControl.setValue(natNum ? natNum : this.phoneNumberDigits);
   }
