@@ -1,7 +1,7 @@
 import { NotificationService } from './../../../services/notification/notification.service';
 import { SettingsService } from './../../../services/settings/settings.service';
 import { User } from './../../../classes/user';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AccessLevel } from 'src/app/enum/access-level';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationType } from 'src/app/enum/notification-type';
@@ -9,7 +9,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css']
+  styleUrls: ['./account.component.css'],
 })
 export class AccountComponent implements OnInit {
   username!: string;
@@ -42,7 +42,7 @@ export class AccountComponent implements OnInit {
 
   changeAccessLevel(value: any) {
     this.user.accessLevel = value.value;
-    this.updateUser()
+    this.updateUser();
   }
 
   displayAccessLevelInfo(value: any) {
@@ -89,7 +89,7 @@ export class AccountComponent implements OnInit {
 
   updateUser() {
     this.settingsService
-      .update('settings/update/account-info' , this.user)
+      .update('settings/update/account-info', this.user)
       .subscribe(
         (response: any) => {
           this.notifier.notify(NotificationType.SUCCESS, 'You data updated');
