@@ -1,9 +1,7 @@
 import { ExploreTodosComponent } from './../explore-todos/explore-todos.component';
-import { ToDoComponent } from './../to-do/to-do.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ToDo } from './../../classes/todo';
 import { ToDoService } from './../../services/to-do/to-do.service';
 import { Component, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
@@ -46,8 +44,7 @@ export class ExploreComponent implements OnInit {
     this.location.back();
   }
 
-  displayToDo(id: any){
-    this.dialog.open(ExploreTodosComponent, {data: {id: id}})
-    
+  displayToDo(id: any) {
+    this.dialog.open(ExploreTodosComponent, { data: { id: id } });
   }
 }
