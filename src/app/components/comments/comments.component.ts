@@ -1,4 +1,13 @@
-import { Component, Input, OnInit, Output, EventEmitter, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  AfterViewChecked,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 
 @Component({
   selector: 'app-comments',
