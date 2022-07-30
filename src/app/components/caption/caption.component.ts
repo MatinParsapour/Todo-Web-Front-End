@@ -13,14 +13,16 @@ import { NotificationType } from 'src/app/enum/notification-type';
 export class CaptionComponent implements OnInit {
   userLiked = false;
   @Input('todo') todo: any;
-  @Output('update') update = new EventEmitter()
+  @Output('update') update = new EventEmitter();
 
-  constructor(private todoService: ToDoService,
-              private notifier: NotificationService,
-              private route: ActivatedRoute) {}
+  constructor(
+    private todoService: ToDoService,
+    private notifier: NotificationService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.isLiked()
+    this.isLiked();
   }
 
   isLiked() {
@@ -44,10 +46,13 @@ export class CaptionComponent implements OnInit {
     const formData = this.createFormData();
     this.todoService.like(formData).subscribe(
       (response) => {
-        this.update.emit()
+        this.update.emit();
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
       }
     );
   }
@@ -56,10 +61,13 @@ export class CaptionComponent implements OnInit {
     const formData = this.createFormData();
     this.todoService.disLike(formData).subscribe(
       (response) => {
-        this.update.emit()
+        this.update.emit();
       },
       (error: HttpErrorResponse) => {
-        this.notifier.notify(NotificationType.ERROR, error.error.type + ": " +  error.error.message);
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
       }
     );
   }
