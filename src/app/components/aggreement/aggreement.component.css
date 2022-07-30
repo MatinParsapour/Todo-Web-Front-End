@@ -1,8 +1,9 @@
-.buttons{
-    display: flex;
-    justify-content: space-between;
+.buttons {
+  display: flex;
+  justify-content: space-between;
 }
 
-h6, button{
-    font-size: 20px;
+h6,
+button {
+  font-size: 20px;
 }
