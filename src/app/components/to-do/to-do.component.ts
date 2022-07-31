@@ -1,12 +1,11 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToDoPicturesComponent } from './../to-do-pictures/to-do-pictures.component';
 import { ToDo } from './../../classes/todo';
-import { EditToDoComponent } from './../edit-to-do/edit-to-do.component';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from './../../services/notification/notification.service';
 import { ToDoService } from './../../services/to-do/to-do.service';
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { AggreementComponent } from '../aggreement/aggreement.component';
 import { ClipboardService } from 'ngx-clipboard';

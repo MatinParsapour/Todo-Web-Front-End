@@ -1,33 +1,33 @@
-mat-card{
-    display: flex;
-    justify-content: space-between;
-    margin: 0 3em  1em 3em ;
+mat-card {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 3em 1em 3em;
 }
 
 mat-icon:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .lineThrough {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
-.doneAndTask{
-    display: flex;
+.doneAndTask {
+  display: flex;
 }
 
 
 
-.toDo{
-    font-size: 20px;
+.toDo {
+  font-size: 20px;
 }
 
 mat-card:hover {
-    background-color: aliceblue;
-    cursor: pointer;
+  background-color: aliceblue;
+  cursor: pointer;
 }
 
 mat-card:active {
-    background-color: rgb(250, 250, 250);
-    transform: scale(0.996);
+  background-color: rgb(250, 250, 250);
+  transform: scale(0.996);
 }
