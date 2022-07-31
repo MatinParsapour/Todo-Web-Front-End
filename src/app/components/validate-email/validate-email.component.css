@@ -1,4 +1,4 @@
-.container{
+.container {
   height: 100%;
   width: 100%;
   max-width: 100%;
@@ -13,6 +13,7 @@
   width: 100%;
   max-width: 150%;
 }
+
 .invalid {
   display: flex;
   align-items: center;
@@ -35,12 +36,13 @@
   color: rgb(194, 9, 9);
 }
 
-.invalid > h6{
-      font-size: 2em;
-      font-family: "Sofia",
-      sans-serif;
-      color: rgb(171, 185, 166);
+.invalid>h6 {
+  font-size: 2em;
+  font-family: "Sofia",
+    sans-serif;
+  color: rgb(171, 185, 166);
 }
+
 .valid>h1 {
   font-size: 7em;
   margin-bottom: 1em;
@@ -49,11 +51,11 @@
   color: rgb(49, 106, 133);
 }
 
-.valid > h6 > i> b{
-      font-size: 2em;
-      font-family: "Sofia",
-      sans-serif;
-      color: rgb(59, 206, 10);
+.valid>h6>i>b {
+  font-size: 2em;
+  font-family: "Sofia",
+    sans-serif;
+  color: rgb(59, 206, 10);
 }
 
 @keyframes spinner {
