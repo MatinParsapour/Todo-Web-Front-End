@@ -48,7 +48,7 @@ export class TagsComponent implements OnInit {
   unFollow(tag: any) {
     const formData = new FormData();
     formData.append('username', this.username);
-    formData.append('tagName', tag);    
+    formData.append('tagName', tag);
     this.userService.update('/user/un-follow-tag', formData).subscribe(
       (response: any) => {
         this.notifier.notify(
