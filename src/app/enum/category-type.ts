@@ -1,3 +1,5 @@
 export enum Category {
-    TASKS, PLANNED, MYDAY
+  TASKS,
+  PLANNED,
+  MYDAY,
 }
