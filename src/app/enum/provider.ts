@@ -1,3 +1,5 @@
 export enum Provider {
-    EMAIL, GOOGLE, FACEBOOK
+  EMAIL,
+  GOOGLE,
+  FACEBOOK,
 }
