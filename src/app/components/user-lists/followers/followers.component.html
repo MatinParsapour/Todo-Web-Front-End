@@ -1,7 +1,8 @@
 <div class="card" *ngIf="followers.length > 0; else noFollowers">
   <div class="card-body" *ngFor="let follower of followers">
     <div class="user" appHover [default]="'whtie'" [highlight]="'white'" (click)="seeUser(follower.userName)">
-      <img *ngIf="follower.profileImageUrl; else notProfile" [src]="follower.profileImageUrl" [alt]="follower.userName + ' profile image'">
+      <img *ngIf="follower.profileImageUrl; else notProfile" [src]="follower.profileImageUrl"
+        [alt]="follower.userName + ' profile image'">
       <ng-template #notProfile>
         <img
           src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwebstockreview.net%2Fimages%2Fperson-icon-png-2.png&f=1&nofb=1"
