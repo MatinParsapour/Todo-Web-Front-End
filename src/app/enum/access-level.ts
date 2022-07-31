@@ -1,3 +1,5 @@
 export enum AccessLevel {
-    PUBLIC, PROTECTED, PRIVATE
+  PUBLIC,
+  PROTECTED,
+  PRIVATE,
 }
