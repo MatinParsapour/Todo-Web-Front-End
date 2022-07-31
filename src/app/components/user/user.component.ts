@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NotificationService } from './../../services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { User } from 'src/app/classes/user';
@@ -28,7 +28,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   uploaded = 0;
   observer = '';
   resultForRequest = '';
-  isItOwner = false
+  isItOwner = false;
 
   constructor(
     private userService: UserService,
@@ -63,7 +63,7 @@ export class UserComponent implements OnInit, AfterViewInit {
     });
     this.getUser();
     this.getToDos();
-    this.isOwnerSees()
+    this.isOwnerSees();
   }
 
   closeModal() {
@@ -125,9 +125,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   }
 
   isNotClickable() {
-    return (
-      this.resultForRequest == 'UNSPECIFIED'
-    );
+    return this.resultForRequest == 'UNSPECIFIED';
   }
 
   getToDos() {
@@ -155,10 +153,10 @@ export class UserComponent implements OnInit, AfterViewInit {
   }
 
   navigate(uri: string) {
-    this.router.navigate([uri])
+    this.router.navigate([uri]);
   }
 
-  isOwnerSees(){
-    this.isItOwner = this.observable === this.observer; 
+  isOwnerSees() {
+    this.isItOwner = this.observable === this.observer;
   }
 }

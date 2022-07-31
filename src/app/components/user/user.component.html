@@ -4,9 +4,9 @@
       <div class="img-username">
         <img *ngIf="user.profileImageUrl; else notProfile" [src]="user.profileImageUrl" width="200px" height="200px">
         <ng-template #notProfile>
-        <img
-          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwebstockreview.net%2Fimages%2Fperson-icon-png-2.png&f=1&nofb=1"
-          width="200px" height="200px">
+          <img
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwebstockreview.net%2Fimages%2Fperson-icon-png-2.png&f=1&nofb=1"
+            width="200px" height="200px">
         </ng-template>
         <span>{{user.userName}}</span>
       </div>
@@ -27,9 +27,10 @@
             <h4>bio</h4>
             <p>{{user.bio}}</p>
           </article>
-          <button *ngIf="!isItOwner" [disabled]="isNotClickable()" (click)="request()" appHover [default]="'rgb(168 169 169)'" [highlight]="'rgb(106 108 108)'"
-            class="follow-btn">
-            <span *ngIf="resultForRequest === 'UNSPECIFIED'">{{resultForRequest === 'UNSPECIFIED' ? 'Requested' : ''  | titlecase}}</span>
+          <button *ngIf="!isItOwner" [disabled]="isNotClickable()" (click)="request()" appHover
+            [default]="'rgb(168 169 169)'" [highlight]="'rgb(106 108 108)'" class="follow-btn">
+            <span
+              *ngIf="resultForRequest === 'UNSPECIFIED'">{{resultForRequest === 'UNSPECIFIED' ? 'Requested' : ''  | titlecase}}</span>
             <span *ngIf="resultForRequest !== 'UNSPECIFIED'">Request</span>
           </button>
         </div>
