@@ -3,7 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { User } from 'src/app/classes/user';
 import { UserService } from 'src/app/services/user/user.service';
 import { FollowService } from './../../../services/follow/follow.service';
-import { ActivatedRoute, Data, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 
@@ -48,9 +48,9 @@ export class FollowingsComponent implements OnInit {
 
   unFollow(username: string) {
     const formData = this.createFormData(username);
-    this.userService.update('/user/un-follow-user' , formData).subscribe(
+    this.userService.update('/user/un-follow-user', formData).subscribe(
       (response: any) => {
-        this.getFollowings()
+        this.getFollowings();
         this.notifier.notify(
           NotificationType.ERROR,
           'You successfully unfollowed user'
@@ -66,9 +66,9 @@ export class FollowingsComponent implements OnInit {
   }
 
   createFormData(username: string): FormData {
-    const formData = new FormData()
+    const formData = new FormData();
     formData.append('followingUsername', username);
-    formData.append('username', this.username)
+    formData.append('username', this.username);
     return formData;
   }
 }
