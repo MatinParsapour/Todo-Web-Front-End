@@ -1,10 +1,10 @@
 <app-image-viewer [open]="fullScreen" [imageUrl]="picture" (click)="closeFullScreen()"></app-image-viewer>
 <mat-card>
-    <div (click)="openFullScreen()">
-        <img [src]="picture" width="60" height="60">
-    </div>
-    <p> {{pictureName | summaryPipes}} </p>
-    <button mat-raised-button (click)="removePicture()">
-        <mat-icon>delete</mat-icon>
-    </button>
+  <div (click)="openFullScreen()">
+    <img [src]="picture" width="60" height="60">
+  </div>
+  <p> {{pictureName | summaryPipes}} </p>
+  <button mat-raised-button (click)="removePicture()">
+    <mat-icon>delete</mat-icon>
+  </button>
 </mat-card>

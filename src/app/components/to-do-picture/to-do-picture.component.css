@@ -1,17 +1,17 @@
 mat-card {
-    display: flex;
-    justify-content: space-between;
-    width: 30em;
+  display: flex;
+  justify-content: space-between;
+  width: 30em;
 }
 
-button:hover{
-    color: red;
+button:hover {
+  color: red;
 }
 
 img {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
-div{
-    cursor: pointer;
+div {
+  cursor: pointer;
 }
