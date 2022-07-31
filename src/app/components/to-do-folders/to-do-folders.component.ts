@@ -2,13 +2,7 @@ import { AggreementComponent } from './../aggreement/aggreement.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from './../../services/notification/notification.service';
 import { MainService } from './../../services/main/main.service';
-import {
-  Component,
-  Input,
-  OnInit,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -55,7 +49,7 @@ export class ToDoFoldersComponent implements OnInit {
   showToDo(listName: any, folderName: any) {
     localStorage.setItem('list', listName);
     localStorage.setItem('folder', folderName);
-    this.getToDos.next('')
+    this.getToDos.next('');
   }
 
   makeFolderEditable(event: any) {
