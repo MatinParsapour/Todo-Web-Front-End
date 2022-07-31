@@ -10,16 +10,16 @@ mat-card {
   padding: 10px;
 }
 
-.noToDo{
-    font-size: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.noToDo {
+  font-size: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.noToDo>span{
-    font-size: 70px;
+.noToDo>span {
+  font-size: 70px;
 }
 
 mat-card>span {
@@ -27,21 +27,20 @@ mat-card>span {
   font-size: 17px;
 }
 
-.statusContainer{
-    display: flex;
-    justify-content: space-between;
+.statusContainer {
+  display: flex;
+  justify-content: space-between;
 }
 
-.statusContainer>mat-card{
-    width: 32%;
+.statusContainer>mat-card {
+  width: 32%;
 }
 
-.footer{
-    display: flex;
-    justify-content: space-between;
+.footer {
+  display: flex;
+  justify-content: space-between;
 }
 
-.footer >mat-card{
-    width: 48%;
+.footer>mat-card {
+  width: 48%;
 }
-
