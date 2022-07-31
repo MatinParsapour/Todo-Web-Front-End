@@ -6,7 +6,7 @@ import { User } from './../../../classes/user';
 import { NotificationService } from './../../../services/notification/notification.service';
 import { SettingsService } from './../../../services/settings/settings.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NotificationType } from 'src/app/enum/notification-type';
 import { Provider } from 'src/app/enum/provider';
 import { GetResetEmailComponent } from '../../get-reset-email/get-reset-email.component';
@@ -36,8 +36,8 @@ export class SecurityComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.username = this.settingsService.getUsername()
-    this.getUser()
+    this.username = this.settingsService.getUsername();
+    this.getUser();
   }
 
   isUserProviderGoogle(): boolean {
@@ -62,7 +62,7 @@ export class SecurityComponent implements OnInit {
           NotificationType.ERROR,
           error.error.type + ': ' + error.error.message
         );
-      },
+      }
     );
   }
 
@@ -125,7 +125,7 @@ export class SecurityComponent implements OnInit {
     this.username = value;
     this.user.userName = value;
     this.router.navigate(['/' + value + '/settings/security-info']);
-    this.getUser()
+    this.getUser();
   }
 
   logout() {
