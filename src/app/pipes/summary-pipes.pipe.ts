@@ -22,8 +22,8 @@ export class SummaryPipesPipe implements PipeTransform {
     }
 
     if (value.length >= distance) {
-      return value.substr(0, distance) + '...'
+      return value.substr(0, distance) + '...';
     }
-    return value
+    return value;
   }
 }
