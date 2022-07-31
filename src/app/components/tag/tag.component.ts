@@ -11,7 +11,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 @Component({
   selector: 'app-tag',
   templateUrl: './tag.component.html',
-  styleUrls: ['./tag.component.css']
+  styleUrls: ['./tag.component.css'],
 })
 export class TagComponent implements OnInit, AfterViewInit {
   tagName = '';
@@ -33,11 +33,11 @@ export class TagComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.tagName = this.activatedRoute.snapshot.params['name'];
-    this.getTag()
-    this.getUsername()
+    this.getTag();
+    this.getUsername();
   }
 
-  getTag(){
+  getTag() {
     this.tagService
       .getAll('/get-tag/' + encodeURIComponent(this.tagName))
       .subscribe(
@@ -53,10 +53,10 @@ export class TagComponent implements OnInit, AfterViewInit {
       );
   }
 
-  getUsername(){
-    var username = this.cookieService.get('username')
+  getUsername() {
+    var username = this.cookieService.get('username');
     if (username) {
-      this.username = username
+      this.username = username;
     }
   }
 
@@ -70,7 +70,7 @@ export class TagComponent implements OnInit, AfterViewInit {
           NotificationType.SUCCESS,
           'You successfully followed tag'
         );
-        this.isTagFollowed()
+        this.isTagFollowed();
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error);
@@ -96,7 +96,7 @@ export class TagComponent implements OnInit, AfterViewInit {
           NotificationType.SUCCESS,
           'You successfully Unfollowed tag'
         );
-        this.isTagFollowed()
+        this.isTagFollowed();
       },
       (error: HttpErrorResponse) => {
         this.notifier.notify(NotificationType.ERROR, error.error);
