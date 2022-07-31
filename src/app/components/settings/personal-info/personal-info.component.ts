@@ -2,7 +2,7 @@ import { NotificationService } from './../../../services/notification/notificati
 import { SettingsService } from './../../../services/settings/settings.service';
 import { UserService } from './../../../services/user/user.service';
 import { User } from './../../../classes/user';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   HttpErrorResponse,
   HttpEvent,
