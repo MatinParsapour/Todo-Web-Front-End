@@ -20,8 +20,6 @@ export class RegisterService extends DataService {
     );
   }
   isEmailDoplicate(email: any) {
-    return this.httpService.get(
-      Constants.url + '/user/check-email/' + email
-    );
+    return this.httpService.get(Constants.url + '/user/check-email/' + email);
   }
 }
