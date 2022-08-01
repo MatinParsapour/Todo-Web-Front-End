@@ -5,10 +5,9 @@ import { Injectable } from '@angular/core';
 import { Constants } from '../constant';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService extends DataService {
-
   httpService: HttpClient;
 
   constructor(http: HttpClient) {
@@ -16,18 +15,21 @@ export class UserService extends DataService {
     this.httpService = http;
   }
 
-  getUser(username: any){
-    return this.httpService.get(
-      Constants.url + '/user/get-user/' + username
+  getUser(username: any) {
+    return this.httpService.get(Constants.url + '/user/get-user/' + username);
+  }
+
+  updateProfileImage(formData: FormData): Observable<HttpEvent<any>> {
+    return this.httpService.put<HttpEvent<any>>(
+      Constants.url + '/user/update-profile-image',
+      formData,
+      { reportProgress: true, observe: 'events' }
     );
   }
 
-  updateProfileImage(formData: FormData):Observable<HttpEvent<any>>{
-    return this.httpService.put<HttpEvent<any>>(
-      Constants.url + '/user/update-profile-image', formData, {reportProgress: true, observe: 'events'})
-  }
-
-  getUserByToDoId(todoId: any){
-    return this.httpService.get(Constants.url + "/user/get-user-by-todoId/" + todoId)
+  getUserByToDoId(todoId: any) {
+    return this.httpService.get(
+      Constants.url + '/user/get-user-by-todoId/' + todoId
+    );
   }
 }
