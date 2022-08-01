@@ -23,33 +23,40 @@ import { PersonalInfoComponent } from './components/settings/personal-info/perso
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  {path: 'register', component: RegisterComponent},
-  {path: 'validate-email', component: ValidateEmailComponent},
-  {path: 'reset-password', component: ResetPasswordComponent},
-  {path: ':username', component: MainComponent},
-  {path: 'reset-email', component: ResetEmailComponent},
-  {path: 'to-do', component: SharedToDoComponent},
-  {path: 'explore', component: ExploreComponent},
-  {path: 'user/:observable', component: UserComponent},
-  {path: ':username/settings', component: SettingsComponent, children: [
-    {path: 'personal-info', component: PersonalInfoComponent},
-    {path: 'security-info', component: SecurityComponent},
-    {path: 'account-info', component: AccountComponent},
-
-  ]},
-  { path: ':username', component: UserListsComponent, children: [
-    { path: 'followers', component: FollowersComponent},
-    { path: 'followings', component: FollowingsComponent},
-    { path: 'requests', component: RequestsComponent},
-    { path: 'tags', component: TagsComponent},
-  ]},
-  {path: 'tag/:name', component: TagComponent},
+  { path: 'register', component: RegisterComponent },
+  { path: 'validate-email', component: ValidateEmailComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: ':username', component: MainComponent },
+  { path: 'reset-email', component: ResetEmailComponent },
+  { path: 'to-do', component: SharedToDoComponent },
+  { path: 'explore', component: ExploreComponent },
+  { path: 'user/:observable', component: UserComponent },
+  {
+    path: ':username/settings',
+    component: SettingsComponent,
+    children: [
+      { path: 'personal-info', component: PersonalInfoComponent },
+      { path: 'security-info', component: SecurityComponent },
+      { path: 'account-info', component: AccountComponent },
+    ],
+  },
+  {
+    path: ':username',
+    component: UserListsComponent,
+    children: [
+      { path: 'followers', component: FollowersComponent },
+      { path: 'followings', component: FollowingsComponent },
+      { path: 'requests', component: RequestsComponent },
+      { path: 'tags', component: TagsComponent },
+    ],
+  },
+  { path: 'tag/:name', component: TagComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  {path: '**', component: NotFoundComponent},
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
