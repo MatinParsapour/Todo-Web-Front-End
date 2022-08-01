@@ -4,11 +4,10 @@ import { Injectable } from '@angular/core';
 import { Constants } from '../constant';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService extends DataService {
-
   constructor(http: HttpClient) {
-    super(Constants.url + "/user", http);
+    super(Constants.url + '/user', http);
   }
 }
