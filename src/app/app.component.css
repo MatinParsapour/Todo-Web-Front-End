@@ -1,6 +1,6 @@
 app-nav-bar {
-    position: fixed;
-    z-index: 40;
-    width: 100%;
-    top: 0;
+  position: fixed;
+  z-index: 40;
+  width: 100%;
+  top: 0;
 }
