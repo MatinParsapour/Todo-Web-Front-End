@@ -4,22 +4,21 @@ import { Injectable } from '@angular/core';
 import { Constants } from '../constant';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class PhoneNumberService extends DataService{
-
-  httpService: HttpClient
+export class PhoneNumberService extends DataService {
+  httpService: HttpClient;
 
   constructor(http: HttpClient) {
-    super(Constants.url,http)
+    super(Constants.url, http);
     this.httpService = http;
   }
 
-  isCodeValid(uri: string){
-    return this.httpService.get(Constants.url + uri)
+  isCodeValid(uri: string) {
+    return this.httpService.get(Constants.url + uri);
   }
 
-  resendCode(uri: string){
-    return this.httpService.get(Constants.url + uri)
+  resendCode(uri: string) {
+    return this.httpService.get(Constants.url + uri);
   }
 }
