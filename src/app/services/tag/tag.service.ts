@@ -7,10 +7,7 @@ import { Constants } from '../constant';
   providedIn: 'root',
 })
 export class TagService extends DataService {
-  private httpService: HttpClient;
-
   constructor(http: HttpClient) {
     super(Constants.url + '/tag', http);
-    this.httpService = http;
   }
 }
