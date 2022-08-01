@@ -231,7 +231,7 @@ const customNotifierOptions: NotifierOptions = {
     NgImageSliderModule,
     GuidedTourModule,
     PickerModule,
-    CookieModule.withOptions()
+    CookieModule.withOptions(),
   ],
   providers: [
     RegisterService,
