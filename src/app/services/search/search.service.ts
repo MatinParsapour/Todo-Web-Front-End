@@ -4,10 +4,9 @@ import { Injectable } from '@angular/core';
 import { Constants } from '../constant';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SearchService extends DataService {
-
   constructor(http: HttpClient) {
     super(Constants.url + '/search/', http);
   }
