@@ -5,26 +5,25 @@ import { Injectable } from '@angular/core';
 import { Constants } from '../constant';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ToDoService extends DataService{
-
-  httpService: HttpClient
+export class ToDoService extends DataService {
+  httpService: HttpClient;
 
   constructor(http: HttpClient) {
-    super(Constants.url + "/",http)
-    this.httpService = http
-   }
-
-   getToDo(uri:any){
-    return this.httpService.get(Constants.url + "/" + uri)     
-  }
-  
-  addToDoToList(uri:any){
-    return this.httpService.put(Constants.url + "/" + uri, null)     
+    super(Constants.url + '/', http);
+    this.httpService = http;
   }
 
-  sendPicture(formData: FormData):Observable<HttpEvent<any>>{
+  getToDo(uri: any) {
+    return this.httpService.get(Constants.url + '/' + uri);
+  }
+
+  addToDoToList(uri: any) {
+    return this.httpService.put(Constants.url + '/' + uri, null);
+  }
+
+  sendPicture(formData: FormData): Observable<HttpEvent<any>> {
     return this.httpService.put<HttpEvent<any>>(
       Constants.url + '/to-do/add-photo',
       formData,
@@ -32,11 +31,11 @@ export class ToDoService extends DataService{
     );
   }
 
-  like(data: FormData): Observable<any>{
-    return this.httpService.put(Constants.url + "/to-do/like", data)
+  like(data: FormData): Observable<any> {
+    return this.httpService.put(Constants.url + '/to-do/like', data);
   }
 
-  disLike(data: FormData): Observable<any>{
-    return this.httpService.put(Constants.url + "/to-do/dislike", data)
+  disLike(data: FormData): Observable<any> {
+    return this.httpService.put(Constants.url + '/to-do/dislike', data);
   }
 }
