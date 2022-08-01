@@ -4,18 +4,17 @@ import { Injectable } from '@angular/core';
 import { Constants } from '../constant';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MainService extends DataService {
+  httpService: HttpClient;
 
-  httpService: HttpClient
-
-  constructor(http:HttpClient) {
+  constructor(http: HttpClient) {
     super(Constants.url, http);
-    this.httpService = http
+    this.httpService = http;
   }
 
-  getToDos(uri: string){
+  getToDos(uri: string) {
     return this.httpService.get(Constants.url + uri);
   }
 }
