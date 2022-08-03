@@ -1,41 +1,5 @@
-<div *ngIf="!toDo.id" class="noToDo">
-  <span>(0_o)</span>
-  <p>{{'No To-Do found' | uppercase}} </p>
+<div class="background" (click)="close()">
 </div>
-<div class="todoSharedContainer" *ngIf="toDo.id">
-  <mat-card>
-    <span>Task</span>
-    {{toDo.task}}
-  </mat-card>
-  <mat-card>
-    <span>Note</span>
-    {{toDo.note ? toDo.note : "-"}}
-  </mat-card>
-  <div class="statusContainer">
-    <mat-card>
-      <span>Myday</span>
-      {{toDo.isMyDay ? "Yes" : "No"}}
-    </mat-card>
-    <mat-card>
-      <span>Starred</span>
-      {{toDo.isStarred ? "Yes" : "No"}}
-    </mat-card>
-    <mat-card>
-      <span>Status</span>
-      {{toDo.status ? toDo.status : "-"}}
-    </mat-card>
-  </div>
-  <div class="footer">
-    <mat-card>
-      <span>Due to date</span>
-      {{toDo.dateTime ? toDo.dateTime : "-" }}
-    </mat-card>
-    <mat-card>
-      <span>Pictures</span>
-      <p *ngIf="slideShowImages.length == 0"> {{'No picture'| uppercase}}</p>
-      <ng-image-slider *ngIf="slideShowImages.length > 0" [images]="slideShowImages" [imageSize]="slideShowSize()">
-      </ng-image-slider>
-    </mat-card>
-  </div>
-
+<div class="component">
+  <router-outlet></router-outlet>
 </div>
