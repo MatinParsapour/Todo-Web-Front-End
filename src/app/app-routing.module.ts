@@ -1,3 +1,4 @@
+import { NotEditableToDoComponent } from './not-editable-to-do/not-editable-to-do.component';
 import { EditableToDoComponent } from './editable-to-do/editable-to-do.component';
 import { ToDoComponent } from './components/to-do/to-do.component';
 import { TagsComponent } from './components/user-lists/tags/tags.component';
@@ -31,7 +32,7 @@ const routes: Routes = [
   { path: ':username', component: MainComponent },
   { path: 'reset-email', component: ResetEmailComponent },
   { path: 'to-do', component: SharedToDoComponent, children: [
-    { path: ':id', component: ToDoComponent},
+    { path: ':id', component: NotEditableToDoComponent},
     { path: ':id/edit', component: EditableToDoComponent}
   ] },
   { path: 'explore', component: ExploreComponent },
