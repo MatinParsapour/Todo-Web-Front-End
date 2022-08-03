@@ -1,3 +1,5 @@
+import { EditableToDoComponent } from './editable-to-do/editable-to-do.component';
+import { ToDoComponent } from './components/to-do/to-do.component';
 import { TagsComponent } from './components/user-lists/tags/tags.component';
 import { RequestsComponent } from './components/user-lists/requests/requests.component';
 import { FollowingsComponent } from './components/user-lists/followings/followings.component';
@@ -28,7 +30,10 @@ const routes: Routes = [
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: ':username', component: MainComponent },
   { path: 'reset-email', component: ResetEmailComponent },
-  { path: 'to-do', component: SharedToDoComponent },
+  { path: 'to-do', component: SharedToDoComponent, children: [
+    { path: ':id', component: ToDoComponent},
+    { path: ':id/edit', component: EditableToDoComponent}
+  ] },
   { path: 'explore', component: ExploreComponent },
   { path: 'user/:observable', component: UserComponent },
   {
