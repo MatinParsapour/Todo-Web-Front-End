@@ -110,7 +110,7 @@ export class ToDoComponent implements OnInit {
   }
 
   openEditToDoDialog() {
-    this.router.navigate(['/to-do/', this.toDo.id], {queryParams: {returnUrl: this.returnUrl}})
+    this.router.navigate(['/to-do/', this.toDo.id, 'edit'], {queryParams: {returnUrl: this.returnUrl}})
   }
 
   openToDoPictures() {
