@@ -20,6 +20,7 @@ export class ToDoComponent implements OnInit {
   folders: any;
   @Input('toDo') toDo: ToDo = new ToDo();
   @Input('ownerSees') ownerSees: boolean = false;
+  @Input('returnUrl') returnUrl = ''
   displayDatePicker: boolean = false;
 
   constructor(
