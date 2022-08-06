@@ -1,1 +1,55 @@
-<p>not-editable-to-do works!</p>
+<div class="container">
+  <div class="todo content">
+    <div class="userToDo">
+      <div class="user">
+        <a [routerLink]="'#'" matDialogClose> <img [src]="user.profileImageUrl"
+            *ngIf="user.profileImageUrl; else notProfile" [routerLink]="'#'" alt="">
+        </a>
+        <ng-template #notProfile>
+          <a [routerLink]="'#'" matDialogClose><img
+              src="https://img.icons8.com/fluency/48/000000/user-male-circle.png"></a>
+        </ng-template>
+        <p class="systemMessage"> <a [routerLink]="'#'" matDialogClose>{{user.firstName}} {{user.lastName}}</a>
+          wants to
+        </p>
+      </div>
+      <div>
+        <p> {{todo.task}} </p>
+      </div>
+      <div *ngIf="todo.note">
+        <p class="systemMessage">And here's some notes about the task {{user.firstName}} wants to do</p>
+        <p>{{todo.note}}</p>
+      </div>
+      <div *ngIf="todo.pictures.length !== 0">
+        <p class="systemMessage">Some pictures about {{user.firstName}}'s todo</p>
+        <ng-image-slider [images]="slideShowImages" [imageSize]="slideShowSize()">
+        </ng-image-slider>
+      </div>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="todoMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #todoMenu>
+      <button mat-menu-item class="menuItem" (click)="shareToDo()">Share
+        <mat-icon>share</mat-icon>
+      </button>
+      <button [disabled]="isSaving" mat-menu-item class="menuItem" (click)="saveToDo()">Save
+        <div class="loading" *ngIf="isSaving; else isNotSaving">Loading&#8230;</div>
+        <ng-template #isNotSaving>
+          <mat-icon>save</mat-icon>
+        </ng-template>
+      </button>
+      <button [disabled]="isAdding" mat-menu-item class="menuItem" (click)="addToUserToDos()">Add to your to dos
+        <div class="loading" *ngIf="isAdding; else isNotAdding">Loading&#8230;</div>
+        <ng-template #isNotAdding>
+          <mat-icon>add</mat-icon>
+        </ng-template>
+      </button>
+    </mat-menu>
+  </div>
+  <div class="content sidebar">
+    <app-caption (update)="getToDo()" [todo]="todo"></app-caption>
+    <app-comments [todo]="todo" (update)="getToDo()"></app-comments>
+    <app-comment-input [todo]="todo" (update)="getToDo()"></app-comment-input>
+  </div>
+</div>
