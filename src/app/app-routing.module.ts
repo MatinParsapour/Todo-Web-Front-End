@@ -12,7 +12,7 @@ import { TagComponent } from './components/tag/tag.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { UserComponent } from './components/user/user.component';
 import { ExploreComponent } from './components/explore/explore.component';
-import { SharedToDoComponent } from './components/shared-to-do/shared-to-do.component';
+import { SharedToDoComponent } from './components/to-do/shared-to-do/shared-to-do.component';
 import { ResetEmailComponent } from './components/reset-email/reset-email.component';
 import { MainComponent } from './components/main/main.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
