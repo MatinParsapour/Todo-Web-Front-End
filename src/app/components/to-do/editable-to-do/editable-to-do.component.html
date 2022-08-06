@@ -1,1 +1,121 @@
-<p>editable-to-do works!</p>
+<div class="container">
+  <mat-menu #todoLists="matMenu">
+    <div *ngFor="let folder of folders">
+      <button mat-menu-item *ngFor="let list of folder.toDoLists" (click)="addToList(folder.name, list.name)">
+        <span>{{folder.name}} --> {{list.name}}</span>
+      </button>
+    </div>
+  </mat-menu>
+  <div class="todoDetails">
+    <ng-image-slider [class.displayNone]="slideShowImages.length === 0" [images]="slideShowImages"
+      [imageSize]="slideShowSize()">
+    </ng-image-slider>
+    <progress max="100" [value]="uploaded" *ngIf="uploaded"></progress>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Task : </mat-label>
+          <input autocomplete="off" type="text" matInput required [(ngModel)]="toDo.task" [value]="toDo.task">
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <mat-form-field appearance="fill" class="example-form-field">
+        <mat-label>Due to date :</mat-label>
+        <input matInput [min]="minDate" [(ngModel)]="toDo.dateTime" [matDatepicker]="datepicker">
+        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancel</button>
+            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Caption : </mat-label>
+          <textarea [value]="toDo.caption" [(ngModel)]="toDo.caption" matInput></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Note : </mat-label>
+          <textarea [value]="toDo.note" [(ngModel)]="toDo.note" matInput></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <p>Todo status : {{toDo.status}} </p>
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select [value]="toDo.status" [(ngModel)]="toDo.status">
+          <mat-option [value]="status.value" *ngFor="let status of statuses">{{ status.viewValue }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <input type="file" (change)="addPhoto($event)" accept="image/x-png,image/gif,image/jpeg" id="selectInput"
+      style="display: none;">
+
+  </div>
+  <div class="content sidebar displayFlex justifyContentSpaceBetween">
+    <div class="displayFlex justifyContentSpaceBetween">
+      <button class="menuButton" mat-icon-button #triggerBtn [matMenuTriggerFor]="normalMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu class="menu" #normalMenu="matMenu">
+        <app-star (click)="starToDo()" [isStarred]="toDo.isStarred"></app-star>
+        <button (click)="openAggreementDialog()" mat-menu-item class="material-icons delete" matTooltip="Delete todo">
+          <mat-icon>delete</mat-icon> Delete todo
+        </button>
+        <button (click)="pinOrUnpinToDo()" mat-menu-item class="material-icons" matTooltip="Pin todo">
+          <div class="pin" [hidden]="toDo.pinned">
+            <img src="https://img.icons8.com/ios/25/000000/pin--v1.png" />
+            <span class="pinText">Pin todo</span>
+          </div>
+          <div class="pin" [hidden]="!toDo.pinned">
+            <img src="https://img.icons8.com/ios-filled/25/000000/pin--v1.png" />
+            <div class="pinText">
+              <span>Unpin todo</span>
+            </div>
+          </div>
+        </button>
+        <button (click)="shareToDo()" mat-menu-item class="material-icons delete" matTooltip="Delete todo">
+          <mat-icon>share</mat-icon> Share todo
+        </button>
+        <button mat-menu-item class="material-icons delete" (click)="toggleMyDay()">
+          <span [hidden]="!toDo.isMyDay" matTooltip="Myday">
+            <mat-icon>brightness_7</mat-icon> Not MyDay
+          </span>
+          <span [hidden]="toDo.isMyDay" matTooltip="Not Myday">
+            <mat-icon>brightness_5</mat-icon> MyDay
+          </span>
+        </button>
+        <button mat-menu-item class="material-icons delete" (click)="selectPhoto()" matTooltip="Add picture">
+          <mat-icon>add_a_photo</mat-icon>Add picture
+        </button>
+        <button mat-menu-item class="material-icons delete" (click)="openToDoPictures()"
+          *ngIf="toDo.pictures.length > 0">
+          <mat-icon>no_photography</mat-icon> Remove photo
+        </button>
+        <button (mouseenter)="getFolders()" mat-menu-item [matMenuTriggerFor]="todoLists">
+          <mat-icon>add</mat-icon> Add todo to folder
+        </button>
+      </mat-menu>
+      <app-caption (update)="getToDo()" [todo]="toDo"></app-caption>
+    </div>
+    <div class="footer">
+      <app-comments [todo]="toDo" (update)="getToDo()"></app-comments>
+      <app-comment-input [todo]="toDo" (update)="getToDo()"></app-comment-input>
+    </div>
+  </div>
+  <footer>
+    <div class="buttons">
+      <button mat-raised-button color="primary" (click)="updateToDo()">Update</button>
+    </div>
+  </footer>
+</div>
