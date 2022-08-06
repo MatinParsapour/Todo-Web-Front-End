@@ -77,7 +77,7 @@ import { StarComponent } from './components/star/star.component';
 import { CheckCircleComponent } from './components/check-circle/check-circle.component';
 import { CutterPipe } from './pipes/cutter.pipe';
 import { ReplacerPipe } from './pipes/replacer.pipe';
-import { SharedToDoComponent } from './components/shared-to-do/shared-to-do.component';
+import { SharedToDoComponent } from './components/to-do/shared-to-do/shared-to-do.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { ExploreComponent } from './components/explore/explore.component';
 import { ExploreTodosComponent } from './components/explore-todos/explore-todos.component';
