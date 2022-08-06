@@ -1,5 +1,5 @@
-import { NotEditableToDoComponent } from './not-editable-to-do/not-editable-to-do.component';
-import { EditableToDoComponent } from './editable-to-do/editable-to-do.component';
+import { NotEditableToDoComponent } from './components/to-do/not-editable-to-do/not-editable-to-do.component';
+import { EditableToDoComponent } from './components/to-do/editable-to-do/editable-to-do.component';
 import { ToDoComponent } from './components/to-do/to-do.component';
 import { TagsComponent } from './components/user-lists/tags/tags.component';
 import { RequestsComponent } from './components/user-lists/requests/requests.component';
