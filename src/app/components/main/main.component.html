@@ -70,4 +70,4 @@
 
 
 
-  <app-edit-to-do (close)="moveToMain()" *ngIf="!isToDoIdExists()" [todoId]="todoId"></app-edit-to-do>
+  <app-edit-to-do *ngIf="!isToDoIdExists()" [todoId]="todoId"></app-edit-to-do>
