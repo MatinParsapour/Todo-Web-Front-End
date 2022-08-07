@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shared-to-do.component.css'],
 })
 export class SharedToDoComponent implements OnInit {
-  constructor(private router: Router,
+  returnTo = '';
               private route: ActivatedRoute) {}
 
   ngOnInit(): void {}
