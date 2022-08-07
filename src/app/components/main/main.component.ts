@@ -77,23 +77,21 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   getUser() {
-    this.mainService
-      .getAll('/user/get-user/' + this.route.snapshot.params['username'])
-      .subscribe(
-        (response) => {
-          this.user = response;
-          this.todoId = this.route.snapshot.params['todoId'];
-          this.route.params.subscribe((params: Params) => {
-            this.todoId = params['todoId'];
-          });
-        },
-        (error: HttpErrorResponse) => {
-          this.notifier.notify(
-            NotificationType.ERROR,
-            error.error.type + ': ' + error.error.message
-          );
-        }
-      );
+    this.mainService.getAll('/user/get-user/' + this.username).subscribe(
+      (response) => {
+        this.user = response;
+        this.todoId = this.route.snapshot.params['todoId'];
+        this.route.params.subscribe((params: Params) => {
+          this.todoId = params['todoId'];
+        });
+      },
+      (error: HttpErrorResponse) => {
+        this.notifier.notify(
+          NotificationType.ERROR,
+          error.error.type + ': ' + error.error.message
+        );
+      }
+    );
   }
 
   isDone(toDo: any) {
