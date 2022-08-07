@@ -33,6 +33,10 @@ export class TagComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.tagName = this.activatedRoute.snapshot.params['name'];
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.tagName = params['name']
+      this.getTag()
+    })
     this.getTag();
     this.getUsername();
   }
