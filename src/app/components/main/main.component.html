@@ -7,17 +7,17 @@
         </div>
       </div>
       <div *ngFor="let toDo of pinnedToDos">
-        <app-to-do [ownerSees]="true" [toDo]="toDo" *ngIf="!isDone(toDo)">
+        <app-to-do [returnUrl]="username" [ownerSees]="true" [toDo]="toDo" *ngIf="!isDone(toDo)">
         </app-to-do>
       </div>
       <div *ngFor="let toDo of toDos">
-        <app-to-do [ownerSees]="true" [toDo]="toDo" *ngIf="!isDone(toDo)">
+        <app-to-do [returnUrl]="username" [ownerSees]="true" [toDo]="toDo" *ngIf="!isDone(toDo)">
         </app-to-do>
       </div>
       <details>
         <summary>Completed {{completedToDos.length}} </summary>
         <div *ngFor="let toDo of completedToDos">
-          <app-to-do [ownerSees]="true" [toDo]="toDo"></app-to-do>
+          <app-to-do [returnUrl]="username" [ownerSees]="true" [toDo]="toDo"></app-to-do>
         </div>
       </details>
     </div>
