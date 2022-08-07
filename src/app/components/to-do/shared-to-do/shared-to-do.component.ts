@@ -15,6 +15,6 @@ export class SharedToDoComponent implements OnInit {
   }
 
   close() {
-    this.router.navigate([this.route.snapshot.params['username']]);
+    this.router.navigate([this.returnTo]);
   }
 }
