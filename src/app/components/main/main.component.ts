@@ -117,7 +117,7 @@ export class MainComponent implements OnInit, OnDestroy {
   addAndUpdateToDos() {
     if (this.toDo.task.trim() !== '') {
       this.mainService
-        .create('/to-do/add-to-do/' + this.user.userName, this.toDo)
+        .create('/to-do/add-to-do/' + this.username, this.toDo)
         .subscribe(
           (response: any) => {
             this.notifier.notify(
