@@ -14,7 +14,8 @@
     </div>
     <hr>
     <div class="body">
-      <app-to-do *ngFor="let todo of tag.toDos" [toDo]="todo" [ownerSees]="false"></app-to-do>
+      <app-to-do [returnUrl]="'/tag/' + tagName" *ngFor="let todo of tag.toDos" [toDo]="todo"
+        [ownerSees]="false"></app-to-do>
     </div>
   </div>
 </div>
