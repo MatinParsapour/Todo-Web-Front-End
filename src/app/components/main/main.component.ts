@@ -72,7 +72,9 @@ export class MainComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.toDos = this.todoDataService.getToDos();
+  }
 
   getUser() {
     this.mainService
