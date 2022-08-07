@@ -159,10 +159,6 @@ export class MainComponent implements OnInit, OnDestroy {
     }
   }
 
-  moveToMain() {
-    this.router.navigate([this.route.snapshot.params['username']]);
-  }
-
   isUserToDosEmpty() {
     if (this.toDos.length > 0) {
       this.isToDosEmpty = false;
