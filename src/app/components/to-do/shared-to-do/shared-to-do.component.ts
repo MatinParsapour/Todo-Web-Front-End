@@ -10,7 +10,9 @@ export class SharedToDoComponent implements OnInit {
   returnTo = '';
   constructor(private router: Router, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.returnTo = this.route.snapshot.queryParams['returnUrl'];
+  }
 
   close() {
     this.router.navigate([this.route.snapshot.params['username']]);
