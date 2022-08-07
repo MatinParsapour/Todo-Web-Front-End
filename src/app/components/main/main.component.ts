@@ -58,6 +58,7 @@ export class MainComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    this.username = this.route.snapshot.params['username'];
     this.getUser();
     this.subscription = todoDataService.changed.subscribe((status: boolean) => {
       this.toDos = todoDataService.getToDos();
