@@ -134,6 +134,7 @@ export class MainComponent implements OnInit, OnDestroy {
             this.clearToDo();
             this.toggleInputDisplay();
             this.getPinnedToDos();
+            this.todoDataService.loadCategory(this.category)
           },
           (error: HttpErrorResponse) => {
             this.notifier.notify(
