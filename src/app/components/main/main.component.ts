@@ -34,6 +34,7 @@ export class MainComponent implements OnInit, OnDestroy {
   todoId: any;
   isToDosEmpty!: boolean;
   subscription!: Subscription;
+  category!: Category
 
   categories = [
     {
