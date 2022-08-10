@@ -67,6 +67,12 @@ export class MainComponent implements OnInit, OnDestroy {
       this.checkToDosStatus();
       this.getPinnedToDos();
     });
+    this.category = this.route.snapshot.queryParams['category']
+    this.route.queryParams.subscribe((queryParams: Params) => {
+      this.category = queryParams['category']
+      this.todoDataService.loadCategory(this.category)
+    })
+    this.todoDataService.loadCategory(this.category)
   }
 
   ngOnDestroy(): void {
