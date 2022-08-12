@@ -1,3 +1,4 @@
+import { AppearanceComponent } from './components/settings/appearance/appearance.component';
 import { NotEditableToDoComponent } from './components/to-do/not-editable-to-do/not-editable-to-do.component';
 import { EditableToDoComponent } from './components/to-do/editable-to-do/editable-to-do.component';
 import { ToDoComponent } from './components/to-do/to-do.component';
@@ -44,6 +45,7 @@ const routes: Routes = [
       { path: 'personal-info', component: PersonalInfoComponent },
       { path: 'security-info', component: SecurityComponent },
       { path: 'account-info', component: AccountComponent },
+      { path: 'appearance-info', component: AppearanceComponent },
     ],
   },
   {
