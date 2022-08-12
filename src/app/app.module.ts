@@ -105,6 +105,7 @@ import { TagsComponent } from './components/user-lists/tags/tags.component';
 import { RequestsComponent } from './components/user-lists/requests/requests.component';
 import { EditableToDoComponent } from './components/to-do/editable-to-do/editable-to-do.component';
 import { NotEditableToDoComponent } from './components/to-do/not-editable-to-do/not-editable-to-do.component';
+import { AppearanceComponent } from './components/settings/appearance/appearance.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -206,6 +207,7 @@ const customNotifierOptions: NotifierOptions = {
     RequestsComponent,
     EditableToDoComponent,
     NotEditableToDoComponent,
+    AppearanceComponent,
   ],
   imports: [
     BrowserModule,
