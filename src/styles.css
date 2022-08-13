@@ -35,3 +35,19 @@ button:active{
 button{
     outline: none;
 }
+
+.dark-background {
+    background-color: rgba(32, 32, 32, 0.671) !important;
+    height: 100%;
+}
+
+.dark-border {
+    border-color: #2a2a2a !important;
+}
+
+.dark-card {
+    background-color: #444444 !important;
+    color: white !important;
+}
+
+
