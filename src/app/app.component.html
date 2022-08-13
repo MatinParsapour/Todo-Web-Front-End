@@ -1,4 +1,6 @@
-<app-nav-bar></app-nav-bar>
-<router-outlet></router-outlet>
-<notifier-container></notifier-container>
-<ngx-guided-tour></ngx-guided-tour>
+<div [class.dark-background]="isDark">
+  <app-nav-bar></app-nav-bar>
+  <router-outlet></router-outlet>
+  <notifier-container></notifier-container>
+  <ngx-guided-tour></ngx-guided-tour>
+</div>
