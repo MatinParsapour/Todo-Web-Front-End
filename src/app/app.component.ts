@@ -1,3 +1,4 @@
+import { ThemeService } from './services/theme/theme.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'website';
+  isDark!: boolean;
+
+  constructor(private themeService: ThemeService){
+    this.isDark = themeService.isThemeDark()
+    themeService.isDark.subscribe((value: boolean) => {
+      this.isDark = themeService.isThemeDark()
+    })
+  }
 }
