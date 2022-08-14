@@ -1,6 +1,7 @@
 <div class="search">
-  <form class="searchform cf">
-    <input [(ngModel)]="keyword" [ngModelOptions]="{standalone: true}" (keyup)="search($event.target)" type="text"
+  <form class="searchform cf" [class.dark-background.dark-border]="isDark">
+    <input [class.dark-background]="isDark" [(ngModel)]="keyword" [ngModelOptions]="{standalone: true}"
+      (keyup)="search($event.target)" type="text"
       placeholder="Search ...">
     <div class="results">
       <button class="result" *ngFor="let result of results" (click)="open(result)">
