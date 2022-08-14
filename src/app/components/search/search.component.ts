@@ -1,3 +1,4 @@
+import { ThemeService } from './../../services/theme/theme.service';
 import { NotificationService } from './../../services/notification/notification.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -13,11 +14,18 @@ import { NotificationType } from 'src/app/enum/notification-type';
 export class SearchComponent implements OnInit {
   keyword = '';
   results: any[] = [];
+  isDark!: boolean
   constructor(
     private searchService: SearchService,
     private router: Router,
-    private notifier: NotificationService
-  ) {}
+    private notifier: NotificationService,
+    private themeService: ThemeService
+  ) {
+    this.isDark = themeService.isThemeDark()
+    this.themeService.isDark.subscribe((value: boolean) => {
+      this.isDark = themeService.isThemeDark()
+    })
+  }
 
   ngOnInit(): void {}
 
