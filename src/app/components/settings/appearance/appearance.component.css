@@ -1,0 +1,21 @@
+.separator {
+  display: flex;
+  align-items: center;
+}
+
+.secondLine {
+  width: 137px;
+}
+
+.firstLine {
+  width: 637px;
+}
+
+.theme {
+  padding: 0 43px 0 2rem;
+}
+
+.separator .line {
+  height: 3px;
+  background-color: #000;
+}
