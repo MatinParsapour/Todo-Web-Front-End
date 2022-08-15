@@ -1,4 +1,4 @@
-<mat-card (click)="openEditToDoDialog()">
+<mat-card [class.dark-card]="isThemeDark" (click)="openEditToDoDialog()">
   <div class="doneAndTask">
     <app-check-circle *ngIf="ownerSees" [status]="toDo.status" (click)="doneToDo()"></app-check-circle>
     <div class="toDo" [class.lineThrough]="isDone()"> {{toDo.task}}</div>
