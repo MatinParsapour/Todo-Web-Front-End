@@ -1,3 +1,4 @@
+import { ThemeService } from './../../../services/theme/theme.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppearanceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private themeService: ThemeService) { }
 
   ngOnInit(): void {
+  }
+
+  themeToggle(){
+    this.themeService.toggleTheme()
   }
 
 }
