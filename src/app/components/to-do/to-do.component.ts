@@ -1,3 +1,4 @@
+import { ThemeService } from './../../services/theme/theme.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToDoPicturesComponent } from './../to-do-pictures/to-do-pictures.component';
 import { ToDo } from './../../classes/todo';
@@ -22,6 +23,7 @@ export class ToDoComponent implements OnInit {
   @Input('ownerSees') ownerSees: boolean = false;
   @Input('returnUrl') returnUrl = ''
   displayDatePicker: boolean = false;
+  isThemeDark!: boolean
 
   constructor(
     private toDoService: ToDoService,
@@ -29,10 +31,13 @@ export class ToDoComponent implements OnInit {
     private dialog: MatDialog,
     private clipBoardService: ClipboardService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private themeService: ThemeService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isThemeDark = this.themeService.isThemeDark()
+  }
 
   doneToDo() {
     if (this.toDo.status.toString() !== Status[Status.DONE]) {
