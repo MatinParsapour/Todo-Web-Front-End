@@ -41,6 +41,10 @@ button{
     height: 100%;
 }
 
+.dark-background-white-color {
+    color: white !important;
+}
+
 .dark-border {
     border-color: #2a2a2a !important;
 }
