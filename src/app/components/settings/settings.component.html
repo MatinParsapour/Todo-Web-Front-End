@@ -1,9 +1,10 @@
 <div class="list-group">
-  <a class="list-group-item list-group-item-action" [routerLink]="['../settings/personal-info']">Personal
+  <a [class.dark-background]="isDark" [class.dark-background-white-color]="isDark" class="list-group-item list-group-item-action"
+    [routerLink]="['../settings/personal-info']">Personal
     info</a>
-  <a class="list-group-item list-group-item-action" [routerLink]="['../settings/security-info']">Security</a>
-  <a class="list-group-item list-group-item-action" [routerLink]="['../settings/account-info']">Account</a>
-  <a class="list-group-item list-group-item-action" [routerLink]="['../settings/appearance-info']">Appearance</a>
+  <a [class.dark-background]="isDark" [class.dark-background-white-color]="isDark"  class="list-group-item list-group-item-action" [routerLink]="['../settings/security-info']">Security</a>
+  <a [class.dark-background]="isDark" [class.dark-background-white-color]="isDark"  class="list-group-item list-group-item-action" [routerLink]="['../settings/account-info']">Account</a>
+  <a [class.dark-background]="isDark" [class.dark-background-white-color]="isDark"  class="list-group-item list-group-item-action" [routerLink]="['../settings/appearance-info']">Appearance</a>
 </div>
 <div class="settings">
   <router-outlet></router-outlet>
