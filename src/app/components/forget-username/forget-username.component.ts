@@ -1,3 +1,4 @@
+import { ThemeService } from './../../services/theme/theme.service';
 import { NotificationService } from './../../services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from './../../services/user/user.service';
@@ -16,6 +17,7 @@ export class ForgetUsernameComponent implements OnInit {
   isEnterEmailOrPhoneEditable = true;
   isCheckCodeEditable = false;
   isUsernameInputEditable = false;
+  isDark!: boolean
   emailOrPhone = new UntypedFormControl({ value: '', disabled: false }, [
     Validators.required,
     Validators.minLength(3),
@@ -32,10 +34,13 @@ export class ForgetUsernameComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private notifier: NotificationService
+    private notifier: NotificationService,
+    private themeService: ThemeService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isDark = this.themeService.isThemeDark()
+  }
 
   sendCode() {
     const formData = new FormData();
