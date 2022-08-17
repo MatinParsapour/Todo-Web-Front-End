@@ -1,3 +1,4 @@
+import { ThemeService } from './../../../services/theme/theme.service';
 import { NotificationService } from './../../../services/notification/notification.service';
 import { SettingsService } from './../../../services/settings/settings.service';
 import { UserService } from './../../../services/user/user.service';
@@ -21,14 +22,17 @@ export class PersonalInfoComponent implements OnInit {
   profileImage: any;
   uploaded!: number;
   bioLength = 300;
+  isDark : boolean = false
 
   constructor(
     private userService: UserService,
     private settingsService: SettingsService,
-    private notifier: NotificationService
+    private notifier: NotificationService,
+    private themeService: ThemeService
   ) {}
 
   ngOnInit(): void {
+    this.isDark = this.themeService.isThemeDark()
     this.username = this.settingsService.getUsername();
     this.getUser();
   }
