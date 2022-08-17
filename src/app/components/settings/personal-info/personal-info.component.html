@@ -36,7 +36,9 @@
   <div class="userInfo">
     <fieldset>
       <legend [class]="bioLength < 0 ? 'wrong' :''">{{bioLength}}</legend>
-      <textarea (keyup)="bio($event.target)" cols="30" rows="10" value="user.bio" [(ngModel)]="user.bio"></textarea>
+      <textarea [class.dark-background]="isDark" [class.dark-background-white-color]="isDark"
+        (keyup)="bio($event.target)" cols="30" rows="10" value="user.bio"
+        [(ngModel)]="user.bio"></textarea>
     </fieldset>
   </div>
   <div class="separator">
@@ -45,7 +47,8 @@
     <div class="line secondLine"></div>
   </div>
   <div class="userInfo">
-    <input class="info" type="text" [value]="user.firstName" [(ngModel)]="user.firstName">
+    <input class="info" [class.dark-background]="isDark" [class.dark-background-white-color]="isDark" type="text"
+      [value]="user.firstName" [(ngModel)]="user.firstName">
   </div>
   <div class="separator">
     <div class="line firstLine"></div>
@@ -53,7 +56,8 @@
     <div class="line secondLine"></div>
   </div>
   <div class="userInfo">
-    <input class="info" type="text" [value]="user.lastName" [(ngModel)]="user.lastName">
+    <input class="info" [class.dark-background]="isDark" [class.dark-background-white-color]="isDark" type="text"
+      [value]="user.lastName" [(ngModel)]="user.lastName">
   </div>
   <div class="separator">
     <div class="line firstLine"></div>
@@ -61,7 +65,8 @@
     <div class="line secondLine"></div>
   </div>
   <div class="userInfo">
-    <input class="info" type="date" [value]="user.birthDay" [(ngModel)]="user.birthDay">
+    <input class="info" [class.dark-background]="isDark" [class.dark-background-white-color]="isDark" type="date"
+      [value]="user.birthDay" [(ngModel)]="user.birthDay">
   </div>
   <div class="separator">
     <div class="line firstLine"></div>
@@ -69,7 +74,8 @@
     <div class="line secondLine"></div>
   </div>
   <div class="userInfo">
-    <input class="info" type="number" [value]="user.age" readonly>
+    <input class="info" [class.dark-background]="isDark" [class.dark-background-white-color]="isDark" type="number"
+      [value]="user.age" readonly>
   </div>
   <div class="col-1">
     <button mat-raised-button class="btn btn-primary col-1" (click)="updateUser()">Update</button>
