@@ -1,5 +1,5 @@
 <div class="backGround">
-  <div class="container">
+  <div class="container" [class.dark-background]="isDark" [class.dark-background-white-color]="isDark">
     <mat-form-field appearance="outline">
       <mat-label>Email or phone number</mat-label>
       <input [formControl]="emailOrPhone" [disabled]="!isEnterEmailOrPhoneEditable" matInput autocomplete="off"
